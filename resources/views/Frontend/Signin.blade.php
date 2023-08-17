@@ -3,7 +3,7 @@
 <div class="container mt-5">
     <div class="row  justify-content-center">
     <div class=" col col-sm-4 ">
-        <h5 class="text-center">Sign IN</h5>
+        <h5 class="text-center">Sign in</h5>
         <div class="container">
             <div class="row">
                 <div class="col-12">
@@ -29,13 +29,13 @@
 
                           </div>
                           <div class="text-center">
-                            forget password?<b>Reset</b>
+                            forget password?<a href="{{ route('reset')}}">reset</a>
 
                           </div>
                           <br>
 
                           <div class="text-center">
-                            Don't have account?<b>Signup</b>
+                            Don't have account?<a href="{{ route('signup')}}">signup</a>
 
 
                           </div>
