@@ -30,7 +30,7 @@
 
 
 
-                       <li><a class="dropdown-item" href="">Shop</a></li>
+                       <li><a class="dropdown-item" href="{{ route('shop')}}">Shop</a></li>
                        <li><a class="dropdown-item" href="">Photo Contest</a></li>
                        <li><a class="dropdown-item" href="">Winners</a></li>
 
