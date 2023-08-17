@@ -40,8 +40,8 @@
 
                 <li class="nav-item"><a class="nav-link"href="">About Us</a></li>
                 <li class="nav-item"><a class="nav-link"href="">Contact Us</a></li>
-                <li class="nav-item"><a class="nav-link"href="">Sign IN</a></li>
-                <li class="nav-item"><a class="nav-link"href="">Sign Up</a></li>
+                <li class="nav-item"><a class="nav-link"href="{{ route('signin')}}">Sign IN</a></li>
+                <li class="nav-item"><a class="nav-link"href="{{ route('signup')}}">Sign Up</a></li>
                 <li class="nav-item">
                     <a class="nav-link text-dark" href=""><i class="fa-solid fa-cart-shopping fa-lg"></i></a>
                 </li>
