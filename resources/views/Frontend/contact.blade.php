@@ -6,6 +6,7 @@
 <div class="container mt-5">
 
     <h1>Contact Us</h1>
+    <form >
     <div class="row container justify-content-center">
         <div class=" col col-sm-4 ">
             <input id="name" class="form-control"type="text" placeholder="Name">
@@ -21,13 +22,14 @@
         <div class=" col col-sm-4 ">
             <input id="subject" class="form-control"type="text" placeholder="Subject ">
         </div>
-        <div class="row  justify-content-center  mt-3">
+        <div class="row container justify-content-center  mt-3">
             <div class=" col col-sm-4 ">
                 <input id="message" class="form-control"type="text" placeholder="Your Message ">
             </div>
         </div>
     </div>
-
+    <button class="btn btn-success text-light ">Send Messages</button>
+</form>
 </div>
 
 @endsection

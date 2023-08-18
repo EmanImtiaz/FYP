@@ -46,7 +46,7 @@
                 <div class="card">
                   <img src="https://rstheme.com/products/html/shooter/shooter-html/images/shop/4.jpg" class="card-img-top" alt="Product 3">
                   <div class="card-body">
-                    <h5 class="card-title">Product 3</h5>
+                    <h5 class="card-title">Product 4</h5>
                     <p class="card-text">$75.00</p>
                     <a href="#" class="btn btn-primary">Add to Cart</a>
                   </div>
@@ -57,7 +57,7 @@
                 <div class="card">
                   <img src="https://rstheme.com/products/html/shooter/shooter-html/images/shop/8.jpg" class="card-img-top" alt="Product 3">
                   <div class="card-body">
-                    <h5 class="card-title">Product 3</h5>
+                    <h5 class="card-title">Product 5</h5>
                     <p class="card-text">$75.00</p>
                     <a href="#" class="btn btn-primary">Add to Cart</a>
                   </div>
