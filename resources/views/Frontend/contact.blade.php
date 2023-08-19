@@ -31,7 +31,7 @@
        </div>
        </div>
        <br>
-       <h1>Contact Us</h1>
+       <h1>Get in touch</h1>
     <form >
     <div class="row container justify-content-center">
         <div class=" col col-sm-4 ">
