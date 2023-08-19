@@ -36,14 +36,14 @@
 
                    </ul>
                </li>
-                <li class="nav-item"><a class="nav-link" href="">Portfolio</a></li>
+                <li class="nav-item"><a class="nav-link" href="{{ route('portfolio')}}">Portfolio</a></li>
 
                 <li class="nav-item"><a class="nav-link"href="{{ route('about')}}">About Us</a></li>
                 <li class="nav-item"><a class="nav-link"href="{{ route('contact')}}">Contact Us</a></li>
                 <li class="nav-item"><a class="nav-link"href="{{ route('signin')}}">Sign IN</a></li>
                 <li class="nav-item"><a class="nav-link"href="{{ route('signup')}}">Sign Up</a></li>
                 <li class="nav-item">
-                    <a class="nav-link text-dark" href=""><i class="fa-solid fa-cart-shopping fa-lg"></i></a>
+                    <a class="nav-link text-dark" href="{{ route('cart')}}"><i class="fa-solid fa-cart-shopping fa-lg"></i></a>
                 </li>
 
             </ul>
