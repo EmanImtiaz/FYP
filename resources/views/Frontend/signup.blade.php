@@ -25,7 +25,7 @@
                 <label for="confirmPassword" class="form-label">Confirm Password</label>
                 <input type="password" class="form-control" id="confirmPassword" required>
               </div>
-              <button type="submit" class="btn btn-primary">Sign Up</button>
+              <button type="submit" class="btn btn-danger">Sign Up</button>
             </form>
           </div>
         </div>

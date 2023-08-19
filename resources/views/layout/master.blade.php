@@ -11,9 +11,9 @@
 </head>
 <body class="bg-light" >
 
-    <nav class="navbar bg-info navbar-light navbar-expand-md">
+    <nav class="navbar navbar-light navbar-expand-md" style="color: #d32f2f;">
        <div class="container">
-        <a class="nav-brand" href="">Raise Photography</a>
+        <a class="nav-brand" href="" style="color: #d32f2f;">Raise Photography</a>
 
         <button class="navbar-toggler" data-bs-toggle="collapse"data-bs-target="#nvam">
             <span class="navbar-toggler-icon"></span>
