@@ -38,7 +38,7 @@
                </li>
                 <li class="nav-item"><a class="nav-link" href="">Portfolio</a></li>
 
-                <li class="nav-item"><a class="nav-link"href="">About Us</a></li>
+                <li class="nav-item"><a class="nav-link"href="{{ route('about')}}">About Us</a></li>
                 <li class="nav-item"><a class="nav-link"href="{{ route('contact')}}">Contact Us</a></li>
                 <li class="nav-item"><a class="nav-link"href="{{ route('signin')}}">Sign IN</a></li>
                 <li class="nav-item"><a class="nav-link"href="{{ route('signup')}}">Sign Up</a></li>
