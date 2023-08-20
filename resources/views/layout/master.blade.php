@@ -10,9 +10,8 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
 </head>
 <body class="bg-light" >
-
     <nav class="navbar navbar-light navbar-expand-md" style="color: #d32f2f;">
-       <div class="container">
+        <div class="container">
         <a class="nav-brand" href="" style="color: #d32f2f;">Raise Photography</a>
 
         <button class="navbar-toggler" data-bs-toggle="collapse"data-bs-target="#nvam">
@@ -50,7 +49,7 @@
 
         </div>
      </nav>
-       </div>
+      
       @yield('kuchb')
 
 

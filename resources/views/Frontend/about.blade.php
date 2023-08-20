@@ -2,10 +2,9 @@
 @extends('layout.master')
 @section('kuchb')
 
-<div class="container">
-    <img src="https://rstheme.com/products/html/shooter/shooter-html/images/banner/2.jpg" alt="">
-    <div class="container mt-3">
-        <div class="row justify-content-center">
+    <div class="container">
+        <img src="https://rstheme.com/products/html/shooter/shooter-html/images/banner/2.jpg" alt="">
+        <div class="row justify-content-center mt-3">
             <div class="col-lg-6 col-md-6 col-sm-6 ">
                 <h1>About <span style="color: #d32f2f;"> Raise Photographers</span></h1>
                 <p>Welcome to <span style="color: #d32f2f;">Raise Photographers</span>, where passion for photography meets a vibrant community of creative individuals. We believe in the power of visual storytelling and the ability of every photographer to capture the extraordinary in everyday moments.</p>
@@ -55,5 +54,5 @@
                 </div>
             </div>
         </div>
-    </div>
+
 @endsection
