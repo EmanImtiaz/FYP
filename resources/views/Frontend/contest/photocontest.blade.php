@@ -2,9 +2,9 @@
 @section('kuchb')
 
 
-<div class="container">
-    <img src="https://rstheme.com/products/html/shooter/shooter-html/images/banner/2.jpg" alt="">
 
+    <img src="https://rstheme.com/products/html/shooter/shooter-html/images/banner/2.jpg" alt="">
+    <div class="container">
     <!-- photo contest strat here-->
     <div class="row">
         <div class="col-lg-6 col-md-6 col-sm-12 mb-50 mt-5">
