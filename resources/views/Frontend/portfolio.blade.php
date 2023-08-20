@@ -3,135 +3,87 @@
 @section('kuchb')
 
 
-<div class="container ">
+<div class="container">
     <img src="https://rstheme.com/products/html/shooter/shooter-html/images/banner/2.jpg">
-    <div class="row mt-3 justify-content-center">
-                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                        <div class="section-title">
+    <div class="row mt-5 ">
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-center">
                             <h2>Our <span>Portfolio Style</span></h2>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mihi vero, inquit, placet agi subtilius et, ut ipse dixisti, pressius.Photograhy HTML is very </p>
-                        </div>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mihi vero, inquit, placet agi
                     </div>
                 </div>
-                <div class="row">
-                    <div class="col-lg-4 col-md-6 col-sm-12 mb-30">
-                        <div class="single-portfolio-area">
-                            <div class="portfolio-img">
-                                <img src="https://www.pexels.com/photo/digital-camera-mounted-in-a-tripod-14111067/" alt="">
+                <section class="py-5">
+                    <div class="container">
+                      <div class="row">
+                        <!-- Portfolio 1 -->
+                        <div class="col-md-4 mb-4">
+                          <div class="card">
+                            <img src="https://rstheme.com/products/html/shooter/shooter-html/images/shop/1.jpg" class="card-img-top" alt="">
+                            <div class="card-body">
+                              <h5 class="card-title">Portfolio Title</h5>
+                              <p class="card-text">July 9, 2018</p>
+                              <a href="{{ route('portfoliodetails')  }}" class="btn btn-primary">Portfolio Details</a>
                             </div>
-                            <div class="overley">
-                                <div class="content">
-                                    <h3><a href="">Portfolio Title</a></h3>
-                                    <p>june 29, 2016</p>
-                                </div>
-                            </div>
+                          </div>
                         </div>
-                    </div>
-                    <div class="col-lg-4 col-md-6 col-sm-12 mb-30">
-                        <div class="single-portfolio-area">
-                            <div class="portfolio-img">
-                                <img src="https://www.pexels.com/photo/brown-and-white-concrete-buildings-9585588/" alt="">
+
+                        <!-- Portfolio  2 -->
+                        <div class="col-md-4 mb-4">
+                          <div class="card">
+                            <img src="https://rstheme.com/products/html/shooter/shooter-html/images/shop/2.jpg" class="card-img-top" alt=" ">
+                            <div class="card-body">
+                              <h5 class="card-title">Portfolio Title</h5>
+                              <p class="card-text">July 9, 2018</p>
+                              <a href="" class="btn btn-primary">Portfolio Details</a>
                             </div>
-                            <div class="overley">
-                                <div class="content">
-                                    <h3><a href="">Portfolio Title</a></h3>
-                                    <p>june 29, 2016</p>
-                                </div>
-                            </div>
+                          </div>
                         </div>
-                    </div>
-                    <div class="col-lg-4 col-md-6 col-sm-12 mb-30">
-                        <div class="single-portfolio-area">
-                            <div class="portfolio-img">
-                                <img src="https://www.pexels.com/photo/istiklal-18001513/" alt="">
+                         <!-- Portfolio  3 -->
+                        <div class="col-md-4 mb-4">
+                          <div class="card">
+                            <img src="https://rstheme.com/products/html/shooter/shooter-html/images/shop/3.jpg" class="card-img-top" alt="">
+                            <div class="card-body">
+                              <h5 class="card-title">Portfolio Title </h5>
+                              <p class="card-text">July 9, 2018</p>
+                              <a href="" class="btn btn-primary">Portfolio Details</a>
                             </div>
-                            <div class="overley">
-                                <div class="content">
-                                    <h3><a href="">Portfolio Title</a></h3>
-                                    <p>june 29, 2016</p>
-                                </div>
-                            </div>
+                          </div>
                         </div>
-                    </div>
-                    <div class="col-lg-4 col-md-6 col-sm-12 mb-30">
-                        <div class="single-portfolio-area">
-                            <div class="portfolio-img">
-                                <img src="https://www.pexels.com/photo/sea-black-and-white-dawn-landscape-17118488/" alt="">
-                            </div>
-                            <div class="overley">
-                                <div class="content">
-                                    <h3><a href="">Portfolio Title</a></h3>
-                                    <p>june 29, 2016</p>
+                           <!-- Portfolio 4  -->
+                           <div class="col-md-4 mb-4">
+                              <div class="card">
+                                <img src="https://rstheme.com/products/html/shooter/shooter-html/images/shop/4.jpg" class="card-img-top" alt="">
+                                <div class="card-body">
+                                  <h5 class="card-title">Portfolio Title </h5>
+                                  <p class="card-text">July 9, 2018</p>
+                                  <a href="" class="btn btn-primary">Portfolio Details</a>
                                 </div>
+                              </div>
                             </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-md-6 col-sm-12 mb-30">
-                        <div class="single-portfolio-area">
-                            <div class="portfolio-img">
-                                <img src="https://www.pexels.com/photo/i-am-on-the-top-of-world-view-from-250m-apartment-18003658/" alt="">
-                            </div>
-                            <div class="overley">
-                                <div class="content">
-                                    <h3><a href="">Portfolio Title</a></h3>
-                                    <p>june 29, 2016</p>
+                            <!--  Portfolio 5  -->
+                           <div class="col-md-4 mb-4">
+                              <div class="card">
+                                <img src="https://rstheme.com/products/html/shooter/shooter-html/images/shop/8.jpg" class="card-img-top" alt=" ">
+                                <div class="card-body">
+                                  <h5 class="card-title">Portfolio Title </h5>
+                                  <p class="card-text">July 9, 2018</p>
+                                  <a href="" class="btn btn-primary">Portfolio Details</a>
                                 </div>
+                              </div>
                             </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-md-6 col-sm-12 mb-30">
-                        <div class="single-portfolio-area">
-                            <div class="portfolio-img">
-                                <img src="https://www.pexels.com/photo/empty-platforms-at-a-subway-station-17930312/" alt="">
-                            </div>
-                            <div class="overley">
-                                <div class="content">
-                                    <h3><a href="">Portfolio Title</a></h3>
-                                    <p>june 29, 2016</p>
+                            <!--  Portfolio 6  -->
+                            <div class="col-md-4 mb-4">
+                                <div class="card">
+                                    <img src="https://www.pexels.com/photo/green-cactus-plant-beside-white-wall-15173119/" class="card-img-top" alt=" ">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Portfolio Title </h5>
+                                        <p class="card-text">July 9, 2018</p>
+                                        <a href="" class="btn btn-primary">Portfolio Details</a>
+                                    </div>
                                 </div>
-                            </div>
-                        </div>
+  </div>
+                      </div>
                     </div>
-                    <div class="col-lg-4 col-md-6 col-sm-12 mb-md-30">
-                        <div class="single-portfolio-area">
-                            <div class="portfolio-img">
-                                <img src="https://www.pexels.com/photo/trees-and-mountains-during-sandstorm-14288904/" alt="">
-                            </div>
-                            <div class="overley">
-                                <div class="content">
-                                    <h3><a href="">Portfolio Title</a></h3>
-                                    <p>june 29, 2016</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-md-6 col-sm-12 mb-md-30">
-                        <div class="single-portfolio-area">
-                            <div class="portfolio-img">
-                                <img src="https://www.pexels.com/photo/light-city-road-sunset-16660338/" alt="">
-                            </div>
-                            <div class="overley">
-                                <div class="content">
-                                    <h3><a href="">Portfolio Title</a></h3>
-                                    <p>june 29, 2016</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-md-6 col-sm-12">
-                        <div class="single-portfolio-area">
-                            <div class="portfolio-img">
-                                <img src="https://www.pexels.com/photo/close-up-of-a-facade-of-a-residential-skyscraper-in-hong-kong-china-17136466/" alt="">
-                            </div>
-                            <div class="overley">
-                                <div class="content">
-                                    <h3><a href="">Portfolio Title</a></h3>
-                                    <p>june 29, 2016</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                  </section>
 </div>
 @endsection
 

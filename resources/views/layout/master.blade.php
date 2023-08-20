@@ -11,7 +11,7 @@
 </head>
 <body class="bg-light" >
     <nav class="navbar navbar-light navbar-expand-md" style="color: #d32f2f;">
-        <div class="container">
+        <div class="container justify-content-center">
         <a class="nav-brand" href="" style="color: #d32f2f;">Raise Photography</a>
 
         <button class="navbar-toggler" data-bs-toggle="collapse"data-bs-target="#nvam">
@@ -49,7 +49,7 @@
 
         </div>
      </nav>
-      
+
       @yield('kuchb')
 
 
