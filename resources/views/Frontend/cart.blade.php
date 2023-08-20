@@ -1,6 +1,48 @@
 @extends('layout.master')
 @section('kuchb')
+<img src="https://rstheme.com/products/html/shooter/shooter-html/images/banner/2.jpg" alt="">
+<div class="container my-5">
+    <h1>Your Shopping Cart</h1>
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Product</th>
+          <th scope="col">Price</th>
+          <th scope="col">Quantity</th>
+          <th scope="col">Total</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th scope="row">1</th>
+          <td>Product A</td>
+          <td>$25.99</td>
+          <td><input type="number" value="1" class="form-control"></td>
+          <td>$25.99</td>
+        </tr>
+        <tr>
+          <th scope="row">2</th>
+          <td>Product B</td>
+          <td>$19.99</td>
+          <td><input type="number" value="2" class="form-control"></td>
+          <td>$39.98</td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="text-end">
+      <h4>Total: $65.97</h4>
 
+      <a href="{{ route('billform')}}"><button class="btn btn-primary">Proceeed to Checkout</button></a>
+    </div>
+  </div>
+
+
+
+
+
+@endsection
+  <!-- Product 1
 <div class="shipping-area section pt-100 pb-100">
     <div class="container">
         <div class="row">
@@ -112,8 +154,4 @@
         </div>
     </div>
 </div>
-
-
-
-
-@endsection
+-->

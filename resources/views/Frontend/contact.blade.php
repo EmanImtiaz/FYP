@@ -2,8 +2,9 @@
 
 @section('kuchb')
 
-<div class="container">
+
     <img src="https://rstheme.com/products/html/shooter/shooter-html/images/banner/2.jpg" alt="">
+    <div class="container">
         <div class="row mt-3">
             <div class="col-lg-12 col-md-12 col-sm-12">
                 <h1>Contact Information</h1>
@@ -23,7 +24,7 @@
            </div>
            <div class="col-lg-4 col-md-4 col-sm-12 g-3">
             <span><i class="fa-solid fa-fax" style="color: #d32f2f;"></i> +92001234111</span>
-            <div class="col-lg-4 col-md-4 col-sm-12">
+            <div class="col-lg-4 col-md-4 col-sm-12 ">
                 <div class="row">
            <span><i class="fa-solid fa-fax" style="color: #d32f2f;"></i> +92001234123</span>
                 </div>
