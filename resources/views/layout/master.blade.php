@@ -8,6 +8,7 @@
     <link rel="stylesheet"href="{{asset('css/bootstrap.min.css')}}">
     <script src="{{asset('js/bootstrap.bundle.min.js')}}"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
+   
 </head>
 <body class="bg-light" >
     <nav class="navbar navbar-light navbar-expand-md" style="color: #d32f2f;">
@@ -42,7 +43,7 @@
                 <li class="nav-item"><a class="nav-link"href="{{ route('signin')}}">Sign IN</a></li>
                 <li class="nav-item"><a class="nav-link"href="{{ route('signup')}}">Sign Up</a></li>
                 <li class="nav-item">
-                    <a class="nav-link text-dark" href=""><i class="fa-solid fa-cart-shopping fa-lg"></i></a>
+                    <a class="nav-link text-dark" href="{{ route('cart')}}"><i class="fa-solid fa-cart-shopping fa-lg"></i></a>
                 </li>
 
             </ul>
