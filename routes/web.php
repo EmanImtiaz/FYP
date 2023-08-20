@@ -6,6 +6,7 @@ use App\Http\Controllers\SigninController;
 use App\Http\Controllers\ResetController;
 use App\Http\Controllers\SignupController;
 use App\Http\Controllers\ShopController;
+use App\Http\Controllers\CartController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -33,6 +34,8 @@ Route::get('reset', [ResetController::class,'reset'])->name('reset');;
 Route::get('form', [FormController::class,'form'])->name('billform');;
 
 Route::get('shop', [ShopController::class,'shop'])->name('shop');;
+
+Route::get('cart', [CartController::class,'cart'])->name('cart');;
 
 
 
