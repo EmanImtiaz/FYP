@@ -8,7 +8,7 @@
     <link rel="stylesheet"href="{{asset('css/bootstrap.min.css')}}">
     <script src="{{asset('js/bootstrap.bundle.min.js')}}"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
-   
+
 </head>
 <body class="bg-light" >
     <nav class="navbar navbar-light navbar-expand-md" style="color: #d32f2f;">
@@ -31,8 +31,8 @@
 
 
                        <li><a class="dropdown-item" href="{{ route('shop')}}">Shop</a></li>
-                       <li><a class="dropdown-item" href="">Photo Contest</a></li>
-                       <li><a class="dropdown-item" href="">Winners</a></li>
+                       <li><a class="dropdown-item" href="{{ route('photocontest')}}">Photo Contest</a></li>
+                       <li><a class="dropdown-item" href="{{ route('winners')}}">Winners</a></li>
 
                    </ul>
                </li>

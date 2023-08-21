@@ -4,8 +4,9 @@
 
 
 
-    <img src="https://rstheme.com/products/html/shooter/shooter-html/images/banner/2.jpg" alt="">
+
     <div class="container">
+        <img src="https://rstheme.com/products/html/shooter/shooter-html/images/banner/2.jpg" alt="">
     <section class="py-5">
          <div class="container">
            <div class="row">
