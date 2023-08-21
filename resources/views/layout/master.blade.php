@@ -26,7 +26,7 @@
                 <li class="nav-item dropdown">
                    <a class="nav-link dropdown-toggle"data-bs-toggle="dropdown" href="">Services</a>
                    <ul class="dropdown-menu">
-                       <li><a class="dropdown-item" href="">Booking</a></li>
+                       <li><a class="dropdown-item" href="{{ route('booking')}}">Booking</a></li>
 
 
 

@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\BookingController;
 use App\Http\Controllers\ForgetController;
 use App\Http\Controllers\FormController;
 use App\Http\Controllers\SigninController;
@@ -36,6 +37,8 @@ Route::get('form', [FormController::class,'form'])->name('billform');;
 Route::get('shop', [ShopController::class,'shop'])->name('shop');;
 
 Route::get('cart', [CartController::class,'cart'])->name('cart');;
+
+Route::get('booking', [BookingController::class,'booking'])->name('booking');;
 
 
 

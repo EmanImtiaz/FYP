@@ -1,5 +1,8 @@
 @extends('layout.master')
 @section('kuchb')
+
+<img src="https://rstheme.com/products/html/shooter/shooter-html/images/banner/2.jpg" alt="">
+
 <div class="container mt-5">
     <div class="row justify-content-center">
       <div class="col-md-6">
