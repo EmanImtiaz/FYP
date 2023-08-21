@@ -3,8 +3,9 @@
 @section('kuchb')
 
 
-    <img src="https://rstheme.com/products/html/shooter/shooter-html/images/banner/2.jpg" alt="">
-    <div class="container">
+
+     <img src="https://rstheme.com/products/html/shooter/shooter-html/images/banner/2.jpg" alt="">
+ <div class="container">
         <div class="row mt-3">
             <div class="col-lg-12 col-md-12 col-sm-12">
                 <h1>Contact Information</h1>
