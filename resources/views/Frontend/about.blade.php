@@ -2,9 +2,10 @@
 @extends('layout.master')
 @section('kuchb')
 
-   
-        <img src="https://rstheme.com/products/html/shooter/shooter-html/images/banner/2.jpg" alt="">
+
+
         <div class="container">
+            <img src="https://rstheme.com/products/html/shooter/shooter-html/images/banner/2.jpg" alt="">
         <div class="row justify-content-center mt-3">
             <div class="col-lg-6 col-md-6 col-sm-6 ">
                 <h1>About <span style="color: #d32f2f;"> Raise Photographers</span></h1>

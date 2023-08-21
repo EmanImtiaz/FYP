@@ -31,8 +31,8 @@
 
 
                        <li><a class="dropdown-item" href="{{ route('shop')}}">Shop</a></li>
-                       <li><a class="dropdown-item" href="">Photo Contest</a></li>
-                       <li><a class="dropdown-item" href="">Winners</a></li>
+                       <li><a class="dropdown-item" href="{{ route('photocontest')}}">Photo Contest</a></li>
+                       <li><a class="dropdown-item" href="{{ route('winners')}}">Winners</a></li>
 
                    </ul>
                </li>

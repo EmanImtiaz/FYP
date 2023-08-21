@@ -3,8 +3,9 @@
 
 
 
-    <img src="https://rstheme.com/products/html/shooter/shooter-html/images/banner/2.jpg" alt="">
+
     <div class="container">
+        <img src="https://rstheme.com/products/html/shooter/shooter-html/images/banner/2.jpg" alt="">
     <!-- photo contest strat here-->
     <div class="row">
         <div class="col-lg-6 col-md-6 col-sm-12 mb-50 mt-5">
@@ -41,7 +42,7 @@
 
                 <p class="des mt-3">Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. </p>
                 <div class="mt-2">
-                    <a href="" class=" btn btn-danger mr-10">Read More</a>
+                    <a href="{{  route('contestdetail') }}" class=" btn btn-danger mr-10">Read More</a>
                     <a href="" class="btn danger text-danger">join now free</a>
                 </div>
             </div>
@@ -250,14 +251,15 @@
 <!-- photo contest end here-->
 
 <!-- count up section strt here -->
-
-<div class="container">
+<br>
+<br>
+<div class="container  text-dark mt-5">
     <div class="ab-count">
         <div class="row">
             <!-- ABOUT-COUNTER-LIST START -->
             <div class="col-lg-3 col-md-3 col-sm-3  wow fadeInUp" data-wow-duration=".3s" data-wow-delay="300ms" style="visibility: visible; animation-duration: 0.3s; animation-delay: 300ms; animation-name: fadeInUp;">
-                <div class="about-counter-list">
-                    <i class="fa fa-picture-o"></i>
+                <div class="about-counter-list text-center">
+                    <i class="fa-regular fa-image"  style="color: #d32f2f;"></i>
                     <h1 class="about-counter">10222</h1>
                     <p>Photos</p>
                 </div>
@@ -265,8 +267,8 @@
             <!-- ABOUT-COUNTER-LIST END -->
             <!-- ABOUT-COUNTER-LIST START -->
             <div class="col-lg-3 col-md-3 col-sm-3  wow fadeInUp" data-wow-duration=".7s" data-wow-delay="300ms" style="visibility: visible; animation-duration: 0.7s; animation-delay: 300ms; animation-name: fadeInUp;">
-                <div class="about-counter-list">
-                    <i class="fa fa-heart"></i>
+                <div class="about-counter-list text-center">
+                    <i class="fa fa-heart" style="color: #d32f2f;"></i>
                     <h1 class="about-counter">6000</h1>
                     <p>Rated</p>
                 </div>
@@ -274,8 +276,8 @@
             <!-- ABOUT-COUNTER-LIST END -->
             <!-- ABOUT-COUNTER-LIST START -->
             <div class="col-lg-3 col-md-3 col-sm-3  wow fadeInUp" data-wow-duration=".9s" data-wow-delay="300ms" style="visibility: visible; animation-duration: 0.9s; animation-delay: 300ms; animation-name: fadeInUp;">
-                <div class="about-counter-list">
-                    <i class="fa fa-users"></i>
+                <div class="about-counter-list text-center">
+                    <i class="fa fa-users"  style="color: #d32f2f;"></i>
                     <h1 class="about-counter">15642</h1>
                     <p>Viewers</p>
                 </div>
@@ -283,8 +285,8 @@
             <!-- ABOUT-COUNTER-LIST END -->
             <!-- ABOUT-COUNTER-LIST START -->
             <div class="col-lg-3 col-md-3 col-sm-3  wow fadeInUp" data-wow-duration="1.2s" data-wow-delay="300ms" style="visibility: visible; animation-duration: 1.2s; animation-delay: 300ms; animation-name: fadeInUp;">
-                <div class="about-counter-list">
-                    <i class="fa fa-trophy"></i>
+                <div class="about-counter-list text-center">
+                    <i class="fa fa-trophy"  style="color: #d32f2f;"></i>
                     <h1 class="about-counter">97</h1>
                     <p>Winners </p>
                 </div>
@@ -299,145 +301,146 @@
 <!-- home page gallery start here-->
 
 
-<div class="container">
-    <div class="row">
+<div class="container mt-5">
+    <div class="row ">
         <div class="col-lg-12 col-md-12 col-sm-12">
-            <div class="section-title">
-                <h2>Photo Contests <span> Gallery</span></h2>
-                <img src="images/line.png" alt="line image">
+            <div class="section-title text-center">
+                <h2>Photo Contests <span  style="color: #d32f2f;"> Gallery</span></h2>
+                <img src="" alt=" ">
             </div>
         </div>
-        <div class="col-lg-4 col-md-6 col-sm-12 mb-30">
+        <div class="col-lg-4 col-md-6 col-sm-12 mb-30mt-3">
             <div class="single-gellary">
                 <div class="image">
-                    <img src="images/gellary/1.jpg" alt="">
-                    <div class="overley">
+                    <img src="http://rstheme.com/products/html/shooter/shooter-html/images/contest/big2.jpg" height="100" width="100" alt="">
+                    <div class="overley " style="color: #d32f2f;">
                         <ul>
-                            <li><a href="photo-details.html"><i class="fa fa-eye"></i></a></li>
-                            <li><a class="image-popup" href="images/gellary/1.jpg"><i class="fa fa-search"></i></a></li>
+                            <li><a href=""><i class="fa-solid fa-eye"></i></a></li>
+                            <li><a class="image-popup" href=""><i class="fa-sharp fa-solid fa-magnifying-glass"></i></a></li>
                         </ul>
                     </div>
                 </div>
                 <div class="gellary-informations">
                     <ul>
                         <li>
-                            <h3><a href="images/gellary/1.jpg">Awesome senario <span>by Jems bond</span></a></h3></li>
-                        <li><i class="fa fa-heart"></i> 125</li>
-                        <li><i class="fa fa-eye"></i> 251</li>
+                            <h3><a href="">Awesome senario <span>by Jems bond</span></a></h3></li>
+                        <li><i  style="color: #d32f2f;" class="fa-solid fa-heart"></i> 125</li>
+                        <li><i style="color: #d32f2f;" class="fa-solid fa-eye"></i> 251</li>
                     </ul>
                 </div>
             </div>
         </div>
-        <div class="col-lg-4 col-md-6 col-sm-12 mb-30">
+        <div class="col-lg-4 col-md-6 col-sm-12 mb-30mt-3 g-5">
             <div class="single-gellary">
                 <div class="image">
-                    <img src="images/gellary/2.jpg" alt="">
-                    <div class="overley">
+                    <img src="http://rstheme.com/products/html/shooter/shooter-html/images/contest/big3.jpg"  height="100" width="100" alt="">
+                    <div class="overley " style="color: #d32f2f;">
                         <ul>
-                            <li><a href="photo-details.html"><i class="fa fa-eye"></i></a></li>
-                            <li><a class="image-popup" href="images/gellary/2.jpg"><i class="fa fa-search"></i></a></li>
+                            <li><a href=""><i class="fa-solid fa-eye"></i></a></li>
+                            <li><a class="image-popup" href=""><i class="fa-sharp fa-solid fa-magnifying-glass"></i></a></li>
                         </ul>
                     </div>
                 </div>
                 <div class="gellary-informations">
                     <ul>
                         <li>
-                            <h3><a href="images/gellary/2.jpg">Awesome senario <span>by Jems bond</span></a></h3></li>
-                        <li><i class="fa fa-heart"></i> 125</li>
-                        <li><i class="fa fa-eye"></i> 251</li>
+                            <h3><a href="">Awesome senario <span>by Jems bond</span></a></h3></li>
+                        <li><i  style="color: #d32f2f;" class="fa-solid fa-heart"></i> 125</li>
+                        <li><i style="color: #d32f2f;" class="fa-solid fa-eye"></i> 251</li>
                     </ul>
                 </div>
             </div>
         </div>
-        <div class="col-lg-4 col-md-6 col-sm-12 mb-30">
+        <div class="col-lg-4 col-md-6 col-sm-12 mb-30mt-3">
             <div class="single-gellary">
                 <div class="image">
-                    <img src="images/gellary/3.jpg" alt="">
-                    <div class="overley">
+                    <img src="http://rstheme.com/products/html/shooter/shooter-html/images/contest/big4.jpg" height="100" width="100"  alt="">
+                    <div class="overley " style="color: #d32f2f;">
                         <ul>
-                            <li><a href="photo-details.html"><i class="fa fa-eye"></i></a></li>
-                            <li><a class="image-popup" href="images/gellary/3.jpg"><i class="fa fa-search"></i></a></li>
+                            <li><a href=""><i class="fa-solid fa-eye"></i></a></li>
+                            <li><a class="image-popup" href=""><i class="fa-sharp fa-solid fa-magnifying-glass"></i></a></li>
                         </ul>
                     </div>
                 </div>
                 <div class="gellary-informations">
                     <ul>
                         <li>
-                            <h3><a href="images/gellary/2.jpg">Awesome senario <span>by Jems bond</span></a></h3></li>
-                        <li><i class="fa fa-heart"></i> 125</li>
-                        <li><i class="fa fa-eye"></i> 251</li>
+                            <h3><a href="">Awesome senario <span>by Jems bond</span></a></h3></li>
+                        <li><i  style="color: #d32f2f;" class="fa-solid fa-heart"></i> 125</li>
+                        <li><i style="color: #d32f2f;" class="fa-solid fa-eye"></i> 251</li>
                     </ul>
                 </div>
             </div>
         </div>
-        <div class="col-lg-4 col-md-6 col-sm-12 mb-30">
+        <div class="col-lg-4 col-md-6 col-sm-12 mb-30mt-3">
             <div class="single-gellary">
                 <div class="image">
-                    <img src="images/gellary/4.jpg" alt="">
-                    <div class="overley">
+                    <img src="http://rstheme.com/products/html/shooter/shooter-html/images/contest/big5.jpg" height="100" width="100"  alt="">
+                    <div class="overley " style="color: #d32f2f;">
                         <ul>
-                            <li><a href="photo-details.html"><i class="fa fa-eye"></i></a></li>
-                            <li><a class="image-popup" href="images/gellary/4.jpg"><i class="fa fa-search"></i></a></li>
+                            <li><a href=""><i class="fa-solid fa-eye"></i></a></li>
+                            <li><a class="image-popup" href=""><i class="fa-sharp fa-solid fa-magnifying-glass"></i></a></li>
                         </ul>
                     </div>
                 </div>
                 <div class="gellary-informations">
                     <ul>
                         <li>
-                            <h3><a href="images/gellary/4.jpg">Awesome senario <span>by Jems bond</span></a></h3></li>
-                        <li><i class="fa fa-heart"></i> 125</li>
-                        <li><i class="fa fa-eye"></i> 251</li>
+                            <h3><a href="">Awesome senario <span>by Jems bond</span></a></h3></li>
+                        <li><i  style="color: #d32f2f;" class="fa-solid fa-heart"></i> 125</li>
+                        <li><i style="color: #d32f2f;" class="fa-solid fa-eye"></i> 251</li>
                     </ul>
                 </div>
             </div>
         </div>
-        <div class="col-lg-4 col-md-6 col-sm-12 mb-sm-30">
+        <div class="col-lg-4 col-md-6 col-sm-12 mb-30mt-3">
             <div class="single-gellary">
                 <div class="image">
-                    <img src="images/gellary/5.jpg" alt="">
-                    <div class="overley">
+                    <img src="http://rstheme.com/products/html/shooter/shooter-html/images/contest/big6.jpg" height="100" width="100"  alt="">
+                    <div class="overley " style="color: #d32f2f;">
                         <ul>
-                            <li><a href="photo-details.html"><i class="fa fa-eye"></i></a></li>
-                            <li><a class="image-popup" href="images/gellary/5.jpg"><i class="fa fa-search"></i></a></li>
+                            <li><a href=""><i class="fa-solid fa-eye"></i></a></li>
+                            <li><a class="image-popup" href=""><i class="fa-sharp fa-solid fa-magnifying-glass"></i></a></li>
                         </ul>
                     </div>
                 </div>
                 <div class="gellary-informations">
                     <ul>
                         <li>
-                            <h3><a href="images/gellary/5.jpg">Awesome senario <span>by Jems bond</span></a></h3></li>
-                        <li><i class="fa fa-heart"></i> 125</li>
-                        <li><i class="fa fa-eye"></i> 251</li>
+                            <h3><a href="">Awesome senario <span>by Jems bond</span></a></h3></li>
+                        <li><i  style="color: #d32f2f;" class="fa-solid fa-heart"></i> 125</li>
+                        <li><i style="color: #d32f2f;" class="fa-solid fa-eye"></i> 251</li>
                     </ul>
                 </div>
             </div>
         </div>
-        <div class="col-lg-4 col-md-6 col-sm-12">
+        <div class="col-lg-4 col-md-6 col-sm-12 mb-30mt-3">
             <div class="single-gellary">
                 <div class="image">
-                    <img src="images/gellary/6.jpg" alt="">
-                    <div class="overley">
+                    <img src="http://rstheme.com/products/html/shooter/shooter-html/images/contest/big1.jpg" height="100" width="100"  alt="">
+                    <div class="overley " style="color: #d32f2f;">
                         <ul>
-                            <li><a href="photo-details.html"><i class="fa fa-eye"></i></a></li>
-                            <li><a class="image-popup" href="images/gellary/6.jpg"><i class="fa fa-search"></i></a></li>
+                            <li><a href=""><i class="fa-solid fa-eye"></i></a></li>
+                            <li><a class="image-popup" href=""><i class="fa-sharp fa-solid fa-magnifying-glass"></i></a></li>
                         </ul>
                     </div>
                 </div>
                 <div class="gellary-informations">
                     <ul>
                         <li>
-                            <h3><a href="images/gellary/6.jpg">Awesome senario <span>by Jems bond</span></a></h3></li>
-                        <li><i class="fa fa-heart"></i> 125</li>
-                        <li><i class="fa fa-eye"></i> 251</li>
+                            <h3><a href="">Awesome senario <span>by Jems bond</span></a></h3></li>
+                        <li><i  style="color: #d32f2f;" class="fa-solid fa-heart"></i> 125</li>
+                        <li><i style="color: #d32f2f;" class="fa-solid fa-eye"></i> 251</li>
                     </ul>
                 </div>
             </div>
         </div>
-    </div>
-    <div class="row">
-        <div class="col-lg-12 col-md-12 col-sm-12">
-            <div class="view-more">
-                <a href="#">View All Gallery <i class="fa fa-angle-right"></i></a>
+
+
+    <div class="row mt-5">
+        <div class="col-lg-12 col-md-12 col-sm-12 text-center">
+            <div class="view-more text-light">
+               <a class="btn btn-danger">View All Gallery <i  class="fa-solid fa-angle-right"></i> </a>
             </div>
         </div>
     </div>

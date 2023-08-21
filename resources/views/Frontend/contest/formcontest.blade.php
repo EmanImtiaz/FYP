@@ -2,8 +2,9 @@
 @section('kuchb')
 
 
-    <img src="https://rstheme.com/products/html/shooter/shooter-html/images/banner/2.jpg" alt="">
+
     <div class="container">
+        <img src="https://rstheme.com/products/html/shooter/shooter-html/images/banner/2.jpg" alt="">
         <div class="row">
             <div class="col-lg-12 col-md-12 col-sm-12 mt-5 text-center">
                     <ul class="list-group list-group-horizontal justify-content-center">
