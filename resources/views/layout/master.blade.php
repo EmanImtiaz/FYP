@@ -13,7 +13,7 @@
 <body class="bg-light" >
     <nav class="navbar navbar-light navbar-expand-md" style="color: #d32f2f;">
         <div class="container justify-content-center">
-        <a class="nav-brand" href="" style="color: #d32f2f;">Raise Photography</a>
+        <a class="nav-brand text-danger" href="" >Raise Photography</a>
 
         <button class="navbar-toggler" data-bs-toggle="collapse"data-bs-target="#nvam">
             <span class="navbar-toggler-icon"></span>
@@ -22,29 +22,29 @@
 
         <div id="nvam" class="collapse navbar-collapse">
             <ul class="navbar-nav ms-auto">
-                <li class="nav-item"><a class="nav-link" href="">Home</a></li>
+                <li class="nav-item"><a class="nav-link" href="{{ route('home')}}">Home</a></li>
                 <li class="nav-item dropdown">
-                   <a class="nav-link dropdown-toggle"data-bs-toggle="dropdown" href="">Services</a>
+                    <a class="nav-link dropdown-toggle"data-bs-toggle="dropdown" href="">Portfolio</a>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="{{ route('allportfolio')}}">All</a></li>
+                        <li><a class="dropdown-item" href="{{ route('contact')}}">Wedding</a></li>
+                        <li><a class="dropdown-item" href="{{ route('contact')}}">Birthday</a></li>
+                        <li><a class="dropdown-item" href="{{ route('contact')}}">Nature </a></li>
+                        <li><a class="dropdown-item" href="{{ route('contact')}}">Street</a></li>
+                     </ul>
+                </li>
+                <li class="nav-item dropdown">
+                   <a class="nav-link dropdown-toggle"data-bs-toggle="dropdown" href="photocontest">Contest</a>
                    <ul class="dropdown-menu">
-                       <li><a class="dropdown-item" href="{{ route('booking')}}">Booking</a></li>
-
-
-
-                       <li><a class="dropdown-item" href="{{ route('shop')}}">Shop</a></li>
-                       <li><a class="dropdown-item" href="{{ route('photocontest')}}">Photo Contest</a></li>
+                       <li><a class="dropdown-item" href="{{ route('photocontest')}}">Photos Contest</a></li>
                        <li><a class="dropdown-item" href="{{ route('winners')}}">Winners</a></li>
-
-                   </ul>
+                    </ul>
                </li>
-                <li class="nav-item"><a class="nav-link" href="{{ route('portfolio')}}">Portfolio</a></li>
-
+               <li class="nav-item"><a class="nav-link"href="{{ route('about')}}">Booking</a></li>
                 <li class="nav-item"><a class="nav-link"href="{{ route('about')}}">About Us</a></li>
                 <li class="nav-item"><a class="nav-link"href="{{ route('contact')}}">Contact Us</a></li>
-                <li class="nav-item"><a class="nav-link"href="{{ route('signin')}}">Sign IN</a></li>
+                <li class="nav-item"><a class="nav-link"href="{{ route('signin')}}">Sign In</a></li>
                 <li class="nav-item"><a class="nav-link"href="{{ route('signup')}}">Sign Up</a></li>
-                <li class="nav-item">
-                    <a class="nav-link text-dark" href="{{ route('cart')}}"><i class="fa-solid fa-cart-shopping fa-lg"></i></a>
-                </li>
 
             </ul>
 

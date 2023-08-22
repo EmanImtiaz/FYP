@@ -3,8 +3,10 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\AboutController;
+use App\Http\Controllers\AllPortfolioController;
 use App\Http\Controllers\ContestDetailController;
 use App\Http\Controllers\ContestFormController;
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PhotoContestController;
 use App\Http\Controllers\PortfolioController;
 use App\Http\Controllers\PortfolioDetailsController;
@@ -28,3 +30,7 @@ Route::get('contestdetail',[ContestDetailController::class,'contestdetail'])->na
 Route::get('winners',[WinnersController::class,'winners'])->name('winners');
 
 Route::get('singlewinnerdetail',[SingleWinnerDetailsController::class,'singlewinnerdetail'])->name('singlewinnerdetail');
+
+Route::get('home',[HomeController::class,'home'])->name('home');
+
+Route::get('allportfolio',[AllPortfolioController::class,'allportfolio'])->name('allportfolio');
