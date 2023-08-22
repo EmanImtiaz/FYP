@@ -27,10 +27,10 @@
                     <a class="nav-link dropdown-toggle"data-bs-toggle="dropdown" href="">Portfolio</a>
                     <ul class="dropdown-menu">
                         <li><a class="dropdown-item" href="{{ route('allportfolio')}}">All</a></li>
-                        <li><a class="dropdown-item" href="{{ route('contact')}}">Wedding</a></li>
-                        <li><a class="dropdown-item" href="{{ route('contact')}}">Birthday</a></li>
-                        <li><a class="dropdown-item" href="{{ route('contact')}}">Nature </a></li>
-                        <li><a class="dropdown-item" href="{{ route('contact')}}">Street</a></li>
+                        <li><a class="dropdown-item" href="">Wedding</a></li>
+                        <li><a class="dropdown-item" href="">Birthday</a></li>
+                        <li><a class="dropdown-item" href="">Nature </a></li>
+                        <li><a class="dropdown-item" href="">Street</a></li>
                      </ul>
                 </li>
                 <li class="nav-item dropdown">
@@ -40,7 +40,7 @@
                        <li><a class="dropdown-item" href="{{ route('winners')}}">Winners</a></li>
                     </ul>
                </li>
-               <li class="nav-item"><a class="nav-link"href="{{ route('about')}}">Booking</a></li>
+               <li class="nav-item"><a class="nav-link"href="{{ route('booking')}}">Booking</a></li>
                 <li class="nav-item"><a class="nav-link"href="{{ route('about')}}">About Us</a></li>
                 <li class="nav-item"><a class="nav-link"href="{{ route('contact')}}">Contact Us</a></li>
                 <li class="nav-item"><a class="nav-link"href="{{ route('signin')}}">Sign In</a></li>
