@@ -9,7 +9,8 @@
                 <div class="d-none d-lg-block profile-left-bg">
                     <div class="row row-pro-sidesection h-100">
 
-    <div class="position-sticky stickysidebar ">        <div class="img-wrapper seller-avatar mb-4 pb-1">
+    <div class="position-sticky stickysidebar ">
+              <div class="img-wrapper seller-avatar mb-4 pb-1">
     <div class="rounded-circle avatar-image-container d-inline-block position-relative ">
                         <img class="img-fluid rounded-circle loading" title="Arthur. S Photography logo" itemprop="logo" alt="Arthur. S Photography logo logo" width="140" height="140" src="https://d1k8hez1mxkuxw.cloudfront.net/s/avatar_v2/1QV3Yn/logo/63d454be0eee7.jpg!d=Mw6FPX" >
             <div class="d-none no-image-avatar no-image-avatar-lg bg-inch-worm text-white justify-content-center align-items-center">
