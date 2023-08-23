@@ -51,12 +51,8 @@
         </div>
      </nav>
 
+
       @yield('kuchb')
-
-
-
-
-
 
 </body>
 </html>
