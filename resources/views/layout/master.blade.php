@@ -9,6 +9,8 @@
     <script src="{{asset('js/bootstrap.bundle.min.js')}}"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js"></script>
+
 </head>
 <body class="bg-light" >
     <nav class="navbar navbar-light navbar-expand-md" style="color: #d32f2f;">
