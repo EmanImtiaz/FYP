@@ -8,6 +8,8 @@ use App\Http\Controllers\ResetController;
 use App\Http\Controllers\SignupController;
 use App\Http\Controllers\ShopController;
 use App\Http\Controllers\CartController;
+use App\Http\Controllers\BookinginfoController;
+use App\Http\Controllers\BookingformController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -40,5 +42,7 @@ Route::get('cart', [CartController::class,'cart'])->name('cart');;
 
 Route::get('booking', [BookingController::class,'booking'])->name('booking');;
 
+Route::get('bookinginfo', [BookinginfoController::class,'bookinginfo'])->name('bookinginfo');;
 
+Route::get('bookingform', [BookingformController::class,'bookingform'])->name('bookingform');;
 

@@ -10,6 +10,8 @@
         </div>
     </div>
 </div>
+
+
     <div class="row mt-3">
         <div class="col-lg-3 col-md-12 col-sm-12">
             <a class="btn btn-danger" href="">Wedding</a>
