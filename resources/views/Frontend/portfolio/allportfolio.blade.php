@@ -1,101 +1,91 @@
 @extends('layout.master')
 @section('kuchb')
 
-<div class="container">
-    <div class="carousel-inner">
-        <div class="carousel-item active">
-           <img class="img-fluid" src="https://rstheme.com/products/html/shooter/shooter-html/images/banner/2.jpg" alt="" height="500" >
-           <div class="carousel-caption me-5 text-center">
-            <h5 class=" text-light ">All Photographers Portfolios</h5>
-        </div>
-    </div>
-</div>
-    <div class="row mt-3">
-        <div class="col-lg-3 col-md-12 col-sm-12">
-            <a class="btn btn-danger" href="">Wedding</a>
-        </div>
-        <div class="col-lg-3 col-md-12 col-sm-12">
-            <a class="btn btn-danger" href="">Birthday</a>
 
-        </div>
-        <div class="col-lg-3 col-md-12 col-sm-12">
-            <a class="btn btn-danger" href="">Nature</a>
-        </div>
-        <div class="col-lg-3 col-md-12 col-sm-12">
-            <a class="btn btn-danger" href="">Street</a>
-        </div>
-    </div>
+    <div class="container">
+        <div id="photographer-carousel" class="carousel slide" data-bs-ride="carousel">
+          <!-- Indicators -->
+          <ol class="carousel-indicators">
+            <li data-bs-target="#photographer-carousel" data-bs-slide-to="0" class="active"></li>
+            <li data-bs-target="#photographer-carousel" data-bs-slide-to="1"></li>
+            <!-- Add more indicators as needed -->
+          </ol>
 
-    <div class="contaier ">
-        <div class="row mt-4 my-5 ">
-            <div class="col-lg-4 col-md-12 col-sm-12">
-            <div class="card">
-            <div class="card-body">
-            <img class="img-fluid" src="https://images.pexels.com/photos/3240914/pexels-photo-3240914.jpeg?auto=compress&cs=tinysrgb&w=600" alt="" >
-            <br>
-            <br>
-            <h3>Nature Photography</h3>
-            <h5>Photographer name</h5>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ea quidem ex molestias natus perspiciatis sapiente corrupti dolorem.</p>
-            <a class="btn btn-danger" href="{{  route('photographerprofile') }}">View Profile</a>
-            </div>
-            </div>
-            </div>
-            <div class="col-lg-4 col-md-12 col-sm-12 my-5">
+          <!-- Slides -->
+          <div class="carousel-inner">
+            <div class="carousel-item active">
                 <div class="card">
-                <div class="card-body">
-                <img class="img-fluid"   src="https://images.pexels.com/photos/3240914/pexels-photo-3240914.jpeg?auto=compress&cs=tinysrgb&w=600" alt="">
-                <br>
-                <br>
-                <h3>Wedding Photography</h3>
-                <h5>Photographer name</h5>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ea quidem ex molestias natus perspiciatis sapiente corrupti dolorem.</p>
-                </div>
-                </div>
-                </div>
-                <div class="col-lg-4 col-md-12 col-sm-12 ">
-                    <div class="card">
+                    <img class="rounded-circle"  src="" alt=" " height="100" width="100">
                     <div class="card-body">
-                    <img class="img-fluid"   src="https://images.pexels.com/photos/3240914/pexels-photo-3240914.jpeg?auto=compress&cs=tinysrgb&w=600" alt="">
-                    <br>
-                    <br>
-                    <h3>Street Photography</h3>
-                    <h5>Photographer name</h5>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ea quidem ex molestias natus perspiciatis sapiente corrupti dolorem.</p>
+                        <h3>David Skyrius</h3>
+                        <p>Description: Street Photographer</p>
                     </div>
-                    </div>
-                    </div>
-                    <div class="col-lg-4 col-md-12 col-sm-12 my-5">
-                        <div class="card">
-                        <div class="card-body">
-                        <img  class="img-fluid"  src="https://images.pexels.com/photos/3240914/pexels-photo-3240914.jpeg?auto=compress&cs=tinysrgb&w=600" alt="">
-                        <br>
-                        <br>
-                        <h3>Birthday Photography</h3>
-                        <h5>Photographer name</h5>
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ea quidem ex molestias natus perspiciatis sapiente corrupti dolorem.</p>
-                        </div>
-                        </div>
-                        </div>
-                        <div class="col-lg-4 col-md-12 col-sm-12">
-                            <div class="card">
-                            <div class="card-body">
-                            <img class="img-fluid"  src="https://images.pexels.com/photos/3240914/pexels-photo-3240914.jpeg?auto=compress&cs=tinysrgb&w=600" alt="">
-                            <br>
-                            <br>
-                            <h3>Nature Photography</h3>
-                            <h5>Photographer name</h5>
-                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ea quidem ex molestias natus perspiciatis sapiente corrupti dolorem.</p>
-                            </div>
-                            </div>
-                            </div>
-
-
-
-                 </div>
+                </div>
             </div>
+            <div class="carousel-item active">
+                <div class="card">
+                    <img class="rounded-circle"  src="https://images.pexels.com/photos/11047458/pexels-photo-11047458.png?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" alt=" " height="100" width="100">
+                    <div class="card-body">
+                        <h3>David Skyrius</h3>
+                        <p>Description: Street Photographer</p>
+                    </div>
+                </div>
+            </div>
+            <div class="carousel-item active">
+                <div class="card">
+                    <img class="rounded-circle"  src="https://images.pexels.com/photos/11047458/pexels-photo-11047458.png?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" alt=" " height="100" width="100">
+                    <div class="card-body">
+                        <h3>David Skyrius</h3>
+                        <p>Description: Street Photographer</p>
+                    </div>
+                </div>
+            </div>
+            <div class="carousel-item active">
+                <div class="card">
+                    <img class="rounded-circle"  src="https://images.pexels.com/photos/11047458/pexels-photo-11047458.png?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" alt=" " height="100" width="100">
+                    <div class="card-body">
+                        <h3>David Skyrius</h3>
+                        <p>Description: Street Photographer</p>
+                    </div>
+                </div>
+            </div>
+            <div class="carousel-item active">
+                <div class="card">
+                    <img class="rounded-circle"  src="https://images.pexels.com/photos/11047458/pexels-photo-11047458.png?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" alt=" " height="100" width="100">
+                    <div class="card-body">
+                        <h3>David Skyrius</h3>
+                        <p>Description: Street Photographer</p>
+                    </div>
+                </div>
+            </div>
+            <div class="carousel-item active">
+                <div class="card">
+                    <img class="rounded-circle"  src="https://images.pexels.com/photos/11047458/pexels-photo-11047458.png?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" alt=" " height="100" width="100">
+                    <div class="card-body">
+                        <h3>David Skyrius</h3>
+                        <p>Description: Street Photographer</p>
+                    </div>
+                </div>
+            </div>
+
+            </div>
+            <!-- Add more slides as needed -->
+          </div>
+
+          <!-- Controls -->
+          <a class="carousel-control-prev" href="#photographer-carousel" role="button" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+          </a>
+          <a class="carousel-control-next" href="#photographer-carousel" role="button" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+          </a>
         </div>
-    </div>
+      </div>
+</div>
+
+
 
 
 @endsection
