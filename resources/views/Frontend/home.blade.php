@@ -1,48 +1,167 @@
 @extends('layout.master')
 @section('kuchb')
 
+<!-- slider -->
 
-<div class="container">
-    <div id="photographer-carousel" class="carousel slide" data-bs-ride="carousel">
-      <!-- Indicators -->
-      <ol class="carousel-indicators">
-        <li data-bs-target="#photographer-carousel" data-bs-slide-to="0" class="active"></li>
-        <li data-bs-target="#photographer-carousel" data-bs-slide-to="1"></li>
-        <li data-bs-target="#photographer-carousel" data-bs-slide-to="2"></li>
-        <li data-bs-target="#photographer-carousel" data-bs-slide-to="3"></li>
-        <!-- Add more indicators as needed -->
-      </ol>
+<div class="container mt-3">
+    <div id="slider"class="carousel slide carousel-dark" class="carousel-fade" data-bs-ride="carousel">
 
-      <!-- Slides -->
-      <div class="carousel-inner">
+        <div class="carousel-indicators">
+            <button style="border-radius: 50%;" data-bs-target="#slider" class="active" data-bs-slide-to="0"></button>
+            <button data-bs-target="#slider" data-bs-slide-to="1"></button>
+            <button data-bs-target="#slider" data-bs-slide-to="2"></button>
+        </div>
+    <div class="carousel-inner">
         <div class="carousel-item active">
-                <img class="img-fluid position-relative"  src="https://images.pexels.com/photos/4397899/pexels-photo-4397899.jpeg?auto=compress&cs=tinysrgb&w=1200" alt=" " >
-                   <div class="carousel-caption">
-                    <h3 class="text-dark text-center position-absolute "><b>Creative </b></h3>
-                    <h1 class="text-center text-dark mb-5"><b>Photography Page</b></h1>
-                    <a class="btn btn-danger text-center mb-5" href="">Join Now</a>
-                   </div>
-                    </div>
+
+           <img class="" src="https://images.pexels.com/photos/2842329/pexels-photo-2842329.jpeg?auto=compress&cs=tinysrgb&w=1200" alt=""  height="600" width="1920">
+        </div>
+        <div class="carousel-item">
+            <img class="" src="https://images.pexels.com/photos/924824/pexels-photo-924824.jpeg?auto=compress&cs=tinysrgb&w=1200" alt=""  height="600" width="1920">
+        </div>
+        <div class="carousel-item">
+            <img class=" " src="https://images.pexels.com/photos/1509582/pexels-photo-1509582.jpeg?auto=compress&cs=tinysrgb&w=1200" alt="" height="600" width="1920">
         </div>
 
-        <!-- Add more slides as needed -->
-      </div>
-
-      <!-- Controls -->
-      <a class="carousel-control-prev" href="#photographer-carousel" role="button" data-bs-slide="prev">
-        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-        <span class="visually-hidden">Previous</span>
-      </a>
-      <a class="carousel-control-next" href="#photographer-carousel" role="button" data-bs-slide="next">
-        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-        <span class="visually-hidden">Next</span>
-      </a>
+     </div>
+     <button class="carousel-control-next" data-bs-slide="next" data-bs-target="#slider">
+        <span class="carousel-control-next-icon"></span>
+     </button>
+     <button  class="carousel-control-prev" data-bs-slide="prev" data-bs-target="#slider">
+        <span class="carousel-control-prev-icon"></span>
+     </button>
     </div>
-  </div>
+
+<!-- profiles in card -->
+
+<section class="swiper mySwiper">
+    <div class="swiper-wrapper">
+
+        <div class="card swiper-slide">
+            <div class="card_image">
+                <img src="https://images.pexels.com/photos/774909/pexels-photo-774909.jpeg?auto=compress&cs=tinysrgb&w=600" alt="">
+            </div>
+            <div class="card_content">
+                <span><div class="card_name">Andrea Piacquadio</div></span>
+                <span><div class="card_title">Nature Photgrapher</div></span>
+                <p class="card_text">Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+                <!-- button custoized css
+                <button class="card_btn">View Detail</button> -->
+                <a   class="btn btn-danger" href="">View Details</a>
+            </div>
+        </div>
+
+        <div class="card swiper-slide">
+            <div class="card_image">
+                <img src="https://images.pexels.com/photos/774909/pexels-photo-774909.jpeg?auto=compress&cs=tinysrgb&w=600" alt="">
+            </div>
+            <div class="card_content">
+                <span><div class="card_name">Andrea Piacquadio</div></span>
+                <span><div class="card_title">Nature Photgrapher</div></span>
+                <p class="card_text">Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+                <a   class="btn btn-danger" href="">View Details</a>
+            </div>
+        </div>
+
+        <div class="card swiper-slide">
+            <div class="card_image">
+                <img src="https://images.pexels.com/photos/774909/pexels-photo-774909.jpeg?auto=compress&cs=tinysrgb&w=600" alt="">
+            </div>
+            <div class="card_content">
+                <span><div class="card_name">Andrea Piacquadio</div></span>
+                <span><div class="card_title">Nature Photgrapher</div></span>
+                <p class="card_text">Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+                <a   class="btn btn-danger" href="">View Details</a>
+            </div>
+        </div>
+
+        <div class="card swiper-slide">
+            <div class="card_image">
+                <img src="https://images.pexels.com/photos/774909/pexels-photo-774909.jpeg?auto=compress&cs=tinysrgb&w=600" alt="">
+            </div>
+            <div class="card_content">
+                <span><div class="card_name">Andrea Piacquadio</div></span>
+                <span><div class="card_title">Nature Photgrapher</div></span>
+                <p class="card_text">Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+                <a   class="btn btn-danger" href="">View Details</a>
+            </div>
+        </div>
+
+        <div class="card swiper-slide me-3">
+            <div class="card_image">
+                <img src="https://images.pexels.com/photos/774909/pexels-photo-774909.jpeg?auto=compress&cs=tinysrgb&w=600" alt="">
+            </div>
+            <div class="card_content">
+                <span><div class="card_name">Andrea Piacquadio</div></span>
+                <span><div class="card_title">Nature Photgrapher</div></span>
+                <p class="card_text">Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+                <a   class="btn btn-danger" href="">View Details</a>
+            </div>
+        </div>
+
+        <div class="card swiper-slide ">
+            <div class="card_image">
+                <img src="https://images.pexels.com/photos/774909/pexels-photo-774909.jpeg?auto=compress&cs=tinysrgb&w=600" alt="">
+            </div>
+            <div class="card_content">
+                <span><div class="card_name">Andrea Piacquadio</div></span>
+                <span><div class="card_title">Nature Photgrapher</div></span>
+                <p class="card_text">Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+                <a   class="btn btn-danger" href="">View Details</a>
+            </div>
+        </div>
+        <div class="card swiper-slide">
+            <div class="card_image">
+                <img src="https://images.pexels.com/photos/774909/pexels-photo-774909.jpeg?auto=compress&cs=tinysrgb&w=600" alt="">
+            </div>
+            <div class="card_content">
+                <span><div class="card_name">Andrea Piacquadio</div></span>
+                <span><div class="card_title">Nature Photgrapher</div></span>
+                <p class="card_text">Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+                <a   class="btn btn-danger" href="">View Details</a>
+            </div>
+        </div>
+        <div class="card swiper-slide">
+            <div class="card_image">
+                <img src="https://images.pexels.com/photos/774909/pexels-photo-774909.jpeg?auto=compress&cs=tinysrgb&w=600" alt="">
+            </div>
+            <div class="card_content">
+                <span><div class="card_name">Andrea Piacquadio</div></span>
+                <span><div class="card_title">Nature Photgrapher</div></span>
+                <p class="card_text">Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+                <a   class="btn btn-danger" href="">View Details</a>
+            </div>
+        </div>
+    </div>
+</section>
 </div>
 
+<script>
+    var swiper= new Swiper(".mySwiper",{
 
+        loop: true,
+        autoplay: true,
+        autoplayTimeout: 1000, //2000ms = 2s;
+        autoplayHoverPause: true,
 
+        effect: "coverflow",
+        grabCursor: true,
+        centeredSlides: true,
+        sliderPerView: "auto",
+        coverflowEffect: {
+            rotate: 0,
+            stretch: 0,
+            depth: 300,
+            modifier: 1,
+            slideShadows: false,
+        },
+        pagination: {
+            el: ".swiper-paginaton",
+        },
+    });
 
+</script>
 
 @endsection
+
+
