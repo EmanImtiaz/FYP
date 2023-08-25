@@ -9,28 +9,72 @@
         <button data-bs-target="#slider" data-bs-slide-to="2"></button>
     </div>
     <div class="carousel-inner">
-        <div class="carousel-item active">
-            <img class="" src="https://images.pexels.com/photos/2842329/pexels-photo-2842329.jpeg?auto=compress&cs=tinysrgb&w=1200" alt=""  height="600" width="1920">
+        <div class="carousel-item active bg-danager">
+            <img class="" src="https://images.pexels.com/photos/7586234/pexels-photo-7586234.jpeg?auto=compress&cs=tinysrgb&w=600" alt=""  height="600" width="1920">
+            <div class="carousel-caption justify-content-center py-5">
+                <h1 class="display-4 text-danger">Discover, Book, and Celebrate Photography Excellence</h1>
+                <p class="lead text-danger">Empowering Photographers, Connecting Clients, and Honoring Creativity</p>
+                <a href="" class="btn btn-danger">Join Us Today</a>
+            </div>
         </div>
         <div class="carousel-item">
-            <img class="" src="https://images.pexels.com/photos/924824/pexels-photo-924824.jpeg?auto=compress&cs=tinysrgb&w=1200" alt=""  height="600" width="1920">
+            <img class="" src="https://images.pexels.com/photos/3584430/pexels-photo-3584430.jpeg?auto=compress&cs=tinysrgb&w=600" alt=""  height="600" width="1920">
         </div>
         <div class="carousel-item">
             <img class=" " src="https://images.pexels.com/photos/1509582/pexels-photo-1509582.jpeg?auto=compress&cs=tinysrgb&w=1200" alt="" height="600" width="1920">
         </div>
     </div>
-    <button class="carousel-control-next" data-bs-slide="next" data-bs-target="#slider">
-        <span class="carousel-control-next-icon"></span>
+    <button style="color: #d32f2f;" class="carousel-control-next " data-bs-slide="next" data-bs-target="#slider">
+        <span class="carousel-control-next-icon" ></span>
     </button>
-    <button  class="carousel-control-prev" data-bs-slide="prev" data-bs-target="#slider">
-        <span class="carousel-control-prev-icon"></span>
+    <button style="color: #d32f2f;" class="carousel-control-prev" data-bs-slide="prev" data-bs-target="#slider">
+        <span class="carousel-control-prev-icon" style="color: #d32f2f;"></span>
     </button>
 </div>
-<!-- services portion -->
+
+<!-- About Us Section -->
+<section class="about py-5">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6 justify-content-center">
+                <h2 class="display-4  text-danger">Who We Are</h2>
+                <p>We are a passionate community that brings together photographers and clients, creating a vibrant space for photography enthusiasts. Our mission is to showcase talent, facilitate connections, and celebrate the art of photography. Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quas quibusdam veniam iusto corrupti, accusamus cum dicta, sit facilis ipsum eveniet hic molestias odio, nisi harum quidem ad. Officia, qui vero.</p>
+            </div>
+            <div class="col-lg-6">
+                <img src="https://images.pexels.com/photos/1422220/pexels-photo-1422220.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Photography Community" class="img-fluid" >
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- How It Works Section -->
+<section class="how-it-works text-light py-5 mt-3" style="background-color: #d32f2f;">
+    <div class="container">
+        <h2 class="text-center">How It Works</h2>
+        <div class="row mt-4">
+            <div class="col-md-3 col-lg-3 col-sm-12">
+                <h4>Showcase Your Talent</h4>
+                <p>Photographers can create stunning portfolios to showcase their unique skills and style.</p>
+            </div>
+            <div class="col-md-3 col-lg-3 col-sm-12">
+                <h4>Find Your Perfect Photographer</h4>
+                <p>Clients can easily find and book photographers based on location and price, thanks to our user-friendly search filters.</p>
+            </div>
+            <div class="col-md-3 col-lg-3 col-sm-12">
+                <h4>Share Your Experience</h4>
+                <p>Clients have the opportunity to leave reviews about their photographer's work, helping others make informed decisions.</p>
+            </div>
+            <div class="col-md-3 col-lg-3 col-sm-12">
+                <h4>Celebrate the Best</h4>
+                <p>Vote for your favorite photographers, and watch our ranking system highlight the outstanding talents in our community.</p>
+            </div>
+        </div>
+    </div>
+</section>
 
 <!-- Profiles in Card Slider-->
 
-<div class="card_body mt-5">
+<div class="card_body">
 <div class="slide-container swiper">
     <div class="slide-content">
         <div class="card-wrapper swiper-wrapper">
@@ -150,8 +194,6 @@
       },
     });
   </script>
-
-
 @endsection
 
 
