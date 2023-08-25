@@ -3,9 +3,15 @@
 @section('kuchb')
 
 
+<!-- Page Header -->
+<header class="page-header bg-danger text-white text-center py-5">
+    <div class="container">
+        <h1 class="display-4">Contact Us</h1>
+        <p class="lead">Unlock a world of photography excellence and become a part of our community.</p>
+    </div>
+</header>
 
-     <img src="https://rstheme.com/products/html/shooter/shooter-html/images/banner/2.jpg" alt="">
- <div class="container">
+ <div class="container py-5">
         <div class="row mt-3">
             <div class="col-lg-12 col-md-12 col-sm-12">
                 <h1>Contact Information</h1>
@@ -56,9 +62,11 @@
                         </div>
                     </div>
                     <br>
-                    <div class="col-lg-12">
-                        <button class="btn btn-danger text-light ">Send Messages</button>
+                    <div class="d-flex">
+                    <button class="btn btn-danger text-light  ms-auto">Send Messages</button>
                     </div>
+
+
                 </div>
             </form>
 </div>

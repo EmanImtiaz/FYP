@@ -77,7 +77,6 @@
         <div class="col-lg-6 col-md-12 col-sm-12 text-center mt-4">
             <h1 style="color: #d32f2f;">Raise Photographers</h1>
             <p>Address: Gujranwala,Satellite Town,Govt Post Graduate College</p>
-            <br>
             <h5>Follow Us</h5>
             <span><i  style="color: #d32f2f;" class="fa-brands fa-facebook-f me-3"></i></span>
             <span><i  style="color: #d32f2f;" class="fa-brands fa-square-instagram"></i></span>
