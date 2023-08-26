@@ -14,7 +14,7 @@
             <div class="carousel-caption justify-content-center py-5">
                 <h1 class="display-4 text-danger">Discover, Book, and Celebrate Photography Excellence</h1>
                 <p class="lead text-danger">Empowering Photographers, Connecting Clients, and Honoring Creativity</p>
-                <a href="" class="btn btn-danger">Join Us Today</a>
+                <a href="{{  route('signup') }}" class="btn btn-danger">Join Us Today</a>
             </div>
         </div>
         <div class="carousel-item">
@@ -88,7 +88,7 @@
                 <div class="card-content">
                     <h2 class="name">Andrea Piacquadio</h2>
                     <p class="description">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Accusantium eos, unde inventore cupiditate aliquam rem sed magnam.</p>
-                    <button class="button">View More</button>
+                    <a href="{{  route('photographerprofile') }}"><button class="button">View More</button></a>
                 </div>
             </div>
             <div class="card swiper-slide">
@@ -101,7 +101,7 @@
                 <div class="card-content">
                     <h2 class="name">Andrea Piacquadio</h2>
                     <p class="description">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Accusantium eos, unde inventore cupiditate aliquam rem sed magnam.</p>
-                    <button class="button">View More</button>
+                    <a href="{{  route('photographerprofile') }}"><button class="button">View More</button></a>
                 </div>
             </div>
             <div class="card swiper-slide">
@@ -114,7 +114,7 @@
                 <div class="card-content">
                     <h2 class="name">Andrea Piacquadio</h2>
                     <p class="description">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Accusantium eos, unde inventore cupiditate aliquam rem sed magnam.</p>
-                    <button class="button">View More</button>
+                    <a href="{{  route('photographerprofile') }}"><button class="button">View More</button></a>
                 </div>
             </div>
             <div class="card swiper-slide">
@@ -127,7 +127,7 @@
                 <div class="card-content">
                     <h2 class="name">Andrea Piacquadio</h2>
                     <p class="description">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Accusantium eos, unde inventore cupiditate aliquam rem sed magnam.</p>
-                    <button class="button">View More</button>
+                    <a href=""><button class="button">View More</button></a>
                 </div>
             </div>
             <div class="card swiper-slide">
@@ -140,7 +140,7 @@
                 <div class="card-content">
                     <h2 class="name">Andrea Piacquadio</h2>
                     <p class="description">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Accusantium eos, unde inventore cupiditate aliquam rem sed magnam.</p>
-                    <button class="button">View More</button>
+                    <a href=""><button class="button">View More</button></a>
                 </div>
             </div>
             <div class="card swiper-slide">
@@ -153,7 +153,7 @@
                 <div class="card-content">
                     <h2 class="name">Andrea Piacquadio</h2>
                     <p class="description">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Accusantium eos, unde inventore cupiditate aliquam rem sed magnam.</p>
-                    <button class="button">View More</button>
+                    <a href=""><button class="button">View More</button></a>
                 </div>
             </div>
         </div>

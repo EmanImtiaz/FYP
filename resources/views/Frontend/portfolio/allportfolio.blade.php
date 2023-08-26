@@ -1,91 +1,224 @@
 @extends('layout.master')
 @section('kuchb')
 
-
+<!-- Page Header -->
+<header class="page-header bg-danger text-white text-center py-5">
     <div class="container">
-        <div id="photographer-carousel" class="carousel slide" data-bs-ride="carousel">
-          <!-- Indicators -->
-          <ol class="carousel-indicators">
-            <li data-bs-target="#photographer-carousel" data-bs-slide-to="0" class="active"></li>
-            <li data-bs-target="#photographer-carousel" data-bs-slide-to="1"></li>
-            <!-- Add more indicators as needed -->
-          </ol>
-
-          <!-- Slides -->
-          <div class="carousel-inner">
-            <div class="carousel-item active">
-                <div class="card">
-                    <img class="rounded-circle"  src="" alt=" " height="100" width="100">
-                    <div class="card-body">
-                        <h3>David Skyrius</h3>
-                        <p>Description: Street Photographer</p>
-                    </div>
-                </div>
+        <h1 class="display-4">All Photographers</h1>
+    </div>
+</header>
+<!-- end header -->
+<section class="container py-5 ">
+    <div class="row">
+        <div class="col-lg-4 col-md-4 mb-4">
+            <div class="card">
+                <img src="https://images.pexels.com/photos/774909/pexels-photo-774909.jpeg?auto=compress&cs=tinysrgb&w=600" class="card-img-top" alt="">
+            <div class="card-body">
+                <h5 class="card-title">Andrea Piacquadio</h5>
+                <p class="card-text">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Accusantium eos, unde inventore cupiditate aliquam rem sed magnam.</p>
+                <a href="{{ route('photographerprofile')  }}" class="btn btn-danger">Portfolio Details</a>
             </div>
-            <div class="carousel-item active">
-                <div class="card">
-                    <img class="rounded-circle"  src="https://images.pexels.com/photos/11047458/pexels-photo-11047458.png?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" alt=" " height="100" width="100">
-                    <div class="card-body">
-                        <h3>David Skyrius</h3>
-                        <p>Description: Street Photographer</p>
-                    </div>
-                </div>
             </div>
-            <div class="carousel-item active">
-                <div class="card">
-                    <img class="rounded-circle"  src="https://images.pexels.com/photos/11047458/pexels-photo-11047458.png?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" alt=" " height="100" width="100">
-                    <div class="card-body">
-                        <h3>David Skyrius</h3>
-                        <p>Description: Street Photographer</p>
-                    </div>
-                </div>
-            </div>
-            <div class="carousel-item active">
-                <div class="card">
-                    <img class="rounded-circle"  src="https://images.pexels.com/photos/11047458/pexels-photo-11047458.png?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" alt=" " height="100" width="100">
-                    <div class="card-body">
-                        <h3>David Skyrius</h3>
-                        <p>Description: Street Photographer</p>
-                    </div>
-                </div>
-            </div>
-            <div class="carousel-item active">
-                <div class="card">
-                    <img class="rounded-circle"  src="https://images.pexels.com/photos/11047458/pexels-photo-11047458.png?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" alt=" " height="100" width="100">
-                    <div class="card-body">
-                        <h3>David Skyrius</h3>
-                        <p>Description: Street Photographer</p>
-                    </div>
-                </div>
-            </div>
-            <div class="carousel-item active">
-                <div class="card">
-                    <img class="rounded-circle"  src="https://images.pexels.com/photos/11047458/pexels-photo-11047458.png?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" alt=" " height="100" width="100">
-                    <div class="card-body">
-                        <h3>David Skyrius</h3>
-                        <p>Description: Street Photographer</p>
-                    </div>
-                </div>
-            </div>
-
-            </div>
-            <!-- Add more slides as needed -->
-          </div>
-
-          <!-- Controls -->
-          <a class="carousel-control-prev" href="#photographer-carousel" role="button" data-bs-slide="prev">
-            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Previous</span>
-          </a>
-          <a class="carousel-control-next" href="#photographer-carousel" role="button" data-bs-slide="next">
-            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Next</span>
-          </a>
         </div>
-      </div>
+
+        <div class="col-lg-4 col-md-4 mb-4">
+            <div class="card">
+                <img src="https://images.pexels.com/photos/5393594/pexels-photo-5393594.jpeg?auto=compress&cs=tinysrgb&w=600" class="card-img-top" alt="">
+            <div class="card-body">
+                <h5 class="card-title">Andrea Piacquadio</h5>
+                <p class="card-text">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Accusantium eos, unde inventore cupiditate aliquam rem sed magnam.</p>
+                <a href="{{ route('photographerprofile')  }}" class="btn btn-danger">Portfolio Details</a>
+            </div>
+            </div>
+        </div>
+
+        <div class="col-lg-4 col-md-4 mb-4">
+            <div class="card">
+                <img src="https://images.pexels.com/photos/5490276/pexels-photo-5490276.jpeg?auto=compress&cs=tinysrgb&w=600" class="card-img-top" alt="">
+            <div class="card-body">
+                <h5 class="card-title">Andrea Piacquadio</h5>
+                <p class="card-text">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Accusantium eos, unde inventore cupiditate aliquam rem sed magnam.</p>
+                <a href="{{ route('photographerprofile')  }}" class="btn btn-danger">Portfolio Details</a>
+            </div>
+            </div>
+        </div>
+
+        <div class="col-lg-4 col-md-4 mb-4">
+            <div class="card">
+                <img src="https://images.pexels.com/photos/6976943/pexels-photo-6976943.jpeg?auto=compress&cs=tinysrgb&w=600" class="card-img-top" alt="">
+            <div class="card-body">
+                <h5 class="card-title">Andrea Piacquadio</h5>
+                <p class="card-text">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Accusantium eos, unde inventore cupiditate aliquam rem sed magnam.</p>
+                <a href="{{ route('photographerprofile')  }}" class="btn btn-danger">Portfolio Details</a>
+            </div>
+            </div>
+        </div>
+
+        <div class="col-lg-4 col-md-4 mb-4">
+            <div class="card">
+                <img src="https://images.pexels.com/photos/1043471/pexels-photo-1043471.jpeg?auto=compress&cs=tinysrgb&w=600" class="card-img-top" alt="">
+            <div class="card-body">
+                <h5 class="card-title">Andrea Piacquadio</h5>
+                <p class="card-text">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Accusantium eos, unde inventore cupiditate aliquam rem sed magnam.</p>
+                <a href="{{ route('photographerprofile')  }}" class="btn btn-danger">Portfolio Details</a>
+            </div>
+            </div>
+        </div>
+
+        <div class="col-lg-4 col-md-4 mb-4">
+            <div class="card">
+                <img src="https://images.pexels.com/photos/1040880/pexels-photo-1040880.jpeg?auto=compress&cs=tinysrgb&w=600" class="card-img-top" alt="">
+            <div class="card-body">
+                <h5 class="card-title">Andrea Piacquadio</h5>
+                <p class="card-text">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Accusantium eos, unde inventore cupiditate aliquam rem sed magnam.</p>
+                <a href="{{ route('photographerprofile')  }}" class="btn btn-danger">Portfolio Details</a>
+            </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<div class="container">
+    <div class="row">
+        <div class="col-lg-4 col-md-4 col-sm-4">
+            <div class="card_body">
+                <div class="slide-container swiper">
+                    <div class="slide-content">
+                        <div class="card-wrapper swiper-wrapper">
+                            <div class="card swiper-slide">
+                                <div class="image-content">
+                                    <span class="overlay"></span>
+                                    <div class="card-image">
+                                        <img src="https://images.pexels.com/photos/774909/pexels-photo-774909.jpeg?auto=compress&cs=tinysrgb&w=600" alt="" class="card-img">
+                                    </div>
+                                </div>
+                                <div class="card-content">
+                                    <h2 class="name">Andrea Piacquadio</h2>
+                                    <p class="description">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Accusantium eos, unde inventore cupiditate aliquam rem sed magnam.</p>
+                                    <a href="{{ route('photographerprofile')  }}"><button class="button">View More</button></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-4 col-md-4 col-sm-4">
+            <div class="card_body">
+                <div class="slide-container swiper">
+                    <div class="slide-content">
+                        <div class="card-wrapper swiper-wrapper">
+                            <div class="card swiper-slide">
+                                <div class="image-content">
+                                    <span class="overlay"></span>
+                                    <div class="card-image">
+                                        <img src="https://images.pexels.com/photos/774909/pexels-photo-774909.jpeg?auto=compress&cs=tinysrgb&w=600" alt="" class="card-img">
+                                    </div>
+                                </div>
+                                <div class="card-content">
+                                    <h2 class="name">Andrea Piacquadio</h2>
+                                    <p class="description">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Accusantium eos, unde inventore cupiditate aliquam rem sed magnam.</p>
+                                    <a href="{{ route('photographerprofile')  }}"><button class="button">View More</button></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-4 col-md-4 col-sm-4">
+            <div class="card_body">
+                <div class="slide-container swiper">
+                    <div class="slide-content">
+                        <div class="card-wrapper swiper-wrapper">
+                            <div class="card swiper-slide">
+                                <div class="image-content">
+                                    <span class="overlay"></span>
+                                    <div class="card-image">
+                                        <img src="https://images.pexels.com/photos/774909/pexels-photo-774909.jpeg?auto=compress&cs=tinysrgb&w=600" alt="" class="card-img">
+                                    </div>
+                                </div>
+                                <div class="card-content">
+                                    <h2 class="name">Andrea Piacquadio</h2>
+                                    <p class="description">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Accusantium eos, unde inventore cupiditate aliquam rem sed magnam.</p>
+                                    <a href="{{ route('photographerprofile')  }}"><button class="button">View More</button></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-4 col-md-4 col-sm-4">
+            <div class="card_body">
+                <div class="slide-container swiper">
+                    <div class="slide-content">
+                        <div class="card-wrapper swiper-wrapper">
+                            <div class="card swiper-slide">
+                                <div class="image-content">
+                                    <span class="overlay"></span>
+                                    <div class="card-image">
+                                        <img src="https://images.pexels.com/photos/774909/pexels-photo-774909.jpeg?auto=compress&cs=tinysrgb&w=600" alt="" class="card-img">
+                                    </div>
+                                </div>
+                                <div class="card-content">
+                                    <h2 class="name">Andrea Piacquadio</h2>
+                                    <p class="description">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Accusantium eos, unde inventore cupiditate aliquam rem sed magnam.</p>
+                                    <a href="{{ route('photographerprofile')  }}"><button class="button">View More</button></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-4 col-md-4 col-sm-4">
+            <div class="card_body">
+                <div class="slide-container swiper">
+                    <div class="slide-content">
+                        <div class="card-wrapper swiper-wrapper">
+                            <div class="card swiper-slide">
+                                <div class="image-content">
+                                    <span class="overlay"></span>
+                                    <div class="card-image">
+                                        <img src="https://images.pexels.com/photos/774909/pexels-photo-774909.jpeg?auto=compress&cs=tinysrgb&w=600" alt="" class="card-img">
+                                    </div>
+                                </div>
+                                <div class="card-content">
+                                    <h2 class="name">Andrea Piacquadio</h2>
+                                    <p class="description">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Accusantium eos, unde inventore cupiditate aliquam rem sed magnam.</p>
+                                    <a href="{{ route('photographerprofile')  }}"><button class="button">View More</button></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-4 col-md-4 col-sm-4">
+            <div class="card_body">
+                <div class="slide-container swiper">
+                    <div class="slide-content">
+                        <div class="card-wrapper swiper-wrapper">
+                            <div class="card swiper-slide">
+                                <div class="image-content">
+                                    <span class="overlay"></span>
+                                    <div class="card-image">
+                                        <img src="https://images.pexels.com/photos/774909/pexels-photo-774909.jpeg?auto=compress&cs=tinysrgb&w=600" alt="" class="card-img">
+                                    </div>
+                                </div>
+                                <div class="card-content">
+                                    <h2 class="name">Andrea Piacquadio</h2>
+                                    <p class="description">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Accusantium eos, unde inventore cupiditate aliquam rem sed magnam.</p>
+                                    <a href="{{ route('photographerprofile')  }}"><button class="button">View More</button></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
-
-
-
 
 @endsection

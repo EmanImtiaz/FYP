@@ -71,7 +71,7 @@
 
 <!-- footer-->
 
-<footer class=" bg-danger text-dark py-4">
+<footer class=" bg-danger text-dark py-1">
 
     <div class="row bg-light ">
         <div class="col-lg-6 col-md-12 col-sm-12 text-center mt-4">

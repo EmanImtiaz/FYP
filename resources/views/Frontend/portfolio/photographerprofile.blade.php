@@ -1,42 +1,78 @@
 @extends('layout.master')
 @section('kuchb')
 
+<!-- Page Header -->
 <div class="container">
-
-    <div class="row mt-5">
-        <div class="col-lg-5">
-<div class="d-lg-flex">
-                <div class="d-none d-lg-block profile-left-bg">
-                    <div class="row row-pro-sidesection h-100">
-
-    <div class="position-sticky stickysidebar ">
-              <div class="img-wrapper seller-avatar mb-4 pb-1">
-    <div class="rounded-circle avatar-image-container d-inline-block position-relative ">
-                        <img class="img-fluid rounded-circle loading" title="Arthur. S Photography logo" itemprop="logo" alt="Arthur. S Photography logo logo" width="140" height="140" src="https://d1k8hez1mxkuxw.cloudfront.net/s/avatar_v2/1QV3Yn/logo/63d454be0eee7.jpg!d=Mw6FPX" >
+    <header class="page-header bg-light py-5">
+        <div class="row bg-light">
+            <div class="col-lg-5 col-md-12 col-sm-12 card_image custom-spacing">
+                <img src="https://images.pexels.com/photos/6976943/pexels-photo-6976943.jpeg?auto=compress&cs=tinysrgb&w=600" alt="" class="card_img">
+            </div>
+            <div class="col-lg-7 col-md-12 col-sm-12 ">
+                    <div class="profile-name">Andrea Piacquadio</div>
+                    <div class="profile-profession">Nature Photographer</div>
+                    <div class="profile-description">I'm a photographer. I specialize in creating beautiful, high-quality photos and designs for my clients.</div>
+                    <div class="profile-location"><i class="fa-solid fa-location-dot fa-sm"></i> Gujranwala, Satellite Town</div>
+                    <a href=""><button class="profile-button">Book Me</button></a>
                 </div>
-    </div>
-        <h5 > <b>Arthur. S Photography</b> </h5>
-            <H5>Nature Photographer</H5>
-            <P><b>Bio:</b> Lorem ipsum dolor sit amet consectetur adipisicing elit. Aspernatur odit dolore, ipsum deserunt delectus vero culpa excepturi.</P>
-            <span ><i class="fa-solid fa-location-dot " style="color: #d32f2f;"></i></span>
-            <span>61 Becksberg Avenue, Die Hoewes, Centurion</span>
-            <a href="" ><span class="btn " style="color: #d32f2f;"></span></a>
-            <br>
-            <b>Contact no:</b>
-            <br>
-             <span><i class="fa-solid fa-phone" style="color: #d32f2f;"></i> +920011111111</span>
+            </div>
+    </header>
+
+<!-- end header -->
+
+<div class="container mt-3">
+    <div class="row">
+        <h1 class="text-center py-3">My Work</h1>
+        <div class="col-lg-4 col-md-4 col-sm-12">
+            <div class="card">
+                <img src="https://images.pexels.com/photos/1770809/pexels-photo-1770809.jpeg?auto=compress&cs=tinysrgb&w=600" class="card-img-top" alt="">
+            <div class="card-body">
+                <h5 class="card-title">Andrea Piacquadio</h5>
+            </div>
+            </div>
         </div>
-                    </div>
-                </div>
-        <div class="col-lg-7">
-
+        <div class="col-lg-4 col-md-4 col-sm-12">
+            <div class="card">
+                <img src="https://images.pexels.com/photos/15379/pexels-photo.jpg?auto=compress&cs=tinysrgb&w=600" class="card-img-top" alt="">
+            <div class="card-body">
+                <h5 class="card-title">Andrea Piacquadio</h5>
+            </div>
+            </div>
+        </div>
+        <div class="col-lg-4 col-md-4 col-sm-12">
+            <div class="card">
+                <img src="https://images.pexels.com/photos/4064432/pexels-photo-4064432.jpeg?auto=compress&cs=tinysrgb&w=600" class="card-img-top" alt="">
+            <div class="card-body">
+                <h5 class="card-title">Andrea Piacquadio</h5>
+            </div>
+            </div>
+        </div>
+        <div class="col-lg-4 col-md-4 col-sm-12">
+            <div class="card">
+                <img src="https://images.pexels.com/photos/3265460/pexels-photo-3265460.jpeg?auto=compress&cs=tinysrgb&w=600" class="card-img-top" alt="">
+            <div class="card-body">
+                <h5 class="card-title">Andrea Piacquadio</h5>
+            </div>
+            </div>
+        </div>
+        <div class="col-lg-4 col-md-4 col-sm-12">
+            <div class="card">
+                <img src="https://images.pexels.com/photos/1643113/pexels-photo-1643113.jpeg?auto=compress&cs=tinysrgb&w=600" class="card-img-top" alt="">
+            <div class="card-body">
+                <h5 class="card-title">Andrea Piacquadio</h5>
+            </div>
+            </div>
+        </div>
+        <div class="col-lg-4 col-md-4 col-sm-12">
+            <div class="card">
+                <img src="https://images.pexels.com/photos/4215102/pexels-photo-4215102.jpeg?auto=compress&cs=tinysrgb&w=600" class="card-img-top" alt="">
+            <div class="card-body">
+                <h5 class="card-title">Andrea Piacquadio</h5>
+            </div>
+            </div>
         </div>
     </div>
-
-    <div>
-
-
 </div>
-
+</div>
 
 @endsection

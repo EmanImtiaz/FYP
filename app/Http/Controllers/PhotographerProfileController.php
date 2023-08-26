@@ -8,6 +8,6 @@ class PhotographerProfileController extends Controller
 {
     public function photographerprofile()
     {
-        return view('Frontend.portfolio.photographerprofile');
-    }
+         return view('Frontend.portfolio.photographerprofile');
+   }
 }

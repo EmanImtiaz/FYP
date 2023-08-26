@@ -218,7 +218,7 @@ section .card .image img{
     background-color: #d32f2f;
 }
 */
-
+/* home Profiles in card swipper */
 .card_body {
     min-height: 100vh;
     display: flex;
@@ -361,3 +361,64 @@ section .card .image img{
         display: none;
     }
 }
+
+/* Photographer Profile */
+.card_image {
+    position: relative;
+    height: 200px;
+    width: 200px;
+    border-radius: 50%;
+    background: #ffff;
+    padding: 3px;
+}
+
+.card_image .card_img {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 4px solid #d32f2f;
+}
+
+.profile-name {
+    font-size: 30px;
+    font-weight: 500;
+    color: #333;
+    text-align: left;
+}
+
+.profile-profession {
+    font-size: 20px;
+    font-weight: 400;
+    color: #333;
+    text-align: left;
+}
+
+.profile-description {
+    font-size: 14px;
+    color: #333;
+    text-align: left;
+}
+
+.custom-spacing {
+    margin-right: 50px;
+}
+
+.profile-location {
+    font-size: 14px;
+    color: #d32f2f;
+    text-align: left;
+ }
+
+ .profile-button {
+    border: none;
+    font-size: 16px;
+    color: #ffff;
+    padding: 8px 16px;
+    background-color: #d32f2f;
+    border-radius: 6px;
+    margin: 14px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    float: left;
+ }
