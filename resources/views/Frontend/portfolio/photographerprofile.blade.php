@@ -1,7 +1,6 @@
 @extends('layout.master')
 @section('kuchb')
 
-<!-- Page Header -->
 <div class="container">
     <header class="page-header bg-light py-5">
         <div class="row bg-light">
@@ -25,7 +24,8 @@
         <h1 class="text-center ">My Work</h1>
         <div class="col-lg-3 col-md-3 col-sm-3">
             <div class="card">
-                <img src="https://images.pexels.com/photos/1770809/pexels-photo-1770809.jpeg?auto=compress&cs=tinysrgb&w=600" class="card-img-top" alt="">
+                <img src="https://images.pexels.com/photos/1770809/pexels-photo-1770809.jpeg?auto=compress&cs=tinysrgb&w=600" class="card-img-top" alt=""
+                data-bs-toggle="modal" data-bs-target="#imageModal1">
 
 
             </div>
@@ -33,48 +33,101 @@
 
         <div class="col-lg-3 col-md-3 col-sm-3">
             <div class="card">
-                <img src="https://images.pexels.com/photos/15379/pexels-photo.jpg?auto=compress&cs=tinysrgb&w=600" class="card-img-top" alt="">
+                <img src="https://images.pexels.com/photos/15379/pexels-photo.jpg?auto=compress&cs=tinysrgb&w=600" class="card-img-top" alt=""
+                data-bs-toggle="modal" data-bs-target="#imageModal1">
 
             </div>
         </div>
         <div class="col-lg-3 col-md-3 col-sm-3">
             <div class="card">
-                <img src="https://images.pexels.com/photos/4064432/pexels-photo-4064432.jpeg?auto=compress&cs=tinysrgb&w=600" class="card-img-top" alt="">
+                <img src="https://images.pexels.com/photos/4064432/pexels-photo-4064432.jpeg?auto=compress&cs=tinysrgb&w=600" class="card-img-top" alt=""
+                data-bs-toggle="modal" data-bs-target="#imageModal1">
 
             </div>
         </div>
         <div class="col-lg-3 col-md-3 col-sm-3">
             <div class="card">
-                <img src="https://images.pexels.com/photos/3265460/pexels-photo-3265460.jpeg?auto=compress&cs=tinysrgb&w=600" class="card-img-top" alt="">
+                <img src="https://images.pexels.com/photos/3265460/pexels-photo-3265460.jpeg?auto=compress&cs=tinysrgb&w=600" class="card-img-top" alt=""
+                data-bs-toggle="modal" data-bs-target="#imageModal1">
 
             </div>
         </div>
         <div class="col-lg-3 col-md-3 col-sm-3 mt-2">
             <div class="card">
-                <img src="https://images.pexels.com/photos/1643113/pexels-photo-1643113.jpeg?auto=compress&cs=tinysrgb&w=600" class="card-img-top" alt="">
+                <img src="https://images.pexels.com/photos/1643113/pexels-photo-1643113.jpeg?auto=compress&cs=tinysrgb&w=600" class="card-img-top" alt=""
+                data-bs-toggle="modal" data-bs-target="#imageModal1">
 
             </div>
         </div>
         <div class="col-lg-3 col-md-3 col-sm-3 mt-2">
             <div class="card">
-                <img src="https://images.pexels.com/photos/1643113/pexels-photo-1643113.jpeg?auto=compress&cs=tinysrgb&w=600" class="card-img-top" alt="">
+                <img src="https://images.pexels.com/photos/1643113/pexels-photo-1643113.jpeg?auto=compress&cs=tinysrgb&w=600" class="card-img-top" alt=""
+                data-bs-toggle="modal" data-bs-target="#imageModal1">
 
             </div>
         </div>
         <div class="col-lg-3 col-md-3 col-sm-3 mt-2">
             <div class="card">
-                <img src="https://images.pexels.com/photos/1643113/pexels-photo-1643113.jpeg?auto=compress&cs=tinysrgb&w=600" class="card-img-top" alt="">
+                <img src="https://images.pexels.com/photos/1643113/pexels-photo-1643113.jpeg?auto=compress&cs=tinysrgb&w=600" class="card-img-top" alt=""
+                data-bs-toggle="modal" data-bs-target="#imageModal1">
 
             </div>
         </div>
         <div class="col-lg-3 col-md-3 col-sm-3 mt-2">
             <div class="card">
-                <img src="https://images.pexels.com/photos/1643113/pexels-photo-1643113.jpeg?auto=compress&cs=tinysrgb&w=600" class="card-img-top" alt="">
+                <img src="https://images.pexels.com/photos/1643113/pexels-photo-1643113.jpeg?auto=compress&cs=tinysrgb&w=600" class="card-img-top" alt=""
+                data-bs-toggle="modal" data-bs-target="#imageModal1">
 
             </div>
         </div>
     </div>
 </div>
+<!-- modal -->
+
+<div class="modal fade" id="imageModal1" tabindex="-1" aria-labelledby="imageModalLabel1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="imageModalLabel1">Image Preview</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body text-center">
+          <img src="" id="modalImage1" class="img-fluid">
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- script for model -->
+  <script>
+     const modalImage1 = document.getElementById('modalImage1');
+    const cardImages = document.querySelectorAll('.card-img-top');
+
+    cardImages.forEach((image, index) => {
+      image.addEventListener('click', () => {
+        const imagePath = image.getAttribute('src');
+        modalImage1.setAttribute('src', imagePath);
+      });
+    });
+
+  </script>
+
+  <!-- packages work -->
+
+
+
+<div class="container  py-2">
+    <div class="row">
+        <h1 class="text-center ">My Packages</h1>
+    </div>
 </div>
+
+
+
+
+
+
+
+</div>
+
 
 @endsection

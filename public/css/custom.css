@@ -422,3 +422,12 @@ section .card .image img{
     transition: all 0.3s ease;
     float: left;
  }
+
+
+ /* Adjust the size of the modal image */
+#modalImage1 {
+    max-width: 100%;
+    max-height: 80vh; /* Set a maximum height to prevent excessive scrolling */
+  }
+ 
+
