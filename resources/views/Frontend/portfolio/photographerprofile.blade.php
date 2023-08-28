@@ -20,55 +20,57 @@
 
 <!-- end header -->
 
-<div class="container mt-3">
+<div class="container  py-5">
     <div class="row">
-        <h1 class="text-center py-3">My Work</h1>
-        <div class="col-lg-4 col-md-4 col-sm-12">
+        <h1 class="text-center ">My Work</h1>
+        <div class="col-lg-3 col-md-3 col-sm-3">
             <div class="card">
                 <img src="https://images.pexels.com/photos/1770809/pexels-photo-1770809.jpeg?auto=compress&cs=tinysrgb&w=600" class="card-img-top" alt="">
-            <div class="card-body">
-                <h5 class="card-title">Andrea Piacquadio</h5>
+
+
             </div>
             </div>
-        </div>
-        <div class="col-lg-4 col-md-4 col-sm-12">
+
+        <div class="col-lg-3 col-md-3 col-sm-3">
             <div class="card">
                 <img src="https://images.pexels.com/photos/15379/pexels-photo.jpg?auto=compress&cs=tinysrgb&w=600" class="card-img-top" alt="">
-            <div class="card-body">
-                <h5 class="card-title">Andrea Piacquadio</h5>
-            </div>
+
             </div>
         </div>
-        <div class="col-lg-4 col-md-4 col-sm-12">
+        <div class="col-lg-3 col-md-3 col-sm-3">
             <div class="card">
                 <img src="https://images.pexels.com/photos/4064432/pexels-photo-4064432.jpeg?auto=compress&cs=tinysrgb&w=600" class="card-img-top" alt="">
-            <div class="card-body">
-                <h5 class="card-title">Andrea Piacquadio</h5>
-            </div>
+
             </div>
         </div>
-        <div class="col-lg-4 col-md-4 col-sm-12">
+        <div class="col-lg-3 col-md-3 col-sm-3">
             <div class="card">
                 <img src="https://images.pexels.com/photos/3265460/pexels-photo-3265460.jpeg?auto=compress&cs=tinysrgb&w=600" class="card-img-top" alt="">
-            <div class="card-body">
-                <h5 class="card-title">Andrea Piacquadio</h5>
-            </div>
+
             </div>
         </div>
-        <div class="col-lg-4 col-md-4 col-sm-12">
+        <div class="col-lg-3 col-md-3 col-sm-3 mt-2">
             <div class="card">
                 <img src="https://images.pexels.com/photos/1643113/pexels-photo-1643113.jpeg?auto=compress&cs=tinysrgb&w=600" class="card-img-top" alt="">
-            <div class="card-body">
-                <h5 class="card-title">Andrea Piacquadio</h5>
-            </div>
+
             </div>
         </div>
-        <div class="col-lg-4 col-md-4 col-sm-12">
+        <div class="col-lg-3 col-md-3 col-sm-3 mt-2">
             <div class="card">
-                <img src="https://images.pexels.com/photos/4215102/pexels-photo-4215102.jpeg?auto=compress&cs=tinysrgb&w=600" class="card-img-top" alt="">
-            <div class="card-body">
-                <h5 class="card-title">Andrea Piacquadio</h5>
+                <img src="https://images.pexels.com/photos/1643113/pexels-photo-1643113.jpeg?auto=compress&cs=tinysrgb&w=600" class="card-img-top" alt="">
+
             </div>
+        </div>
+        <div class="col-lg-3 col-md-3 col-sm-3 mt-2">
+            <div class="card">
+                <img src="https://images.pexels.com/photos/1643113/pexels-photo-1643113.jpeg?auto=compress&cs=tinysrgb&w=600" class="card-img-top" alt="">
+
+            </div>
+        </div>
+        <div class="col-lg-3 col-md-3 col-sm-3 mt-2">
+            <div class="card">
+                <img src="https://images.pexels.com/photos/1643113/pexels-photo-1643113.jpeg?auto=compress&cs=tinysrgb&w=600" class="card-img-top" alt="">
+
             </div>
         </div>
     </div>

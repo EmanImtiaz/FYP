@@ -5,9 +5,9 @@
 
 
      <img src="https://rstheme.com/products/html/shooter/shooter-html/images/banner/2.jpg" alt="">
-     <div class="container mt-5">
+     <div class="container mt-5 py-5">
         <h1 class="mb-4">Photographer Booking</h1>
-        <div class="row row-cols-1 row-cols-md-3 g-4">
+        <div class="row row-cols-1 row-cols-md-4 g-4">
           <div class="col">
             <div class="card">
                 <img src="https://static.wixstatic.com/media/1e56a559887b4527ad701b376d854ea1.jpg/v1/fill/w_319,h_213,fp_0.50_0.50,q_80,usm_0.66_1.00_0.01,enc_auto/1e56a559887b4527ad701b376d854ea1.jpg" class="card-img-top" alt="">
