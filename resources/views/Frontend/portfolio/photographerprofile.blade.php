@@ -13,7 +13,7 @@
                     <div class="profile-profession">Nature Photographer</div>
                     <div class="profile-description">I'm a photographer. I specialize in creating beautiful, high-quality photos and designs for my clients.</div>
                     <div class="profile-location"><i class="fa-solid fa-location-dot fa-sm"></i> Gujranwala, Satellite Town</div>
-                    <a href="{{ route('bookinginfo')}}"><button class="profile-button">Book Me</button></a>
+                    <a href="{{ route('bookingpkg')}}"><button class="profile-button">Book Me</button></a>
                 </div>
             </div>
     </header>

@@ -14,8 +14,8 @@
               <div class="card-body">
                 <h5 class="card-title"> Photography</h5>
                 <p class="card-text">Capture the joy of your wedding day with our professional wedding photography services.</p>
-                <a href="{{ route('photographerprofile')}}" class="btn btn-danger">my portfolio</a>
-                <a href="#" class="btn btn-danger">book me</a>
+                <a href="{{ route('photographerprofile')}}" class="btn btn-danger">Book Me</a>
+
               </div>
             </div>
           </div>
@@ -26,8 +26,8 @@
 
                 <h5 class="card-title">Birthday Photography</h5>
                 <p class="card-text">Celebrate your special day with beautiful birthday photos that you'll cherish forever.</p>
-                <a href="#" class="btn btn-danger">my portfolio</a>
-                <a href="#" class="btn btn-danger">book me</a>
+
+                <a href="#" class="btn btn-danger">book Me</a>
               </div>
             </div>
           </div>
@@ -37,7 +37,7 @@
               <div class="card-body">
                 <h5 class="card-title">Corporate Event Photography</h5>
                 <p class="card-text">Capture the professionalism and energy of your corporate event with our photography services.</p>
-                <a href="#" class="btn btn-danger">my portfolio</a>
+
                 <a href="#" class="btn btn-danger">book me</a>
               </div>
             </div>
@@ -48,7 +48,7 @@
               <div class="card-body">
                 <h5 class="card-title">Custom Event Photography</h5>
                 <p class="card-text">Tell us about your unique event, and we'll tailor our photography services to your needs.</p>
-                <a href="#" class="btn btn-danger">my portfolio</a>
+
                 <a href="#" class="btn btn-danger">book me</a>
               </div>
             </div>
@@ -59,7 +59,7 @@
               <div class="card-body">
                 <h5 class="card-title">Custom Event Photography</h5>
                 <p class="card-text">Tell us about your unique event, and we'll tailor our photography services to your needs.</p>
-                <a href="#" class="btn btn-danger">my portfolio</a>
+
                 <a href="#" class="btn btn-danger">book me</a>
               </div>
             </div>
@@ -70,7 +70,7 @@
               <div class="card-body">
                 <h5 class="card-title">Custom Event Photography</h5>
                 <p class="card-text">Tell us about your unique event, and we'll tailor our photography services to your needs.</p>
-                <a href="#" class="btn btn-danger">my portfolio</a>
+
                 <a href="#" class="btn btn-danger">book me</a>
               </div>
             </div>
