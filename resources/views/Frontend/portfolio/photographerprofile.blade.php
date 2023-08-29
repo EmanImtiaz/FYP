@@ -115,7 +115,7 @@
                 <li class="plan-item">Custom 5 * 7 album</li>
                 <li class="plan-item">Edited digital images</li>
             </ul>
-            <a href="" class="btn book-now ">Book Now</a>
+            <a href="{{ route('bookingform')}}" class="btn book-now ">Book Now</a>
             </div>
             <div class="plan-section">
                 <div class="plan-basic">
@@ -129,7 +129,7 @@
                     <li class="plan-item">Custom 5 * 7 album</li>
                     <li class="plan-item">Edited digital images</li>
                 </ul>
-                <a href="" class="btn book-now ">Book Now</a>
+                <a href="{{ route('bookingform')}}" class="btn book-now ">Book Now</a>
                 </div>
                 <div class="plan-section">
                     <div class="plan-basic">
@@ -142,61 +142,11 @@
                         <li class="plan-item">Custom 5 * 7 album</li>
                         <li class="plan-item">Edited digital images</li>
                     </ul>
-                    <a href="" class="btn book-now ">Book Now</a>
+                    <a href="{{ route('bookingform')}}" class="btn book-now ">Book Now</a>
                     </div>
-        </div>
-        </div>
-</div>
-<!--
-    <h1 class="text-center">Packages</h1>
-    <div class="wrapper ">
-        <div class="single-price">
-            <h1>Basic</h1>
-            <div class="price">
-            <h2>$200</h2>
-            </div>
-            <div class="services">
-                <h4>8 hours coverage</h4>
-                <h4>Engagement session </h4>
-                <h4>Bridle session </h4>
-                <h4>Canvas print</h4>
-                <h4>Custom 5 * 7 album</h4>
-                <h4>Edited digital images</h4>
-            </div>
-            <a href="{{ route('bookingform')}}">Book Now</a>
-        </div>
-        <div class="single-price">
-            <h1>Standard</h1>
-            <div class="price">
-            <h2>$400</h2>
-            </div>
-            <div class="services">
-                <h4>12 hours coverage </h4>
-                <h4>Bridle session  </h4>
-                <h4>2 Parent album </h4>
-                <h4>Custom 8 * 8 album</h4>
-                <h4>Edited digital images </h4>
-            </div>
-            <a href=" {{ route('bookingform')}}">Book Now</a>
-        </div>
-        <div class="single-price">
-            <h1>Professional</h1>
-            <div class="price">
-            <h2>$600</h2>
-            </div>
-            <div class="services">
-                <h4>8 hours coverage</h4>
-                <h4>Bridle session </h4>
-                <h4>Engagement session </h4>
-                <h4>2 Parent album  </h4>
-                <h4>Custom 8 * 8 album </h4>
-                <h4>Edited digital images </h4>
-            </div>
-            <a href="{{ route('bookingform')}}">Book Now</a>
         </div>
     </div>
 </div>
-
 
  <!-- script for model -->
  <script>
