@@ -224,7 +224,7 @@
 /* Container styling */
 .wrapper {
     display: flex;
-    justify-content: space-around;
+    justify-content: center;
     align-items: center;
     background-color: #fff; /* White background */
     padding: 20px;
