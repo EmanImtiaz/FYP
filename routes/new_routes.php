@@ -12,6 +12,7 @@ use App\Http\Controllers\PhotographerProfileController;
 use App\Http\Controllers\PortfolioController;
 use App\Http\Controllers\PortfolioDetailsController;
 use App\Http\Controllers\SingleWinnerDetailsController;
+use App\Http\Controllers\UserProfileUpdateController;
 use App\Http\Controllers\WinnersController;
 
 Route::get('contact', [ContactController::class,'contact'])->name('contact');
@@ -34,3 +35,4 @@ Route::get('allportfolio',[AllPortfolioController::class,'allportfolio'])->name(
 
 Route::get('photographerprofile',[PhotographerProfileController::class,'photographerprofile'])->name('photographerprofile');
 
+Route::get('userprofileupdate',[UserProfileUpdateController::class,'userprofileupdate'])->name('userprofileupdate');

@@ -12,7 +12,8 @@
                     <div class="profile-profession">Nature Photographer</div>
                     <div class="profile-description">I'm a photographer. I specialize in creating beautiful, high-quality photos and designs for my clients.</div>
                     <div class="profile-location"><i class="fa-solid fa-location-dot fa-sm"></i> Gujranwala, Satellite Town</div>
-                    <a href="{{ route('bookingpkg')}}"><button class="profile-button">Book Me</button></a>
+                    <a href="{{ route('userprofileupdate')}}"><button class="profile-button">Edit Profile</button></a>
+
                 </div>
             </div>
     </header>
@@ -96,38 +97,74 @@
         </div>
       </div>
     </div>
-  </div>
-  <!-- script for model -->
-  <script>
-     const modalImage1 = document.getElementById('modalImage1');
-    const cardImages = document.querySelectorAll('.card-img-top');
-
-    cardImages.forEach((image, index) => {
-      image.addEventListener('click', () => {
-        const imagePath = image.getAttribute('src');
-        modalImage1.setAttribute('src', imagePath);
-      });
-    });
-
-  </script>
-
-  <!-- packages work -->
+</div>
 
 
+<!-- packages work -->
 
-<div class="container  py-2">
-    <div class="row">
-        <h1 class="text-center ">My Packages</h1>
+<div class="container py-4">
+    <h1 class="text-center">Packages</h1>
+    <div class="wrapper ">
+        <div class="single-price">
+            <h1>Basic</h1>
+            <div class="price">
+            <h2>$200</h2>
+            </div>
+            <div class="services">
+                <h4>8 hours coverage</h4>
+                <h4>Engagement session </h4>
+                <h4>Bridle session </h4>
+                <h4>Canvas print</h4>
+                <h4>Custom 5 * 7 album</h4>
+                <h4>Edited digital images</h4>
+            </div>
+            <a href="{{ route('bookingform')}}">Book Now</a>
+        </div>
+        <div class="single-price">
+            <h1>Standard</h1>
+            <div class="price">
+            <h2>$400</h2>
+            </div>
+            <div class="services">
+                <h4>12 hours coverage </h4>
+                <h4>Bridle session  </h4>
+                <h4>2 Parent album </h4>
+                <h4>Custom 8 * 8 album</h4>
+                <h4>Edited digital images </h4>
+            </div>
+            <a href=" {{ route('bookingform')}}">Book Now</a>
+        </div>
+        <div class="single-price">
+            <h1>Professional</h1>
+            <div class="price">
+            <h2>$600</h2>
+            </div>
+            <div class="services">
+                <h4>8 hours coverage</h4>
+                <h4>Bridle session </h4>
+                <h4>Engagement session </h4>
+                <h4>2 Parent album  </h4>
+                <h4>Custom 8 * 8 album </h4>
+                <h4>Edited digital images </h4>
+            </div>
+            <a href="{{ route('bookingform')}}">Book Now</a>
+        </div>
     </div>
 </div>
-
-
-
-
-
-
-
 </div>
 
+ <!-- script for model -->
+ <script>
+    const modalImage1 = document.getElementById('modalImage1');
+   const cardImages = document.querySelectorAll('.card-img-top');
+
+   cardImages.forEach((image, index) => {
+     image.addEventListener('click', () => {
+       const imagePath = image.getAttribute('src');
+       modalImage1.setAttribute('src', imagePath);
+     });
+   });
+
+ </script>
 
 @endsection

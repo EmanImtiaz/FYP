@@ -8,216 +8,6 @@
    font-family: 'Poppins', sans-serif;
 }
 
-/*body {
-    font-family: 'Poppins', sans-serif;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    background-color: #f4f4f4;
-}*/
-/*
-.swiper {
-    width: 100%;
-}
-
-.swiper-wrapper {
-    width: 100%;
-    height: 35em;
-    display: flex;
-    align-items: center;
-}
-
-.card {
-    width: 20em;
-    height: 90%;
-    background-color: #ffff;
-    border-radius: 2em;
-    box-shadow: 0 0 2em rgba( 0, 0, 0, .2);
-    padding: 2em 1em;
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-    max-width: 0 2em;
-}
-
-swiper-slide:not(.swiper-slide-active) {
-   filter: blur(1px);
-}
-
-.card_image {
-   width: 10em;
-   height: 10em;
-   border-radius: 50%;
-   border: 5px solid #d32f2f;
-   padding: 3px;
-   margin-bottom: 2em;
-}
-
-.card-image img {
-   width: 100%;
-   height: 100%;
-   border-radius: 50%;
-   object-fit: cover;
-}
-
-.card_content {
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-}
-
-.card_title {
-   font-size: 1.5em;
-   font-weight: 500;
-   position: relative;
-   top: .2em;
-}
-
-.card_name {
-   color: #d32f2f;
-}
-
-.card_text {
-  text-align: center;
-  font-size: 1.1em;
-  margin: 1em 0;
-}
-/* customized css button home page
-.card_btn {
-  background-color: #d32f2f;
-  color: #ffff;
-  font-size: 1rem;
-  text-transform: uppercase;
-  font-weight: 600;
-  border: none;
-  padding: 5em;
-  border-radius: .5em;
-  margin-top: .5em;
-  cursor: pointer;
-}
-
-
-/*latest profile in slider
-
-
-section .card .image {
-  height: 140px;
-  width: 140px;
-  border-radius: 50%;
-  padding: 3px;
-  background-color: #d32f2f;
-}
-
-section .card .image img{
-    height: 100%;
-    width: 100%;
-    object-fit: cover;
-    border-radius: 50%;
-    border: 3px solid #ffff;
-  }
-
-  .card {
-    position: relative;
-    background-color: #ffff;
-    border-radius: 20px;
-    margin: 20px 0;
-    width: 280px;
-  }
-
-.card::before{
-    content: "";
-    position: absolute;
-    height: 40%;
-    width: 100%;
-    background: #d32f2f;
-    border-radius: 20px 20px 0 0;
-}
-
-
-.card .card-content {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 30px;
-    position: relative;
-    z-index: 100;
-}
-
-.card .media-icons {
-    position: absolute;
-    top: 10px;
-    right: 20px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-.card .media-icons i {
-    color: #ffff;
-    opacity: 0.6;
-    margin-top: 10px;
-    transition: all 0.3s ease;
-    cursor: pointer;
-}
-
-.card .media-icons i:hover {
-    opacity: 1;
-}
-
-.card .name-profession {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-top: 10px;
-    color: #333;
-}
-
-.name-profession .name {
-    font-size: 20px;
-    font-weight: 600;
-}
-
-.name-profession .profession {
-    font-size: 15px;
-    font-weight: 500;
-}
-
-.card .rating{
-    display: flex;
-    align-items: center;
-    margin-top: 18px;
-}
-
-.card .rating .i {
-    font-size: 18px;
-    margin: 0 2px;
-    color: #d32f2f;
-}
-
-.card .button {
-    width: 100%;
-    display: flex;
-    justify-content: space-around;
-    margin-top: 20px;
-}
-
-.card .button button{
-    background: #d32f2f;
-    outline: none;
-    border: none;
-    color: #ffff;
-    padding: 8px 22px;
-    border-radius: 20px;
-    font-size: 14px;
-    transition: all 0.3s ease;
-    cursor: pointer;
-}
-
-.button button:hover {
-    background-color: #d32f2f;
-}
-*/
 /* home Profiles in card swipper */
 .card_body {
     min-height: 100vh;
@@ -426,8 +216,82 @@ section .card .image img{
 
  /* Adjust the size of the modal image */
 #modalImage1 {
-    max-width: 100%;
-    max-height: 80vh; /* Set a maximum height to prevent excessive scrolling */
+    max-width: 1500%;
+    max-height: 70vh; /* Set a maximum height to prevent excessive scrolling */
   }
- 
 
+/* Packages
+/* Container styling */
+.wrapper {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    background-color: #fff; /* White background */
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Single price card styling */
+.single-price {
+    text-align: center;
+    background-color: #fff; /* White background */
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease-in-out;
+}
+
+/* Price heading (Basic, Standard, Professional) */
+.single-price h1 {
+    color: #d32f2f; /* Red color */
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+/* Price value ($15, $40, $100) */
+.single-price h2 {
+    color: #d32f2f; /* Red color */
+    font-size: 36px;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+/* Services list */
+.single-price .services {
+    margin: 0;
+    padding: 0;
+    font-size: 20px;
+    list-style: none;
+    text-align: left;
+}
+
+/* Individual service item */
+.single-price .services h4 {
+    color: #333; /* Black color for services */
+    font-size: 12px;
+    margin: 5px 0;
+}
+
+/* Book Now button */
+.single-price a {
+    display: inline-block;
+    background-color: #d32f2f; /* Red color for the button */
+    color: #fff; /* White text color */
+    text-decoration: none;
+    font-size: 16px;
+    padding: 8px 16px;
+    background-color: #d32f2f;
+    border-radius: 6px;
+    margin: 14px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.single-price a:hover {
+    background-color: #b71c1c; /* Darker red color on hover */
+}
+
+/* Hover effect */
+.single-price:hover {
+    transform: scale(1.05);
+}
