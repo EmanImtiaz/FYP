@@ -6,6 +6,7 @@
    padding: 0;
    box-sizing: border-box;
    font-family: 'Poppins', sans-serif;
+   list-style: none;
 }
 
 /* home Profiles in card swipper */
@@ -291,7 +292,74 @@
     background-color: #b71c1c; /* Darker red color on hover */
 }
 
-/* Hover effect */
+/* Hover effect*/
 .single-price:hover {
     transform: scale(1.05);
 }
+
+/* pricing tables */
+
+.packages-body {
+    box-sizing: border-box;
+    font-family: "Montserrat", sans-serif;
+    color: #494c5f;
+
+}
+.heading-danger {
+    font-size: 2rem;
+    text-align: center;
+    margin: 50px 0;
+}
+
+.plan-section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.plan-section .plan-basic {
+    width: 300px;
+    height: 370px;
+    text-align: center;
+    padding: 30px 20px;
+    margin-right: 10px;
+    margin-bottom: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0.6rem 1.6rem #d32f2f;
+}
+.plan-section .plan-basic  .plan-price {
+    font-size: 4rem;
+}
+
+.plan-section .plan-basic  .plan-dollar{
+    font-size: 2rem;
+    font-weight: 400;
+    vertical-align: middle;
+}
+
+.plan-section .plan-basic  .plan-features .plan-items {
+    padding: 15px 0 ;
+    border-bottom: 1px solid #b3b5c6;
+
+}
+
+.plan-section .plan-basic  .btn{
+    display: block;
+    background-color: #b71c1c;
+    padding: 10px;
+    margin-top: 20px;
+    color: #ffff;
+    border-radius: 5px;
+}
+
+.plan-section .plan-basic  .btn:hover{
+     background-color: #f6f6fe;
+     color: #b71c1c;
+     border: 1px solid #d32f2f;
+     font-weight: 900;
+}
+.plan-section .plan-basic {
+    background-color: #f6f6f6;
+}
+
+

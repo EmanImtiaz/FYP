@@ -101,8 +101,53 @@
 
 
 <!-- packages work -->
-
-<div class="container py-4">
+<div class="conatiner py-3">
+    <div class="packages-body ">
+        <h2 class="heading-danger">Packages</h2>
+        <div class="plan-section">
+            <div class="plan-basic">
+            <h2 class="plan-heading">Birthday</h2>
+            <h3 class="plan-price"><span class="dollar">$</span>99</h3>
+            <ul class="plan-features">
+                <li class="plan-item">2 hours coverage</li>
+                <li class="plan-item">Birthhday session</li>
+                <li class="plan-item">Canvas print</li>
+                <li class="plan-item">Custom 5 * 7 album</li>
+                <li class="plan-item">Edited digital images</li>
+            </ul>
+            <a href="" class="btn book-now ">Book Now</a>
+            </div>
+            <div class="plan-section">
+                <div class="plan-basic">
+                <h2 class="plan-heading">Engagement</h2>
+                <h3 class="plan-price"><span class="dollar">$</span>200</h3>
+                <ul class="plan-features">
+                    <li class="plan-item">2 hours coverage</li>
+                    <li class="plan-item">Engagement session</li>
+                    <li class="plan-item"></li>
+                    <li class="plan-item">Canvas print</li>
+                    <li class="plan-item">Custom 5 * 7 album</li>
+                    <li class="plan-item">Edited digital images</li>
+                </ul>
+                <a href="" class="btn book-now ">Book Now</a>
+                </div>
+                <div class="plan-section">
+                    <div class="plan-basic">
+                    <h2 class="plan-heading">Wedding</h2>
+                    <h3 class="plan-price"><span class="dollar">$</span>99</h3>
+                    <ul class="plan-features">
+                        <li class="plan-item">8 hours coverage</li>
+                        <li class="plan-item">Couple session</li>
+                        <li class="plan-item">Family session </li>
+                        <li class="plan-item">Custom 5 * 7 album</li>
+                        <li class="plan-item">Edited digital images</li>
+                    </ul>
+                    <a href="" class="btn book-now ">Book Now</a>
+                    </div>
+        </div>
+        </div>
+</div>
+<!--
     <h1 class="text-center">Packages</h1>
     <div class="wrapper ">
         <div class="single-price">
@@ -151,7 +196,7 @@
         </div>
     </div>
 </div>
-</div>
+
 
  <!-- script for model -->
  <script>
