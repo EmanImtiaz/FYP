@@ -3,47 +3,32 @@
 
 <img src="https://rstheme.com/products/html/shooter/shooter-html/images/banner/2.jpg" alt="">
 
-<div class="container px-4">
-    <div class="row gx-5">
-      <div class="col">
-       <h1>Fill out your details</h1>
-
-       <form>
-
-        <div class="row  col-lg-12">
-            <div class="col-sm-6">
-                <label for="name" class="form-label" > Name</label>
-              <input type="text" class="form-control" >
-            </div>
-            <div class="col-sm-6">
-                <label for="name" class="form-label" >Email</label>
-              <input type="text" class="form-control" >
-            </div>
+<div class="container py-4">
+    <div class="row">
+      <div class="col-lg-7">
+        <h3>Complete your booking</h3>
+        <p>Please enter your contact information to proceed</p>
+        <form>
+            <label for="name" class="form-label" > Name</label>
+            <input type="text" class="form-control" placeholder="Enter your name">
             <br>
-
-              <div class="col-sm-12">
-                <label for="name" class="form-label">Phone</label>
-                <input type="text" class="form-control" id="name" placeholder="">
-              </div>
-
-
-          <div class="col-sm-12">
-            <label for="name" class="form-label">address</label>
-            <input type="text" class="form-control" id="name">
-          </div>
-        </form>
-
-
-
-    </div>
-      </div>
-      <div class="col">
-        <h1>booking details</h1>
-        
-
-            <button class="btn btn-danger" type="button">signin</button>
-
-
+            <label for="name" class="form-label" >Email</label>
+            <input type="text" class="form-control" placeholder="Enter your email">
+            <br>
+            <label for="name" class="form-label">Phone</label>
+            <input type="text" class="form-control" id="name" placeholder="Enter your phone no">
+            <br>
+            <label for="name" class="form-label">Address</label>
+            <input type="text" class="form-control" id="name" placeholder="Enter your address">
+            <br>
+            <label for="name" class="form-label">Write a Message</label>
+            <input type="text" class="form-control flex-column" id="name" placeholder="Optional">
+            <br>
+            <a href=""> <button class="btn btn-danger float-end" type="button">Continue</button></a>
+            </form>
+        </div>
+        <div class="col-lg-5">
+        <h3>Booking details</h3>
       </div>
     </div>
   </div>
