@@ -9,25 +9,40 @@
     <hr>
     <form enctype="multipart/form-data">
         <!-- Profile Picture -->
+        <div class="row">
+            <div class="col-lg-4">
+                <img class="rounded-circle" src="https://images.pexels.com/photos/6976943/pexels-photo-6976943.jpeg?auto=compress&cs=tinysrgb&w=600" alt="" height="150" width="150">
+            </div>
+            <div class="col-lg-4">
+                <label for="profilePicture" class="form-label">Profile Picture</label>
+                <input type="file" class="form-control" id="profilePicture" name="profilePicture">
+                <small class="form-text text-muted">Select a new profile picture.</small>
+            </div>
+            <div class="col-lg-4">
+                <img class="rounded-circle" src="https://images.pexels.com/photos/6976943/pexels-photo-6976943.jpeg?auto=compress&cs=tinysrgb&w=600" alt="" height="150" width="150">
+            </div>
+        </div>
         <div class="mb-3">
             <label for="profilePicture" class="form-label">Profile Picture</label>
             <input type="file" class="form-control" id="profilePicture" name="profilePicture">
             <small class="form-text text-muted">Select a new profile picture.</small>
         </div>
 
-        <!-- Username -->
-        <div class="mb-3">
-            <label for="username" class="form-label">Username</label>
-            <input type="text" class="form-control" id="username" name="username" value="Andrea Piacquadio">
-        </div>
+        <!-- Username, Company Name -->
+        <div class="row">
+            <div class="col-lg-6 col-md-6 col-sm-12">
 
-        <!-- Company Name -->
-        <div class="mb-3">
-            <label for="companyName" class="form-label">Company Name</label>
-            <input type="text" class="form-control" id="companyName" name="companyName" value="Nature Photography Inc.">
-        </div>
+                    <label for="username" class="form-label">Username</label>
+                    <input type="text" class="form-control" id="username" name="username" value="Andrea Piacquadio">
+            </div>
+            <div class="col-lg-6 col-md-6 col-sm-12">
 
-        <!-- Bio -->
+                        <label for="companyName" class="form-label">Company Name</label>
+                        <input type="text" class="form-control" id="companyName" name="companyName" value="Nature Photography Inc.">
+
+            </div>
+            </div>
+<!-- Bio -->
         <div class="mb-3">
             <label for="bio" class="form-label">Bio</label>
             <textarea class="form-control" id="bio" name="bio" rows="4">I'm a photographer. I specialize in creating beautiful, high-quality photos and designs for my clients.</textarea>
@@ -39,12 +54,6 @@
             <input type="text" class="form-control" id="location" name="location" value="Gujranwala, Satellite Town">
         </div>
 
-        <!-- Upload Work Gallery Images -->
-        <div class="mb-3">
-            <label for="workGallery" class="form-label">Upload Work Gallery Images</label>
-            <input type="file" class="form-control" id="workGallery" name="workGallery[]" multiple>
-            <small class="form-text text-muted">Select multiple images for your work gallery.</small>
-        </div>
 
         <a href="{{  route('photographerprofile') }}"><button type="submit" class="btn btn-danger float-end">Save Changes</button></a>
     </form>

@@ -53,19 +53,19 @@
         <h2 class="text-center">How It Works</h2>
         <div class="row mt-4">
             <div class="col-md-3 col-lg-3 col-sm-12">
-                <h4>Showcase Your Talent</h4>
+                <h5>Showcase Your Talent</h5>
                 <p>Photographers can create stunning portfolios to showcase their unique skills and style.</p>
             </div>
             <div class="col-md-3 col-lg-3 col-sm-12">
-                <h4>Find Your Perfect Photographer</h4>
+                <h5>Find Your Perfect Photographer</h5>
                 <p>Clients can easily find and book photographers based on location and price, thanks to our user-friendly search filters.</p>
             </div>
             <div class="col-md-3 col-lg-3 col-sm-12">
-                <h4>Share Your Experience</h4>
+                <h5>Share Your Experience</h5>
                 <p>Clients have the opportunity to leave reviews about their photographer's work, helping others make informed decisions.</p>
             </div>
             <div class="col-md-3 col-lg-3 col-sm-12">
-                <h4>Celebrate the Best</h4>
+                <h5>Celebrate the Best</h5>
                 <p>Vote for your favorite photographers, and watch our ranking system highlight the outstanding talents in our community.</p>
             </div>
         </div>
@@ -76,6 +76,7 @@
 
 <div class="card_body">
 <div class="slide-container swiper">
+    <h2 class="text-center py-1">Photographers Profiles</h2>
     <div class="slide-content">
         <div class="card-wrapper swiper-wrapper">
             <div class="card swiper-slide">

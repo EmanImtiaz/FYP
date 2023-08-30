@@ -2,8 +2,6 @@
 
 @section('kuchb')
 
-
-
      <img src="https://rstheme.com/products/html/shooter/shooter-html/images/banner/2.jpg" alt="">
      <div class="container py-5">
         <h1>Photographer Search</h1>
@@ -11,10 +9,20 @@
             <div class="row">
                 <div class="col-lg-3">
                     <div class="form-group">
-                        <label for="province">Province</label>
-                        <input type="text" class="form-control" id="province" name="province">
+                        <label for="province">Province:</label>
+                        <select class="form-select" id="province">
+                            <option selected>Select a Province.</option>
+                            <option value="new-york">Punjab</option>
+                            <option value="los-angeles">Sindh</option>
+                            <option value="chicago">KPK</option>
+                            <option value="miami">Balochistan</option>
+                            <option value="miami">Gilgit Baltistan</option>
+                            <!-- Add more location options as needed -->
+                        </select>
                     </div>
                 </div>
+
+
                 <div class="col-lg-3">
                     <div class="form-group">
                         <label for="city">City</label>
