@@ -37,25 +37,26 @@
 </head>
 <body class="bg-light" >
     <nav class="navbar navbar-light navbar-expand-md" style="color: #d32f2f;">
-        <div class="container  justify-content-center">
+        <div class="container ">
         <a class="nav-brand text-danger" href="" >Raise Photography</a>
-
+        <img width="250" src="" alt="">
         <button class="navbar-toggler" data-bs-toggle="collapse"data-bs-target="#nvam">
-            <span class="navbar-toggler-icon"></span>
+        <span class="navbar-toggler-icon"></span>
 
         </button>
 
         <div id="nvam" class="collapse navbar-collapse">
             <ul class="navbar-nav ms-auto">
                 <li class="nav-item"><a class="nav-link" href="{{ route('home')}}">Home</a></li>
-                <li class="nav-item dropdown">
+
                 <li class="nav-item"><a class="nav-link"href="{{ route('booking')}}">Booking</a></li>
+                <li class="nav-item dropdown">
                    <a class="nav-link dropdown-toggle"data-bs-toggle="dropdown" href="photocontest">Contest</a>
                    <ul class="dropdown-menu">
                        <li><a class="dropdown-item" href="{{ route('photocontest')}}">Photos Contest</a></li>
                        <li><a class="dropdown-item" href="{{ route('winners')}}">Winners</a></li>
-                    </ul>
-               </li>
+                   </ul>
+                </li>
                 <li class="nav-item"><a class="nav-link"href="{{ route('about')}}">About Us</a></li>
                 <li class="nav-item"><a class="nav-link"href="{{ route('contact')}}">Contact Us</a></li>
                 <li class="nav-item"><a class="nav-link"href="{{ route('signin')}}">Sign In</a></li>
