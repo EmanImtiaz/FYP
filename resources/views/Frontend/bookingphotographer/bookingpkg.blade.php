@@ -2,7 +2,70 @@
 @section('kuchb')
 
 
-<div class="container mt-5">
+
+  <div class="container mt-5">
+    <h1 class="text-center">Photo Contest</h1>
+    <div class="row mt-4">
+      <div class="col-md-4">
+        <div class="card">
+          <img src="photo1.jpg" class="card-img-top" alt="Photo 1">
+          <div class="card-body">
+            <button class="btn btn-primary reaction-button" data-reaction="like">Like</button>
+            <button class="btn btn-secondary reaction-button" data-reaction="love">Love</button>
+            <button class="btn btn-success reaction-button" data-reaction="wow">Wow</button>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="card">
+          <img src="photo2.jpg" class="card-img-top" alt="Photo 2">
+          <div class="card-body">
+            <button class="btn btn-primary reaction-button" data-reaction="like">Like</button>
+            <button class="btn btn-secondary reaction-button" data-reaction="love">Love</button>
+            <button class="btn btn-success reaction-button" data-reaction="wow">Wow</button>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="card">
+          <img src="photo3.jpg" class="card-img-top" alt="Photo 3">
+          <div class="card-body">
+            <button class="btn btn-primary reaction-button" data-reaction="like">Like</button>
+            <button class="btn btn-secondary reaction-button" data-reaction="love">Love</button>
+            <button class="btn btn-success reaction-button" data-reaction="wow">Wow</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <script>
+    const reactionButtons = document.querySelectorAll('.reaction-button');
+    reactionButtons.forEach(button => {
+      button.addEventListener('click', handleReaction);
+    });
+
+    function handleReaction(event) {
+      const selectedReaction = event.target.getAttribute('data-reaction');
+      alert(`You reacted with: ${selectedReaction}`);
+    }
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+@endsection
+<!-- script for model
+    <div class="container mt-5">
     <h1 class="mb-4">Our Packages</h1>
     <div class="row row-cols-1 row-cols-md-3 g-4">
       <div class="col">
@@ -83,11 +146,9 @@
 
 
 
+-->
 
 
-
-
-@endsection
 
 
 

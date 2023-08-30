@@ -99,6 +99,20 @@
     </div>
 </div>
 
+<!-- script for model -->
+<script>
+    const modalImage1 = document.getElementById('modalImage1');
+   const cardImages = document.querySelectorAll('.card-img-top');
+
+   cardImages.forEach((image, index) => {
+     image.addEventListener('click', () => {
+       const imagePath = image.getAttribute('src');
+       modalImage1.setAttribute('src', imagePath);
+     });
+   });
+
+ </script>
+
 
 <!-- packages work -->
 <div class="conatiner py-3">
@@ -147,19 +161,10 @@
         </div>
     </div>
 </div>
+    </div>
+</div>
+</div>
 
- <!-- script for model -->
- <script>
-    const modalImage1 = document.getElementById('modalImage1');
-   const cardImages = document.querySelectorAll('.card-img-top');
 
-   cardImages.forEach((image, index) => {
-     image.addEventListener('click', () => {
-       const imagePath = image.getAttribute('src');
-       modalImage1.setAttribute('src', imagePath);
-     });
-   });
-
- </script>
 
 @endsection

@@ -2,16 +2,23 @@
 @section('kuchb')
 
 <img src="https://rstheme.com/products/html/shooter/shooter-html/images/banner/2.jpg" alt="">
-
+<style>
+    #calendar-container {
+      width: 305px;
+    }
+  </style>
 <div class="container py-4">
     <div class="row">
         <div class="col-lg-5">
-            <h3>Booking details</h3>
-            <div class="mb-3">
-                <label for="datepickerInput" class="form-label">Select a Date:</label>
-                <input type="text" class="form-control" id="datepickerInput">
-            </div>
-        </div>
+            <h3>Select Date</h3>
+
+
+                  <div id="calendar-container">
+                    <input type="text" id="calendar" class="form-control" placeholder="Select a date" readonly>
+                  </div>
+                </div>
+
+
         <div class="col-lg-7">
             <h3>Complete your booking</h3>
             <p>Please enter your contact information to proceed</p>
@@ -36,12 +43,15 @@
             </div>
         </div>
 </div>
+
 <script>
-    const datepickerInput = document.getElementById('datepickerInput');
-    const datepicker = new Datepicker(datepickerInput, {
-        autohide: true,
+    document.addEventListener("DOMContentLoaded", function () {
+      flatpickr("#calendar", {
+        dateFormat: "Y-m-d",
+      });
     });
-</script>
+  </script>
+
 
 @endsection
 

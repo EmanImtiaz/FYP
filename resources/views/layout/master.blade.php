@@ -29,11 +29,10 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
 
-  <!-- for datecalender -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/datepicker.js@1.9.0/dist/datepicker.min.css">
-    <script src="https://cdn.jsdelivr.net/npm/datepicker.js@1.9.0/dist/datepicker.min.js"></script>
-<!-- js for datecalender-->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.5.0/dist/js/bootstrap.min.js"></script>
+
+
+
+
 
 </head>
 <body class="bg-light" >

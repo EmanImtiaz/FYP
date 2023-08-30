@@ -71,13 +71,13 @@
                             <input type="password" class="form-control" id="password" name="password" required>
                         </div>
                         <div class="d-grid">
-                            <button type="submit" class="btn btn-danger ">SIGN UP!</button>
+                            <button type="submit" class="btn btn-danger ">SIGN In!</button>
                         </div>
                         <div class="text-center mt-3">
                         Forget password?<a href="{{ route('reset')}}">Reset</a>
                         </div>
                         <div class="text-center mt-2">
-                        Don't have account?<a href="{{ route('signup')}}">Sign Up</a>
+                        Don't have account?<a href="{{ route('signup')}}">Sign up</a>
                     </div>
                 </form>
             </div>
