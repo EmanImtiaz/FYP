@@ -7,6 +7,7 @@ use App\Http\Controllers\AdminPanelController;
 use App\Http\Controllers\AllPortfolioController;
 use App\Http\Controllers\ContestDetailController;
 use App\Http\Controllers\ContestFormController;
+use App\Http\Controllers\ExplorePhotoContestController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PhotoContestController;
 use App\Http\Controllers\PhotographerProfileController;
@@ -31,3 +32,7 @@ Route::get('photographerprofile',[PhotographerProfileController::class,'photogra
 Route::get('userprofileupdate',[UserProfileUpdateController::class,'userprofileupdate'])->name('userprofileupdate');
 
 Route::get('adminpanel',[AdminPanelController::class,'adminpanel'])->name('adminpanel');
+
+Route::get('explorephotocontest',[ExplorePhotoContestController::class,'explorephotocontest'])->name('explorephotocontest');
+
+Route::get('contestdetail',[ContestDetailController::class,'contestdetail'])->name('contestdetail');
