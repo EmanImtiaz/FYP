@@ -10,6 +10,7 @@ use App\Http\Controllers\SignupController;
 use App\Http\Controllers\BookinginfoController;
 use App\Http\Controllers\BookingformController;
 use App\Http\Controllers\BookingpkgController;
+use App\Http\Controllers\PaymentController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -42,3 +43,5 @@ Route::get('bookinginfo', [BookinginfoController::class,'bookinginfo'])->name('b
 Route::get('bookingform', [BookingformController::class,'bookingform'])->name('bookingform');;
 
 Route::get('bookingpkg', [BookingpkgController::class,'bookingpkg'])->name('bookingpkg');
+
+Route::get('payment', [PaymentController::class,'payment'])->name('payment');

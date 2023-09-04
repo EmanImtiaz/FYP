@@ -38,7 +38,60 @@
                 <label for="name" class="form-label">Write a Message</label>
                 <input type="text" class="form-control flex-column" id="name" placeholder="Optional">
                 <br>
-                <a href=""> <button class="btn btn-danger float-end" type="button">Continue</button></a>
+
+                <label for="serviceName" class="form-label">Select Services:</label>
+
+                <div class="row">
+                    <div class="col">
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" id="portrait" name="services[]" value="Portrait Photography">
+                            <label class="form-check-label" for="portrait">
+                                Portrait Photography
+                            </label>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" id="wedding" name="services[]" value="Wedding Photography">
+                            <label class="form-check-label" for="wedding">
+                                Wedding Photography
+                            </label>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" id="event" name="services[]" value="Event Photography">
+                            <label class="form-check-label" for="event">
+                                Event Photography
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                    <br>
+                    <div class="row">
+                        <!-- Create a column for the "Total Amount" label -->
+                        <div class="col-md-4">
+                            <label for="totalAmount" class="form-label"><h4><b>Total Amount:</b></h4></label>
+                        </div>
+                        <!-- Create a column for the input field -->
+                        <div class="col-md-6">
+                            <input type="text" class="form-control" id="totalAmount" placeholder="">
+                        </div>
+                        <!-- Create a column for the "Continue" button -->
+                        <div class="col-md-2">
+                            <a href="{{ route('payment')}}"><button class="btn btn-danger btn-block" type="button">Continue</button></a>
+                        </div>
+                    </div>
+
+
+
+
+
+
+
+
+
+
                 </form>
             </div>
         </div>
