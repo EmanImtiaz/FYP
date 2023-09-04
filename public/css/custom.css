@@ -406,3 +406,9 @@
     border: 2px solid #d32f2f;
     border-radius: 5px;
  }
+
+
+ .custom-modal {
+    max-width: 80%; /* Set the maximum width as a percentage of the screen width */
+    max-height: 80vh; /* Set the maximum height as a percentage of the viewport height */
+}

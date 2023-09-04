@@ -1,62 +1,124 @@
 @extends('layout.master')
 @section('kuchb')
 
+<img src="https://rstheme.com/products/html/shooter/shooter-html/images/banner/2.jpg" alt="">
+
+<div class="container  py-5">
+    <div class="row">
+        <h1 >vote for best photo</h1>
+        <div class="col-lg-3 col-md-3 col-sm-3">
+            <div class="card">
+                <img src="https://images.pexels.com/photos/1770809/pexels-photo-1770809.jpeg?auto=compress&cs=tinysrgb&w=600" class="card-img-top" alt=""
+                data-bs-toggle="modal" data-bs-target="#imageModal1">
 
 
-  <div class="container mt-5">
-    <h1 class="text-center">Photo Contest</h1>
-    <div class="row mt-4">
-      <div class="col-md-4">
-        <div class="card">
-          <img src="photo1.jpg" class="card-img-top" alt="Photo 1">
-          <div class="card-body">
-            <button class="btn btn-primary reaction-button" data-reaction="like">Like</button>
-            <button class="btn btn-secondary reaction-button" data-reaction="love">Love</button>
-            <button class="btn btn-success reaction-button" data-reaction="wow">Wow</button>
-          </div>
+            </div>
+            </div>
+
+        <div class="col-lg-3 col-md-3 col-sm-3">
+            <div class="card">
+                <img src="https://images.pexels.com/photos/15379/pexels-photo.jpg?auto=compress&cs=tinysrgb&w=600" class="card-img-top" alt=""
+                data-bs-toggle="modal" data-bs-target="#imageModal1">
+
+            </div>
         </div>
-      </div>
-      <div class="col-md-4">
-        <div class="card">
-          <img src="photo2.jpg" class="card-img-top" alt="Photo 2">
-          <div class="card-body">
-            <button class="btn btn-primary reaction-button" data-reaction="like">Like</button>
-            <button class="btn btn-secondary reaction-button" data-reaction="love">Love</button>
-            <button class="btn btn-success reaction-button" data-reaction="wow">Wow</button>
-          </div>
+        <div class="col-lg-3 col-md-3 col-sm-3">
+            <div class="card">
+                <img src="https://images.pexels.com/photos/4064432/pexels-photo-4064432.jpeg?auto=compress&cs=tinysrgb&w=600" class="card-img-top" alt=""
+                data-bs-toggle="modal" data-bs-target="#imageModal1">
+
+            </div>
         </div>
-      </div>
-      <div class="col-md-4">
-        <div class="card">
-          <img src="photo3.jpg" class="card-img-top" alt="Photo 3">
-          <div class="card-body">
-            <button class="btn btn-primary reaction-button" data-reaction="like">Like</button>
-            <button class="btn btn-secondary reaction-button" data-reaction="love">Love</button>
-            <button class="btn btn-success reaction-button" data-reaction="wow">Wow</button>
-          </div>
+        <div class="col-lg-3 col-md-3 col-sm-3">
+            <div class="card">
+                <img src="https://images.pexels.com/photos/3265460/pexels-photo-3265460.jpeg?auto=compress&cs=tinysrgb&w=600" class="card-img-top" alt=""
+                data-bs-toggle="modal" data-bs-target="#imageModal1">
+
+            </div>
         </div>
-      </div>
+        <div class="col-lg-3 col-md-3 col-sm-3 mt-2">
+            <div class="card">
+                <img src="https://images.pexels.com/photos/1643113/pexels-photo-1643113.jpeg?auto=compress&cs=tinysrgb&w=600" class="card-img-top" alt=""
+                data-bs-toggle="modal" data-bs-target="#imageModal1">
+
+            </div>
+        </div>
+        <div class="col-lg-3 col-md-3 col-sm-3 mt-2">
+            <div class="card">
+                <img src="https://images.pexels.com/photos/1643113/pexels-photo-1643113.jpeg?auto=compress&cs=tinysrgb&w=600" class="card-img-top" alt=""
+                data-bs-toggle="modal" data-bs-target="#imageModal1">
+
+            </div>
+        </div>
+        <div class="col-lg-3 col-md-3 col-sm-3 mt-2">
+            <div class="card">
+                <img src="https://images.pexels.com/photos/1643113/pexels-photo-1643113.jpeg?auto=compress&cs=tinysrgb&w=600" class="card-img-top" alt=""
+                data-bs-toggle="modal" data-bs-target="#imageModal1">
+
+            </div>
+        </div>
+        <div class="col-lg-3 col-md-3 col-sm-3 mt-2">
+            <div class="card">
+                <img src="https://images.pexels.com/photos/1643113/pexels-photo-1643113.jpeg?auto=compress&cs=tinysrgb&w=600" class="card-img-top" alt=""
+                data-bs-toggle="modal" data-bs-target="#imageModal1">
+
+            </div>
+        </div>
     </div>
-  </div>
+</div>
+
+<!-- modal -->
+<!-- modal -->
+<div class="modal fade" id="imageModal1" tabindex="-1" aria-labelledby="imageModalLabel1" aria-hidden="true">
+    <div class="modal-dialog custom-modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="imageModalLabel1">Image Preview</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body text-center">
+                <img src="" id="modalImage1" class="img-fluid">
+            </div>
+            <div class="modal-footer">
+                <div class="container-fluid">
+
+                    <div class="row">
+                        <div class="col-1">
+                            <span>Views: <span id="viewCount">0</span></span>
+                        </div>
+
+                        <div class="col-1">
+                            <button type="button" class="btn btn-primary btn-block">Like</button>
+                        </div>
+                        <div class="col-1">
+                            <button type="button" class="btn btn-danger btn-block">Dislike</button>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
 
 
-  <script>
-    const reactionButtons = document.querySelectorAll('.reaction-button');
-    reactionButtons.forEach(button => {
-      button.addEventListener('click', handleReaction);
+
+<!-- script for modal -->
+<script>
+    const modalImage1 = document.getElementById('modalImage1');
+    const cardImages = document.querySelectorAll('.card-img-top');
+    let viewCount = 0;
+
+    cardImages.forEach((image, index) => {
+        image.addEventListener('click', () => {
+            const imagePath = image.getAttribute('src');
+            modalImage1.setAttribute('src', imagePath);
+            $('#imageModal1').modal('show'); // Show the modal
+            viewCount++; // Increment view count
+            document.getElementById('viewCount').textContent = viewCount; // Update view count in modal
+        });
     });
-
-    function handleReaction(event) {
-      const selectedReaction = event.target.getAttribute('data-reaction');
-      alert(`You reacted with: ${selectedReaction}`);
-    }
-  </script>
-
-
-
-
-
-
+</script>
 
 
 
@@ -64,6 +126,19 @@
 
 
 @endsection
+
+
+
+
+
+
+
+
+
+
+
+
+
 <!-- script for model
     <div class="container mt-5">
     <h1 class="mb-4">Our Packages</h1>
