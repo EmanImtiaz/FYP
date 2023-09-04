@@ -363,3 +363,46 @@
 }
 
 
+.joint_feat_emoji {
+    font-size: 45px;
+    padding-bottom: 15px;
+    display: block;
+  }
+
+  .joint_feat_emoji-2 {
+    font-size: 45px;
+    padding-bottom: 15px;
+    display: block;
+  }
+
+  .joint_feat_emoji-3 {
+    font-size: 45px;
+    padding-bottom: 15px;
+    display: block;
+  }
+
+  .head_caption  {
+    font-size: 45px ;
+    text-align: left;
+
+    padding-right: 100px;
+    margin-bottom: 60px;
+
+    display: inline-block;
+    border-radius: 6px;
+ }
+
+ .heading_caption  {
+    font-size: 45px ;
+    text-align: left;
+    padding-right: auto;
+    padding-bottom: 300px;
+    display: inline-block;
+    border-radius: 6px;
+ }
+
+ .button_css {
+    font-size: 30px;
+    border: 2px solid #d32f2f;
+    border-radius: 5px;
+ }
