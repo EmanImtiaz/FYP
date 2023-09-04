@@ -22,7 +22,7 @@
 
 <div class="container  py-5">
     <div class="row">
-        <h1 class="text-center ">My Work</h1>
+        <h1 class="text-center ">My Portfolio</h1>
         <div class="col-lg-3 col-md-3 col-sm-3">
             <div class="card">
                 <img src="https://images.pexels.com/photos/1770809/pexels-photo-1770809.jpeg?auto=compress&cs=tinysrgb&w=600" class="card-img-top" alt=""

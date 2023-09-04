@@ -30,7 +30,7 @@ Route::get('winners',[WinnersController::class,'winners'])->name('winners');
 
 Route::get('singlewinnerdetail',[SingleWinnerDetailsController::class,'singlewinnerdetail'])->name('singlewinnerdetail');
 
-Route::get('home',[HomeController::class,'home'])->name('home');
+Route::get('/',[HomeController::class,'home'])->name('home');
 
 Route::get('allportfolio',[AllPortfolioController::class,'allportfolio'])->name('allportfolio');
 

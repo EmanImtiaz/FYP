@@ -4,7 +4,7 @@
 
      <img src="https://rstheme.com/products/html/shooter/shooter-html/images/banner/2.jpg" alt="">
      <div class="container py-5">
-        <h1>Photographer Search</h1>
+        <h1>Photographer Search for Booking</h1>
         <form id="searchForm">
             <div class="row">
                 <div class="col-lg-3">

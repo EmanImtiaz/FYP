@@ -41,9 +41,9 @@
 		<!-- partial:partials/_sidebar.html -->
 	<nav class="sidebar">
       <div class="sidebar-header">
-        <a href="#" class="sidebar-brand">
-          Noble<span>UI</span>
-        </a>
+
+<img class="sidebar-brand" width="50px"height="50px"src="/assets/logo.PNG">
+
         <div class="sidebar-toggler not-active">
           <span></span>
           <span></span>

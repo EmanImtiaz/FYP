@@ -28,6 +28,9 @@
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.1/dist/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
+    <!-- Add Bootstrap JS and Popper.js scripts -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-pzjw8f+ua9Zw0x3Kc5W5z5U5G2Y3BmqqSbq5xvOBk5Zusvfa7kDpze8F5E7U6en5dF" crossorigin="anonymous"></script>
+
 
 
 
