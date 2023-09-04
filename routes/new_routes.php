@@ -20,14 +20,6 @@ Route::get('contact', [ContactController::class,'contact'])->name('contact');
 
 Route::get('about',[AboutController::class,'about'])->name('about');
 
-Route::get('formcontest',[ContestFormController::class,'formcontest'])->name('contestform');
-
-Route::get('photocontest',[PhotoContestController::class,'photocontest'])->name('photocontest');
-
-Route::get('contestdetail',[ContestDetailController::class,'contestdetail'])->name('contestdetail');
-
-Route::get('winners',[WinnersController::class,'winners'])->name('winners');
-
 Route::get('singlewinnerdetail',[SingleWinnerDetailsController::class,'singlewinnerdetail'])->name('singlewinnerdetail');
 
 Route::get('/',[HomeController::class,'home'])->name('home');
