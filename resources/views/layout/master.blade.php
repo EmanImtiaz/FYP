@@ -57,7 +57,7 @@
                    <a class="nav-link dropdown-toggle"data-bs-toggle="dropdown" href="photocontest">Contest</a>
                    <ul class="dropdown-menu">
                        <li><a class="dropdown-item" href="{{ route('explorephotocontest')}}">Explor Photos Contest</a></li>
-                       <li><a class="dropdown-item" href="{{ route('contestdetail')}}">contest detail</a></li>
+                       <li><a class="dropdown-item" href="">Winners</a></li>
                    </ul>
                 </li>
                 <li class="nav-item"><a class="nav-link"href="{{ route('about')}}">About Us</a></li>

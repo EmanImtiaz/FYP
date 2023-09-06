@@ -86,7 +86,7 @@ amazing brands and opportunities.  </p>
             <div class="carousel-caption heading_caption ">
                 <h3 class=" text-danger ">Ultimate Homes</h3>
                 <p class=" text-danger" >Win Poladriod snap touch</p>
-                <a href="" class="btn btn-danger button_css">Participate</a>
+                <a href="{{ route('contestdetail')}}" class="btn btn-danger button_css">Participate</a>
             </div>
         </div>
     </div>
@@ -96,7 +96,7 @@ amazing brands and opportunities.  </p>
             <div class="carousel-caption heading_caption">
                 <h3 class=" text-danger "> Monthly pro</h3>
                 <p class=" text-danger ">Win Photographer of the month!</p>
-                <a href="" class="btn btn-danger button_css">Participate</a>
+                <a href="{{ route('contestdetail')}}" class="btn btn-danger button_css">Participate</a>
             </div>
         </div>
     </div>
@@ -106,7 +106,7 @@ amazing brands and opportunities.  </p>
             <div class="carousel-caption heading_caption">
                 <h3 class="  ">Image of the month </h3>
                 <p>Win Photographer of the month!</p>
-                <a href="" class="btn btn-danger button_css">Participate</a>
+                <a href="{{ route('contestdetail')}}" class="btn btn-danger button_css">Participate</a>
             </div>
         </div>
     </div>
@@ -116,7 +116,7 @@ amazing brands and opportunities.  </p>
             <div class="carousel-caption heading_caption">
                 <h3 class=" ">Wedding Fashion</h3>
                 <p>With Sigma lens!</p>
-                <a href="" class="btn btn-light button_css">Participate</a>
+                <a href="{{ route('contestdetail')}}" class="btn btn-light button_css">Participate</a>
             </div>
         </div>
     </div>
@@ -126,7 +126,7 @@ amazing brands and opportunities.  </p>
             <div class="carousel-caption heading_caption">
                 <h3 class=" ">Tree Vibes</h3>
                 <p>With Sigma lens!</p>
-                <a href="" class="btn btn-danger button_css">Participate</a>
+                <a href="{{ route('contestdetail')}}" class="btn btn-danger button_css">Participate</a>
             </div>
         </div>
     </div>

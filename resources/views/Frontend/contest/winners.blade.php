@@ -151,19 +151,7 @@
             <div class="card">
                 <img src="https://images.pexels.com/photos/1643113/pexels-photo-1643113.jpeg?auto=compress&cs=tinysrgb&w=600" class="card-img-top" alt=""
                 data-bs-toggle="modal" data-bs-target="#imageModal1">
-                <div class="row py-2">
-                    <div class="col-3">
-                        <button type="button" class="btn btn-primary btn-block float-end">Like</button>
-                    </div>
-                    <div class="col-3">
-                        <button type="button" class="btn btn-danger btn-block">Dislike</button>
-                    </div>
-
-                    <div class="col-3 py-2 float-end">
-                        <span >Views: </span>
-                    </div>
-
-                </div>
+               
             </div>
         </div>
     </div>
