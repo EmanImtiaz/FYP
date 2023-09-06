@@ -6,6 +6,7 @@ use App\Http\Controllers\ForgetController;
 use App\Http\Controllers\SigninController;
 use App\Http\Controllers\ResetController;
 use App\Http\Controllers\SignupController;
+use App\Http\Controllers\WinnersController;
 
 use App\Http\Controllers\BookinginfoController;
 use App\Http\Controllers\BookingformController;
@@ -45,3 +46,5 @@ Route::get('bookingform', [BookingformController::class,'bookingform'])->name('b
 Route::get('bookingpkg', [BookingpkgController::class,'bookingpkg'])->name('bookingpkg');
 
 Route::get('payment', [PaymentController::class,'payment'])->name('payment');
+
+Route::get('winners', [WinnersController::class,'winners'])->name('winners');
