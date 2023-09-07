@@ -412,3 +412,360 @@
     max-width: 80%; /* Set the maximum width as a percentage of the screen width */
     max-height: 80vh; /* Set the maximum height as a percentage of the viewport height */
 }
+ /*contest detail */
+.rounded-img {
+    background-color: #eee;
+    border-radius: 50%;
+    display: block;
+    overflow: hidden;
+    position: relative;
+  }
+
+  .view-css {
+    position: relative;
+    box-sizing: border-box;
+  }
+
+  .view_css {
+    color: #767676;
+    font-size: 14px;
+    width: -moz-fit-content;
+    width: fit-content;
+    margin-block: 0;
+  }
+
+
+  .view-no {
+    font-weight: 500;
+    box-sizing: border-box;
+  }
+
+  .vote-css {
+    position: relative;
+    box-sizing: border-box;
+  }
+
+  .vote_css {
+    color: #767676;
+    font-size: 14px;
+    width: -moz-fit-content;
+    width: fit-content;
+    margin-block: 0;
+  }
+
+
+  .vote-no {
+    font-weight: 500;
+    box-sizing: border-box;
+  }
+
+  /*try header *
+  .IDj6P {
+    top: 0;
+  }
+  .voTTC {
+    position: sticky;
+    z-index: 1;
+    box-sizing: border-box;
+  }
+  .xEohS {
+    border-top-left-radius: 4px;
+    border-top-right-radius: 4px;
+  }
+  .mm8Y2 {
+    align-items: center;
+    background-color: #fff;
+    display: flex;
+    gap: 8px;
+    padding-block: 13px;
+  }
+  .M5vdR {
+    padding-inline: var(--grid-container-inline-padding);
+  }
+  .GizhZ {
+    flex-basis: 200px;
+    flex-grow: 1;
+    min-width: 0;
+    box-sizing: border-box;
+  }
+  .rNOZR {
+    display: block;
+  }
+  .MssrA {
+    align-items: center;
+    display: flex;
+    gap: 8px;
+    box-sizing: border-box;
+  }
+  .ZNlY9 {
+    display: inline-block;
+  }
+  .WcgCR {
+    display: inline-block;
+    vertical-align: middle;
+  }
+  .sRm3U {
+    position: relative;
+  }
+  .D1hjc {
+    background-color: #eee;
+    border-radius: 50%;
+    display: block;
+    overflow: hidden;
+    position: relative;
+  }
+  .sRm3U::after {
+    border: 1px solid #0000000d;
+    border-radius: 50%;
+    content: "";
+    inset: 0;
+    pointer-events: none;
+    position: absolute;
+  }
+
+  .TO_TN {
+    display: flex;
+    flex-direction: column;
+    line-height: 1.35;
+    min-width: 0;
+    box-sizing: border-box;
+  }
+
+  .N2odk {
+    display: block;
+    font-size: 15px;
+  }
+
+  .RZQOk {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+  .KHq0c {
+    font-weight: 500;
+  }
+  .eziW_ {
+    color: inherit;
+    text-decoration: none;
+  }
+
+
+  .AVon2 {
+    font-size: 11px;
+    letter-spacing: .02em;
+    opacity: .9;
+  }
+  .RZQOk {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    box-sizing: border-box;
+  }
+  .J8PMN {
+    color: #767676;
+  }
+
+  .eziW_ {
+    color: inherit;
+    text-decoration: none;
+    box-sizing: border-box;
+  }
+
+
+  .EdCFo {
+    display: flex;
+    gap: 8px;
+    box-sizing: border-box;
+  }
+  ._x3he {
+    align-items: center;
+    display: inline-flex;
+  }
+  .CwMIr {
+    background-color: #fff;
+    border-color: #d1d1d1;
+    color: #767676;
+  }
+  .EzsBC {
+    font-size: 14px;
+    height: 32px;
+    line-height: 30px;
+    padding: 0 11px;
+  }
+  .DQBsa {
+    box-shadow: 0 1px 1px #0000000a;
+  }
+  .p1cWU {
+    fill: currentColor;
+    border: 1px solid #0000;
+      border-top-color: rgba(0, 0, 0, 0);
+      border-right-color: rgba(0, 0, 0, 0);
+      border-bottom-color: rgba(0, 0, 0, 0);
+      border-left-color: rgba(0, 0, 0, 0);
+    border-radius: 4px;
+    display: inline-block;
+    text-align: center;
+    text-decoration: none;
+    transition: all .1s ease-in-out;
+    -webkit-user-select: none;
+    user-select: none;
+    white-space: nowrap;
+  }
+  .KHq0c {
+    font-weight: 500;
+  }
+  button {
+    color: inherit;
+    cursor: pointer;
+  }
+  button, select {
+    text-transform: none;
+  }
+  button, input {
+    overflow: visible;
+  }
+  button, input, optgroup, select, textarea {
+    font-family: inherit;
+    font-size: 100%;
+    line-height: 1.15;
+    margin: 0;
+    box-sizing: border-box;
+  }
+
+
+  .TrVF8 {
+    height: 16px;
+    position: relative;
+    width: 16px;
+    box-sizing: border-box;
+  }
+
+/*2nd button
+
+.xFNhr {
+    align-items: center;
+    display: inline-flex;
+  }
+  .CwMIr {
+    background-color: #fff;
+    border-color: #d1d1d1;
+    color: #767676;
+  }
+  .EzsBC {
+    font-size: 14px;
+    height: 32px;
+    line-height: 30px;
+    padding: 0 11px;
+  }
+  .DQBsa {
+    box-shadow: 0 1px 1px #0000000a;
+  }
+  .p1cWU {
+    fill: currentColor;
+    border: 1px solid #0000;
+      border-top-color: rgba(0, 0, 0, 0);
+      border-right-color: rgba(0, 0, 0, 0);
+      border-bottom-color: rgba(0, 0, 0, 0);
+      border-left-color: rgba(0, 0, 0, 0);
+    border-radius: 4px;
+    display: inline-block;
+    text-align: center;
+    text-decoration: none;
+    transition: all .1s ease-in-out;
+    -webkit-user-select: none;
+    user-select: none;
+    white-space: nowrap;
+  }
+  .KHq0c {
+    font-weight: 500;
+  }
+  .jpBZ0 {
+    background-color: initial;
+    border: none;
+    font-weight: inherit;
+    padding: 0;
+    text-align: inherit;
+  }
+  [type="button"], [type="reset"], [type="submit"], button {
+    -webkit-appearance: button;
+  }
+  button, input, optgroup, select, textarea {
+    line-height: inherit;
+  }
+  button {
+    color: inherit;
+    cursor: pointer;
+  }
+  button, select {
+    text-transform: none;
+  }
+  button, input {
+    overflow: visible;
+  }
+
+  .utUL6 {
+    height: 16px;
+    position: relative;
+    width: 16px;
+    box-sizing: border-box;
+  }
+
+  /*download button
+  .sBV1O {
+    display: flex;
+    box-sizing: border-box;
+  }
+  .lT8_y {
+    width: 100%;
+  }
+  .V6yz9 {
+    border-bottom-right-radius: 0;
+    border-top-right-radius: 0;
+  }
+  .yn5eT {
+    display: inline-flex;
+    justify-content: center;
+  }
+  .slPFO {
+    background-color: #3cb46e;
+    color: #fff;
+  }
+  .EzsBC {
+    font-size: 14px;
+    height: 32px;
+    line-height: 30px;
+    padding: 0 11px;
+  }
+  .DQBsa {
+    box-shadow: 0 1px 1px #0000000a;
+  }
+  .p1cWU {
+    fill: currentColor;
+    border: 1px solid #0000;
+    border-radius: 4px;
+      border-top-right-radius: 4px;
+      border-bottom-right-radius: 4px;
+    display: inline-block;
+    text-align: center;
+    text-decoration: none;
+    transition: all .1s ease-in-out;
+    -webkit-user-select: none;
+    user-select: none;
+    white-space: nowrap;
+  }
+  .KHq0c {
+    font-weight: 500;
+  }
+  .TaWJf {
+    display: inline;
+    box-sizing: border-box;
+  }
+  ._8xC12 {
+    background-color: #3cb46e;
+    opacity: .5;
+    width: 1px;
+    box-sizing: border-box;
+  }
+*/
+
+

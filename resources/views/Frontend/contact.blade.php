@@ -50,21 +50,24 @@
                         <input id="email" class="form-control"type="text" placeholder="Email address">
                     </div>
                 </div>
-                <div class="row    mt-3">
+                <div class="row  mt-3">
                     <div class=" col-lg-6 col-sm-6 col-md-6">
                         <input id="phone" class="form-control"type="number" placeholder="Phone">
                    </div>
                     <div class=" col-lg-6 col-sm-6 col-md-6 ">
                         <input id="subject" class="form-control"type="text" placeholder="Subject ">
                     </div>
-                    <div class=" col-lg-12 col-sm-12 col-md-12 mt-3">
-                            <input id="message" class="form-control"type="text" placeholder="Send Message ">
-                        </div>
+
                     </div>
                     <br>
-                    <div class="d-flex">
-                    <button class="btn btn-danger text-light  ms-auto">Send Messages</button>
-                    </div>
+                    <div class="">
+
+                        <textarea class="form-control" id="message-text" placeholder="Send Message "></textarea>
+                      </div>
+                      <br>
+                    <div class=" d-flex">
+                        <button class="btn btn-danger text-light  ms-auto">Send Messages</button>
+                        </div>
 
 
                 </div>
