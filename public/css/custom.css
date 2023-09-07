@@ -459,4 +459,26 @@
     box-sizing: border-box;
   }
 
+/* custom.css */
 
+/* Custom button styles */
+.custom-button {
+    border-radius: 5px;
+/* Add any other custom styles you need */
+    align-items: center;
+    display: inline-flex;
+    border: 1px solid #0000;
+    color: #555;
+    font-size: 14px;
+    height: 35px;
+    line-height: 30px;
+    padding: 10px 15px;
+}
+/* Define styles for button hover and focus states (optional)    */
+.custom-button:hover {
+    background-color: #ffffffe6;
+}
+
+.custom-button:focus {
+    box-shadow: 0 1px 2px #0000000f;
+}

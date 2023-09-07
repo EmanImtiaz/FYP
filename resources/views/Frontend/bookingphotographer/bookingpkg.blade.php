@@ -3,6 +3,8 @@
 
 
 
+
+
 @endsection
 
 
@@ -99,7 +101,7 @@
 </div>
 -->
 
-<!-- script for modal -->
+<!-- script for modal --
 <script>
     const modalImage1 = document.getElementById('modalImage1');
     const cardImages = document.querySelectorAll('.card-img-top');

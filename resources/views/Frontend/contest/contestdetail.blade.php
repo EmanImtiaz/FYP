@@ -20,8 +20,12 @@
             <div class="position-relative">
                 <!-- Collection Icons (Font Awesome) on the top right -->
                 <div class="position-absolute top-0 end-0 m-3  hidden-on-hover">
-                    <i class="fa-solid fa-thumbs-up fa-2xl text-light"></i>
-                    <i class="fa-solid fa-thumbs-down fa-2xl text-light"></i>
+                    <button class="btn btn-light custom-button ">
+                        <i class="fa-solid fa-thumbs-up fa-lg text-dark"></i>
+                    </button>
+                    <button class="btn btn-light custom-button ">
+                        <i class="fa-solid fa-thumbs-down fa-lg text-dark"></i>
+                    </button>
                 </div>
                 <img src="https://images.unsplash.com/photo-1693900269364-d99aa0385c8e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHw0M3x8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=60" class="card-img-top" alt="Card Image">
             </div>
@@ -74,8 +78,12 @@ function hideInfo(card) {
                 </div>
                 <!-- Collection Icons (Font Awesome) on the top right -->
                 <div class="position-absolute top-0 end-0 m-4">
-                    <i class="fa-solid fa-thumbs-up fa-2xl text-dark"></i>
-                    <i class="fa-solid fa-thumbs-down fa-2xl text-dark"></i>
+                    <button class="btn btn-light custom-button ">
+                        <i class="fa-solid fa-thumbs-up fa-lg text-dark"></i>
+                    </button>
+                    <button class="btn btn-light custom-button ">
+                        <i class="fa-solid fa-thumbs-down fa-lg text-dark"></i>
+                    </button>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
             </div>
