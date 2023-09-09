@@ -3,7 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\AboutController;
-use App\Http\Controllers\AdminPanelController;
+
 use App\Http\Controllers\AllPortfolioController;
 use App\Http\Controllers\ContestDetailController;
 use App\Http\Controllers\ContestFormController;
@@ -31,7 +31,7 @@ Route::get('photographerprofile',[PhotographerProfileController::class,'photogra
 
 Route::get('userprofileupdate',[UserProfileUpdateController::class,'userprofileupdate'])->name('userprofileupdate');
 
-Route::get('admin',[AdminPanelController::class,'adminpanel'])->name('adminpanel');
+
 
 Route::get('contest',[ExplorePhotoContestController::class,'explorephotocontest'])->name('explorephotocontest');
 
