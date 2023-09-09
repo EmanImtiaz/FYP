@@ -1,7 +1,33 @@
 @extends('layout.master')
 @section('kuchb')
 
+<style>
+    #calendar-container {
+      width: 305px;
+    }
+  </style>
+<div class="container py-4">
+    <div class="row">
+        <div class="col-lg-5">
+            <h3>Select Date</h3>
 
+
+                  <div id="calendar-container">
+                    <input type="text" id="datepicker" class="form-control" placeholder="Select a date" readonly>
+                  </div>
+                </div>
+    </div>
+</div>
+
+
+                <script>
+                    document.addEventListener('DOMContentLoaded', function () {
+                      const datepicker = $('#datepicker').datepicker({
+                        multidate: true, // Enable multi-date selection
+                        format: 'yyyy-mm-dd', // Specify your desired date format
+                      }).data('datepicker');
+                    });
+                  </script>
 
 
 
