@@ -96,7 +96,7 @@
             </div>
         </div>
 </div>
-
+<!-- for calendar -->
 <script>
     document.addEventListener("DOMContentLoaded", function () {
       flatpickr("#calendar", {

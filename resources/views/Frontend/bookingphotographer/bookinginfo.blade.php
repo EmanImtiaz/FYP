@@ -19,11 +19,13 @@
     </div>
   </div>
 
+
   <script>
-    document.addEventListener("DOMContentLoaded", function () {
-      flatpickr("#calendar", {
-        dateFormat: "Y-m-d",
-      });
+    document.addEventListener('DOMContentLoaded', function () {
+      const datepicker = $('#calendar').datepicker({
+        multidate: true, // Enable multi-date selection
+        format: 'yyyy-mm-dd', // Specify your desired date format
+      }).data('calendar');
     });
   </script>
 
