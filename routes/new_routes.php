@@ -31,8 +31,9 @@ Route::get('photographerprofile',[PhotographerProfileController::class,'photogra
 
 Route::get('userprofileupdate',[UserProfileUpdateController::class,'userprofileupdate'])->name('userprofileupdate');
 
-Route::get('adminpanel',[AdminPanelController::class,'adminpanel'])->name('adminpanel');
+Route::get('admin',[AdminPanelController::class,'adminpanel'])->name('adminpanel');
 
-Route::get('explorephotocontest',[ExplorePhotoContestController::class,'explorephotocontest'])->name('explorephotocontest');
+Route::get('contest',[ExplorePhotoContestController::class,'explorephotocontest'])->name('explorephotocontest');
 
 Route::get('contestdetail',[ContestDetailController::class,'contestdetail'])->name('contestdetail');
+

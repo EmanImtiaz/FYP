@@ -605,7 +605,7 @@
 			</nav>
 			<!-- partial -->
 
-@yield('admin')
+@yield('')
 
 
 	   <!-- partial:partials/_footer.html -->
