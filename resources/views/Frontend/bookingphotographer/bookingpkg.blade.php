@@ -29,7 +29,33 @@
                     });
                   </script>
 
-
+<title>Your Page Title</title>
+<meta name="description" content="A concise and engaging description of your page's content">
+<meta name="keywords" content="keyword1, keyword2, keyword3">
+<link rel="canonical" href="https://www.example.com/your-page-url">
+<!-- Open Graph Tags (for social media) -->
+<meta property="og:title" content="Your Page Title">
+<meta property="og:description" content="A concise and engaging description of your page's content">
+<meta property="og:image" content="https://www.example.com/your-image.jpg">
+<meta property="og:url" content="https://www.example.com/your-page-url">
+<!-- Twitter Card Tags (for Twitter) -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@yourtwitterhandle">
+<meta name="twitter:title" content="Your Page Title">
+<meta name="twitter:description" content="A concise and engaging description of your page's content">
+<meta name="twitter:image" content="https://www.example.com/your-image.jpg">
+<!-- Bootstrap CSS -->
+<link rel="stylesheet" href="path-to-bootstrap.css">
+</head>
+<body>
+<!-- Your Bootstrap Content Goes Here -->
+<div class="container">
+    <h1>Welcome to My Website</h1>
+    <p>This is some Bootstrap-styled content on your page.</p>
+    <img src="image.jpg" alt="Description of the image">
+</div>
+<!-- Bootstrap JavaScript (optional) -->
+<script src="path-to-bootstrap.js"></script>
 
 @endsection
 

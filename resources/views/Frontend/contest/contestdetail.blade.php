@@ -41,7 +41,7 @@
             </div>
         </div>
     </div>
-    <div class="col-md-5 pb-3 pl-2">
+    <div class="col-md-6 pb-3 pl-2">
         <div class="card position-relative  " onmouseover="showInfo(this)" onmouseout="hideInfo(this)">
             <div class="position-relative">
                 <!-- Collection Icons (Font Awesome) on the top right -->
@@ -93,7 +93,7 @@
             </div>
         </div>
     </div>
-    <div class="col-md-5 pb-3 pl-2">
+    <div class="col-md-6 pb-3 pl-2">
         <div class="card position-relative  " onmouseover="showInfo(this)" onmouseout="hideInfo(this)">
             <div class="position-relative">
                 <!-- Collection Icons (Font Awesome) on the top right -->
@@ -105,7 +105,7 @@
                         <i class="fa-solid fa-thumbs-down fa-lg text-dark"></i>
                     </button>
                 </div>
-                <img src="https://images.unsplash.com/photo-1693661925821-bc241be1cf69?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHwzMnx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=60" class="card-img-top w-100 h-100" alt="Card Image">
+                <img src="https://images.unsplash.com/photo-1693795196345-8292e8d5cadb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHwzfHx8ZW58MHx8fHx8&auto=format&fit=crop&w=600&q=60" class="card-img-top w-100 h-100" alt="Card Image">
             </div>
             <div class="card-body position-absolute bottom-0 start-0 p-3 hidden-on-hover">
                 <!-- Photographer Profile Picture and Name on the bottom left -->
@@ -197,7 +197,7 @@
             </div>
         </div>
     </div>
-    <div class="col-md-5 pb-3 pl-2">
+    <div class="col-md-6 pb-3 pl-2">
         <div class="card position-relative  " onmouseover="showInfo(this)" onmouseout="hideInfo(this)">
             <div class="position-relative">
                 <!-- Collection Icons (Font Awesome) on the top right -->
@@ -404,8 +404,5 @@ function hideInfo(card) {
         });
     });
 </script>
-
-
-
 
 @endsection
