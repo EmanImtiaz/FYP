@@ -19,10 +19,18 @@
 
                 <tr>
                     <td>
-                        <label for="cod" class="form-label">Cash on Delivery</label>
+                        <label for="cod" class="form-label">Cash </label>
                     </td>
                     <td>
                         <input type="radio" id="cod" name="paymentMethod" class="form-check-input" value="cod">
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label for="cod" class="form-label">jazz cash </label>
+                    </td>
+                    <td>
+                        <input type="radio" id="jazzcash" name="paymentMethod" class="form-check-input" value="cod">
                     </td>
                 </tr>
             </tbody>

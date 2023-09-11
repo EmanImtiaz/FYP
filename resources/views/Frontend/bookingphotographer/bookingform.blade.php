@@ -14,7 +14,7 @@
 
 
                   <div id="calendar-container">
-                    <input type="text" id="calendar" class="form-control" placeholder="Select a date" readonly>
+                    <input type="text" id="datepicker" class="form-control" placeholder="Select a date" readonly>
                   </div>
                 </div>
 
@@ -98,10 +98,11 @@
 </div>
 <!-- for calendar -->
 <script>
-    document.addEventListener("DOMContentLoaded", function () {
-      flatpickr("#calendar", {
-        dateFormat: "Y-m-d",
-      });
+    document.addEventListener('DOMContentLoaded', function () {
+      const datepicker = $('#datepicker').datepicker({
+        multidate: true, // Enable multi-date selection
+        format: 'yyyy-mm-dd', // Specify your desired date format
+      }).data('datepicker');
     });
   </script>
 
