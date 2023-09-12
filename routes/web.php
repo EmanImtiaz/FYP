@@ -48,3 +48,7 @@ Route::get('bookingpkg', [BookingpkgController::class,'bookingpkg'])->name('book
 Route::get('payment', [PaymentController::class,'payment'])->name('payment');
 
 Route::get('winners', [WinnersController::class,'winners'])->name('winners');
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
