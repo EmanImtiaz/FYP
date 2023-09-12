@@ -8,7 +8,7 @@ use App\Http\Controllers\AllPortfolioController;
 use App\Http\Controllers\ContestDetailController;
 use App\Http\Controllers\ContestFormController;
 use App\Http\Controllers\ExplorePhotoContestController;
-use App\Http\Controllers\HomeController;
+use App\Http\Controllers\MainController;
 use App\Http\Controllers\PhotoContestController;
 use App\Http\Controllers\PhotographerProfileController;
 use App\Http\Controllers\PortfolioController;
@@ -23,7 +23,7 @@ Route::get('about',[AboutController::class,'about'])->name('about');
 
 Route::get('singlewinnerdetail',[SingleWinnerDetailsController::class,'singlewinnerdetail'])->name('singlewinnerdetail');
 
-Route::get('/',[HomeController::class,'home'])->name('home');
+Route::get('/',[MainController::class,'main'])->name('main');
 
 Route::get('allportfolio',[AllPortfolioController::class,'allportfolio'])->name('allportfolio');
 
