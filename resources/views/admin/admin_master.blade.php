@@ -363,7 +363,15 @@
 
 		<div class="page-wrapper">
 
-
+   @can('is_admin')
+        {{ __(' Hello Admin') }}
+        <h1>Admin area</h1>
+        <h2>User Area</h2>
+   @endcan
+   @can('is_user')
+   {{ __(' Hello User') }}
+   <h2>User Area</h2>
+   @endcan
 
 @yield('new')
 

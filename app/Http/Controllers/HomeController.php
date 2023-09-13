@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Gate;
 
 class HomeController extends Controller
 {
@@ -23,6 +24,16 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        return view('admin.admin_master');
+    }
+    public function adminpanel()
+    {
+       // if(Gate::allows('is_admin'))
+      //  {
+       //     return view('admin.admin_master');
+     //   }
+      //  else
+      //  abort(404);
+      return view('admin.admin_master');
     }
 }

@@ -2,6 +2,7 @@
 @section('kuchb')
 
 <!-- slider -->
+
 <div id="slider"class="carousel slide carousel-dark" class="carousel-fade" data-bs-ride="carousel">
     <div class="carousel-indicators">
         <button style="border-radius: 50%;" data-bs-target="#slider" class="active" data-bs-slide-to="0"></button>
@@ -46,6 +47,16 @@
         </div>
     </div>
 </section>
+
+<!-- slider dynamically -
+<div class="container">
+    {{-- @foreach ($sliders as $slider) --}}
+        <div class="slider-item">
+            {{-- <img src="{{ asset($slider->img) }}" alt="Slider Image"> --}}
+            Add other HTML elements for slider content if needed --
+        </div>--
+  {{-- //  @endforeach --> --}}
+</div>
 
 <!-- How It Works Section -->
 <section class="how-it-works text-light py-5 mt-3" style="background-color: #d32f2f;">

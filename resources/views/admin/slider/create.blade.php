@@ -8,7 +8,7 @@
 <div class="container">
     <div class="row">
         <div class="col-4">
-         <!--   <input id="priority" class="form-control"type="number" placeholder="priority">-->
+         <input id="priority" class="form-control"type="number" placeholder="priority">
         </div>
         <div class="col-4">
             <input type="file" name="img">
