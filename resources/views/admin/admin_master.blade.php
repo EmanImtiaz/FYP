@@ -63,19 +63,19 @@
           <li class="nav-item">
             <a class="nav-link" data-bs-toggle="collapse" href="#emails" role="button" aria-expanded="false" aria-controls="emails">
               <i class="link-icon" data-feather="mail"></i>
-              <span class="link-title">Email</span>
+              <span class="link-title">Location</span>
               <i class="link-arrow" data-feather="chevron-down"></i>
             </a>
             <div class="collapse" id="emails">
               <ul class="nav sub-menu">
                 <li class="nav-item">
-                  <a href="pages/email/inbox.html" class="nav-link">Inbox</a>
+                  <a href="{{ route('province.create') }}" class="nav-link">Province</a>
                 </li>
                 <li class="nav-item">
-                  <a href="pages/email/read.html" class="nav-link">Read</a>
+                  <a href="pages/email/read.html" class="nav-link">City</a>
                 </li>
                 <li class="nav-item">
-                  <a href="pages/email/compose.html" class="nav-link">Compose</a>
+                  <a href="pages/email/compose.html" class="nav-link">Town</a>
                 </li>
               </ul>
             </div>
@@ -363,15 +363,7 @@
 
 		<div class="page-wrapper">
 
-   @can('is_admin')
-        {{ __(' Hello Admin') }}
-        <h1>Admin area</h1>
-        <h2>User Area</h2>
-   @endcan
-   @can('is_user')
-   {{ __(' Hello User') }}
-   <h2>User Area</h2>
-   @endcan
+
 
 @yield('new')
 
