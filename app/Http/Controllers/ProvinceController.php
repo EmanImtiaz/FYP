@@ -9,8 +9,8 @@ class ProvinceController extends Controller
 {
     public function create()
     {
-
-       return view('admin.location.province.create');
+       $province=new Province;
+       return view('admin.location.province.create',compact('province'));
     }
 
     public function index()
@@ -23,43 +23,43 @@ class ProvinceController extends Controller
  {
     $data=$request->all();
 
- if($request->has('img'))
- {
-  $picture=$request->img;
-    $ext=$picture->getClientOriginalExtension();
-    $file_name=time().'.'.$ext;
-    $file_path='/assets/province/';
-    $picture->move(public_path().$file_path,$file_name);
+//if($request->has('img'))
+//{
+   // $picture=$request->img;
+  //  $ext=$picture->getClientOriginalExtension();
+   // $file_name=time().'.'.$ext;
+   // $file_path='/assets/slider/';
+   // $picture->move(public_path().$file_path,$file_name);
 
-    $data['img']=$file_path.$file_name;
-    Province::create($data);
+   // $data['img']=$file_path.$file_name;
+   Province::create($data);
 
     return redirect()->route('province.index');
  }
 
-}
     public function edit($id)
 {
    $province=Province::find($id);
    return view('admin.location.province.create',compact('province'));
 }
 
+
 public function update(Request $request,$id)
 {
     $province=Province::find($id);
    $data=$request->all();
 
-if($request->has('img'))
-{
-   $picture=$request->img;
-   $ext=$picture->getClientOriginalExtension();
-   $file_name=time().'.'.$ext;
-   $file_path='/assets/province/';
-   $picture->move(public_path().$file_path,$file_name);
+// if($request->has('img'))
+ //{
+ //  $picture=$request->img;
+  // $ext=$picture->getClientOriginalExtension();
+  // $file_name=time().'.'.$ext;
+  // $file_path='/assets/slider/';
+  // $picture->move(public_path().$file_path,$file_name);
 
-   $data['img']=$file_path.$file_name;
+  // $data['img']=$file_path.$file_name;
 
-}
+//}
    $province->update($data);
    return redirect()->route('province.index');
 }
@@ -69,8 +69,9 @@ if($request->has('img'))
      $data=$request->all();
 
      $province->delete();
-     return redirect()->route('.index');
+     return redirect()->route('province.index');
    }
 }
+
 
 

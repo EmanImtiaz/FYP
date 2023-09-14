@@ -72,10 +72,10 @@
                   <a href="{{ route('province.create') }}" class="nav-link">Province</a>
                 </li>
                 <li class="nav-item">
-                  <a href="pages/email/read.html" class="nav-link">City</a>
+                  <a href="{{ route('city.create') }}" class="nav-link">City</a>
                 </li>
                 <li class="nav-item">
-                  <a href="pages/email/compose.html" class="nav-link">Town</a>
+                  <a href="{{ route('town.create') }}" class="nav-link">Town</a>
                 </li>
               </ul>
             </div>

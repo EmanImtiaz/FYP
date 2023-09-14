@@ -8,7 +8,7 @@ use App\Http\Controllers\ResetController;
 use App\Http\Controllers\SignupController;
 use App\Http\Controllers\WinnersController;
 use App\Http\Controllers\HomeController;
-
+use App\Http\Controllers\AdminPanelController;
 use App\Http\Controllers\BookinginfoController;
 use App\Http\Controllers\BookingformController;
 use App\Http\Controllers\BookingpkgController;
