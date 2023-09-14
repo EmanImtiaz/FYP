@@ -2,38 +2,42 @@
 
 @section('new')
 
-<div class="container">
+<div class="text-center">
+    <h1>Slider Table</h1>
+    </div>
     <div class="text-end">
-        <a class="btn btn-info" href="{{  route('slider.create') }}">Create</a>
-        </div>
-        <table class="table table-striped table-responsive">
-            <thead class="bg-dark text-light">
-              <tr>
+        <a class="btn  btn-primary"href="{{route('slider.create')}}">Create</a>
+    </div>
+
+    <table class="container text-center table table-warning table-striped-columns table-striped table-border border-5 border-danger">
+        <thead class="table-dark">
+            <tr>
                 <th>#</th>
                 <th>Image</th>
-              <th>Priority</th>
-                <th>Action</th>
-              </tr>
-            </thead>
-            <tbody>
-                @foreach ($slider as $key=> $slider)
+                <th>Priority</th>
+                <th>action</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach ($slider as $key=>$slider)
+            <tr>
+            {{-- <div class="col-4 text-center card card-shadow mt-5 gx-3 "> --}}
+                <td>{{$slider->id}}</td>
+               <td> <img src="{{$slider->img}}" width="100"></td>
+               <td> {{$slider->priority}}</td>
+                    {{-- <div class="text-center"> --}}
+                        <td><a class="btn btn-primary" href="{{ route('slider.edit',['id'=>$slider->id]) }}">Edit</a>
+                       <a class="btn btn-danger" href="{{ route('slider.delete',['id'=>$slider->id]) }}">delete</a></td>
+                    {{-- </div> --}}
+                    {{-- </div> --}}
+             @endforeach
 
-                <tr>
-                    <td>{{  ++$key }}</td>
-                    <td><img width="100" height="100" src="{{ $slider->img }}" alt=""></td>
-                   <td>{{ $slider->priority }}</td>
-                   <span> <td><a class="btn btn-primary" href="{{ route('slider.create',$slider->id) }}">Edit</a></td></span>
-                 <!--  <span> <td><a class="btn btn-success" href="{{ route('slider.update',$slider->id) }}">Update</a></td></span>-->
-                   <span> <td><a class="btn btn-danger" href="{{ route('slider.delete',$slider->id) }}">Delete</a></td></span>
+        </tr>
 
-                  </tr>
+    </tbody>
+</table>
 
-                @endforeach
-            </tbody>
-        </table>
-        </div>
-    </div>
-</div>
+
 
 
 @endsection

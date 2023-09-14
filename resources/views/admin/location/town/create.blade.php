@@ -2,15 +2,17 @@
 
 @section('new')
 
+    <div>
+        <h1 class="text-center">{{$town->id!=null?'update':'Create'}}Town</h1>
+        </div>
 <div class="cotainer py-5">
-<form action="{{ route('province.index' )}}" method="post" enctype="multipart/form-data">
+<form action="{{$town->id !=null?route('town.update',['id'=>$town->id]):route('town.store')}}" method="post" enctype="multipart/form-data">
 @csrf
 <div class="container">
     <div class="row">
         <div class="col-6">
-            <label for="fullName" class="form-label">Province Name</label>
-            <input type="text" class="form-control" id="fullName" name="fullName" required>
-
+            <label for="town_name" class="form-label">Town Name</label>
+            <input id="town_name" class="form-control" type="text" name="town_name" value={{$town->town_name}}  >
         </div>
 
         <div class="col-6 text-start">

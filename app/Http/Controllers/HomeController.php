@@ -28,12 +28,12 @@ class HomeController extends Controller
     }
     public function adminpanel()
     {
-        if(Gate::allows('is_admin'))
-        {
-           return view('admin.admin_master');
-        }
-        else{
-       abort(404);}
-     // return view('admin.admin_master');
+       // if(Gate::allows('is_admin'))
+      //  {
+       //     return view('admin.admin_master');
+     //   }
+      //  else
+      //  abort(404);
+      return view('admin.admin_master');
     }
 }

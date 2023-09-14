@@ -37,6 +37,7 @@ Route::group(['prefix'=>'province'],function()
     Route::get('/create',[ProvinceController::class,'create'])->name('province.create');
     Route::post('/store',[ProvinceController::class,'store'])->name('province.store');
     Route::get('/edit/{id}',[ProvinceController::class,'edit'])->name('province.edit');
+    Route::post('/update/{id}',[ProvinceController::class,'update'])->name('province.update');
     Route::get('/delete/{id}',[ProvinceController::class,'delete'])->name('province.delete');
 
 });
@@ -50,6 +51,7 @@ Route::group(['prefix'=>'city'],function()
     Route::get('/create',[CityController::class,'create'])->name('city.create');
     Route::post('/store',[CityController::class,'store'])->name('city.store');
     Route::get('/edit/{id}',[CityController::class,'edit'])->name('city.edit');
+    Route::post('/update/{id}',[CityController::class,'update'])->name('city.update');
     Route::get('/delete/{id}',[CityController::class,'delete'])->name('city.delete');
 
 });
@@ -63,6 +65,7 @@ Route::group(['prefix'=>'town'],function()
     Route::get('/create',[TownController::class,'create'])->name('town.create');
     Route::post('/store',[TownController::class,'store'])->name('town.store');
     Route::get('/edit/{id}',[TownController::class,'edit'])->name('town.edit');
+    Route::post('/update/{id}',[TownController::class,'update'])->name('town.update');
     Route::get('/delete/{id}',[TownController::class,'delete'])->name('town.delete');
 
 });

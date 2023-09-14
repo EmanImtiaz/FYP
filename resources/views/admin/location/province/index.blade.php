@@ -1,4 +1,3 @@
-
 @extends('admin.admin_master')
 
 @section('new')
@@ -22,8 +21,8 @@
                     <td>{{  ++$key }}</td>
 
                    <td>{{ $province->province_name }}</td>
-                   <span> <td><a class="btn btn-primary" href="{{ route('province.create',$province->id) }}">Edit</a></td></span>
-                   <span> <td><a class="btn btn-danger" href="{{ route('province.delete',$province->id) }}">Delete</a></td></span>
+                   <td><a class="btn btn-primary" href="{{ route('province.edit',['id'=>$province->id]) }}">Edit</a>
+                   <a class="btn btn-danger" href="{{ route('province.delete',['id'=>$province->id]) }}">Delete</a></td>
 
                   </tr>
 

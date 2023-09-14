@@ -9,8 +9,8 @@ class SliderController extends Controller
 {
     public function create()
     {
-
-       return view('admin.slider.create');
+       $slider=new Slider;
+       return view('admin.slider.create',compact('slider'));
     }
 
     public function index()
