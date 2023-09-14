@@ -14,6 +14,7 @@ use App\Http\Controllers\BookingformController;
 use App\Http\Controllers\BookingpkgController;
 use App\Http\Controllers\PaymentController;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Auth;
 
 /*
 |--------------------------------------------------------------------------
