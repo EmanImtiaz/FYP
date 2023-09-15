@@ -18,32 +18,14 @@
                         @foreach ($provinces as $province)
                         <option value="{{$province->id}}">{{$province->province_name}}</option>
                         @endforeach
-                </div>
+                    </div>
 
-                <div class="col-6 text-start">
-                    <input type="Submit" value="Save" class="btn btn-success">
+                    <div class="col-6 text-start">
+                        <input type="Submit" value="Save" class="btn btn-success">
+                    </div>
                 </div>
             </div>
-        </div>
-    </form>
-</div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+        </form>
+    </div>
 @endsection
 
