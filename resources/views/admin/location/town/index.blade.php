@@ -16,7 +16,7 @@
               </tr>
             </thead>
             <tbody>
-                @foreach ($town as $key=> $town)
+                @foreach ($towns as $key=> $town)
 
                 <tr>
                     <td>{{  ++$key }}</td>
