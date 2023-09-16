@@ -13,44 +13,6 @@
     </div>
 </div>
 
-<!-- -
-<div class="py-4 text-center">
-    <h3>Be inspired by rewarded creators, you could be next</h3>
-    <div class="row py-4">
-        <div class="col-lg-3 col-md-3 col-sm-12">
-            <div class="card">
-                <img src="https://www.viewbug.com/media/mediafiles/2022/06/07/97711802_medium.jpg" alt="">
-                <div class="card-body">
-                    <h5 class="card-title"> Congratulations @Soulcraft</h5>
-                    <p>“Thanks so much for my drone prize! So excited to take it out on location ”</p></div>
-            </div>
-        </div>
-        <div class="col-lg-3 col-md-3 col-sm-12">
-            <div class="card">
-                <img src="https://www.viewbug.com/media/mediafiles/2022/06/07/97711802_medium.jpg" alt="">
-                <div class="card-body">
-                    <h5 class="card-title"> Congratulations @Soulcraft</h5>
-                    <p>“Thanks so much for my drone prize! So excited to take it out on location ”</p></div>
-            </div>
-        </div>
-        <div class="col-lg-3 col-md-3 col-sm-12">
-            <div class="card">
-                <img src="https://www.viewbug.com/media/mediafiles/2022/06/07/97711802_medium.jpg" alt="">
-                <div class="card-body">
-                    <h5 class="card-title"> Congratulations @Soulcraft</h5>
-                    <p>“Thanks so much for my drone prize! So excited to take it out on location ”</p></div>
-            </div>
-        </div>
-        <div class="col-lg-3 col-md-3 col-sm-12">
-            <div class="card">
-                <img src="https://www.viewbug.com/media/mediafiles/2022/06/07/97711802_medium.jpg" alt="">
-                <div class="card-body">
-                    <h5 class="card-title"> Congratulations @Soulcraft</h5>
-                    <p>“Thanks so much for my drone prize! So excited to take it out on location ”</p></div>
-            </div>
-        </div>
-    </div>
-</div>
 
 <!-- -->
 <div class="container py-5 justify-content-center">
