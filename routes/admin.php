@@ -3,9 +3,11 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminPanelController;
 use App\Http\Controllers\CityController;
+use App\Http\Controllers\PhotographerController;
 use App\Http\Controllers\ProvinceController;
 use App\Http\Controllers\SliderController;
 use App\Http\Controllers\TownController;
+use App\Http\Controllers\UserController;
 
 // Route::get('admin',[AdminPanelController::class,'adminpanel'])->name('adminpanel');
 
@@ -73,3 +75,12 @@ Route::group(['prefix'=>'town'],function()
 
 
 });
+Route::group(['prefix'=>'photographer'],function()
+{
+
+    Route::get('/',[PhotographerController::class,'photographerpanel'])->name('photographer');
+
+});
+
+
+

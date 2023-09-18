@@ -33,6 +33,10 @@ class AuthServiceProvider extends ServiceProvider
         {
             return $user->role=='user';
         });
+        $gate->define('is_photographer',function($user)
+        {
+            return $user->role=='photographer';
+        });
         //
     }
 }

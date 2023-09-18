@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\Gate;
 class HomeController extends Controller
 {
     /**
-     * 
+     *
      * Create a new controller instance.
      *
      * @return void
@@ -36,5 +36,13 @@ class HomeController extends Controller
         else
        abort(404);
       //return view('admin.admin_master');
+    }
+    
+     public function userpanel()
+    {
+
+          // return view('fronted.main');
+          abort(404);
+
     }
 }

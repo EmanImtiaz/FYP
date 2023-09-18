@@ -55,4 +55,6 @@ Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-Route::get('admin',[HomeController::class,'adminpanel']);
+//Route::get('admin',[HomeController::class,'adminpanel']);
+//Route::get('photographer',[HomeController::class,'photographerpanel']);
+//Route::get('user',[HomeController::class,'userpanel']);
