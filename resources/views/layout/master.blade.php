@@ -23,6 +23,11 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.5.2/dist/js/bootstrap.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-element-bundle.min.js"></script>
 
+<!-- Slick Slider scripts  -->
+<link rel="stylesheet" type="text/css" href="path/to/slick.css"/>
+<script src="path/to/jquery.js"></script>
+<script src="path/to/slick.min.js"></script>
+   
 
     <!-- Include Bootstrap JS and Datepicker -->
   <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>

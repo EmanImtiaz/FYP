@@ -12,11 +12,23 @@ class MainController extends Controller
     {
         return view('Frontend.main');
     }
-    public function index()
+
+   // public function index()
+// {
+ //   $sliders = Slider::orderBy('priority', 'asc')->get();
+ //   return view('main', compact('sliders'));
+  //  return view('main')->with('sliders', $sliders);
+
+// }
+
+public function index()
 {
-    $sliders = Slider::orderBy('priority')->get();
-    return view('main', compact('sliders'));
-}
+    // Fetch sliders ordered by priority
+    $sliders = Slider::orderBy('priority', 'asc')->get();
+
+    // Pass the sliders to the home page view
+    return view('home', compact('sliders'));
 }
 
+}
 

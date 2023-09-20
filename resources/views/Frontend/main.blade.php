@@ -1,8 +1,17 @@
 @extends('layout.master')
 @section('kuchb')
 
-<!-- slider -->
+<!-- slider --
 
+    <div class="slider">
+  {{--  @foreach ($sliders as $slider)
+        <div>
+            <img src="{{ asset($slider->img) }}" alt="Slider Image">
+            <p>Priority: {{ $slider->priority }}</p>
+        </div>
+    @endforeach --}}
+</div>-->
+<!--
 <div id="slider"class="carousel slide carousel-dark" class="carousel-fade" data-bs-ride="carousel">
     <div class="carousel-indicators">
         <button style="border-radius: 50%;" data-bs-target="#slider" class="active" data-bs-slide-to="0"></button>
@@ -15,7 +24,7 @@
             <div class="carousel-caption justify-content-center py-5">
                 <h1 class="display-4 text-danger">Discover, Book, and Celebrate Photography Excellence</h1>
                 <p class="lead text-danger">Empowering Photographers, Connecting Clients, and Honoring Creativity</p>
-                <a href="{{  route('signup') }}" class="btn btn-danger">Join Us Today</a>
+       {{--        <a href="{{  route('signup') }}" class="btn btn-danger">Join Us Today</a> --}}
             </div>
         </div>
         <div class="carousel-item">
@@ -48,6 +57,7 @@
     </div>
 </section>
 
+
 <!-- slider dynamically -
 <div class="container">
     {{-- @foreach ($sliders as $slider) --}}
@@ -56,7 +66,17 @@
             Add other HTML elements for slider content if needed --
         </div>--
   {{-- //  @endforeach --> --}}
-</div>
+
+  <!-- 2nd --
+  </div>
+  <div class="sliders">
+      {{--- @foreach ($sliders as $slider) - }}
+            <div class="slider-item">
+           {{--      <img src="{{ asset($slider->img) }}" alt="Slider Image">  --}}
+       {{---    <p>Priority: {{ $slider->priority }}</p>    --}}
+            </div>
+      {{---     @endforeach    --}}
+    </div>  -->
 
 <!-- How It Works Section -->
 <section class="how-it-works text-light py-5 mt-3" style="background-color: #d32f2f;">
@@ -206,6 +226,19 @@
       },
     });
   </script>
+
+  <!-- Initialize the Slick Slider using jQuery -->
+<script>
+    $(document).ready(function(){
+        $('.slider').slick({
+            // Slick Slider settings and options
+            // For example, you can set autoplay, arrows, etc.
+            autoplay: true,
+            arrows: true,
+            // Add other settings as needed
+        });
+    });
+</script>
 @endsection
 
 

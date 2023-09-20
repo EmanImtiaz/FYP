@@ -5,14 +5,9 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class City extends Model
+class PhotosContest extends Model
 {
     use HasFactory;
 
-    protected $fillable=['id','city_name','province_id'];
-
-  
+    protected $fillable=['id','contest_img','likes','dislikes','photographer_name','profile_img'];
 }
-
-
-
