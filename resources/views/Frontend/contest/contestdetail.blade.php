@@ -93,7 +93,7 @@
             </div>
         </div>
     </div>
-    <div class="col-md-6 pb-3 pl-2">
+    <div class="col-md-3 pb-3 pl-2">
         <div class="card position-relative  " onmouseover="showInfo(this)" onmouseout="hideInfo(this)">
             <div class="position-relative">
                 <!-- Collection Icons (Font Awesome) on the top right -->
@@ -119,7 +119,7 @@
             </div>
         </div>
     </div>
-    <div class="col-md-3 pb-3 pl-2">
+    <div class="col-md-6 pb-3 pl-2">
         <div class="card position-relative  " onmouseover="showInfo(this)" onmouseout="hideInfo(this)">
             <div class="position-relative">
                 <!-- Collection Icons (Font Awesome) on the top right -->

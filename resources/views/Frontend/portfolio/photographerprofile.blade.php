@@ -121,7 +121,7 @@
         <div class="plan-section">
             <div class="plan-basic">
             <h2 class="plan-heading">Birthday</h2>
-            <h1 class="plan-price"><span class="rupees">Rs.</span>30,000</h1>
+            <h1 class="plan-price"><span class="rupees">Rs.</span>3000</h1>
             <ul class="plan-features">
                 <li class="plan-item">2 hours coverage</li>
                 <li class="plan-item">Birthhday session</li>
@@ -134,7 +134,7 @@
             <div class="plan-section">
                 <div class="plan-basic">
                 <h2 class="plan-heading">Engagement</h2>
-                <h1 class="plan-price"><span class="rupees">Rs.</span>50,000</h1>
+                <h1 class="plan-price"><span class="rupees">Rs.</span>5000</h1>
                 <ul class="plan-features">
                     <li class="plan-item">2 hours coverage</li>
                     <li class="plan-item">Engagement session</li>
@@ -148,7 +148,7 @@
                 <div class="plan-section">
                     <div class="plan-basic">
                     <h2 class="plan-heading">Wedding</h2>
-                    <h3 class="plan-price"><span class="rupees">Rs.</span>80,000</h3>
+                    <h3 class="plan-price"><span class="rupees">Rs.</span>8000</h3>
                     <ul class="plan-features">
                         <li class="plan-item">8 hours coverage</li>
                         <li class="plan-item">Couple session</li>

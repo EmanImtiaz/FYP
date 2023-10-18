@@ -16,7 +16,7 @@
                     <label for="province_id" class="form-label">Province</label>
                     <select name="province_id" id="province_id" class="form-select">
                         @foreach ($provinces as $province)
-                        <option value="{{$province->id}}">{{$province->province_name}}</option>
+                        <option {{$city->province_id== $province->id?'selected':''}} value="{{$province->id}}">{{$province->province_name}}</option>
                         @endforeach
                     </div>
 

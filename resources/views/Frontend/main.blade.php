@@ -11,7 +11,7 @@
         </div>
     @endforeach --}}
 </div>-->
-<!--
+
 <div id="slider"class="carousel slide carousel-dark" class="carousel-fade" data-bs-ride="carousel">
     <div class="carousel-indicators">
         <button style="border-radius: 50%;" data-bs-target="#slider" class="active" data-bs-slide-to="0"></button>
@@ -24,7 +24,7 @@
             <div class="carousel-caption justify-content-center py-5">
                 <h1 class="display-4 text-danger">Discover, Book, and Celebrate Photography Excellence</h1>
                 <p class="lead text-danger">Empowering Photographers, Connecting Clients, and Honoring Creativity</p>
-       {{--        <a href="{{  route('signup') }}" class="btn btn-danger">Join Us Today</a> --}}
+             <a href="{{  route('signup') }}" class="btn btn-danger">Join Us Today</a>
             </div>
         </div>
         <div class="carousel-item">
