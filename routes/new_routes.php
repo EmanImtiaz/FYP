@@ -5,9 +5,12 @@ use App\Http\Controllers\ContactController;
 use App\Http\Controllers\AboutController;
 
 use App\Http\Controllers\AllPortfolioController;
+use App\Http\Controllers\ClientController;
+use App\Http\Controllers\CompanyController;
 use App\Http\Controllers\ContestDetailController;
 use App\Http\Controllers\ContestFormController;
 use App\Http\Controllers\ExplorePhotoContestController;
+use App\Http\Controllers\JoinController;
 use App\Http\Controllers\MainController;
 use App\Http\Controllers\PhotoContestController;
 use App\Http\Controllers\PhotographerProfileController;
@@ -36,4 +39,8 @@ Route::get('userprofileupdate',[UserProfileUpdateController::class,'userprofileu
 Route::get('contest',[ExplorePhotoContestController::class,'explorephotocontest'])->name('explorephotocontest');
 
 Route::get('contestdetail',[ContestDetailController::class,'contestdetail'])->name('contestdetail');
+
+    Route::get('join',[JoinController::class,'join'])->name('join');
+    Route::get('client',[ClientController::class,'client'])->name('client');
+    Route::get('company',[CompanyController::class,'company'])->name('company');
 

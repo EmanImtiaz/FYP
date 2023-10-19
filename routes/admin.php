@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminPanelController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\CityController;
+use App\Http\Controllers\CompanyRegistrationController;
 use App\Http\Controllers\PhotographerController;
 use App\Http\Controllers\PhotosContestController;
 use App\Http\Controllers\ProvinceController;
@@ -101,7 +102,19 @@ Route::group(['prefix'=>'photoscontest'],function()
     Route::get('/delete/{id}',[PhotosContestController::class,'delete'])->name('photoscontest.delete');
 
 });
+// Company Registration //
 
+Route::group(['prefix'=>'company'],function()
+{
+
+    Route::get('/',[CompanyRegistrationController::class,'index'])->name('company.index');
+    Route::get('/create',[CompanyRegistrationController::class,'create'])->name('company.create');
+    Route::post('/store',[CompanyRegistrationController::class,'store'])->name('company.store');
+    Route::get('/edit/{id}',[CompanyRegistrationController::class,'edit'])->name('company.edit');
+    Route::post('/update/{id}',[CompanyRegistrationController::class,'update'])->name('company.update');
+    Route::get('/delete/{id}',[CompanyRegistrationController::class,'delete'])->name('company.delete');
+
+});
 
 });
 
