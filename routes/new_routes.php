@@ -40,7 +40,3 @@ Route::get('contest',[ExplorePhotoContestController::class,'explorephotocontest'
 
 Route::get('contestdetail',[ContestDetailController::class,'contestdetail'])->name('contestdetail');
 
-    Route::get('join',[JoinController::class,'join'])->name('join');
-    Route::get('client',[ClientController::class,'client'])->name('client');
-    Route::get('company',[CompanyController::class,'company'])->name('company');
-
