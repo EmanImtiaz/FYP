@@ -13,6 +13,7 @@ use App\Http\Controllers\BookinginfoController;
 use App\Http\Controllers\BookingformController;
 use App\Http\Controllers\BookingpkgController;
 use App\Http\Controllers\PaymentController;
+use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 use Symfony\Component\HttpKernel\Profiler\Profile;
