@@ -24,7 +24,7 @@
             <div class="carousel-caption justify-content-center py-5">
                 <h1 class="display-4 text-danger">Discover, Book, and Celebrate Photography Excellence</h1>
                 <p class="lead text-danger">Empowering Photographers, Connecting Clients, and Honoring Creativity</p>
-             <a href="{{  route('join') }}" class="btn btn-danger">Join Us Today</a>
+             <a href="{{  route('signup') }}" class="btn btn-danger">Join Us Today</a>
             </div>
         </div>
         <div class="carousel-item">

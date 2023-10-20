@@ -15,6 +15,7 @@ use App\Http\Controllers\BookingpkgController;
 use App\Http\Controllers\PaymentController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
+use Symfony\Component\HttpKernel\Profiler\Profile;
 
 /*
 |--------------------------------------------------------------------------
@@ -37,6 +38,7 @@ Route::get('signup', [SignupController::class,'signup'])->name('signup');;
 Route::get('forget', [ForgetController::class,'forget'])->name('forget');;
 
 Route::get('reset', [ResetController::class,'reset'])->name('reset');;
+Route::get('profile', [ProfileController::class,'profile'])->name('profile');;
 
 
 Route::get('booking', [BookingController::class,'booking'])->name('booking');;

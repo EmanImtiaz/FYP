@@ -27,7 +27,7 @@
 <link rel="stylesheet" type="text/css" href="path/to/slick.css"/>
 <script src="path/to/jquery.js"></script>
 <script src="path/to/slick.min.js"></script>
-   
+
 
     <!-- Include Bootstrap JS and Datepicker -->
   <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
@@ -54,56 +54,56 @@
 </head>
 <body class="bg-light" >
     <nav class="navbar navbar-light navbar-expand-md" style="color: #d32f2f;">
-        <div class="container ">
-        <a class="nav-brand text-danger" href="" >Raise Photography</a>
-        <img width="250" src="" alt="">
-        <button class="navbar-toggler" data-bs-toggle="collapse"data-bs-target="#nvam">
-        <span class="navbar-toggler-icon"></span>
+        <div class="container">
+            <a class="nav-brand text-danger" href="">Raise Photography</a>
+            <img width="250" src="" alt="">
+            <button class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#nvam">
+                <span class="navbar-toggler-icon"></span>
+            </button>
 
-        </button>
+            <div id="nvam" class="collapse navbar-collapse">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="{{ route('main') }}">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{{ route('booking') }}">Booking</a></li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="photocontest">Contest</a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="{{ route('explorephotocontest') }}">Explore Photos Contest</a></li>
+                            <li><a class="dropdown-item" href="{{ route('winners') }}">Winners</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item"><a class="nav-link" href="{{ route('about') }}">About Us</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{{ route('contact') }}">Contact Us</a></li>
+                    @auth
+                        <li class="nav-item dropdown">
+                            <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                {{ Auth::user()->name }}
+                            </a>
 
-        <div id="nvam" class="collapse navbar-collapse">
-            <ul class="navbar-nav ms-auto">
-                <li class="nav-item"><a class="nav-link" href="{{ route('main')}}">Home</a></li>
+                            <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                                <a class="dropdown-item" href="{{ route('profile') }}">Profile</a> <!-- Added Profile link -->
+                                <a class="dropdown-item" href="{{ route('logout') }}"
+                                   onclick="event.preventDefault();
+                                   document.getElementById('logout-form').submit();">
+                                    {{ __('Logout') }}
+                                </a>
 
-                <li class="nav-item"><a class="nav-link"href="{{ route('booking')}}">Booking</a></li>
-                <li class="nav-item dropdown">
-                   <a class="nav-link dropdown-toggle"data-bs-toggle="dropdown" href="photocontest">Contest</a>
-                   <ul class="dropdown-menu">
-                       <li><a class="dropdown-item" href="{{ route('explorephotocontest')}}">Explor Photos Contest</a></li>
-                       <li><a class="dropdown-item" href="{{ route('winners')}}">Winners</a></li>
-                   </ul>
-                </li>
-                <li class="nav-item"><a class="nav-link"href="{{ route('about')}}">About Us</a></li>
-                <li class="nav-item"><a class="nav-link"href="{{ route('contact')}}">Contact Us</a></li>
-                <li class="nav-item"><a class="nav-link"href="{{ route('login')}}">Sign In</a></li>
-                <li class="nav-item"><a class="nav-link"href="{{ route('register')}}">Sign Up</a></li>
-
-
-
-            </ul>
-            @auth
-            <li class="nav-item dropdown">
-                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                    {{ Auth::user()->name }}
-                </a>
-
-                <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item" href="{{ route('logout') }}"
-                       onclick="event.preventDefault();
-                                     document.getElementById('logout-form').submit();">
-                        {{ __('Logout') }}
-                    </a>
-
-                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                        @csrf
-                    </form>
-                </div>
-            </li>
-        @endauth
-
+                                <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                    @csrf
+                                </form>
+                            </div>
+                        </li>
+                    @endauth
+                    @guest
+                        <li class="nav-item"><a class="nav-link" href="{{ route('login') }}">Sign In</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{{ route('register') }}">Sign Up</a></li>
+                    @endguest
+                </ul>
+            </div>
         </div>
-     </nav>
+    </nav>
+
+
 
 
       @yield('kuchb')
