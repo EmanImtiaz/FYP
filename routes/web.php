@@ -42,8 +42,9 @@ Route::get('reset', [ResetController::class,'reset'])->name('reset');;
 
 // Route::get('profile', [ProfileController::class,'profile'])->name('profile');;
 
-Route::get('profile',[ProfileController::class,'profile'] )->middleware('auth')->name('profile');
-
+Route::get('profile', [ProfileController::class, 'profile'])->middleware('auth')->name('profile');
+Route::get('profile/upload', [ProfileController::class, 'show'])->middleware('auth')->name('profile.upload'); // Display the upload form
+Route::post('profile/upload', [ProfileController::class, 'upload'])->middleware('auth'); // Handle the file upload
 
 Route::get('booking', [BookingController::class,'booking'])->name('booking');;
 
