@@ -39,7 +39,10 @@ Route::get('signup', [SignupController::class,'signup'])->name('signup');;
 Route::get('forget', [ForgetController::class,'forget'])->name('forget');;
 
 Route::get('reset', [ResetController::class,'reset'])->name('reset');;
-Route::get('profile', [ProfileController::class,'profile'])->name('profile');;
+
+// Route::get('profile', [ProfileController::class,'profile'])->name('profile');;
+
+Route::get('profile',[ProfileController::class,'profile'] )->middleware('auth')->name('profile');
 
 
 Route::get('booking', [BookingController::class,'booking'])->name('booking');;
