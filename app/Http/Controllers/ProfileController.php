@@ -7,29 +7,22 @@ use Illuminate\Support\Facades\Auth;
 class ProfileController extends Controller
 
 {
-    public function profile()
+    public function show()
     {
         $user = auth()->user();
         return view('Frontend.profile', compact('user'));
     }
 
-    public function show()
+    public function edit()
     {
-        $user = Auth::user();
-        return view('Frontend.profile', compact('user'));
+        $user = auth()->user();
+        return view('Frontend.portfolio.userprofileupdate', compact('user'));
     }
 
-    public function upload(Request $request)
+    public function update(Request $request)
     {
-        $request->validate([
-            'profile_image' => 'image|mimes:jpeg,png,jpg,gif|max:2048', // Adjust validation rules as needed
-        ]);
-
-        if ($request->hasFile('profile_image')) {
-            $path = $request->file('profile_image')->store('profile_images', 'public');
-            Auth::user()->update(['profile_image' => $path]);
-        }
-
-        return redirect()->back()->with('success', 'Profile picture uploaded successfully.');
+        $user = auth()->user();
+        $user->update($request->only(['name', 'address', 'contact']));
+        return redirect()->route('Frontend.profile');
     }
 }

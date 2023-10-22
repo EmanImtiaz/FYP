@@ -12,30 +12,27 @@
                     <div class="mb-3">
                         <strong>Email:</strong> {{ $user->email }}
                     </div>
-                    <!-- Add fields for Address and Contact here -->
-                    <div class="mb-3">
-                        <strong>Address:</strong> {{ $user->address }}
-                    </div>
-                    <div class="mb-3">
-                        <strong>Contact:</strong> {{ $user->contact }}
-                    </div>
-
-                    <!-- Profile Picture Upload Form -->
-                    <form action="{{ route('profile.upload') }}" method="POST" enctype="multipart/form-data">
-                        @csrf
-                        <div class="form-group">
-                            <label for="profile_image">Upload Profile Picture</label>
-                            <input type="file" name="profile_image" class="form-control-file">
+                    @if ($user->profile)
+                        <div class="mb-3">
+                            <strong>Address:</strong> {{ $user->profile->address }}
                         </div>
-                        <button type="submit" class="btn btn-primary">Upload Profile Picture</button>
-                    </form>
-                    @if(auth()->user()->profile_image)
-    <img src="{{ asset('storage/' . auth()->user()->profile_image) }}" alt="Profile Picture">
-@else
-    <p>No profile picture uploaded</p>
-@endif
-<a href="{{ route('userprofileupdate')}}"><button class="button">Edit Profile</button></a>
-<a href="{{ route('joinphotographer')}}"><button class="button">Join as Photographer</button></a>
+                        <div class="mb-3">
+                            <strong>Contact:</strong> {{ $user->profile->contact }}
+                        </div>
+                    @else
+                        <div class="mb-3">
+                            <strong>Address:</strong> {{ $user->address }}
+                        </div>
+                        <div class="mb-3">
+                            <strong>Contact:</strong> {{ $user->contact }}
+                        </div>
+                    @endif
+                    <a href="{{ route('profile.edit') }}">
+                        <button class="button">Edit Profile</button>
+                    </a>
+                    <a href="{{ route('joinphotographer') }}">
+                        <button class="button">Join as Photographer</button>
+                    </a>
                 </div>
             </div>
         </div>

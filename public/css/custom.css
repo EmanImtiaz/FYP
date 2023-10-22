@@ -482,3 +482,12 @@
 .custom-button:focus {
     box-shadow: 0 1px 2px #0000000f;
 }
+
+
+/* profile rounded pic*/
+
+.profile-picture img.rounded-circle {
+    width: 150px; /* Adjust the size as needed */
+    height: 150px; /* Adjust the size as needed */
+    border: 2px solid #fff; /* Add a border */
+}

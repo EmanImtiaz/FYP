@@ -16,6 +16,7 @@ use App\Http\Controllers\PhotoContestController;
 use App\Http\Controllers\PhotographerProfileController;
 use App\Http\Controllers\PortfolioController;
 use App\Http\Controllers\PortfolioDetailsController;
+use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\SingleWinnerDetailsController;
 use App\Http\Controllers\UserProfileUpdateController;
 use App\Http\Controllers\WinnersController;
@@ -40,3 +41,10 @@ Route::get('contest',[ExplorePhotoContestController::class,'explorephotocontest'
 
 Route::get('contestdetail',[ContestDetailController::class,'contestdetail'])->name('contestdetail');
 
+// profile user //
+Route::get('/profile',[ProfileController::class,'show'])->name('Frontend.profile');
+Route::get('/profile/edit', [ProfileController::class,'edit'])->name('profile.edit');
+
+// Route::post('/profile/update',[ProfileController::class,'update'])->name('profile.update');
+
+Route::match(['put', 'patch'], '/profile/update', [ProfileController::class,'update'])->name('profile.update');
