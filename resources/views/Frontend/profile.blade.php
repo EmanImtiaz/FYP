@@ -34,6 +34,8 @@
 @else
     <p>No profile picture uploaded</p>
 @endif
+<a href="{{ route('userprofileupdate')}}"><button class="button">Edit Profile</button></a>
+<a href="{{ route('joinphotographer')}}"><button class="button">Join as Photographer</button></a>
                 </div>
             </div>
         </div>

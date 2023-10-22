@@ -12,6 +12,7 @@ use App\Http\Controllers\AdminPanelController;
 use App\Http\Controllers\BookinginfoController;
 use App\Http\Controllers\BookingformController;
 use App\Http\Controllers\BookingpkgController;
+use App\Http\Controllers\JoinphotographerController;
 use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
@@ -39,7 +40,7 @@ Route::get('signup', [SignupController::class,'signup'])->name('signup');;
 Route::get('forget', [ForgetController::class,'forget'])->name('forget');;
 
 Route::get('reset', [ResetController::class,'reset'])->name('reset');;
-
+Route::get('joinphotographer', [JoinphotographerController::class,'joinphotographer'])->name('joinphotographer');;
 // Route::get('profile', [ProfileController::class,'profile'])->name('profile');;
 
 Route::get('profile', [ProfileController::class, 'profile'])->middleware('auth')->name('profile');
