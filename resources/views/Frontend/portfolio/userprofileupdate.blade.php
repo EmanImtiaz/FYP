@@ -5,18 +5,33 @@
     @csrf
     @method('PATCH')
     <!-- Your form fields here -->
-    <div class="container py-5">
-        <h1>Edit Your Profile</h1>
+    <div class="container py-5 justify-content-center">
+        <h2>Edit Your Profile</h2>
         <form action="{{ route('profile.update') }}" method="POST">
             @csrf
             @method('PATCH')
-            <input type="text" name="name" value="{{ $user->name }}">
-            <input type="text" name="address" value="{{ $user->address }}">
-            <input type="text" name="contact" value="{{ $user->contact }}">
-            <button type="submit">Update Profile</button>
+           <div class="row py-3">
+            <div class="col-3">
+                <label for="username" class="form-label">Username</label>
+                <input type="text" name="name" value="{{ $user->name }}">
+            </div>
+            <div class="col-3">
+                <label for="address" class="form-label">Address></label>
+                <input type="text" name="address" value="{{ $user->address }}">
+            </div>
+            <div class="col-3">
+                <label for="contact" class="form-label">Contact</label>
+                <input type="text" name="contact" value="{{ $user->contact }}">
+            </div>
+            <div class="col-3">
+                <button type="submit" class="button text-end">Update Profile</button>
+            </div>
+
+           </div>
         </form>
     </div>
 </form>
+
 
 @endsection
 

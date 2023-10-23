@@ -14,6 +14,7 @@ use App\Http\Controllers\JoinController;
 use App\Http\Controllers\MainController;
 use App\Http\Controllers\PhotoContestController;
 use App\Http\Controllers\PhotographerProfileController;
+use App\Http\Controllers\PhotographerCompanyController;
 use App\Http\Controllers\PortfolioController;
 use App\Http\Controllers\PortfolioDetailsController;
 use App\Http\Controllers\ProfileController;
@@ -48,3 +49,6 @@ Route::get('/profile/edit', [ProfileController::class,'edit'])->name('profile.ed
 // Route::post('/profile/update',[ProfileController::class,'update'])->name('profile.update');
 
 Route::match(['put', 'patch'], '/profile/update', [ProfileController::class,'update'])->name('profile.update');
+
+Route::get('/become-photographer', [ProfileController::class, 'showPhotographerRegistrationForm'])->middleware('auth')->name('become-photographer');
+Route::post('/become-photographer', [ProfileController::class, 'becomePhotographer'])->middleware('auth');
