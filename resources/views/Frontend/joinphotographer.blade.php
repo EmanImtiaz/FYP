@@ -10,7 +10,12 @@
               <div class="mb-3">
                 <label for="logo" class="form-label">logo</label>
                 <input type="file" class="form-control" id="logo" name="logo">
-               
+
+              </div>
+              <div class="mb-3">
+                <label for="document" class="form-label">Upload your documents</label>
+                <input type="file" class="form-control" id="document" name="document">
+
               </div>
               <div class="mb-3">
                   <label for="company_name" class="form-label">Company Name</label>
@@ -23,15 +28,15 @@
 
               </div>
               <div class="mb-3">
+                <label for="phone" class="form-label">Phone no</label>
+       <input id="phone" class="form-control" type="text" name="phone"   >
+             </div>
+             <div class="mb-3">
                 <label for="bio" class="form-label">Bio</label>
-      <input id="bio" class="form-control" type="text" name="bio"   >
-
-
+                <textarea id="bio" class="form-control" name="bio"></textarea>
             </div>
-              <div class="mb-3">
-                 <label for="phone" class="form-label">Phone no</label>
-        <input id="phone" class="form-control" type="text" name="phone"   >
-              </div>
+
+
               <div class="d-flex justify-content-center align-items-center">
                 <button type="submit" class="btn btn-danger">Registered as Photographer</button>
             </div>

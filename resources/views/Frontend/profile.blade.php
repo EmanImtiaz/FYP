@@ -6,6 +6,9 @@
         <div class="col-md-8">
             <div class="card">
                 <div class="card-body">
+
+                    
+
                     <div class="mb-3">
                         <strong>Name:</strong> {{ $user->name }}
                     </div>
@@ -38,4 +41,6 @@
         </div>
     </div>
 </div>
+
+
 @endsection
