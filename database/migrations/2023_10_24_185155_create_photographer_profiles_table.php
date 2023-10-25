@@ -11,15 +11,14 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('photographerscompnay', function (Blueprint $table) {
+        Schema::create('photographer_profiles', function (Blueprint $table) {
             $table->id();
-            $table->string('logo')->nullable();
+            $table->unsignedBigInteger('user_id')->unique();
+            $table->string('documents');
             $table->string('company_name');
-            $table->text('bio');
             $table->string('address');
             $table->string('contact');
-            $table->unsignedBigInteger('user_id')->unique();
-            $table->foreign('user_id')->references('id')->on('users');
+            $table->text('bio');
             $table->timestamps();
         });
     }
@@ -29,6 +28,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('photographerscompnay');
+        Schema::dropIfExists('photographer_profiles');
     }
 };

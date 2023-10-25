@@ -43,12 +43,14 @@ Route::get('contest',[ExplorePhotoContestController::class,'explorephotocontest'
 Route::get('contestdetail',[ContestDetailController::class,'contestdetail'])->name('contestdetail');
 
 // profile user //
-Route::get('/profile',[ProfileController::class,'show'])->name('Frontend.profile');
-Route::get('/profile/edit', [ProfileController::class,'edit'])->name('profile.edit');
 
-// Route::post('/profile/update',[ProfileController::class,'update'])->name('profile.update');
+Route::get('/profile', [ProfileController::class, 'show'])->name('Frontend.profile');
+Route::get('/profile/edit', [ProfileController::class, 'edit'])->name('profile.edit');
+Route::match(['put', 'patch'], '/profile/update', [ProfileController::class, 'update'])->name('profile.update');
+Route::post('/profile/upload-image', [ProfileController::class, 'uploadImage'])->name('profile.upload-image');
+Route::delete('/profile/remove-image', [ProfileController::class, 'removeImage'])->name('profile.remove-image');
 
-Route::match(['put', 'patch'], '/profile/update', [ProfileController::class,'update'])->name('profile.update');
+// profile photographer //
 
-Route::get('/become-photographer', [ProfileController::class, 'showPhotographerRegistrationForm'])->middleware('auth')->name('become-photographer');
-Route::post('/become-photographer', [ProfileController::class, 'becomePhotographer'])->middleware('auth');
+Route::get('/joinphotographer', [ProfileController::class, 'showPhotographerRegistrationForm'])->name('joinphotographer');
+Route::post('/joinphotographer', [ProfileController::class, 'becomePhotographer'])->name('joinphotographer.submit');
