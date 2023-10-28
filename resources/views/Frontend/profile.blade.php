@@ -1,12 +1,11 @@
 @extends('layout.master')
 @section('kuchb')
 
-<div class="container py-5">
+<<div class="container py-5">
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
                 <div class="card-body">
-
 
 
     <div class="container py-5">
@@ -15,9 +14,9 @@
                 <div class="card mb-4">
                     <div class="card-body text-center">
 
+               {{--        <img id="profile-image" src="{{ $user->profile_image }}" alt="" class="rounded-circle img-fluid" style="width: 200px;"> --}}
 
-                        <img id="profile-image" src="{{ $user->profile_image }}" alt="" class="rounded-circle img-fluid" style="width: 200px;">
-
+                        <img src="{{ $user->profile_image }}" alt="Profile Image" class="rounded-circle img-fluid" style="width: 200px;">
 
                         <div class="d-flex justify-content-center">
                             <input type="file" id="profile-picture" accept="image/*" style="display: none;">
@@ -50,7 +49,6 @@
                       </div>
                       <hr>
 
-
                       <div class="row">
                         <div class="col-sm-3">
                           <p class="mb-0">Contact</p>
@@ -69,18 +67,18 @@
                         </div>
                       </div>
                       <hr>
-                      <a href="{{ route('profile.edit') }}">
-                        <button class="button">Edit Profile</button>
-                    </a>
-                    <a href="{{ route('joinphotographer') }}">
-                        <button class="button">Join as Photographer</button>
-                    </a>
+                      @if (auth()->user()->role === 'user')
+                      <a href="{{ route('profile.edit') }}" class="btn btn-primary">Edit Profile</a>
+                      <a href="{{ route('joinphotographer') }}" class="btn btn-success">Apply as Photographer</a>
+                  @elseif (auth()->user()->role === 'photographer')
+                      <a href="{{ route('profile.edit') }}" class="btn btn-primary">Edit Profile</a>
+                  @endif
+
                     </div>
                   </div>
             </div>
         </div>
     </div>
-
 
 
 <script>
@@ -98,52 +96,7 @@
         }
     });
 </script>
-                     <!-- Profile Picture Upload Form-->
-                     <div class="mb-3">
-                        <strong>Profile Picture:</strong>
-                        @if ($user->profile && $user->profile->profile_image)
-                            <img src="{{ asset('storage/' . $user->profile->profile_image) }}" class="rounded-circle" width="100" height="100">
-                            <form action="{{ route('profile.remove-image') }}" method="POST">
-                                @csrf
-                                @method('DELETE')
-                                <button type="submit" class="btn btn-danger">Remove Picture</button>
-                            </form>
-                        @else
-                            <form action="{{ route('profile.upload-image') }}" method="POST" enctype="multipart/form-data">
-                                @csrf
-                                <input type="file" name="profile_image">
-                                <button type="submit" class="btn btn-primary">Upload Picture</button>
-                            </form>
-                        @endif
-                    </div>
-                <div class="mb-3">
-                        <strong>Name:</strong> {{ $user->name }}
-                    </div>
-                    <div class="mb-3">
-                        <strong>Email:</strong> {{ $user->email }}
-                    </div>
-                    @if ($user->profile)
-                        <div class="mb-3">
-                            <strong>Address:</strong> {{ $user->profile->address }}
-                        </div>
-                        <div class="mb-3">
-                            <strong>Contact:</strong> {{ $user->profile->contact }}
-                        </div>
-                    @else
-                        <div class="mb-3">
-                            <strong>Address:</strong> {{ $user->address }}
-                        </div>
-                        <div class="mb-3">
-                            <strong>Contact:</strong> {{ $user->contact }}
-                        </div>
-                    @endif
-                    <a href="{{ route('profile.edit') }}">
-                        <button class="button">Edit Profile</button>
-                    </a>
-                    <a href="{{ route('joinphotographer') }}">
-                        <button class="button">Join as Photographer</button>
-                    </a>
-                    <h2>Photographer Profile Information</h2>
+<!-- photographer profile  -->
                     @if ($photographerProfile)
                         <div class="mb-3">
                             <strong>Company Name:</strong> {{ $photographerProfile->company_name }}
@@ -162,14 +115,16 @@
                             <strong>Bio:</strong> {{ $photographerProfile->bio }}
                         </div>
                     @else
-                        <p>No photographer profile information available.</p>
+                     {{--  <p>No photographer profile information available.</p> --}}
                     @endif
+
 
                 </div>
             </div>
         </div>
     </div>
 </div>
+
 
 
 @endsection
