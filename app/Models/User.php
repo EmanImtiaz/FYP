@@ -60,3 +60,4 @@ class User extends Authenticatable
           return $this->hasOne(PhotographerProfile::class);
       }
 }
+

@@ -11,11 +11,11 @@ use Illuminate\Support\Facades\Storage;
 class ProfileController extends Controller
 {
     public function show()
-    {
-        $user = auth()->user();
-        $photographerProfile = $user->photographerProfile;
-        return view('Frontend.profile', compact('user', 'photographerProfile'));
-    }
+{
+    $user = auth()->user();
+    $photographerProfile = $user->photographerProfile;
+    return view('Frontend.profile', compact('user', 'photographerProfile'));
+}
 
     public function edit()
     {
@@ -70,17 +70,16 @@ class ProfileController extends Controller
             'contact' => 'required',
             'bio' => 'required',
         ]);
+        
+ // Handle file upload for documents (PDF)...
+    // Save data to photographer_profiles table
 
-        // Handle file upload for documents (PDF)...
-
-        $photographerProfile = $user->photographerProfile;
-
-        if ($photographerProfile) {
-            $photographerProfile->update($data);
-        } else {
-            $user->photographerProfile()->create($data);
-        }
-
-        return redirect()->route('Frontend.profile')->with('success', 'You are now registered as a photographer.');
+    if ($user->photographerProfile) {
+        $user->photographerProfile->update($data);
+    } else {
+        $user->photographerProfile()->create($data);
     }
+
+    return redirect()->route('Frontend.profile')->with('success', 'You are now registered as a photographer.');
+}
 }
