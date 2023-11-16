@@ -9,7 +9,7 @@ class PhotographerProfile extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['user_id', 'documents', 'company_name', 'address', 'contact', 'bio'];
+    protected $fillable = [ 'user_id','documents', 'company_name','logo' , 'bio'];
 
     public function user()
     {

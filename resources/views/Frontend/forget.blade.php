@@ -23,3 +23,12 @@
   </div>
 
 @endsection
+
+<div class="d-flex justify-content-center">
+
+    <img src="{{ $user->profiele_image }}" alt="user-image"style="width: 200px; height: 200px">
+    <input type="file" id="profile-picture" accept="image/*" style="display: none;">
+
+</div>
+
+

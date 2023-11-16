@@ -5,11 +5,9 @@
     <div class="row justify-content-center">
         <div class="col-lg-6 col-md-12 col-sm-12">
             <h3 class="text-center">Join as Photographer</h3>
-            <form method="POST" action="{{ route('joinphotographer.submit') }}" enctype="multipart/form-data">
+            <form method="POST" action="{{ route('joinphotographer') }}" enctype="multipart/form-data">
                 @csrf
-                <!-- <div class="mb-3">
-                <label for="logo" class="form-label">logo</label>
-                <input type="file" class="form-control" id="logo" name="logo"></div> -->
+
 
                 <div class="mb-3">
                     <label for="document" class="form-label">Upload your documents (PDF only)</label>
@@ -20,13 +18,11 @@
                     <input id="company_name" class="form-control" type="text" name="company_name">
                 </div>
                 <div class="mb-3">
-                    <label for="address" class="form-label">Address</label>
-                    <input id="address" class="form-control" type="text" name="address">
+                    <label for="logo" class="form-label">Upload your logo </label>
+                    <input type="file" class="form-control" id="logo" name="logo">
                 </div>
-                <div class="mb-3">
-                    <label for="contact" class="form-label">Contact</label>
-                    <input id="contact" class="form-control" type="text" name="contact">
-                </div>
+
+
                 <div class="mb-3">
                     <label for="bio" class="form-label">Bio</label>
                     <textarea id="bio" class="form-control" name="bio"></textarea>

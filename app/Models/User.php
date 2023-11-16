@@ -50,12 +50,7 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];
-    public function profiles()
-{
-    return $this->hasOne(Profile::class);
-}
-      // Define the relationship with the PhotographerProfile model
-      public function photographerProfile()
+    public function photographerProfile()
       {
           return $this->hasOne(PhotographerProfile::class);
       }

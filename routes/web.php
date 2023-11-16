@@ -40,12 +40,12 @@ Route::get('signup', [SignupController::class,'signup'])->name('signup');;
 Route::get('forget', [ForgetController::class,'forget'])->name('forget');;
 
 Route::get('reset', [ResetController::class,'reset'])->name('reset');;
-Route::get('joinphotographer', [JoinphotographerController::class,'joinphotographer'])->name('joinphotographer');;
+//Route::get('joinphotographer', [JoinphotographerController::class,'joinphotographer'])->name('joinphotographer');;
 // Route::get('profile', [ProfileController::class,'profile'])->name('profile');;
 
-Route::get('profile', [ProfileController::class, 'profile'])->middleware('auth')->name('profile');
-Route::get('profile/upload', [ProfileController::class, 'show'])->middleware('auth')->name('profile.upload'); // Display the upload form
-Route::post('profile/upload', [ProfileController::class, 'upload'])->middleware('auth'); // Handle the file upload
+//Route::get('profile', [ProfileController::class, 'profile'])->middleware('auth')->name('profile');
+//Route::get('profile/upload', [ProfileController::class, 'show'])->middleware('auth')->name('profile.upload'); // Display the upload form
+//Route::post('profile/upload', [ProfileController::class, 'upload'])->middleware('auth'); // Handle the file upload
 
 Route::get('booking', [BookingController::class,'booking'])->name('booking');;
 
@@ -63,6 +63,10 @@ Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-//Route::get('admin',[HomeController::class,'adminpanel']);
-//Route::get('photographer',[HomeController::class,'photographerpanel']);
-//Route::get('user',[HomeController::class,'userpanel']);
+Route::get('/profile', [ProfileController::class, 'profile'])->name('Frontend.profile');
+Route::get('/profile.edit', [ProfileController::class, 'edit_profile'])->name('profile.edit');
+Route::post('/profile-update', [ProfileController::class, 'update_profile'])->name('profileupdate');
+
+Route::get('/joinphotographer', [ProfileController::class, 'joinphotographer'])->name('joinphotographer');
+
+Route::post('/joinphotographer', [ProfileController::class, 'becomePhotographer'])->name('joinphotographer.submit');

@@ -14,10 +14,11 @@ return new class extends Migration
         Schema::create('photographer_profiles', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('user_id')->unique();
+
             $table->string('documents');
             $table->string('company_name');
-            $table->string('address');
-            $table->string('contact');
+            $table->string('logo');
+
             $table->text('bio');
             $table->timestamps();
         });

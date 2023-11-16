@@ -88,3 +88,54 @@
 
 
 @endsection
+
+
+
+<div class="container py-5">
+    <div class="row">
+        <div class="col-lg-4">
+            <div class="card mb-4">
+                <div class="card-body text-center">
+                    <div class="d-flex justify-content-center">
+
+<img src="{{ ($photographerProfile->logo) }}" alt="logo-image" style="width: 200px; height: 200px">
+
+<input type="file" id="profile-picture" accept="image/*" style="display: none;">
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-8">
+            <div class="card mb-4">
+                <div class="card-body">
+
+                        <div class="row">
+                            <div class="col-sm-3">
+                                <p class="mb-0">Company Name:</p>
+                            </div>
+                            <div class="col-sm-9">
+                                <strong>{{ $photographerProfile->company_name }}</strong>
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="row">
+                            <div class="col-sm-3">
+                                <p class="mb-0">Bio:</p>
+                            </div>
+                            <div class="col-sm-9">
+                                <strong>{{ $photographerProfile->bio }}</strong>
+                            </div>
+                        </div>
+                        <hr>
+
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+
+</div>
+
+
