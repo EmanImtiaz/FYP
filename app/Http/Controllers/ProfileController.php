@@ -70,50 +70,30 @@ public function becomePhotographer(Request $request)
         'documents' => 'required|mimes:pdf',
         'company_name' => 'required',
         'bio' => 'required',
-        'logo' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+        'logo' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048', // Adjust the image validation rules as needed.
     ]);
 
-    // Load the photographerProfile relationship
-    $photographerProfile = $user->photographerProfile;
-
-    if (!$photographerProfile) {
-        $photographerProfile = new PhotographerProfile();
-        $photographerProfile->user_id = $user->id; // Set the user_id
-        $user->photographerProfile()->save($photographerProfile);
+    if ($request->hasFile('documents')) {
+        $document = $request->file('documents');
+        $documentPath = $document->store('public/assets/documents/user_' . $user->id);
+        $data['document_path'] = $documentPath;
     }
 
     if ($request->hasFile('logo')) {
-        $image = $request->file('logo');
-        $image_name = time() . '.' . $image->getClientOriginalExtension();
-        $image->move(public_path('logo'), $image_name);
-        $path = "/logo/" . $image_name;
-
-        // Update the PhotographerProfile model with the logo path
-        $photographerProfile->logo = $path;
+        $logo = $request->file('logo');
+        $logoPath = $logo->store('public/assets/logo');
+        $data['logo_path'] = $logoPath;
     }
-    if ($request->hasFile('documents')) {
-        $image = $request->file('documents');
-        $image_name = time() . '.' . $image->getClientOriginalExtension();
-        $image->move(public_path('documents'), $image_name);
-        $path = "/documents/" . $image_name;
-
-     
-
-        // Update the PhotographerProfile model with the documents path
-        $photographerProfile->documents = $path;
+    if ($user->photographerProfile) {
+        $user->photographerProfile->update($data);
+    } else {
+        $photographerProfile = new PhotographerProfile($data);
+        $user->photographerProfile()->save($photographerProfile);
     }
-    // Update the 'company_name' field
-    $photographerProfile->company_name = $request->input('company_name');
 
-    // Update the 'bio' field
-    $photographerProfile->bio = $request->input('bio');
 
-    // Save the updated PhotographerProfile model
-    $photographerProfile->save();
-
-    return redirect()->route('Frontend.profile');
+    return redirect()->route('Frontend.profile')->with('success', 'You are now registered as a photographer.');
 }
-
 
 
 
