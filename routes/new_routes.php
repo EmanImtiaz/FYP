@@ -3,8 +3,8 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\AboutController;
-
 use App\Http\Controllers\AllPortfolioController;
+use App\Http\Controllers\BlogPostController;
 use App\Http\Controllers\ClientController;
 use App\Http\Controllers\CompanyController;
 use App\Http\Controllers\ContestDetailController;
@@ -36,24 +36,12 @@ Route::get('photographerprofile',[PhotographerProfileController::class,'photogra
 
 Route::get('userprofileupdate',[UserProfileUpdateController::class,'userprofileupdate'])->name('userprofileupdate');
 
+Route::get('blog',[BlogPostController::class,'show'])->name('blogpost.show');
 
+Route::get('blog/{id}', [BlogPostController::class, 'blogdetail'])->name('blogdetail.show');
 
 Route::get('contest',[ExplorePhotoContestController::class,'explorephotocontest'])->name('explorephotocontest');
 
 Route::get('contestdetail',[ContestDetailController::class,'contestdetail'])->name('contestdetail');
 
-// profile user //
-
-//Route::get('/profile/edit', [ProfileController::class, 'edit'])->name('profile.edit');
-//Route::match(['put', 'patch'], '/profile/update', [ProfileController::class, 'update'])->name('profile.update');
-//Route::post('/profile/upload-image', [ProfileController::class, 'uploadImage'])->name('profile.upload-image');
-//Route::delete('/profile/remove-image', [ProfileController::class, 'removeImage'])->name('profile.remove-image');
-
-// profile photographer //
-
-//Route::get('/joinphotographer', [ProfileController::class, 'showPhotographerRegistrationForm'])->name('joinphotographer');
-//Route::post('/joinphotographer', [ProfileController::class, 'becomePhotographer'])->name('joinphotographer.submit');
-
-
-// update profile
 

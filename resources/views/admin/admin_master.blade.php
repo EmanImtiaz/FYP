@@ -28,6 +28,8 @@
 	<link rel="stylesheet" href="{{ asset('../assets/fonts/feather-font/css/iconfont.css')  }}">
 	<link rel="stylesheet" href="{{ asset('../assets/vendors/flag-icon-css/css/flag-icon.min.css')  }}">
 	<!-- endinject -->
+<!-- ckeditor -->
+<script src="https://cdn.ckeditor.com/ckeditor5/40.0.0/classic/ckeditor.js"></script>
 
   <!-- Layout styles -->
 	<link rel="stylesheet" href="{{ asset('../assets/css/demo2/style.css')  }}">
@@ -52,16 +54,6 @@
       </div>
       <div class="sidebar-body">
         <ul class="nav">
-          <li class="nav-item nav-category">Users</li>
-          <li class="nav-item">
-            <div class="collapse" id="emails">
-                <ul class="nav sub-menu">
-                  <li class="nav-item">
-                    <a href="{{ route('company.create') }}" class="nav-link">Company Registration</a>
-                  </li>
-                </ul>
-              </div>
-          </li>
           <li class="nav-item nav-category">web apps</li>
           <li class="nav-item">
             <a class="nav-link" data-bs-toggle="collapse" href="#emails" role="button" aria-expanded="false" aria-controls="emails">
@@ -106,7 +98,13 @@
               </ul>
             </div>
           </li>
-          <li class="nav-item nav-category">Photographers</li>
+          <li class="nav-item nav-category">Other Pages</li>
+          <li class="nav-item">
+            <a href="{{ route('blogpost.index')  }}" class="nav-link">
+              <i class="link-icon" data-feather="message-square"></i>
+              <span class="link-title">Blog</span>
+            </a>
+          </li>
         </ul>
       </div>
     </nav>
