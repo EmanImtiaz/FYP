@@ -26,7 +26,7 @@
                     <td>{{  ++$key }}</td>
                     <td>{{ $category->category_name }}</td>
                     <td>{{ $category->description }}</td>
-                    <td>{{ $category->img }}</td>
+                    <td><img src="{{ $category->img }}" width="100"></td>
                     <td><a class="btn btn-primary" href="{{ route('category.edit',['id'=>$category->id]) }}">Edit</a>
                     <a class="btn btn-danger" href="{{ route('category.delete',['id'=>$category->id]) }}">Delete</a></td>
                 </tr>
@@ -36,3 +36,5 @@
 </div>
 
 @endsection
+
+

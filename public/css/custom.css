@@ -493,3 +493,31 @@
 }
 
 
+
+/*  blog */
+.card {
+    margin-bottom: 1rem;
+  }
+
+  .card-img-top {
+    height: 200px;
+    object-fit: cover;
+  }
+
+  .card-body {
+    padding: 1rem;
+  }
+
+  .card-text {
+    font-size: 0.875rem;
+    line-height: 1.5;
+  }
+
+  .btn-primary {
+    background-color: #007bff;
+    border-color: #007bff;
+  }
+
+  .text-muted {
+    color: #6c757d;
+  }

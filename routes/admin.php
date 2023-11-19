@@ -2,11 +2,13 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminPanelController;
+use App\Http\Controllers\BlogPostController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\CityController;
 use App\Http\Controllers\CompanyRegistrationController;
 use App\Http\Controllers\PhotographerController;
 use App\Http\Controllers\PhotosContestController;
+use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ProvinceController;
 use App\Http\Controllers\SliderController;
 use App\Http\Controllers\TownController;
@@ -115,6 +117,21 @@ Route::group(['prefix'=>'company'],function()
     Route::get('/delete/{id}',[CompanyRegistrationController::class,'delete'])->name('company.delete');
 
 });
+
+Route::group(['prefix'=>'blog'],function()
+{
+
+    Route::get('/',[BlogPostController::class,'index'])->name('blogpost.index');
+    Route::get('/create',[BlogPostController::class,'create'])->name('blogpost.create');
+    Route::post('/store',[BlogPostController::class,'store'])->name('blogpost.store');
+    Route::get('/edit/{id}',[BlogPostController::class,'edit'])->name('blogpost.edit');
+    Route::post('/update/{id}',[BlogPostController::class,'update'])->name('blogpost.update');
+    Route::get('/delete/{id}',[BlogPostController::class,'delete'])->name('blogpost.delete');
+
+});
+
+// user admin panel
+Route::get('/user', [ProfileController::class, 'index'])->name('profile.index');
 
 });
 

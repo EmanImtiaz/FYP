@@ -26,11 +26,11 @@
                 @foreach ($photoscontest as $key=> $photoscontest)
                 <tr>
                     <td>{{  ++$key }}</td>
-                    <td>{{ $photoscontest->contest_img }}</td>
+                    <td><img src="{{ $photoscontest->contest_img }}" width="100"></td>
                     <td>{{ $photoscontest->likes }}</td>
                     <td>{{ $photoscontest->dislikes }}</td>
                     <td>{{ $photoscontest->photographer_name }}</td>
-                    <td>{{ $photoscontest->profile_img }}</td>
+                    <td><img src="{{ $photoscontest->profile_img }}" width="100"></td>
                     <td><a class="btn btn-primary" href="{{ route('photoscontest.edit',['id'=>$photoscontest->id]) }}">Edit</a>
                     <a class="btn btn-danger" href="{{ route('photoscontest.delete',['id'=>$photoscontest->id]) }}">Delete</a></td>
                 </tr>
