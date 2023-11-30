@@ -131,7 +131,8 @@ Route::group(['prefix'=>'blog'],function()
 });
 
 // user admin panel
-Route::get('/user', [ProfileController::class, 'index'])->name('profile.index');
+Route::get('/user', [ProfileController::class, 'userindex'])->name('profile.index');
+Route::get('/photographer', [ProfileController::class, 'photographerindex'])->name('photogrpherprofile.index');
 
 });
 

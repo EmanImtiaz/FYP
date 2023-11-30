@@ -12,7 +12,7 @@ class PhotographerProfile extends Model
     protected $fillable = [ 'user_id','documents', 'company_name','logo' , 'bio'];
 
     public function user()
-    {
-        return $this->belongsTo(User::class, 'user_id');
-    }
+     {
+         return $this->belongsTo(User::class, 'user_id');
+   }
 }

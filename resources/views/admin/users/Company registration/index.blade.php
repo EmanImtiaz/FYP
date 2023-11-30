@@ -8,7 +8,7 @@
         <h1>Company Registration Table</h1>
         </div>
         <div class="text-end">
-            <a class="btn btn-primary"href="{{route('company.create')}}">Create</a>
+            <a class="btn btn-primary"href="{{route('photogrpherprofile.create')}}">Create</a>
         </div>
 
         <table class="container text-center table  table-striped-columns table-striped table-border border-5 border-danger py-2">
@@ -18,19 +18,18 @@
                     <th>Company Name</th>
                     <th>Logo</th>
                     <th>Address</th>
-                    <th>Phone</th>
+                    <th>Bio</th>
                 </tr>
             </thead>
             <tbody>
-                @foreach ($CompanyRegistration as $key=> $CompanyRegistration)
+                @foreach ($photographerProfile as $key=> $photographerProfile)
                 <tr>
                     <td>{{  ++$key }}</td>
-                    <td>{{ $CompanyRegistration->company_name }}</td>
-                    <td>{{ $CompanyRegistration->logo }}</td>
-                    <td>{{ $CompanyRegistration->address }}</td>
-                    <td>{{ $CompanyRegistration->phone }}</td>
-                    <td><a class="btn btn-primary" href="{{ route('company.edit',['id'=>$CompanyRegistration->id]) }}">Edit</a>
-                    <a class="btn btn-danger" href="{{ route('company.delete',['id'=>$CompanyRegistration->id]) }}">Delete</a></td>
+                    <td>{{ $photographerProfile->company_name }}</td>
+                    <td>{{ $photographerProfile->logo }}</td>
+                    <td>{{ $photographerProfile->address }}</td>
+                    <td>{{ $photographerProfile->bio }}</td>
+                  
                 </tr>
                 @endforeach
             </tbody>

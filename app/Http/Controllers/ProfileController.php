@@ -20,7 +20,18 @@ class ProfileController extends Controller
 
         return view('Frontend.profile', compact('user', 'photographerProfile'));
     }
-
+//admin panel user table//
+public function userindex()
+{
+   $user=user::get();
+   return view('admin.Users.userprofile.index',compact('user'));
+}
+//admin panel photographerprofile//
+public function photographerindex()
+{
+   $photographerProfile=PhotographerProfile::get();
+   return view('admin.Users.Company registration.index',compact('photographerProfile'));
+}
 // profile edit view
 public function edit_profile()
 {
@@ -66,6 +77,9 @@ public function becomePhotographer(Request $request)
 {
     $user = Auth::user();
 
+    if (!$user) {
+        return redirect()->route('login');
+    }
     $data = $request->validate([
         'documents' => 'required|mimes:pdf',
         'company_name' => 'required',

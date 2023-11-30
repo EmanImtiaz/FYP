@@ -7,8 +7,6 @@
             <h3 class="text-center">Join as Photographer</h3>
             <form method="POST" action="{{ route('joinphotographer') }}" enctype="multipart/form-data">
                 @csrf
-
-
                 <div class="mb-3">
                     <label for="document" class="form-label">Upload your documents (PDF only)</label>
                     <input type="file" class="form-control" id="document" name="documents">
