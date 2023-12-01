@@ -133,6 +133,9 @@ Route::group(['prefix'=>'blog'],function()
 // user admin panel
 Route::get('/user', [ProfileController::class, 'userindex'])->name('profile.index');
 Route::get('/photographer', [ProfileController::class, 'photographerindex'])->name('photogrpherprofile.index');
+Route::put('/photographer/approve/{id}', [ProfileController::class, 'approvePhotographerProfile'])->name('photogrpherprofile.approve');
+Route::put('/photographer/disapprove/{id}', [ProfileController::class, 'disapprovePhotographerProfile'])->name('photogrpherprofile.disapprove');
+
 
 });
 

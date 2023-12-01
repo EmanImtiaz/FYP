@@ -9,10 +9,14 @@ class PhotographerProfile extends Model
 {
     use HasFactory;
 
-    protected $fillable = [ 'user_id','documents', 'company_name','logo' , 'bio'];
+    protected $fillable = [ 'user_id','documents', 'company_name','logo' , 'bio', 'approved'];
 
     public function user()
      {
          return $this->belongsTo(User::class, 'user_id');
    }
+   public function isApproved()
+    {
+        return $this->approved;
+    }
 }

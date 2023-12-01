@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('company_name');
             $table->string('logo');
             $table->text('bio');
+            $table->boolean('approved')->default(false);
             $table->timestamps();
         });
     }
