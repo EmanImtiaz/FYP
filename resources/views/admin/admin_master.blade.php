@@ -54,6 +54,38 @@
       </div>
       <div class="sidebar-body">
         <ul class="nav">
+            <li class="nav-item nav-category">Profiles</li>
+          <li class="nav-item">
+            <a href="{{ route('profile.index')  }}" class="nav-link">
+              <i class="link-icon" data-feather="message-square"></i>
+              <span class="link-title">User Profile</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="{{ route('photogrpherprofile.index')  }}" class="nav-link">
+              <i class="link-icon" data-feather="message-square"></i>
+              <span class="link-title">Photographer Profile</span>
+            </a>
+          </li>
+          <li class="nav-item nav-category">Photographer Profile</li>
+          <li class="nav-item">
+            <a href="{{ route('services.index')  }}" class="nav-link">
+              <i class="link-icon" data-feather="message-square"></i>
+              <span class="link-title">Services</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="{{ route('packages.index')  }}" class="nav-link">
+              <i class="link-icon" data-feather="message-square"></i>
+              <span class="link-title"> Packages</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="" class="nav-link">
+              <i class="link-icon" data-feather="message-square"></i>
+              <span class="link-title">Service-Packages</span>
+            </a>
+          </li>
           <li class="nav-item nav-category">web apps</li>
           <li class="nav-item">
             <a class="nav-link" data-bs-toggle="collapse" href="#emails" role="button" aria-expanded="false" aria-controls="emails">

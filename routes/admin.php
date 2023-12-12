@@ -5,11 +5,13 @@ use App\Http\Controllers\AdminPanelController;
 use App\Http\Controllers\BlogPostController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\CityController;
-use App\Http\Controllers\CompanyRegistrationController;
+use App\Http\Controllers\PackagesController;
+use App\Http\Controllers\PackageServiceController;
 use App\Http\Controllers\PhotographerController;
 use App\Http\Controllers\PhotosContestController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ProvinceController;
+use App\Http\Controllers\ServicesController;
 use App\Http\Controllers\SliderController;
 use App\Http\Controllers\TownController;
 use App\Http\Controllers\UserController;
@@ -104,19 +106,34 @@ Route::group(['prefix'=>'photoscontest'],function()
     Route::get('/delete/{id}',[PhotosContestController::class,'delete'])->name('photoscontest.delete');
 
 });
-// Company Registration //
 
-Route::group(['prefix'=>'company'],function()
+// Services //
+Route::group(['prefix'=>'services'],function()
 {
 
-    Route::get('/',[CompanyRegistrationController::class,'index'])->name('company.index');
-    Route::get('/create',[CompanyRegistrationController::class,'create'])->name('company.create');
-    Route::post('/store',[CompanyRegistrationController::class,'store'])->name('company.store');
-    Route::get('/edit/{id}',[CompanyRegistrationController::class,'edit'])->name('company.edit');
-    Route::post('/update/{id}',[CompanyRegistrationController::class,'update'])->name('company.update');
-    Route::get('/delete/{id}',[CompanyRegistrationController::class,'delete'])->name('company.delete');
+    Route::get('/',[ServicesController::class,'index'])->name('services.index');
+    Route::get('/create',[ServicesController::class,'create'])->name('services.create');
+    Route::post('/store',[ServicesController::class,'store'])->name('services.store');
+    Route::get('/edit/{id}',[ServicesController::class,'edit'])->name('services.edit');
+    Route::post('/update/{id}',[ServicesController::class,'update'])->name('services.update');
+    Route::get('/delete/{id}',[ServicesController::class,'delete'])->name('services.delete');
 
 });
+// Packages //
+Route::group(['prefix'=>'packages'],function()
+{
+
+    Route::get('/',[PackagesController::class,'index'])->name('packages.index');
+    Route::get('/create',[PackagesController::class,'create'])->name('packages.create');
+    Route::post('/store',[PackagesController::class,'store'])->name('packages.store');
+    Route::get('/edit/{id}',[PackagesController::class,'edit'])->name('packages.edit');
+    Route::post('/update/{id}',[PackagesController::class,'update'])->name('packages.update');
+    Route::get('/delete/{id}',[PackagesController::class,'delete'])->name('packages.delete');
+
+});
+// Service-Packages //
+
+
 
 Route::group(['prefix'=>'blog'],function()
 {
