@@ -2,17 +2,18 @@
 
 namespace App\Models;
 
+use App\Models\Service;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Packages extends Model
+class Package extends Model
 {
     use HasFactory;
 
     protected $fillable = ['id','title', 'description','price','discount', 'is_active'];
 
-    public function services()
-{
-    return $this->belongsToMany(Services::class);
-}
+    public function service()
+    {
+        return $this->belongsToMany(PackageService::class, 'id');
+    }
 }
