@@ -21,8 +21,8 @@
         <div class="col ">
             <label for="is_active" class="form-label">Is Active</label>
             <select class="form-select" id="is_active" name="is_active" required>
-                <option value="{{ $services->is_active }}">1</option>
-                <option value="{{ $services->is_active }}">0</option>
+                <option value="1" {{ $services->is_active == 1 ? 'selected' : '' }}>1</option>
+                <option value="0" {{ $services->is_active == 0 ? 'selected' : '' }}>0</option>
             </select>
         </div>
         <div class="col text-start py-4">

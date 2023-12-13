@@ -15,7 +15,9 @@
                 <tr>
                     <th>#</th>
                     <th>Title</th>
+                    <th>Description</th>
                     <th>Price</th>
+                    <th>Discount</th>
                     <th>Is_Active</th>
                     <th>action</th>
                 </tr>
@@ -25,7 +27,9 @@
                 <tr>
                     <td>{{  ++$key }}</td>
                     <td>{{ $packages->title }}</td>
+                    <td>{{ $packages->description }}</td>
                     <td>{{ $packages->price }}</td>
+                    <td>{{ $packages->discount }}</td>
                     <td>{{ $packages->is_active }}</td>
                     <td><a class="btn btn-primary" href="{{ route('packages.edit',['id'=>$packages->id]) }}">Edit</a>
                     <a class="btn btn-danger" href="{{ route('packages.delete',['id'=>$packages->id]) }}">Delete</a></td>

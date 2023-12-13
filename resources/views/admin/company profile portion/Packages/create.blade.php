@@ -9,31 +9,36 @@
         @csrf
 
         <!-- Title Input -->
-        <div class="row row-cols-3 py-4">
+        <div class="row row-cols-5 py-4">
         <div class="col">
-        <div class="form-group">
             <label for="title" class="form-label">Title</label>
             <input id="title" type="text" required class="form-control" name="title" value="{{  $packages->title }}">
         </div>
+        <div class="col ">
+            <label for="description" class="form-label ">Description</label>
+            <input id="description" class="form-control" type="text" required name="description" value={{ $packages->description }} >
         </div>
 <!-- Is_active Input -->
 <div class="col ">
     <label for="price" class="form-label ">Price</label>
     <input id="price" class="form-control" type="text" required name="price" value={{ $packages->price }} >
 </div>
+<div class="col ">
+    <label for="discount" class="form-label ">Discount</label>
+    <input id="discount" class="form-control" type="text" required name="discount" value={{ $packages->discount }} >
+</div>
         <!-- Is_active Input -->
         <div class="col ">
             <label for="is_active" class="form-label">Is Active</label>
             <select class="form-select" id="is_active" name="is_active" required>
-                <option value="{{ $packages->is_active }}">1</option>
-                <option value="{{ $packages->is_active }}">0</option>
+                <option value="1" {{ $packages->is_active == 1 ? 'selected' : '' }}>1</option>
+                <option value="0" {{ $packages->is_active == 0 ? 'selected' : '' }}>0</option>
             </select>
         </div>
-
+    </div>
   <!-- Services Input -->
-  <div class="row row-cols-2 py-4">
+  <div class="row row-cols-6 py-4">
     <div class="col">
-        <div class="form-group">
             <label for="services" class="form-label">Services</label>
             @foreach($services as $services)
                 <div class="form-check">
@@ -42,7 +47,6 @@
                     <label class="form-check-label" for="services{{ $services->id }}">{{ $services->title }}</label>
                 </div>
             @endforeach
-        </div>
     </div>
 
 
@@ -51,7 +55,7 @@
             <input type="submit" value="save" class="btn btn-success">
         </div>
     </div>
-</div>
+
 </form>
 </div>
 
