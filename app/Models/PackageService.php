@@ -12,18 +12,14 @@ class PackageService extends Model
     use HasFactory;
 
     protected $fillable = ['id','package_id', 'service_id'];
-    
-    public function package()
-    {
-        return $this->belongsTo(Package::class);
-    }
+
+    // public function package()
+    // {
+    //     return $this->belongsTo(Package::class);
+    // }
 
     public function service()
     {
         return $this->belongsTo(Service::class);
     }
-
-
-
-
 }

@@ -16,4 +16,5 @@ class Package extends Model
     {
         return $this->belongsToMany(PackageService::class, 'id');
     }
+
 }

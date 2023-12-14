@@ -131,9 +131,6 @@ Route::group(['prefix'=>'packages'],function()
     Route::get('/delete/{id}',[PackagesController::class,'delete'])->name('packages.delete');
 
 });
-// Service-Packages //
-
-
 
 Route::group(['prefix'=>'blog'],function()
 {
