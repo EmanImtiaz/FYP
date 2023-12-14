@@ -70,3 +70,6 @@ Route::post('/profile-update', [ProfileController::class, 'update_profile'])->na
 Route::get('/joinphotographer', [ProfileController::class, 'joinphotographer'])->name('joinphotographer');
 
 Route::post('/joinphotographer', [ProfileController::class, 'becomePhotographer'])->name('joinphotographer.submit');
+
+Route::get('/detail.edit', [ProfileController::class, 'detail_edit'])->name('detailedit');
+Route::post('/detail-updatee', [ProfileController::class, 'detail_updatee'])->name('profileupdatee');

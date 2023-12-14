@@ -1,4 +1,3 @@
-
 @extends('layout.master')
 @section('kuchb')
 
@@ -7,7 +6,8 @@
         <div class="col-md-8">
             <div class="card">
                 <div class="card-body">
-                    <div class="container py-5">
+                    <div class="container py-2">
+                        <h4>Profile</h4>
                         <div class="row">
                             <div class="col-lg-4">
                                 <div class="card mb-4">
@@ -59,6 +59,50 @@
                                         </div>
                                         <hr>
 
+                                        <a href="{{ route('profile.edit') }}" class="btn btn-danger">Edit Profile</a>
+
+                                        @if (!$photographerProfile || !$photographerProfile->isApproved())
+                                        <a href="{{ route('joinphotographer') }}" class="btn btn-danger">Apply as photographer</a>
+                                    @endif
+
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                @if ($photographerProfile && $photographerProfile->isApproved())
+
+                <div class="card-body">
+                    <div class="container py-1">
+                        <h4>Company Information</h4>
+                        <div class="row">
+                            <div class="col-lg-4">
+                                <div class="card mb-4">
+                                    <div class="card-body text-center">
+                                        <div class="d-flex justify-content-center">
+                                            @if ($photographerProfile && $photographerProfile->logo)
+                                            <img src="{{ $photographerProfile->logo }}" alt="logo" style="width: 200px; height: 200px">
+                                        @else
+                                            <p>No logo available.</p>
+                                        @endif
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-8">
+                                <div class="card mb-4">
+                                    <div class="card-body">
+
+
+
+
+
+
+
                                         @if ($photographerProfile && $photographerProfile->isApproved())
                                             <div class="row">
                                                 <div class="col-sm-3">
@@ -88,19 +132,25 @@
                                             </div>
                                             <hr>
                                         @endif
+                                        <a href="{{ route('detailedit') }}" class="btn btn-danger">Edit details</a>
 
-                                        <a href="{{ route('profile.edit') }}" class="btn btn-danger">Edit Profile</a>
-                                        <a href="{{ route('joinphotographer') }}" class="btn btn-danger">Apply as photographer</a>
+
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
+
+                @endif
+
+
+
             </div>
         </div>
     </div>
 </div>
+@include('frontend.packagesview')
 
 @endsection
 

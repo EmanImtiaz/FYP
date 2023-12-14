@@ -74,10 +74,20 @@ public function update_profile(Request $request)
     return redirect()->route('Frontend.profile');
 }
 
+
 public function joinphotographer()
 {
-     return view('Frontend.users.joinphotographer');
+    $user = Auth::user(); 
+
+    // Check if the user is already a photographer
+    $photographerProfile = $user->photographerProfile;
+
+    // Check if the photographer profile is approved
+    $isApproved = $photographerProfile && $photographerProfile->isApproved();
+
+    return view('Frontend.users.joinphotographer', compact('user', 'photographerProfile', 'isApproved'));
 }
+
 public function becomePhotographer(Request $request)
 {
     $user = Auth::user();
@@ -129,6 +139,35 @@ public function disapprovePhotographerProfile($id)
     return redirect()->route('photogrpherprofile.index')->with('success', 'Photographer profile disapproved.');
 }
 
+public function detail_updatee(Request $request)
+{
+    $user = Auth::user();
 
+    // Fetch or create the photographer profile associated with the user
+    $photographerProfile = PhotographerProfile::where('user_id', $user->id)->first();
+    if (!$photographerProfile) {
+        $photographerProfile = new PhotographerProfile();
+        $photographerProfile->user_id = $user->id;
+    }
+
+    // Update other user attributes
+    $photographerProfile->logo = $request->input('logo');
+    $photographerProfile->companyname = $request->input('companyname');
+    $photographerProfile->bio = $request->input('bio');
+    $photographerProfile->documents = $request->input('documents');
+
+    // Save the updated photographer profile to the database
+    $photographerProfile->save();
+
+    return redirect()->route('Frontend.profile');
+}
+
+public function detail_edit()
+{
+    $user = Auth::user();
+    $photographerProfile = $user->photographerProfile;
+    return view('Frontend.detail-edit', compact('photographerProfile'));
+}
 
 }
+
