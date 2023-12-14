@@ -20,13 +20,13 @@
                 </tr>
             </thead>
             <tbody>
-                @foreach ($services as $key=> $services)
+                @foreach ($service as $key=> $service)
                 <tr>
                     <td>{{  ++$key }}</td>
-                    <td>{{ $services->title }}</td>
-                    <td>{{ $services->is_active }}</td>
-                    <td><a class="btn btn-primary" href="{{ route('services.edit',['id'=>$services->id]) }}">Edit</a>
-                    <a class="btn btn-danger" href="{{ route('services.delete',['id'=>$services->id]) }}">Delete</a></td>
+                    <td>{{ $service->title }}</td>
+                    <td>{{ $service->is_active }}</td>
+                    <td><a class="btn btn-primary" href="{{ route('services.edit',['id'=>$service->id]) }}">Edit</a>
+                    <a class="btn btn-danger" href="{{ route('services.delete',['id'=>$service->id]) }}">Delete</a></td>
                 </tr>
                 @endforeach
             </tbody>

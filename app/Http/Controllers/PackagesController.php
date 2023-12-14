@@ -2,28 +2,28 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Packages;
-use App\Models\Services;
+use App\Models\Package;
+use App\Models\Service;
 use Illuminate\Http\Request;
 
 class PackagesController extends Controller
 {
     public function create()
     {
-       $packages=new Packages;
-       $services = Services::all(); // Fetch all services
-       return view('admin.company profile portion.Packages.create',compact('packages','services'));
+       $package=new Package;
+       $service = Service::all(); // Fetch all services
+       return view('admin.company profile portion.Packages.create',compact('package','service'));
     }
 
     public function index()
  {
-    $packages=Packages::get();
-    return view('admin.company profile portion.Packages.index',compact('packages'));
+    $package=Package::get();
+    return view('admin.company profile portion.Packages.index',compact('package'));
  }
  public function edit($id)
  {
-    $packages=Packages::find($id);
-    return view('admin.company profile portion.Packages.create',compact('packages'));
+    $package=Package::find($id);
+    return view('admin.company profile portion.Packages.create',compact('package'));
  }
  public function store(Request $request)
  {
@@ -37,13 +37,13 @@ class PackagesController extends Controller
  //   $package_id=packages::create($data)->id;
 
 
-    $package = Packages::create($data);
+    $package = Package::create($data);
     $package_id = $package->id; // Get the package ID
 
       // Attach services to the package
-      if ($request->has('services')) {
-        foreach ($request->input('services') as $serviceId) {
-            $package->services()->attach($serviceId);
+      if ($request->has('service')) {
+        foreach ($request->input('service') as $serviceId) {
+            $package->service()->attach($serviceId);
         }
     }
 
@@ -54,19 +54,19 @@ class PackagesController extends Controller
 
  public function update(Request $request,$id)
  {
-    $packages=Packages::find($id);
+    $package=Package::find($id);
     $data=$request->all();
 
-    $packages->update($data);
+    $package->update($data);
     return redirect()->route('packages.index');
 
 }
    public function delete(Request $request,$id)
    {
-     $packages=Packages::find($id);
+     $package=Package::find($id);
      $data=$request->all();
 
-     $packages->delete();
+     $package->delete();
      return redirect()->route('packages.index');
    }
 }

@@ -2,26 +2,26 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Services;
+use App\Models\Service;
 use Illuminate\Http\Request;
 
 class ServicesController extends Controller
 {
     public function create()
     {
-       $services=new Services;
-       return view('admin.company profile portion.services.create',compact('services'));
+       $service=new Service;
+       return view('admin.company profile portion.services.create',compact('service'));
     }
 
     public function index()
  {
-    $services=Services::get();
-    return view('admin.company profile portion.services.index',compact('services'));
+    $service=Service::get();
+    return view('admin.company profile portion.services.index',compact('service'));
  }
  public function edit($id)
  {
-    $services=Services::find($id);
-    return view('admin.company profile portion.services.create',compact('services'));
+    $service=Service::find($id);
+    return view('admin.company profile portion.services.create',compact('service'));
  }
  public function store(Request $request)
  {
@@ -31,7 +31,7 @@ class ServicesController extends Controller
     'is_active.required'=>'Please enter is_active']);
 
     $data=$request->all();
-    services::create($data);
+    service::create($data);
     return redirect()->route('services.index');
 
     }
@@ -39,18 +39,18 @@ class ServicesController extends Controller
 
  public function update(Request $request,$id)
  {
-     $services=Services::find($id);
+     $service=Service::find($id);
     $data=$request->all();
-  $services->update($data);
+  $service->update($data);
   return redirect()->route('services.index');
 
 }
    public function delete(Request $request,$id)
    {
-     $services=Services::find($id);
+     $service=Service::find($id);
      $data=$request->all();
 
-     $services->delete();
+     $service->delete();
      return redirect()->route('services.index');
    }
 }
