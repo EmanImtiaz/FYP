@@ -78,6 +78,7 @@ public function update(Request $request, $id)
 
         foreach ($request->input('services') as $serviceId) {
             $package->packageServices()->create([
+                'user_id' => auth()->user()->id,
                 'service_id' => $serviceId,
             ]);
         }
