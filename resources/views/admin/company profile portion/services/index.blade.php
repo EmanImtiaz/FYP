@@ -20,7 +20,7 @@
                 </tr>
             </thead>
             <tbody>
-                @foreach ($service as $key=> $service)
+                @foreach ($services as $key=> $service)
                 <tr>
                     <td>{{  ++$key }}</td>
                     <td>{{ $service->title }}</td>

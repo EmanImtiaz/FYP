@@ -9,14 +9,14 @@ class ServicesController extends Controller
 {
     public function create()
     {
-       $service=new Service;
-       return view('admin.company profile portion.services.create',compact('service'));
+       $services=new Service;
+       return view('admin.company profile portion.services.create',compact('services'));
     }
 
     public function index()
  {
-    $service=Service::get();
-    return view('admin.company profile portion.services.index',compact('service'));
+    $services=Service::get();
+    return view('admin.company profile portion.services.index',compact('services'));
  }
  public function edit($id)
  {
