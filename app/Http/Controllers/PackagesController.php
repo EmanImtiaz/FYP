@@ -21,11 +21,7 @@ class PackagesController extends Controller
     $package=Package::get();
     return view('admin.company profile portion.Packages.index',compact('package'));
  }
-//  public function edit($id)
-// {
-  //  $package=Package::find($id);
-  //  return view('admin.company profile portion.Packages.create',compact('package'));
- //  }
+
  public function store(Request $request)
 {
     $request->validate([
@@ -47,6 +43,7 @@ class PackagesController extends Controller
     if ($request->has('services')) {
         foreach ($request->input('services') as $serviceId) {
             PackageService::create([
+                'user_id' => auth()->user()->id, // Set the user_id
                 'package_id' => $package_id,
                 'service_id' => $serviceId,
             ]);

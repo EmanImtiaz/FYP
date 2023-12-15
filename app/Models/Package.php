@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use App\Models\Service;
+use App\Models\PackageService;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -18,13 +19,19 @@ class Package extends Model
     }
 // for delete pacakge with selected services
 
-public function packageServices()
-{
-    return $this->hasMany(PackageService::class);
-}
+ // public function packageServices()
+// {
+  //  return $this->hasMany(PackageService::class);
+// }
+// Define the relationship for fetching services associated with a package
 // for edit and updation packages
 public function services()
     {
         return $this->belongsToMany(Service::class, 'package_services', 'package_id', 'service_id');
     }
+// Define the relationship for fetching package services
+    public function packageServices()
+{
+    return $this->hasMany(PackageService::class, 'package_id');
+}
 }

@@ -150,7 +150,12 @@
         </div>
     </div>
 </div>
-@include('frontend.packagesview')
+
+
+@if(auth()->user()->role == 'photographer')
+    @include('Frontend.packagesview', ['packages' => auth()->user()->packages])
+@endif
+
 
 @endsection
 

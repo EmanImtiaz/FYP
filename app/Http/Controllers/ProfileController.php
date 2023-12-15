@@ -2,17 +2,35 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
+use App\Models\Package;
+use App\Models\PackageService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\PhotographerProfile;
-
-use App\Models\User;
-
 
 use Illuminate\Support\Facades\Storage;
 
 class ProfileController extends Controller
 {
+    public function showProfile()
+    {
+        $user = Auth::user();
+
+        if ($user->role == 'photographer') {
+            // Load unique packages with services
+            $packages = PackageService::where('user_id', $user->id)
+                ->with('package.services') // Eager load relationships
+                ->get();
+
+            return view('Frontend.profile', compact('user', 'packages'));
+        } else {
+            // Handle users without the photographer role
+            return view(); // You need to specify the view for non-photographer users
+        }
+    }
+
+
     public function profile()
     {
         $user = Auth::user();
@@ -77,7 +95,7 @@ public function update_profile(Request $request)
 
 public function joinphotographer()
 {
-    $user = Auth::user(); 
+    $user = Auth::user();
 
     // Check if the user is already a photographer
     $photographerProfile = $user->photographerProfile;

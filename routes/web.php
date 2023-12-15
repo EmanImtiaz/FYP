@@ -73,3 +73,9 @@ Route::post('/joinphotographer', [ProfileController::class, 'becomePhotographer'
 
 Route::get('/detail.edit', [ProfileController::class, 'detail_edit'])->name('detailedit');
 Route::post('/detail-updatee', [ProfileController::class, 'detail_updatee'])->name('profileupdatee');
+
+Route::middleware(['auth'])->group(function () {
+    // Your existing routes...
+
+    Route::get('/profile/photographer', [ProfileController::class, 'showProfile'])->name('user.profile');
+});

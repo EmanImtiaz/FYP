@@ -11,11 +11,9 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('package_services', function (Blueprint $table) {
-            $table->id();
-            $table->unsignedBigInteger('package_id');
-            $table->unsignedBigInteger('service_id');
-            $table->timestamps();
+        Schema::table('package_services', function (Blueprint $table) {
+            $table->unsignedBigInteger('user_id')->unsigned();
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
         });
     }
 
@@ -24,6 +22,8 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('package_services');
+        Schema::table('package_services', function (Blueprint $table) {
+            //
+        });
     }
 };

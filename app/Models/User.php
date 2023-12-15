@@ -54,5 +54,11 @@ class User extends Authenticatable
       {
           return $this->hasOne(PhotographerProfile::class);
       }
+
+      // relation b/w user & packadeservice table
+    public function packages()
+    {
+        return $this->hasMany(PackageService::class, 'user_id');
+    }
 }
 
