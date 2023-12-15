@@ -8,8 +8,8 @@
                     <div class="card-body">
                         <h5 class="card-title">{{ $packageService->package->title }}</h5>
                         <p class="card-text">{{ $packageService->package->description }}</p>
-                        <p class="card-text">Price: ${{ $packageService->package->price }}</p>
-                        <p class="card-text">Discount: ${{ $packageService->package->discount }}</p>
+                        <p class="card-text">Price:{{ $packageService->package->price }}</p>
+                        <p class="card-text">Discount: Rs. {{ $packageService->package->discount }}</p>
                         <p class="card-text">Services:</p>
                         <ul>
                             @foreach($packageService->package->services as $service)
