@@ -11,9 +11,9 @@ class PackagesController extends Controller
 {
     public function create()
     {
-       $package=new Package;
-       $service = Service::all(); // Fetch all services
-       return view('admin.company profile portion.Packages.create',compact('package','service'));
+        $package = new Package;
+        $services = Service::all(); // Fetch all services
+       return view('admin.company profile portion.Packages.create',compact('package','services'));
     }
 
     public function index()
@@ -21,11 +21,11 @@ class PackagesController extends Controller
     $package=Package::get();
     return view('admin.company profile portion.Packages.index',compact('package'));
  }
- public function edit($id)
- {
-    $package=Package::find($id);
-    return view('admin.company profile portion.Packages.create',compact('package'));
- }
+//  public function edit($id)
+// {
+  //  $package=Package::find($id);
+  //  return view('admin.company profile portion.Packages.create',compact('package'));
+ //  }
  public function store(Request $request)
 {
     $request->validate([
@@ -56,22 +56,46 @@ class PackagesController extends Controller
     return redirect()->route('packages.index');
 }
 
- public function update(Request $request,$id)
- {
-    $package=Package::find($id);
-    $data=$request->all();
-
-    $package->update($data);
-    return redirect()->route('packages.index');
-
+public function edit($id)
+{
+    $package = Package::find($id);
+    $services = Service::all(); // Fetch all services
+    return view('admin.company profile portion.Packages.create', compact('package', 'services'));
 }
 
-   public function delete(Request $request,$id)
-  {
-   $package=Package::find($id);
-   $data=$request->all();
+public function update(Request $request, $id)
+{
+    $package = Package::find($id);
 
-    $package->delete();
-   return redirect()->route('packages.index');
-   }
+    $data = $request->validate([
+        'title' => 'required',
+        'price' => 'required',
+        'is_active' => 'required',
+    ]);
+
+    // Update the package
+    $package->update($data);
+
+    if ($request->has('services')) {
+        $package->packageServices()->delete(); //for Delete existing package services
+
+        foreach ($request->input('services') as $serviceId) {
+            $package->packageServices()->create([
+                'service_id' => $serviceId,
+            ]);
+        }
+    }
+    return redirect()->route('packages.index');
+}
+
+ public function delete(Request $request, $id)
+ {
+     $package = Package::find($id);
+     // Use the relationship to delete the related services from package_services table
+     $package->packageServices()->delete();
+
+     $package->delete();
+
+     return redirect()->route('packages.index');
+ }
 }

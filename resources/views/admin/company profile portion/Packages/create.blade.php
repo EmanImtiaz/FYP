@@ -40,18 +40,16 @@
   <div class="row row-cols-6 py-4">
     <div class="col">
             <label for="services" class="form-label">Services</label>
-            @foreach($service as $service)
-                <div class="form-check">
-                    <input type="checkbox" class="form-check-input" name="services[]"
-                           value="{{ $service->id }}" {{ in_array($service->id, $package->service->pluck('id')->toArray()) ? 'checked' : '' }}>
-                    <label class="form-check-label" for="services{{ $service->id }}">{{ $service->title }}</label>
-                </div>
-            @endforeach
+            @foreach($services as $service)
+            <div class="form-check">
+                <input type="checkbox" class="form-check-input" name="services[]"
+                       value="{{ $service->id }}" {{ $package->services->contains($service->id) ? 'checked' : '' }}>
+                <label class="form-check-label" for="services{{ $service->id }}">{{ $service->title }}</label>
+            </div>
+        @endforeach
+
     </div>
-
-
-
-        <div class="col text-start py-4">
+    <div class="col text-start py-4">
             <input type="submit" value="save" class="btn btn-success">
         </div>
     </div>

@@ -16,5 +16,15 @@ class Package extends Model
     {
         return $this->belongsToMany(PackageService::class, 'id');
     }
+// for delete pacakge with selected services
 
+public function packageServices()
+{
+    return $this->hasMany(PackageService::class);
+}
+// for edit and updation packages
+public function services()
+    {
+        return $this->belongsToMany(Service::class, 'package_services', 'package_id', 'service_id');
+    }
 }
