@@ -60,21 +60,16 @@
                                         <hr>
 
                                         <a href="{{ route('profile.edit') }}" class="btn btn-danger">Edit Profile</a>
-
                                         @if (!$photographerProfile || !$photographerProfile->isApproved())
                                         <a href="{{ route('joinphotographer') }}" class="btn btn-danger">Apply as photographer</a>
-                                    @endif
-
-
+                                        @endif
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-
                 @if ($photographerProfile && $photographerProfile->isApproved())
-
                 <div class="card-body">
                     <div class="container py-1">
                         <h4>Company Information</h4>
@@ -85,10 +80,9 @@
                                         <div class="d-flex justify-content-center">
                                             @if ($photographerProfile && $photographerProfile->logo)
                                             <img src="{{ $photographerProfile->logo }}" alt="logo" style="width: 200px; height: 200px">
-                                        @else
+                                            @else
                                             <p>No logo available.</p>
-                                        @endif
-
+                                            @endif
                                         </div>
                                     </div>
                                 </div>
@@ -96,56 +90,43 @@
                             <div class="col-lg-8">
                                 <div class="card mb-4">
                                     <div class="card-body">
-
-
-
-
-
-
-
                                         @if ($photographerProfile && $photographerProfile->isApproved())
-                                            <div class="row">
-                                                <div class="col-sm-3">
-                                                    <p class="mb-0">Company Name:</p>
-                                                </div>
-                                                <div class="col-sm-9">
-                                                    <strong>{{ $photographerProfile->company_name }}</strong>
-                                                </div>
+                                        <div class="row">
+                                            <div class="col-sm-3">
+                                                <p class="mb-0">Company Name:</p>
                                             </div>
-                                            <hr>
-                                            <div class="row">
-                                                <div class="col-sm-3">
-                                                    <p class="mb-0">Bio:</p>
-                                                </div>
-                                                <div class="col-sm-9">
-                                                    <strong>{{ $photographerProfile->bio }}</strong>
-                                                </div>
+                                            <div class="col-sm-9">
+                                                <strong>{{ $photographerProfile->company_name }}</strong>
                                             </div>
-                                            <hr>
-                                            <div class="row">
-                                                <div class="col-sm-3">
-                                                    <p class="mb-0">Document:</p>
-                                                </div>
-                                                <div class="col-sm-9">
-                                                    {{ $photographerProfile->documents }}
-                                                </div>
+                                        </div>
+                                        <hr>
+                                        <div class="row">
+                                            <div class="col-sm-3">
+                                                <p class="mb-0">Bio:</p>
                                             </div>
-                                            <hr>
+                                            <div class="col-sm-9">
+                                                <strong>{{ $photographerProfile->bio }}</strong>
+                                            </div>
+                                        </div>
+                                        <hr>
+                                        <div class="row">
+                                            <div class="col-sm-3">
+                                                <p class="mb-0">Document:</p>
+                                            </div>
+                                            <div class="col-sm-9">
+                                                {{ $photographerProfile->documents }}
+                                            </div>
+                                        </div>
+                                        <hr>
                                         @endif
                                         <a href="{{ route('detailedit') }}" class="btn btn-danger">Edit details</a>
-
-
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-
                 @endif
-
-
-
             </div>
         </div>
     </div>

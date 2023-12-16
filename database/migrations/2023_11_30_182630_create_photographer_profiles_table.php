@@ -15,8 +15,6 @@ return new class extends Migration
             $table->id();
             $table->unsignedBigInteger('user_id')->unique();
             $table->string('documents')->nullable();
-
-
             $table->string('company_name');
             $table->string('logo');
             $table->text('bio');
