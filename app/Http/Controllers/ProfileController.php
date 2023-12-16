@@ -5,9 +5,9 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use App\Models\Package;
 use App\Models\PackageService;
+use App\Models\PhotographerProfile;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use App\Models\PhotographerProfile;
 
 use Illuminate\Support\Facades\Storage;
 
@@ -96,14 +96,15 @@ public function update_profile(Request $request)
 public function joinphotographer()
 {
     $user = Auth::user();
-
-    // Check if the user is already a photographer
     $photographerProfile = $user->photographerProfile;
 
-    // Check if the photographer profile is approved
-    $isApproved = $photographerProfile && $photographerProfile->isApproved();
+    // Check if the user has applied as a photographer
+    $isApplied = $photographerProfile && !$photographerProfile->approved;
 
-    return view('Frontend.users.joinphotographer', compact('user', 'photographerProfile', 'isApproved'));
+    // Check if the user is already a photographer
+    $isPhotographer = $photographerProfile && $photographerProfile->approved;
+
+    return view('Frontend.users.joinphotographer', compact('user', 'photographerProfile', 'isApplied', 'isPhotographer'));
 }
 
 public function becomePhotographer(Request $request)
@@ -113,6 +114,7 @@ public function becomePhotographer(Request $request)
     if (!$user) {
         return redirect()->route('login');
     }
+
     $data = $request->validate([
         'documents' => 'required|mimes:pdf',
         'company_name' => 'required',
@@ -131,22 +133,31 @@ public function becomePhotographer(Request $request)
         $logoPath = $logo->store('public/assets/logo');
         $data['logo_path'] = $logoPath;
     }
+
     if ($user->photographerProfile) {
-        $user->photographerProfile->update($data);
+        // Update the existing photographer profile
+        $photographerProfile = $user->photographerProfile;
+        $photographerProfile->update($data);
     } else {
-        $photographerProfile = new PhotographerProfile($data);
-        $user->photographerProfile()->save($photographerProfile);
-    }
+       // Create a new photographer profile
+       $photographerProfile = new PhotographerProfile($data);
+       $user->photographerProfile()->save($photographerProfile);
+   }
 
+   // Do not update user role here; let admin approval handle it
 
-    return redirect()->route('Frontend.profile')->with('success', 'You are now registered as a photographer.');
+   return redirect()->route('Frontend.profile')->with('success', 'You have applied as a photographer. Your profile is pending approval.');
 }
+
 public function approvePhotographerProfile($id)
 {
     $photographerProfile = PhotographerProfile::find($id);
-    $photographerProfile->update(['approved' => true]);
+        $photographerProfile->update(['approved' => true]);
 
-    return redirect()->route('photogrpherprofile.index')->with('success', 'Photographer profile approved.');
+        // Update user role to 'photographer' upon approval
+        $photographerProfile->user->update(['role' => 'photographer']);
+
+        return redirect()->route('photogrpherprofile.index')->with('success', 'Photographer profile approved.');
 }
 
 public function disapprovePhotographerProfile($id)
@@ -154,7 +165,11 @@ public function disapprovePhotographerProfile($id)
     $photographerProfile = PhotographerProfile::find($id);
     $photographerProfile->update(['approved' => false]);
 
+    // Update user role to 'user' upon disapproval
+    $photographerProfile->user->update(['role' => 'user']);
+
     return redirect()->route('photogrpherprofile.index')->with('success', 'Photographer profile disapproved.');
+
 }
 
 public function detail_updatee(Request $request)

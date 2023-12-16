@@ -42,12 +42,12 @@
                         <form action="{{ route('photogrpherprofile.approve', $photographerProfile->id) }}" method="POST">
                             @csrf
                             @method('PUT')
-                            <button type="submit" class="btn btn-success">Approve</button>
+                            <button type="submit" class="btn btn-success py-2">Approve</button>
                         </form>
                         <form action="{{ route('photogrpherprofile.disapprove', $photographerProfile->id) }}" method="POST">
                             @csrf
                             @method('PUT')
-                            <button type="submit" class="btn btn-danger">Disapprove</button>
+                            <button type="submit" class="btn btn-danger py-2">Disapprove</button>
                         </form>
                     </td>
                 </tr>
