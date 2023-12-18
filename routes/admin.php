@@ -9,7 +9,9 @@ use App\Http\Controllers\PackagesController;
 use App\Http\Controllers\PackageServiceController;
 use App\Http\Controllers\PhotographerController;
 use App\Http\Controllers\PhotosContestController;
+use App\Http\Controllers\ProfileCategoryController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\ProfilePortfolioController;
 use App\Http\Controllers\ProvinceController;
 use App\Http\Controllers\ServicesController;
 use App\Http\Controllers\SliderController;
@@ -132,6 +134,30 @@ Route::group(['prefix'=>'packages'],function()
 
 });
 
+// Photographer Profile Portfolio Portion (Category) //
+Route::group(['prefix'=>'profilecategory'],function()
+{
+
+    Route::get('/',[ProfileCategoryController::class,'index'])->name('profilecategory.index');
+    Route::get('/create',[ProfileCategoryController::class,'create'])->name('profilecategory.create');
+    Route::post('/store',[ProfileCategoryController::class,'store'])->name('profilecategory.store');
+    Route::get('/edit/{id}',[ProfileCategoryController::class,'edit'])->name('profilecategory.edit');
+    Route::post('/update/{id}',[ProfileCategoryController::class,'update'])->name('profilecategory.update');
+    Route::get('/delete/{id}',[ProfileCategoryController::class,'delete'])->name('profilecategory.delete');
+
+});
+// Photographer Profile Portfolio   //
+Route::group(['prefix'=>'profileportfolio'],function()
+{
+
+    Route::get('/',[ProfilePortfolioController::class,'index'])->name('profileportfolio.index');
+    Route::get('/create',[ProfilePortfolioController::class,'create'])->name('profileportfolio.create');
+    Route::post('/store',[ProfilePortfolioController::class,'store'])->name('profileportfolio.store');
+    Route::get('/edit/{id}',[ProfilePortfolioController::class,'edit'])->name('profileportfolio.edit');
+    Route::post('/update/{id}',[ProfilePortfolioController::class,'update'])->name('profileportfolio.update');
+    Route::get('/delete/{id}',[ProfilePortfolioController::class,'delete'])->name('profileportfolio.delete');
+
+});
 Route::group(['prefix'=>'blog'],function()
 {
 

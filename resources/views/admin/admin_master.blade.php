@@ -69,22 +69,41 @@
           </li>
           <li class="nav-item nav-category">Photographer Profile</li>
           <li class="nav-item">
-            <a href="{{ route('services.index')  }}" class="nav-link">
-              <i class="link-icon" data-feather="message-square"></i>
-              <span class="link-title">Services</span>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a href="{{ route('packages.index')  }}" class="nav-link">
-              <i class="link-icon" data-feather="message-square"></i>
+            <a class="nav-link" data-bs-toggle="collapse" href="#emails" role="button" aria-expanded="false" aria-controls="emails">
+              <i class="link-icon" data-feather="mail"></i>
               <span class="link-title"> Packages</span>
+              <i class="link-arrow" data-feather="chevron-down"></i>
             </a>
+            <div class="collapse" id="emails">
+              <ul class="nav sub-menu">
+                <li class="nav-item">
+                  <a href="{{ route('services.index')  }}" class="nav-link">Services</a>
+                </li>
+                <li class="nav-item">
+                  <a href="{{ route('packages.index')  }}" class="nav-link">Packages</a>
+                </li>
+                <li class="nav-item">
+                  <a href="" class="nav-link">Service-Packages</a>
+                </li>
+              </ul>
+            </div>
           </li>
           <li class="nav-item">
-            <a href="" class="nav-link">
-              <i class="link-icon" data-feather="message-square"></i>
-              <span class="link-title">Service-Packages</span>
+            <a class="nav-link" data-bs-toggle="collapse" href="#emails" role="button" aria-expanded="false" aria-controls="emails">
+              <i class="link-icon" data-feather="mail"></i>
+              <span class="link-title"> Portfolio</span>
+              <i class="link-arrow" data-feather="chevron-down"></i>
             </a>
+            <div class="collapse" id="emails">
+              <ul class="nav sub-menu">
+                <li class="nav-item">
+                  <a href="{{ route('profilecategory.index')  }}" class="nav-link">Category</a>
+                </li>
+                <li class="nav-item">
+                  <a href="{{ route('profileportfolio.index')  }}" class="nav-link">Portfolio</a>
+                </li>
+              </ul>
+            </div>
           </li>
           <li class="nav-item nav-category">web apps</li>
           <li class="nav-item">
