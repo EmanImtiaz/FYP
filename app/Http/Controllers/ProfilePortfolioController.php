@@ -14,7 +14,7 @@ class ProfilePortfolioController extends Controller
     $profilecategories = ProfileCategory::all();
     $profileportfolio = new ProfilePortfolio();
 
-    return view('admin.PhotographerProfilePortfolio(work).portfolio.create', compact('profilecategories', 'profileportfolio'));
+    return view('Frontend.createprofileportfolio', compact('profilecategories', 'profileportfolio'));
 }
 
     public function index()
@@ -49,7 +49,7 @@ class ProfilePortfolioController extends Controller
 
     ProfilePortfolio::create($data);
 
-    return redirect()->route('profileportfolio.index');
+    return redirect()->route('Frontend.profile');
 }
 
 public function edit($id)
@@ -57,7 +57,7 @@ public function edit($id)
     $profilecategories = ProfileCategory::all();
     $profileportfolio = ProfilePortfolio::find($id);
 
-    return view('admin.PhotographerProfilePortfolio(work).portfolio.create', compact('profilecategories', 'profileportfolio'));
+    return view('Frontend.createprofileportfolio', compact('profilecategories', 'profileportfolio'));
 }
 
 public function update(Request $request, $id)

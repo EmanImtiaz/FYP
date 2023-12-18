@@ -1,5 +1,6 @@
-@extends('admin.admin_master')
-@section('new')
+@extends('layout.master')
+@section('kuchb')
+
 
 <div class="container py-3">
     <h1 class="text-center">{{$profileportfolio->id != null ? 'Update' : 'Create'}} Photographer Profile Portfolio Category</h1>
@@ -43,6 +44,7 @@
         </div>
     </form>
 </div>
+
 
 
 
