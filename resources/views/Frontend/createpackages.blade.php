@@ -1,5 +1,6 @@
-@extends('admin.admin_master')
-@section('new')
+@extends('layout.master')
+@section('kuchb')
+
 
 <div class="container py-3">
     <h1 class="text-center">{{$package->id!=null?'update':'Create'}} Packages</h1>
@@ -56,5 +57,8 @@
 
 </form>
 </div>
+
+
+
 
 @endsection

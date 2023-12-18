@@ -13,7 +13,7 @@ class PackagesController extends Controller
     {
         $package = new Package;
         $services = Service::all(); // Fetch all services
-       return view('admin.company profile portion.Packages.create',compact('package','services'));
+       return view('Frontend.createpackages',compact('package','services'));
     }
 
     public function index()
@@ -50,14 +50,14 @@ class PackagesController extends Controller
         }
     }
 
-    return redirect()->route('packages.index');
+    return redirect()->route('Frontend.profile');
 }
 
 public function edit($id)
 {
     $package = Package::find($id);
     $services = Service::all(); // Fetch all services
-    return view('admin.company profile portion.Packages.create', compact('package', 'services'));
+    return view('Frontend.createpackages', compact('package', 'services'));
 }
 
 public function update(Request $request, $id)

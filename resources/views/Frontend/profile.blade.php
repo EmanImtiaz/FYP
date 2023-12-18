@@ -120,8 +120,8 @@
                                             <hr>
                                                 <div class="d-grid justify-content-start gap-2">
                                                     <a href="{{ route('detailedit') }}" class="btn btn-danger">Edit details</a>
-                                                    <a href="" class="btn btn-success">Create Packages</a>
-                                                    <a href="" class="btn btn-success">Create portfolio</a>
+                                                    <a href="{{ route('packages.create') }}" class="btn btn-danger">Create Packages</a>
+                                                    <a href="{{ route('profileportfolio.create') }}" class="btn btn-danger">Create portfolio</a>
                                                 </div>
                                             </div>
                                     </div>
