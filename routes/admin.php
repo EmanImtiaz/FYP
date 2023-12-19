@@ -122,17 +122,9 @@ Route::group(['prefix'=>'services'],function()
 
 });
 // Packages //
-Route::group(['prefix'=>'packages'],function()
-{
 
-    Route::get('/',[PackagesController::class,'index'])->name('packages.index');
-    Route::get('/create',[PackagesController::class,'create'])->name('packages.create');
-    Route::post('/store',[PackagesController::class,'store'])->name('packages.store');
-    Route::get('/edit/{id}',[PackagesController::class,'edit'])->name('packages.edit');
-    Route::post('/update/{id}',[PackagesController::class,'update'])->name('packages.update');
-    Route::get('/delete/{id}',[PackagesController::class,'delete'])->name('packages.delete');
+Route::get('/',[PackagesController::class,'index'])->name('packages.index');
 
-});
 
 // Photographer Profile Portfolio Portion (Category) //
 Route::group(['prefix'=>'profilecategory'],function()

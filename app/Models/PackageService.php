@@ -14,6 +14,10 @@ class PackageService extends Model
 
     protected $fillable = ['id','package_id', 'service_id','user_id'];
 
+    protected $attributes = [
+        'price' => 0,
+   ];
+
     // public function package()
     // {
     //     return $this->belongsTo(Package::class);
