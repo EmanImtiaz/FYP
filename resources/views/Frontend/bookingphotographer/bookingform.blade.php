@@ -22,7 +22,8 @@
         <div class="col-lg-7">
             <h3>Complete your booking</h3>
             <p>Please enter your contact information to proceed</p>
-            <form>
+            <form method="post" action="{{ route('booking.store') }}">
+                @csrf
                 <label for="name" class="form-label" > Name</label>
                 <input type="text" class="form-control" placeholder="Enter your name">
                 <br>
@@ -35,9 +36,8 @@
                 <label for="name" class="form-label">Address</label>
                 <input type="text" class="form-control" id="name" placeholder="Enter your address">
                 <br>
-                <label for="name" class="form-label">Write a Message</label>
-                <input type="text" class="form-control flex-column" id="name" placeholder="Optional">
-                <br>
+
+
 
                 <label for="serviceName" class="form-label">Select Services:</label>
 

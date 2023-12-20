@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminPanelController;
 use App\Http\Controllers\BlogPostController;
+use App\Http\Controllers\BookingController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\CityController;
 use App\Http\Controllers\PackagesController;
@@ -159,6 +160,16 @@ Route::group(['prefix'=>'blog'],function()
     Route::get('/edit/{id}',[BlogPostController::class,'edit'])->name('blogpost.edit');
     Route::post('/update/{id}',[BlogPostController::class,'update'])->name('blogpost.update');
     Route::get('/delete/{id}',[BlogPostController::class,'delete'])->name('blogpost.delete');
+
+});
+
+Route::group(['prefix'=>'booking'],function()
+{
+
+    Route::get('/',[BookingController::class,'index'])->name('booking.index');
+    Route::get('/create',[BookingController::class,'create'])->name('booking.create');
+    Route::post('/store',[BookingController::class,'store'])->name('booking.store');
+
 
 });
 
