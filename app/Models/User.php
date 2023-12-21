@@ -60,5 +60,11 @@ class User extends Authenticatable
     {
         return $this->hasMany(PackageService::class, 'user_id');
     }
+    
+    // booking
+    public function bookings()
+    {
+        return $this->hasMany(Booking::class, 'user_id');
+    }
 }
 

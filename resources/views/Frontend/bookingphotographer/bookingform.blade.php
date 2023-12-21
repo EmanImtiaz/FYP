@@ -9,103 +9,72 @@
   </style>
 <div class="container py-4">
     <div class="row">
-        <div class="col-lg-5">
-            <h3>Select Date</h3>
-
-
-                  <div id="calendar-container">
-                    <input type="text" id="datepicker" class="form-control" placeholder="Select a date" readonly>
-                  </div>
-                </div>
-
-
         <div class="col-lg-7">
             <h3>Complete your booking</h3>
             <p>Please enter your contact information to proceed</p>
-            <form method="post" action="{{ route('booking.store') }}">
+            <form action="{{ route('booking.store') }}" method="post">
                 @csrf
-                <label for="name" class="form-label" > Name</label>
-                <input type="text" class="form-control" placeholder="Enter your name">
-                <br>
-                <label for="name" class="form-label" >Email</label>
-                <input type="text" class="form-control" placeholder="Enter your email">
-                <br>
-                <label for="name" class="form-label">Phone</label>
-                <input type="text" class="form-control" id="name" placeholder="Enter your phone no">
-                <br>
-                <label for="name" class="form-label">Address</label>
-                <input type="text" class="form-control" id="name" placeholder="Enter your address">
-                <br>
+                <label for="name" class="form-label">Name</label>
+                <input id="name" type="text" required class="form-control" name="name" placeholder="Enter your name">
 
+                <label for="email" class="form-label">Email</label>
+                <input id="email" type="text" required class="form-control" name="email" placeholder="Enter your e-mail">
 
+                <label for="phone" class="form-label">Phone</label>
+                <input id="phone" type="text" required class="form-control" name="phone" placeholder="Enter your phone">
+
+                <label for="address" class="form-label">Address</label>
+                <input id="address" type="text" required class="form-control" name="address" placeholder="Enter your address">
+
+                <label for="remarks" class="form-label">Remarks</label>
+                <input id="remarks" type="text" class="form-control" name="remarks" placeholder="Enter your remarks">
+
+                <h3>Select Date</h3>
+                <div id="calendar-container">
+                    <input type="text" id="date" class="form-control" name="date" placeholder="Select a date" readonly>
+                </div>
 
                 <label for="serviceName" class="form-label">Select Services:</label>
+                <div class="row">
+                    <label for="serviceName" class="form-label">Select Services for {{ $package->title }}:</label>
+                <div class="row">
+                    @foreach($package->services as $service)
+                    <div class="col">
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" id="{{ $service->title }}" name="services[]" value="{{ $service->id }}">
+                            <label class="form-check-label" for="{{ $service->title }}">{{ $service->title }}</label>
+                        </div>
+                    </div>
+                    @endforeach
+                </div>
+                </div>
+                <br>
 
                 <div class="row">
-                    <div class="col">
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" id="portrait" name="services[]" value="Portrait Photography">
-                            <label class="form-check-label" for="portrait">
-                                Portrait Photography
-                            </label>
-                        </div>
+                    <div class="col-md-4">
+                        <label for="totalAmount" class="form-label"><h4><b>Total Amount:</b></h4></label>
                     </div>
-                    <div class="col">
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" id="wedding" name="services[]" value="Wedding Photography">
-                            <label class="form-check-label" for="wedding">
-                                Wedding Photography
-                            </label>
-                        </div>
+                    <div class="col-md-6">
+                        <input type="text" class="form-control" id="totalAmount" name="totalAmount" value="{{ $service->total_amount }}" placeholder="" readonly>
                     </div>
-                    <div class="col">
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" id="event" name="services[]" value="Event Photography">
-                            <label class="form-check-label" for="event">
-                                Event Photography
-                            </label>
-                        </div>
+                    <div class="col-md-2">
+                        <button class="btn btn-danger btn-block" type="submit">Continue</button>
                     </div>
                 </div>
-                    <br>
-                    <div class="row">
-                        <!-- Create a column for the "Total Amount" label -->
-                        <div class="col-md-4">
-                            <label for="totalAmount" class="form-label"><h4><b>Total Amount:</b></h4></label>
-                        </div>
-                        <!-- Create a column for the input field -->
-                        <div class="col-md-6">
-                            <input type="text" class="form-control" id="totalAmount" placeholder="">
-                        </div>
-                        <!-- Create a column for the "Continue" button -->
-                        <div class="col-md-2">
-                            <a href="{{ route('payment')}}"><button class="btn btn-danger btn-block" type="button">Continue</button></a>
-                        </div>
-                    </div>
-
-
-
-
-
-
-
-
-
-
-                </form>
-            </div>
+            </form>
         </div>
+    </div>
 </div>
+
 <!-- for calendar -->
 <script>
     document.addEventListener('DOMContentLoaded', function () {
-      const datepicker = $('#datepicker').datepicker({
-        multidate: true, // Enable multi-date selection
-        format: 'yyyy-mm-dd', // Specify your desired date format
-      }).data('datepicker');
+        const datepicker = $('#date').datepicker({
+            multidate: true, // Enable multi-date selection
+            format: 'yyyy-mm-dd', // Specify your desired date format
+        }).data('datepicker');
     });
-  </script>
-
+</script>
 
 @endsection
 

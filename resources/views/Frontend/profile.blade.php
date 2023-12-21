@@ -15,6 +15,7 @@
                                     <div class="card-body text-center">
                                         <div class="d-flex justify-content-center">
                                             <img src="{{ $user->profile_image }}" alt="user-image" style="width: 200px; height: 200px">
+
                                             <input type="file" id="profile-picture" accept="image/*" style="display: none;">
                                         </div>
                                     </div>
@@ -136,6 +137,9 @@
 </div>
 
 @if(auth()->user()->role == 'photographer')
+
+  {{--  @include('Frontend.profileportfolioview', ['profileportfolios' => $profileportfolios]) --}}
+
     @include('Frontend.packagesview', ['packages' => auth()->user()->packages])
 @endif
 

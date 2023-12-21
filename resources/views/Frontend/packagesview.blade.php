@@ -49,7 +49,9 @@
 
                         <div class="row mt-3">
                             <div class="col">
-                                <a href="{{ route('bookingform') }}" class="btn btn-success btn-block">Book Package</a>
+                                <a href="{{ route('bookingform', ['packageId' => $packageService->package->id]) }}" class="btn btn-success btn-block">Book Package</a>
+
+
                             </div>
                             <div class="col">
                                 <a href="{{ route('packages.edit',['id'=>$packageService->package->id]) }}" class="btn btn-primary btn-block">Edit Package</a>

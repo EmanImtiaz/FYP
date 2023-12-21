@@ -2,44 +2,75 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Package;
+use App\Models\PackageService;
+use App\Models\Booking;
+use App\Models\BookingService;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 
 class BookingController extends Controller
 {
-    public function booking()
-    
+    public function showBookingForm($packageId)
     {
-         return view('Frontend.bookingphotographer.booking');
-   }
-    public function store(Request $request)
+        // Get the package with associated services
+        $package = Package::with('services')->find($packageId);
+
+        // You can also get additional details from the package_service table if needed
+        $packageServices = PackageService::where('package_id', $packageId)->get();
+
+        return view('Frontend.bookingphotographer.bookingform', compact('package', 'packageServices'));
+    }
+    
+    public function storeBooking(Request $request)
     {
         // Validate the form data
-        $validatedData = $request->validate([
-            'name' => 'required|string|max:255',
-            'email' => 'required|email|max:255',
-            'phone' => 'required|string|max:20',
-            'address' => 'required|string|max:255',
+        $request->validate([
+            'name' => 'required|string',
+            'email' => 'required|email',
+            'phone' => 'required|string',
+            'address' => 'required|string',
+            'remarks' => 'nullable|string',
+            'date' => 'required|date',
             'services' => 'required|array',
-            'totalAmount' => 'required|numeric',
-            'selected_date' => 'required|date', // Add validation for the date field
-            // Add any additional validation rules for your form fields
         ]);
 
-        // Create a new booking instance and fill it with the validated data
-        $booking = new Booking;
-        $booking->name = $validatedData['name'];
-        $booking->email = $validatedData['email'];
-        $booking->phone = $validatedData['phone'];
-        $booking->address = $validatedData['address'];
-        $booking->services = implode(', ', $validatedData['services']);
-        $booking->total_amount = $validatedData['totalAmount'];
-        $booking->date = $validatedData['date']; // Save the selected date
+        // Calculate total amount based on selected services
+        $selectedServices = $request->input('services');
+        $totalAmount = 0;
 
-        // Save the booking to the database
+        foreach ($selectedServices as $serviceId) {
+            $service = Service::find($serviceId);
+            $totalAmount += $service->price; // Assuming 'price' is the column name in the Service model
+        }
+
+        // Save the booking details
+        $booking = new Booking([
+            'user_id' => Auth::id(),
+            'name' => $request->input('name'),
+            'email' => $request->input('email'),
+            'phone' => $request->input('phone'),
+            'address' => $request->input('address'),
+            'remarks' => $request->input('remarks'),
+            'date' => $request->input('date'),
+            'total_amount' => $totalAmount,
+        ]);
+
         $booking->save();
 
-        // You can redirect the user to the index page or any other page after saving the data
-        return redirect()->route('booking.index')->with('success', 'Booking created successfully');
-    }
+        // Save the selected services for the booking
+        foreach ($selectedServices as $serviceId) {
+            $packageService = PackageService::where('service_id', $serviceId)->first();
 
+            $bookingService = new BookingService([
+                'booking_id' => $booking->id,
+                'package_service_id' => $packageService->id,
+                'total_amount' => $packageService->price,
+            ]);
+
+            $bookingService->save();
+        }
+
+        // Redirect or return a response as needed
+    }
 }
