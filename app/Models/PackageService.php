@@ -12,7 +12,7 @@ class PackageService extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['id','package_id', 'service_id','user_id'];
+    protected $fillable = ['id','package_id', 'discount','service_id','user_id'];
 
     protected $attributes = [
         'price' => 0,

@@ -28,7 +28,7 @@
                 <tr>
                     <td>{{  ++$key }}</td>
                     <td>{{ $photographerProfile->company_name }}</td>
-                    <td>{{ $photographerProfile->logo }}</td>
+                    <td><img src="{{ $photographerProfile->logo }}" width="100"></td>
                     <td>{{ $photographerProfile->documents }}</td>
                     <td>{{ $photographerProfile->bio }}</td>
                     <td>

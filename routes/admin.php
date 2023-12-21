@@ -144,11 +144,6 @@ Route::group(['prefix'=>'profileportfolio'],function()
 {
 
     Route::get('/',[ProfilePortfolioController::class,'index'])->name('profileportfolio.index');
-    Route::get('/create',[ProfilePortfolioController::class,'create'])->name('profileportfolio.create');
-    Route::post('/store',[ProfilePortfolioController::class,'store'])->name('profileportfolio.store');
-    Route::get('/edit/{id}',[ProfilePortfolioController::class,'edit'])->name('profileportfolio.edit');
-    Route::post('/update/{id}',[ProfilePortfolioController::class,'update'])->name('profileportfolio.update');
-    Route::get('/delete/{id}',[ProfilePortfolioController::class,'delete'])->name('profileportfolio.delete');
 
 });
 Route::group(['prefix'=>'blog'],function()

@@ -35,14 +35,6 @@
 
 
                         <div class="row mb-3">
-                            <label for="discount" class="col-md-4 col-form-label text-md-end">Discount</label>
-                            <div class="col-md-6">
-                                <input id="discount" class="form-control" type="text" required name="discount" value={{ $package->discount }} >
-                            </div>
-                        </div>
-
-
-                        <div class="row mb-3">
                             <label for="is_active" class="col-md-4 col-form-label text-md-end">Is Active</label>
                             <div class="col-md-6">
                                 <select class="form-select" id="is_active" name="is_active" required>
@@ -52,28 +44,28 @@
                             </div>
                         </div>
 
-                        <div class="row mb-3">
-                            <label for="services" class="col-md-4 col-form-label text-md-end">Services</label>
-                            <div class="col-md-6">
-                                @foreach($services as $service)
-                                <div class="form-check">
-                                    <input type="checkbox" class="form-check-input" name="services[{{ $service->id }}]"
-                                    value="{{ $service->id }}" {{ $package->services->contains($service->id) ? 'checked' : '' }}>
+                        @foreach($services as $service)
+    <div class="form-check">
+        <input type="checkbox" class="form-check-input" name="services[{{ $service->id }}]" value="{{ $service->id }}" {{ $package->services->contains($service->id) ? 'checked' : '' }}>
 
-                                    <div class="row mb-3">
-                                        <label class="form-check-label" for="services{{ $service->id }}">{{ $service->title }}</label>
+        <div class="row mb-3">
+            <label class="form-check-label" for="services{{ $service->id }}">{{ $service->title }}</label>
 
-                                        <div class="col-md-6">
-                                            <input type="text" class="form-control" name="services[{{ $service->id }}]"
-                                            value="{{ $package->services->contains($service->id) ? $package->servicePrice($service->id) : '' }}"
-                                            placeholder="Enter price {{ $service->title }}">
-                                        </div>
+            <div class="col-md-3">
+                <input type="text" class="form-control" name="services[{{ $service->id }}]"
+                    value="{{ $package->services->contains($service->id) ? $package->servicePrice($service->id) : '' }}"
+                    placeholder="Enter price {{ $service->title }}">
+            </div>
 
-                                    </div>
-                                </div>
-                                @endforeach
-                            </div>
-                        </div>
+            <div class="col-md-3">
+                <input type="text" class="form-control" name="discounts[{{ $service->id }}]"
+                    value="{{ $package->services->contains($service->id) ? $package->serviceDiscount($service->id) : 0 }}"
+                    placeholder="Enter discount {{ $service->title }}">
+            </div>
+        </div>
+    </div>
+@endforeach
+
 
 
                         <div class="row mb-0">

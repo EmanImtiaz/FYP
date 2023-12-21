@@ -41,12 +41,17 @@ public function servicePrice($serviceId)
     return $this->packageServices->where('service_id', $serviceId)->first()->price ?? null;
 }
 
-// Add this function for updating total price in the Package model
-public function updateTotalPrice()
-{
-    $totalPrice = $this->packageServices()->sum('price');
-    $this->update(['price' => $totalPrice]);
-}
+ // Add this function for fetching service discount
+ public function serviceDiscount($serviceId)
+ {
+     return $this->packageServices->where('service_id', $serviceId)->first()->discount ?? null;
+ }
 
+ // Add this function for updating total price in the Package model
+ public function updateTotalPrice()
+ {
+     $totalPrice = $this->packageServices()->sum('price') - $this->packageServices()->sum('discount');
+     $this->update(['price' => $totalPrice]);
+ }
 
 }
