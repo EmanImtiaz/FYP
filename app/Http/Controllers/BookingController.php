@@ -19,9 +19,23 @@ class BookingController extends Controller
         // You can also get additional details from the package_service table if needed
         $packageServices = PackageService::where('package_id', $packageId)->get();
 
-        return view('Frontend.bookingphotographer.bookingform', compact('package', 'packageServices'));
+        // Get selected services for the package (if any)
+        $selectedServices = old('services', $package->services->pluck('id')->toArray());
+
+        // Calculate total amount based on selected services
+        $totalAmount = 0;
+
+        foreach ($selectedServices as $serviceId) {
+            $packageService = PackageService::where('service_id', $serviceId)->first();
+            if ($packageService) {
+                $totalAmount += $packageService->price - $packageService->discount;
+            }
+        }
+
+        return view('Frontend.bookingphotographer.bookingform', compact('package', 'packageServices', 'selectedServices', 'totalAmount'));
     }
-    
+
+
     public function storeBooking(Request $request)
     {
         // Validate the form data
@@ -73,4 +87,5 @@ class BookingController extends Controller
 
         // Redirect or return a response as needed
     }
+
 }

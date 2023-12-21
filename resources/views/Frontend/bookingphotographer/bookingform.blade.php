@@ -34,19 +34,20 @@
                     <input type="text" id="date" class="form-control" name="date" placeholder="Select a date" readonly>
                 </div>
 
-                <label for="serviceName" class="form-label">Select Services:</label>
-                <div class="row">
-                    <label for="serviceName" class="form-label">Select Services for {{ $package->title }}:</label>
+                <h3>Select Services</h3>
                 <div class="row">
                     @foreach($package->services as $service)
-                    <div class="col">
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" id="{{ $service->title }}" name="services[]" value="{{ $service->id }}">
-                            <label class="form-check-label" for="{{ $service->title }}">{{ $service->title }}</label>
+                        <div class="col">
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="{{ $service->title }}"
+                                       name="services[]" value="{{ $service->id }}"
+                                       {{ in_array($service->id, $selectedServices) ? 'checked' : '' }}>
+                                <label class="form-check-label" for="{{ $service->title }}">
+                                    {{ $service->title }}  {{ $service->price }}
+                                </label>
+                            </div>
                         </div>
-                    </div>
                     @endforeach
-                </div>
                 </div>
                 <br>
 
@@ -55,7 +56,7 @@
                         <label for="totalAmount" class="form-label"><h4><b>Total Amount:</b></h4></label>
                     </div>
                     <div class="col-md-6">
-                        <input type="text" class="form-control" id="totalAmount" name="totalAmount" value="{{ $service->total_amount }}" placeholder="" readonly>
+                        <input type="text" class="form-control" id="totalAmount" name="totalAmount" value="{{ $totalAmount }}" placeholder="" readonly>
                     </div>
                     <div class="col-md-2">
                         <button class="btn btn-danger btn-block" type="submit">Continue</button>
@@ -74,6 +75,7 @@
             format: 'yyyy-mm-dd', // Specify your desired date format
         }).data('datepicker');
     });
+
 </script>
 
 @endsection
