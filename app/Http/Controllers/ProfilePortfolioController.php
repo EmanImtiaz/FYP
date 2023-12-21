@@ -103,5 +103,13 @@ public function delete(Request $request, $id)
     return redirect()->route('profileportfolio.index');
 }
 
+public function view()
+{
+    $profileportfolios = ProfilePortfolio::with('category')->where('user_id', auth()->id())->get();
+    $profilecategories = ProfileCategory::all();
+
+    return view('Frontend.profileportfolioview', compact('profileportfolios', 'profilecategories'));
+}
+
 }
 

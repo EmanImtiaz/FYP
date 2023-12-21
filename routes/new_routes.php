@@ -5,6 +5,7 @@ use App\Http\Controllers\ContactController;
 use App\Http\Controllers\AboutController;
 use App\Http\Controllers\AllPortfolioController;
 use App\Http\Controllers\BlogPostController;
+use App\Http\Controllers\BookingController;
 use App\Http\Controllers\ClientController;
 use App\Http\Controllers\CompanyController;
 use App\Http\Controllers\ContestDetailController;
@@ -66,7 +67,7 @@ Route::group(['prefix'=>'packages'],function()
 Route::group(['prefix'=>'profileportfolio'],function()
 {
 
-    
+
     Route::get('/create',[ProfilePortfolioController::class,'create'])->name('profileportfolio.create');
     Route::post('/store',[ProfilePortfolioController::class,'store'])->name('profileportfolio.store');
     Route::get('/edit/{id}',[ProfilePortfolioController::class,'edit'])->name('profileportfolio.edit');
@@ -76,3 +77,10 @@ Route::group(['prefix'=>'profileportfolio'],function()
 });
 
 Route::get('/profileportfolio', [ProfilePortfolioController::class, 'view'])->name('profile.view');
+
+// Photographer Booking    //
+
+
+Route::get('/booking/{packageId}', [BookingController::class, 'showBookingForm'])->name('bookingform');
+Route::post('/booking/store', [BookingController::class, 'storeBooking'])->name('booking.store');
+
