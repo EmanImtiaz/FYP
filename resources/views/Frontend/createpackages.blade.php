@@ -65,10 +65,7 @@
         </div>
     </div>
 @endforeach
-
-
-
-                        <div class="row mb-0">
+<div class="row mb-0">
                             <div class="col-md-6 offset-md-4">
                                 <input type="submit" value="save" class="btn btn-success">
                                 </button>

@@ -2,8 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Package;
 use App\Models\PackageService;
+use App\Models\Package;
+use App\Models\Service;
 use App\Models\Booking;
 use App\Models\BookingService;
 use Illuminate\Support\Facades\Auth;
@@ -11,81 +12,66 @@ use Illuminate\Http\Request;
 
 class BookingController extends Controller
 {
-    public function showBookingForm($packageId)
+    public function bookingForm($packageId)
     {
-        // Get the package with associated services
         $package = Package::with('services')->find($packageId);
+        $selectedServices = $package->services->pluck('id')->toArray();
+        $totalAmount = $this->calculateTotalAmount($selectedServices, $package);
 
-        // You can also get additional details from the package_service table if needed
-        $packageServices = PackageService::where('package_id', $packageId)->get();
-
-        // Get selected services for the package (if any)
-        $selectedServices = old('services', $package->services->pluck('id')->toArray());
-
-        // Calculate total amount based on selected services
-        $totalAmount = 0;
-
-        foreach ($selectedServices as $serviceId) {
-            $packageService = PackageService::where('service_id', $serviceId)->first();
-            if ($packageService) {
-                $totalAmount += $packageService->price - $packageService->discount;
-            }
-        }
-
-        return view('Frontend.bookingphotographer.bookingform', compact('package', 'packageServices', 'selectedServices', 'totalAmount'));
+        return view('Frontend.bookingphotographer.bookingform', compact('package', 'selectedServices', 'totalAmount'));
     }
-
 
     public function storeBooking(Request $request)
     {
-        // Validate the form data
         $request->validate([
-            'name' => 'required|string',
+            'name' => 'required',
             'email' => 'required|email',
-            'phone' => 'required|string',
-            'address' => 'required|string',
-            'remarks' => 'nullable|string',
+            'phone' => 'required',
+            'address' => 'required',
             'date' => 'required|date',
             'services' => 'required|array',
+            'totalAmount' => 'required|numeric',
         ]);
 
-        // Calculate total amount based on selected services
-        $selectedServices = $request->input('services');
-        $totalAmount = 0;
-
-        foreach ($selectedServices as $serviceId) {
-            $service = Service::find($serviceId);
-            $totalAmount += $service->price; // Assuming 'price' is the column name in the Service model
-        }
-
-        // Save the booking details
-        $booking = new Booking([
-            'user_id' => Auth::id(),
+        // Create a booking
+        $booking = Booking::create([
+            'user_id' => auth()->user()->id,
             'name' => $request->input('name'),
             'email' => $request->input('email'),
             'phone' => $request->input('phone'),
             'address' => $request->input('address'),
             'remarks' => $request->input('remarks'),
             'date' => $request->input('date'),
-            'total_amount' => $totalAmount,
         ]);
 
-        $booking->save();
+        // Attach services to the booking
+        foreach ($request->input('services') as $serviceId) {
+            $packageService = PackageService::find($serviceId);
 
-        // Save the selected services for the booking
-        foreach ($selectedServices as $serviceId) {
-            $packageService = PackageService::where('service_id', $serviceId)->first();
-
-            $bookingService = new BookingService([
+            BookingService::create([
                 'booking_id' => $booking->id,
-                'package_service_id' => $packageService->id,
-                'total_amount' => $packageService->price,
+                'package_service_id' => $serviceId,
+                'total_amount' => $packageService->price - $packageService->discount,
             ]);
-
-            $bookingService->save();
         }
 
-        // Redirect or return a response as needed
+        // Redirect to success page or wherever needed
+        return redirect()->route('booking.success');
     }
 
+    // Function to calculate total amount based on selected services
+    private function calculateTotalAmount($selectedServices, $package)
+    {
+        $totalAmount = 0;
+
+        foreach ($selectedServices as $serviceId) {
+            $packageService = PackageService::find($serviceId);
+
+            if ($packageService) {
+                $totalAmount += $packageService->price - $packageService->discount;
+            }
+        }
+
+        return $totalAmount;
+    }
 }

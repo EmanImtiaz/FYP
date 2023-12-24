@@ -20,4 +20,6 @@ class Booking extends Model
     {
         return $this->hasMany(BookingService::class, 'booking_id');
     }
+
+    
 }

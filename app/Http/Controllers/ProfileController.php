@@ -185,7 +185,7 @@ public function detail_updatee(Request $request)
 
     // Update other user attributes
     $photographerProfile->logo = $request->input('logo');
-    $photographerProfile->companyname = $request->input('companyname');
+    $photographerProfile->company_name = $request->input('companyname');
     $photographerProfile->bio = $request->input('bio');
     $photographerProfile->documents = $request->input('documents');
 

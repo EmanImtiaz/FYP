@@ -1,3 +1,5 @@
+
+
 <div class="container py-5">
     <h2 class="text-center pb-4">Packages</h2>
     <div class="row">
@@ -50,8 +52,6 @@
                         <div class="row mt-3">
                             <div class="col">
                                 <a href="{{ route('bookingform', ['packageId' => $packageService->package->id]) }}" class="btn btn-success btn-block">Book Package</a>
-
-
                             </div>
                             <div class="col">
                                 <a href="{{ route('packages.edit',['id'=>$packageService->package->id]) }}" class="btn btn-primary btn-block">Edit Package</a>
