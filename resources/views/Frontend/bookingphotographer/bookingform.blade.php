@@ -82,7 +82,7 @@
                             @endforeach
 
                             {{-- Display the total discounted price --}}
-                            <input type="text" class="form-control" value="{{ $package->price - $totalDiscountedPrice }}" readonly>
+                            <input type="text" class="form-control" value="{{ $package->price  }}" readonly>
 
                         </div>
 

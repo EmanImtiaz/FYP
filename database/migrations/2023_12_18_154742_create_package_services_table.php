@@ -17,7 +17,8 @@ return new class extends Migration
             $table->unsignedBigInteger('service_id');
             $table->unsignedBigInteger('user_id');
             $table->decimal('price');
-            
+            $table->string('discount')->default(0);
+
 
             $table->foreign('package_id')->references('id')->on('packages')->onDelete('cascade');
             $table->foreign('service_id')->references('id')->on('services')->onDelete('cascade');

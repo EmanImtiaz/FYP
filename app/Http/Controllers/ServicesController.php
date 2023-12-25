@@ -9,8 +9,8 @@ class ServicesController extends Controller
 {
     public function create()
     {
-       $services=new Service;
-       return view('admin.company profile portion.services.create',compact('services'));
+        $services = new Service;
+        return view('admin.company profile portion.services.create', compact('services'));
     }
 
     public function index()
@@ -20,9 +20,10 @@ class ServicesController extends Controller
  }
  public function edit($id)
  {
-    $service=Service::find($id);
-    return view('admin.company profile portion.services.create',compact('service'));
+     $services = Service::find($id);
+     return view('admin.company profile portion.services.create', compact('services'));
  }
+
  public function store(Request $request)
  {
     $request->validate(['title'=>'required',
