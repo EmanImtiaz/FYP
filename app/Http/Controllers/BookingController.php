@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Models\PackageService;
 use App\Models\Package;
-use App\Models\Service;
 use App\Models\Booking;
 use App\Models\BookingService;
 use Illuminate\Support\Facades\Auth;
@@ -14,12 +13,14 @@ class BookingController extends Controller
 {
     public function bookingForm($packageId)
     {
-        $package = Package::with('services')->find($packageId);
-        $selectedServices = $package->services->pluck('id')->toArray();
-        $totalAmount = $this->calculateTotalAmount($selectedServices, $package);
+        $package = Package::with('packageServices')->find($packageId);
 
-        return view('Frontend.bookingphotographer.bookingform', compact('package', 'selectedServices', 'totalAmount'));
-    }
+        $packageServices = $package->packageServices;
+
+     return view('Frontend.bookingphotographer.bookingform', compact('package','packageServices'));
+  }
+
+
 
     public function storeBooking(Request $request)
     {
@@ -59,19 +60,5 @@ class BookingController extends Controller
         return redirect()->route('booking.success');
     }
 
-    // Function to calculate total amount based on selected services
-    private function calculateTotalAmount($selectedServices, $package)
-    {
-        $totalAmount = 0;
 
-        foreach ($selectedServices as $serviceId) {
-            $packageService = PackageService::find($serviceId);
-
-            if ($packageService) {
-                $totalAmount += $packageService->price - $packageService->discount;
-            }
-        }
-
-        return $totalAmount;
-    }
 }

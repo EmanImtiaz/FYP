@@ -17,23 +17,14 @@ class Package extends Model
     {
         return $this->belongsToMany(PackageService::class, 'id');
     }
+// Define the relationship for fetching package services
 // for delete pacakge with selected services
 
- // public function packageServices()
-// {
-  //  return $this->hasMany(PackageService::class);
-// }
-// Define the relationship for fetching services associated with a package
-// for edit and updation packages
-public function services()
-    {
-        return $this->belongsToMany(Service::class, 'package_services', 'package_id', 'service_id');
-    }
-// Define the relationship for fetching package services
-    public function packageServices()
-{
-    return $this->hasMany(PackageService::class, 'package_id');
-}
+  public function packageServices()
+ {
+    return $this->hasMany(PackageService::class);
+ }
+
 
 // Add this function for fetching service price
 public function servicePrice($serviceId)

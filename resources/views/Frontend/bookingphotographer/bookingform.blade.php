@@ -43,53 +43,47 @@
 
                     <h3>Select Services</h3>
                     <div class="row">
-                        @foreach($package->services as $service)
+                        @foreach($package->packageServices as $packageService)
                             <div class="col">
                                 <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" id="{{ $service->title }}"
-                                           name="services[]" value="{{ $service->id }}"
-                                        {{ in_array($service->id, $selectedServices) ? 'checked' : '' }}>
-                                    <label class="form-check-label" for="{{ $service->title }}">
-                                        {{ $service->title }}  {{ $service->price }}
+                                    <input class="form-check-input" type="checkbox" id="{{ $packageService->service->title }}"
+                                           name="services[]" value="{{ $packageService->service->id }}"
+                                           {{ $packageServices->pluck('service_id')->contains($packageService->service->id) ? 'checked' : '' }}>
+                                    <label class="form-check-label" for="{{ $packageService->service->title }}">
+                                        {{ $packageService->service->title }}
                                     </label>
                                 </div>
                             </div>
                         @endforeach
                     </div>
-                    <br>
+
                     <div class="row">
                         <div class="col-md-4">
                             <label for="totalAmount" class="form-label"><h4><b>Total Amount:</b></h4></label>
                         </div>
                         <div class="col-md-6">
-                            {{-- Display Discounted Price heading --}}
                             @php
-                                $totalDiscountedPrice = 0;
-                                $hasDiscountedService = false;
+                                $totalAmount = 0; // Initialize total amount variable
+
+                                foreach ($packageServices as $packageService) {
+                                $servicePrice = $packageService->service->price;
+                                $serviceDiscount = $packageService->discount;
+
+
+                              // Subtract discount from price if applicable
+                                $totalAmount += $servicePrice - $serviceDiscount ;
+
+                            }
                             @endphp
 
-                            @foreach($package->services as $service)
-                                @php
-                                    $discountedPrice = $package->serviceDiscount($service->id);
-                                @endphp
-
-                                @if($discountedPrice > 0)
-                                    @php
-                                        $hasDiscountedService = true;
-                                        $totalDiscountedPrice += $discountedPrice;
-                                    @endphp
-                                @endif
-                            @endforeach
-
-                            {{-- Display the total discounted price --}}
-                            <input type="text" class="form-control" value="{{ $package->price  }}" readonly>
-
+                            <input type="text" class="form-control" value="{{ $totalAmount }}" readonly>
                         </div>
+                        <div class="col-md-2">
+                            <button class="btn btn-danger btn-block" type="submit">Continue</button>
+                        </div>
+                    </div>
 
 
-                            <div class="col-md-2">
-                                <button class="btn btn-danger btn-block" type="submit">Continue</button>
-                            </div>
                         </div>
                     </form>
                 </div>
