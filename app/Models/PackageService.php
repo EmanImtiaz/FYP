@@ -12,27 +12,29 @@ class PackageService extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['id','package_id', 'discount','service_id','user_id'];
+    protected $fillable = ['id','package_id','service_id','price', 'discount','user_id'];
 
-    protected $attributes = [
-        'price' => 0,
-   ];
+  //  protected $attributes = [
+ //       'price' => 0,
+ //  ];
 
-    // public function package()
-    // {
-    //     return $this->belongsTo(Package::class);
-    // }
+     public function package()
+     {
+        return $this->belongsTo(Package::class);
+     }
 
     public function service()
     {
         return $this->belongsTo(Service::class);
     }
-    public function package()
-    {
-        return $this->belongsTo(Package::class, 'package_id');
-    }
+
     public function user()
     {
         return $this->belongsTo(User::class, 'user_id');
     }
+
+    //   public function package()
+  //  {
+  //      return $this->belongsTo(Package::class, 'package_id');
+ //   }
 }

@@ -7,7 +7,6 @@ use App\Http\Controllers\BookingController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\CityController;
 use App\Http\Controllers\PackagesController;
-use App\Http\Controllers\PackageServiceController;
 use App\Http\Controllers\PhotographerController;
 use App\Http\Controllers\PhotosContestController;
 use App\Http\Controllers\ProfileCategoryController;
@@ -17,7 +16,6 @@ use App\Http\Controllers\ProvinceController;
 use App\Http\Controllers\ServicesController;
 use App\Http\Controllers\SliderController;
 use App\Http\Controllers\TownController;
-use App\Http\Controllers\UserController;
 
 // Route::get('admin',[AdminPanelController::class,'adminpanel'])->name('adminpanel');
 

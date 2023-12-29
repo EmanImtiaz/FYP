@@ -1,7 +1,5 @@
-
-
-<div class="container py-5">
-    <h2 class="text-center pb-4">Packages</h2>
+<div class="container pb-3">
+    <h2 class="text-center pb-2">Packages</h2>
     <div class="row">
         @foreach($packages->unique('package_id') as $packageService)
             <div class="col-md-4">
@@ -13,32 +11,6 @@
 
                         {{-- Display Total Price with discount --}}
                         <p class="card-text" style="font-size: 2em;">Price: {{ $packageService->package->price }}<p>
-
-                        {{-- Display Discounted Price heading --}}
-                        @php
-                            $totalDiscountedPrice = 0;
-                            $hasDiscountedService = false;
-                        @endphp
-                        <ul>
-                            {{-- Display Discounted Price for each selected service --}}
-                            @foreach($packageService->package->services as $service)
-                                @php
-                                    $discountedPrice = $packageService->package->serviceDiscount($service->id);
-                                @endphp
-
-                                @if($discountedPrice > 0)
-                                    @php
-                                        $hasDiscountedService = true;
-                                        $totalDiscountedPrice += $discountedPrice;
-                                    @endphp
-                                @endif
-                            @endforeach
-
-                            {{-- Display Total Discounted Price if there's any discounted service --}}
-                            @if($hasDiscountedService)
-                                <li class="text-start">Discounted: Rs. {{ $totalDiscountedPrice }}</li>
-                            @endif
-                        </ul>
 
                         {{-- Display individual services --}}
                         <p class="card-text">Services:</p>

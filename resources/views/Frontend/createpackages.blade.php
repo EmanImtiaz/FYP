@@ -45,39 +45,31 @@
                         </div>
 
                         @foreach($services as $service)
-    <div class="form-check">
-        <input type="checkbox" class="form-check-input" name="services[{{ $service->id }}]" value="{{ $service->id }}" {{ $package->services->contains($service->id) ? 'checked' : '' }}>
+                        <div class="form-check">
+                            <input type="checkbox" class="form-check-input" name="services[]" value="{{ $service->id }}" {{ $package->services->contains($service->id) ? 'checked' : '' }}>
+                            <input type="checkbox" class="form-check-input" name="services[]" value="{{ $service->id }}" {{ optional($package->services)->contains($service->id) ? 'checked' : '' }}>
 
-        <div class="row mb-3">
-            <label class="form-check-label" for="services{{ $service->id }}">{{ $service->title }}</label>
+                            <label class="form-check-label" for="services{{ $service->id }}">{{ $service->title }}</label>
 
-            <div class="col-md-3">
-                <input type="text" class="form-control" name="services[{{ $service->id }}]"
-                    value="{{ $package->services->contains($service->id) ? $package->servicePrice($service->id) : '' }}"
-                    placeholder="Enter price {{ $service->title }}">
-            </div>
+                            <div class="col-md-3">
+                                <input type="text" class="form-control" name="prices[{{ $service->id }}]" value="{{ $package->services->contains($service->id) ? $package->servicePrice($service->id) : '' }}" placeholder="Enter price {{ $service->title }}">
+                            </div>
 
-            <div class="col-md-3">
-                <input type="text" class="form-control" name="discounts[{{ $service->id }}]"
-                    value="{{ $package->services->contains($service->id) ? $package->serviceDiscount($service->id) : 0 }}"
-                    placeholder="Enter discount {{ $service->title }}">
-            </div>
-        </div>
-    </div>
-@endforeach
-<div class="row mb-0">
-                            <div class="col-md-6 offset-md-4">
-                                <input type="submit" value="save" class="btn btn-success">
-                                </button>
+                            <div class="col-md-3">
+                                <input type="text" class="form-control" name="discounts[{{ $service->id }}]" value="{{ $package->services->contains($service->id) ? $package->serviceDiscount($service->id) : 0 }}" placeholder="Enter discount {{ $service->title }}">
                             </div>
                         </div>
+                    @endforeach
+                    <div class="row mb-0">
+                        <div class="col-md-6 offset-md-4">
+                            <input type="submit" value="save" class="btn btn-success">
+                        </div>
+                    </div>
+
                     </form>
                  </div>
         </div>
     </div>
 </div>
 
-
-
 @endsection
-

@@ -22,120 +22,49 @@ class PackagesController extends Controller
     return view('admin.company profile portion.Packages.index',compact('package'));
  }
 
-
  public function store(Request $request)
-    {
-        $request->validate([
-            'title' => 'required',
-            'is_active' => 'required',
-        ], [
-            'title.required' => 'Please enter title',
-        ]);
+{
+    $validatedData = $request->validate([
+        'title' => 'required',
+        'description' => 'required',
+        'is_active' => 'required',
+        'price' => 'required',
+        'services' => 'array',
+        // Validate other fields as per your form
+    ]);
 
-        $data = $request->all();
+    // Create the package
+    $package = Package::create($validatedData);
+    $packageId = $package->id;
 
-        // Create the package
-        $package = Package::create($data);
-        $package_id = $package->id;
+    // Handle association of services
+    if ($request->has('services')) {
+        foreach ($request->input('services') as $serviceId) {
+            // Extract price and discount for each service
+            $servicePrice = $request->input('prices.' . $serviceId);
+            $discount = $request->input('discounts.' . $serviceId);
 
-
-        $totalPrice = 0; // Initialize total price
-
-        // Attach services to the package
-        if ($request->has('services')) {
-            foreach ($request->input('services') as $serviceId => $servicePrice) {
-
-            // Handle the discount input
-            $discount = $request->input('discounts.' . $serviceId, 0);
-                // Only create PackageService if the checkbox is selected and a valid price is provided
-                if ($servicePrice !== null && $servicePrice !== '') {
-                    PackageService::create([
-                        'user_id' => auth()->user()->id,
-                        'package_id' => $package_id,
-                        'service_id' => $serviceId,
-                        'price' => $servicePrice,
-                        'discount' => $discount, // Make sure $discount is not null
-                    ]);
-
-                    // Add service price to total price
-                    $totalPrice += $servicePrice - $discount;
-                }
-            }
+            // Create the PackageService record for each service
+            PackageService::create([
+                'user_id' => auth()->user()->id,
+                'package_id' => $packageId,
+                'service_id' => $serviceId,
+                'price' => $servicePrice,
+                'discount' => $discount,
+            ]);
         }
-
-        // Update the total price in the package table
-        $package->update(['price' => $totalPrice]);
-
-        return redirect()->route('Frontend.profile');
     }
 
-// Add this function for updating total price in the Package model
-public function updateTotalPrice()
-{
-    $totalPrice = $this->packageServices()->sum('price') - $this->packageServices()->sum('discount');
-    $this->update(['price' => $totalPrice]);
+    // Redirect after creating the package and its associated services
+    return redirect()->route('Frontend.profile');
 }
-
 public function edit($id)
 {
     $package = Package::with('services')->find($id);
     $services = Service::all(); // Fetch all services
 
     return view('Frontend.createpackages', compact('package', 'services'));
-}
-
-public function update(Request $request, $id)
-{
-    $package = Package::with('services')->find($id);
-
-    $data = $request->validate([
-        'title' => 'required',
-        'description' => 'required',
-        'price' => 'required',
-        'is_active' => 'required',
-        'services.*' => 'numeric',
-        'discounts.*' => 'numeric', // Validation for discounts
-    ]);
-
-    // Update the package
-    $package->update($data);
-
-    // Attach services to the package
-    if ($request->has('services')) {
-        $package->packageServices()->delete(); // Delete existing package services
-
-        foreach ($request->input('services') as $serviceId => $servicePrice) {
-            // Handle the discount input during update
-            $discount = $request->input('discounts.' . $serviceId, 0);
-
-            if ($servicePrice !== null && $servicePrice !== '') {
-                $package->packageServices()->create([
-                    'user_id' => auth()->user()->id,
-                    'service_id' => $serviceId,
-                    'price' => $servicePrice,
-                    'discount' => $discount,
-                ]);
-            }
-        }
-    }
-
-    // Calculate and update the total price in the package table
-    $package->updateTotalPrice();
-
-    return redirect()->route('Frontend.profile');
-}
- public function delete(Request $request, $id)
- {
-     $package = Package::find($id);
-     // Use the relationship to delete the related services from package_services table
-     $package->packageServices()->delete();
-
-     $package->delete();
-
-     return redirect()->route('Frontend.profile');
- }
-
- public function view()
+} public function view()
 {
     $packages = PackageService::with('package')->get();
 

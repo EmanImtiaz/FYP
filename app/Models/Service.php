@@ -12,15 +12,15 @@ class Service extends Model
 
     protected $fillable = ['id','title', 'is_active'];
 
-  //  public function package()
-  //  {
- //       return $this->belongsToMany(PackageService::class, 'id');
-  //  }
-
-  public function packages()
+    public function package()
     {
-        return $this->belongsToMany(Package::class, 'package_services', 'service_id', 'package_id');
+        return $this->belongsToMany(PackageService::class);
     }
+
+ // public function packages()
+//    {
+ //       return $this->belongsToMany(Package::class, 'package_services', 'service_id', 'package_id');
+ //   }
 }
 
 
