@@ -78,7 +78,7 @@ Route::group(['prefix'=>'profileportfolio'],function()
 
 Route::get('/profileportfolio', [ProfilePortfolioController::class, 'view'])->name('profile.view');
 
-// Photographer Booking    //
+// Photographer Booking  //
 
 
 Route::get('/booking/{packageId}', [BookingController::class, 'bookingForm'])->name('bookingform');

@@ -28,7 +28,6 @@ class PackagesController extends Controller
         'title' => 'required',
         'description' => 'required',
         'is_active' => 'required',
-        'price' => 'required',
         'services' => 'array',
         // Validate other fields as per your form
     ]);

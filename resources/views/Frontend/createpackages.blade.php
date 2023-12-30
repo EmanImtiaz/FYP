@@ -26,13 +26,6 @@
                             </div>
                         </div>
 
-                        <div class="row mb-3">
-                            <label for="price" class="col-md-4 col-form-label text-md-end">Price</label>
-                            <div class="col-md-6">
-                                <input id="price" class="form-control" type="text" required name="price" value={{ $package->price }} >
-                            </div>
-                        </div>
-
 
                         <div class="row mb-3">
                             <label for="is_active" class="col-md-4 col-form-label text-md-end">Is Active</label>

@@ -15,7 +15,6 @@ return new class extends Migration
             $table->id();
             $table->string('title');
             $table->string('description');
-            $table->float('price');
             $table->boolean('is_active');
             $table->timestamps();
         });

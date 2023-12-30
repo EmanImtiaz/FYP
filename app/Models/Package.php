@@ -11,7 +11,7 @@ class Package extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['id','title', 'description','price', 'is_active'];
+    protected $fillable = ['id','title', 'description', 'is_active'];
 
     public function packageServices()
     {
