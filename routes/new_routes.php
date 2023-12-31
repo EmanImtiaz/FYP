@@ -60,6 +60,7 @@ Route::group(['prefix'=>'packages'],function()
     Route::get('/edit/{id}',[PackagesController::class,'edit'])->name('packages.edit');
     Route::post('/update/{id}',[PackagesController::class,'update'])->name('packages.update');
     Route::get('/delete/{id}',[PackagesController::class,'delete'])->name('packages.delete');
+    Route::post('/calculateServicesPrice', [PackagesController::class, 'calculateServicesPrice'])->name('calculateServicesPrice');
 
 });
 

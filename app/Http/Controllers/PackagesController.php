@@ -57,16 +57,86 @@ class PackagesController extends Controller
     // Redirect after creating the package and its associated services
     return redirect()->route('Frontend.profile');
 }
+
 public function edit($id)
 {
     $package = Package::with('services')->find($id);
     $services = Service::all(); // Fetch all services
 
     return view('Frontend.createpackages', compact('package', 'services'));
-} public function view()
+
+}
+
+public function update(Request $request, $id)
+{
+    $validatedData = $request->validate([
+        'title' => 'required',
+        'description' => 'required',
+        'is_active' => 'required',
+        'services' => 'array',
+        // Validate other fields as per your form
+    ]);
+
+    $package = Package::findOrFail($id);
+    $package->update($validatedData);
+
+    $package->packageServices()->delete(); // Delete existing associations
+
+    if ($request->has('services')) {
+        foreach ($request->input('services') as $serviceId) {
+            $servicePrice = $request->input('prices.' . $serviceId);
+            $discount = $request->input('discounts.' . $serviceId);
+
+            PackageService::create([
+                'user_id' => auth()->user()->id,
+                'package_id' => $id,
+                'service_id' => $serviceId,
+                'price' => $servicePrice,
+                'discount' => $discount,
+            ]);
+        }
+    }
+
+    return redirect()->route('Frontend.profile');
+}
+
+public function delete($id)
+{
+    $package = Package::findOrFail($id);
+    $package->packageServices()->delete(); // Delete associated services
+    $package->delete(); // Delete the package
+
+    return redirect()->route('Frontend.profile');
+}
+
+
+public function calculateServicesPrice(Request $request)
+{
+   // Fetch all PackageServices
+   $packageServices = PackageService::with('service')->get();
+
+   $totalPrice = 0;
+
+   foreach ($packageServices as $packageService) {
+       $servicePrice = $packageService->service->price;
+       $discount = $packageService->discount;
+
+       // Calculate total price for each service
+       $totalPrice += $servicePrice - $discount;
+   }
+
+   return response()->json(['totalPrice' => $totalPrice]);
+}
+
+
+public function view()
 {
     $packages = PackageService::with('package')->get();
 
     return view('Frontend.profile', compact('packages'));
+
 }
+
 }
+
+

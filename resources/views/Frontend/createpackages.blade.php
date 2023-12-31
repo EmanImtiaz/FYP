@@ -40,19 +40,19 @@
                         @foreach($services as $service)
                         <div class="form-check">
                             <input type="checkbox" class="form-check-input" name="services[]" value="{{ $service->id }}" {{ $package->services->contains($service->id) ? 'checked' : '' }}>
-                            <input type="checkbox" class="form-check-input" name="services[]" value="{{ $service->id }}" {{ optional($package->services)->contains($service->id) ? 'checked' : '' }}>
-
                             <label class="form-check-label" for="services{{ $service->id }}">{{ $service->title }}</label>
 
                             <div class="col-md-3">
-                                <input type="text" class="form-control" name="prices[{{ $service->id }}]" value="{{ $package->services->contains($service->id) ? $package->servicePrice($service->id) : '' }}" placeholder="Enter price {{ $service->title }}">
+                                <input type="text" class="form-control price-input" data-service="{{ $service->id }}" name="prices[{{ $service->id }}]" value="{{ $package->packageServices->where('service_id', $service->id)->first()?->price ?? '' }}" placeholder="Enter price {{ $service->title }}">
                             </div>
 
                             <div class="col-md-3">
-                                <input type="text" class="form-control" name="discounts[{{ $service->id }}]" value="{{ $package->services->contains($service->id) ? $package->serviceDiscount($service->id) : 0 }}" placeholder="Enter discount {{ $service->title }}">
+                                <input type="text" class="form-control discount-input" data-service="{{ $service->id }}" name="discounts[{{ $service->id }}]" value="{{ $package->packageServices->where('service_id', $service->id)->first()?->discount ?? 0 }}" placeholder="Enter discount {{ $service->title }}">
                             </div>
+
                         </div>
-                    @endforeach
+                        @endforeach
+
                     <div class="row mb-0">
                         <div class="col-md-6 offset-md-4">
                             <input type="submit" value="save" class="btn btn-success">

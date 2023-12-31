@@ -10,7 +10,8 @@
                         <p class="card-text">{{ $packageService->package->description }}</p>
 
                         {{-- Display Total Price with discount --}}
-                        <p class="card-text" style="font-size: 2em;">Price: {{ $packageService->package->price }}<p>
+                        <div>Total Price: <span id="totalPrice"></span></div>
+
 
                         {{-- Display individual services --}}
                         <p class="card-text">Services:</p>
@@ -38,3 +39,30 @@
         @endforeach
     </div>
 </div>
+
+<script>
+    $(document).ready(function () {
+        function fetchTotalPrice() {
+            $.ajax({
+                url: "{{ route('calculateServicesPrice') }}",
+                type: "POST",
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                },
+                success: function (response) {
+                    $('#totalPrice').text(response.totalPrice);
+                },
+                error: function (error) {
+                    console.log(error);
+                }
+            });
+        }
+
+        fetchTotalPrice();
+
+        // Update total price when a checkbox is changed
+        $('input[type="checkbox"]').change(function () {
+            fetchTotalPrice();
+        });
+    });
+</script>

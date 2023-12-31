@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <!-- Include CSRF token -->
+      <meta name="csrf-token" content="{{ csrf_token() }}">
     <title> welcome page</title>
     <link rel="stylesheet"href="{{ asset('css/bootstrap.min.css') }}">
     <script src="{{asset('js/bootstrap.bundle.min.js')}}"></script>
@@ -18,7 +20,8 @@
     <!-- userprofileupdate -->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-alpha2/dist/js/bootstrap.bundle.min.js"></script>
-
+    <!-- ajax implementation -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.5.2/dist/js/bootstrap.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-element-bundle.min.js"></script>
