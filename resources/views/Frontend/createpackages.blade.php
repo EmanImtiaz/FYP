@@ -37,6 +37,7 @@
                             </div>
                         </div>
 
+                        <h4>Services</h4>
                         @foreach($services as $service)
                         <div class="form-check">
                             <input type="checkbox" class="form-check-input" name="services[]" value="{{ $service->id }}" {{ $package->services->contains($service->id) ? 'checked' : '' }}>
@@ -64,5 +65,6 @@
         </div>
     </div>
 </div>
+
 
 @endsection

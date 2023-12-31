@@ -6,6 +6,8 @@ use App\Models\PackageService;
 use App\Models\Package;
 use App\Models\Service;
 use Illuminate\Http\Request;
+use Illuminate\Http\JsonResponse;
+
 
 class PackagesController extends Controller
 {
@@ -54,9 +56,19 @@ class PackagesController extends Controller
         }
     }
 
-    // Redirect after creating the package and its associated services
-    return redirect()->route('Frontend.profile');
+    // Calculate the total price after creating the package and its associated services
+    $totalPrice = $this->calculateTotalPrice($packageId);
+
+    // Retrieve the package with its associated services to pass it to the view
+    $packageWithServices = Package::with('packageServices')->find($packageId);
+
+    // Pass the data to the view and include the total price
+    return view('Frontend.profile', [
+        'packageWithServices' => $packageWithServices,
+        'totalPrice' => $totalPrice,
+    ]);
 }
+
 
 public function edit($id)
 {
@@ -66,6 +78,7 @@ public function edit($id)
     return view('Frontend.createpackages', compact('package', 'services'));
 
 }
+
 
 public function update(Request $request, $id)
 {
@@ -97,8 +110,19 @@ public function update(Request $request, $id)
         }
     }
 
-    return redirect()->route('Frontend.profile');
+    // Calculate the total price after updating the package and its associated services
+    $totalPrice = $this->calculateTotalPrice($id);
+
+    // Retrieve the package with its associated services to pass it to the view
+    $packageWithServices = Package::with('packageServices')->find($id);
+
+    // Pass the data to the view and include the total price
+    return view('Frontend.profile', [
+        'packageWithServices' => $packageWithServices,
+        'totalPrice' => $totalPrice,
+    ]);
 }
+
 
 public function delete($id)
 {
@@ -110,24 +134,22 @@ public function delete($id)
 }
 
 
-public function calculateServicesPrice(Request $request)
+private function calculateTotalPrice($packageId): float
 {
-   // Fetch all PackageServices
-   $packageServices = PackageService::with('service')->get();
+    $package = Package::with('packageServices')->find($packageId);
 
-   $totalPrice = 0;
+    $totalAmount = 0;
 
-   foreach ($packageServices as $packageService) {
-       $servicePrice = $packageService->service->price;
-       $discount = $packageService->discount;
+    foreach ($package->packageServices as $packageService) {
+        $servicePrice = $packageService->price; // Assuming price is stored directly in PackageService
+        $serviceDiscount = $packageService->discount;
 
-       // Calculate total price for each service
-       $totalPrice += $servicePrice - $discount;
-   }
+        // Calculate the total price after considering discounts for each service
+        $totalAmount += ($servicePrice - $serviceDiscount);
+    }
 
-   return response()->json(['totalPrice' => $totalPrice]);
+    return $totalAmount;
 }
-
 
 public function view()
 {
@@ -138,5 +160,8 @@ public function view()
 }
 
 }
+
+
+
 
 

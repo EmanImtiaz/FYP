@@ -1,3 +1,5 @@
+
+
 <div class="container pb-3">
     <h2 class="text-center pb-2">Packages</h2>
     <div class="row">
@@ -10,8 +12,9 @@
                         <p class="card-text">{{ $packageService->package->description }}</p>
 
                         {{-- Display Total Price with discount --}}
-                        <div>Total Price: <span id="totalPrice"></span></div>
-
+                        <p class="card-text" id="totalPrice_{{ $packageService->package->id }}" class="calculate-price" data-package-id="{{ $packageService->package->id }}">
+                            Total Price:
+                        </p>
 
                         {{-- Display individual services --}}
                         <p class="card-text">Services:</p>
@@ -19,6 +22,7 @@
                             @foreach($packageService->package->services as $service)
                                 {{-- Display service name for each selected service --}}
                                 <li>{{ $service->title }}</li>
+
                             @endforeach
                         </ul>
 
@@ -40,29 +44,32 @@
     </div>
 </div>
 
+
+
 <script>
-    $(document).ready(function () {
-        function fetchTotalPrice() {
-            $.ajax({
-                url: "{{ route('calculateServicesPrice') }}",
-                type: "POST",
-                headers: {
-                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                },
-                success: function (response) {
-                    $('#totalPrice').text(response.totalPrice);
-                },
-                error: function (error) {
-                    console.log(error);
-                }
-            });
-        }
+    // Function to fetch and display total price via AJAX
+    function calculateTotalPrice(packageId) {
+        $.ajax({
+            url: "{{ route('calculate.package.total', '') }}/" + packageId,
+            type: 'GET',
+            success: function(response) {
+                // Assuming you have an element to display the total price
+                $('#totalPrice_' + packageId).text('Total Price: $' + response.total_price);
+            },
+            error: function(error) {
+                console.error('Error fetching total price');
+            }
+        });
+    }
 
-        fetchTotalPrice();
+     // Document ready function
+     $(document).ready(function() {
+        // Example array of package IDs
+        const packageIds = [1, 2, 3]; // Replace this with your array of package IDs
 
-        // Update total price when a checkbox is changed
-        $('input[type="checkbox"]').change(function () {
-            fetchTotalPrice();
+        // Loop through each package ID and calculate total price
+        packageIds.forEach(packageId => {
+            calculateTotalPrice(packageId);
         });
     });
 </script>

@@ -17,10 +17,12 @@ class Service extends Model
         return $this->belongsToMany(PackageService::class);
     }
 
+
  // public function packages()
 //    {
  //       return $this->belongsToMany(Package::class, 'package_services', 'service_id', 'package_id');
  //   }
+
 }
 
 
