@@ -1,33 +1,47 @@
+@extends('layout.master')
 
+@section('kuchb')
 
- <div class="container py-5">
+<style>
+    /* Custom styles to change the active tab color to red */
+    .nav-pills .nav-item .active {
+        background-color:#d32f2f !important;
+
+    }
+</style>
+<div class="container py-5">
     <div class="row">
-        <h1 class="text-center">My Portfolio</h1>
+        <h1 class="text-center"> Portfolio</h1>
 
         <!-- Navbar to display categories -->
-        <nav class="navbar navbar-expand-lg navbar-light bg-light">
-            <div class="container-fluid">
-                <ul class="navbar-nav">
-                    @foreach($profilecategories as $category)
-                        <li class="nav-item">
-                            <a class="nav-link category-link" data-category="{{ $category->cat_name }}" href="#">{{ $category->cat_name }}</a>
-                        </li>
-                    @endforeach
-                </ul>
-            </div>
-        </nav>
+        <ul class="nav nav-pills nav-fill">
+            <li class="nav-item">
+                <a class="nav-link active " href="#all" data-toggle="pill">
+                    All
+                </a>
+            </li>
+            @foreach($profilecategories as $category)
+                <li class="nav-item">
+                    <a class="nav-link" href="#{{ $category->cat_name }}" data-toggle="pill">
+                        {{ $category->cat_name }}
+                    </a>
+                </li>
+            @endforeach
+        </ul>
 
         <!-- Image cards -->
-        @foreach($profileportfolios as $index => $portfolio)
-            @if($index < 6) {{-- Display only the first 6 images initially --}}
-                <div class="col-lg-3 col-md-4 col-sm-6 mt-2">
-                    <div class="card">
-                        <img src="{{ asset($portfolio->img) }}" class="card-img-top" alt=""
-                             data-bs-toggle="modal" data-bs-target="#imageModal{{ $portfolio->id }}">
+        <div class="row">
+            @foreach($profileportfolios as $index => $portfolio)
+                @if($index < 6) {{-- Display only the first 6 images initially --}}
+                    <div class="col-lg-3 col-md-4 col-sm-6 mt-2 portfolio-item" data-categories="{{ $portfolio->category ? $portfolio->category->cat_name : 'all' }}">
+                        <div class="card">
+                            <img src="{{ asset($portfolio->img) }}" class="card-img-top" alt=""
+                                 data-bs-toggle="modal" data-bs-target="#imageModal{{ $portfolio->id }}">
+                        </div>
                     </div>
-                </div>
-            @endif
-        @endforeach
+                @endif
+            @endforeach
+        </div>
     </div>
 </div>
 
@@ -50,25 +64,24 @@
 @endforeach
 
 <script>
-    // JavaScript logic to handle category clicks
     document.addEventListener('DOMContentLoaded', function () {
-        const categoryLinks = document.querySelectorAll('.category-link');
-        const cardImages = document.querySelectorAll('.card-img-top');
+        const categoryLinks = document.querySelectorAll('.nav-link');
+        const portfolioItems = document.querySelectorAll('.portfolio-item');
 
         categoryLinks.forEach(function (link) {
             link.addEventListener('click', function (event) {
                 event.preventDefault();
-                const selectedCategory = link.getAttribute('data-category');
+                const selectedCategory = link.getAttribute('href').substring(1); // Extract category from href
 
-                // Filter and display images for the selected category
-                cardImages.forEach(function (image) {
-                    image.style.display = 'none'; // Hide all images
+                // Filter and display portfolio items based on the selected category
+                portfolioItems.forEach(function (item) {
+                    const categories = item.dataset.categories.split(',');
 
-                    // Fetch and display images based on the selected category
-                    // You may need to implement AJAX to fetch images from the server
-                    // and update the display logic accordingly
-                    // For now, let's show all images again
-                    image.style.display = 'block';
+                    if (selectedCategory === 'all' || categories.indexOf(selectedCategory) !== -1) {
+                        item.style.display = 'block'; // Show items for the selected category or "All"
+                    } else {
+                        item.style.display = 'none'; // Hide items for other categories
+                    }
                 });
 
                 // Log the selected category to the console
@@ -76,12 +89,22 @@
             });
         });
 
-        cardImages.forEach(function (image) {
+        portfolioItems.forEach(function (item) {
+            const image = item.querySelector('.card-img-top');
+            const imageId = image.dataset.bsTarget.split('imageModal')[1];
+            const modalImage = document.getElementById('modalImage' + imageId);
+
             image.addEventListener('click', function () {
                 const imagePath = image.getAttribute('src');
-                const modalImage = document.getElementById('modalImage' + image.dataset.bsTarget.split('imageModal')[1]);
                 modalImage.setAttribute('src', imagePath);
             });
         });
     });
 </script>
+
+@endsection
+
+
+
+
+
