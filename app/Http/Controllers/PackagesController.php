@@ -25,50 +25,43 @@ class PackagesController extends Controller
  }
 
  public function store(Request $request)
-{
-    $validatedData = $request->validate([
-        'title' => 'required',
-        'description' => 'required',
-        'is_active' => 'required',
-        'services' => 'array',
-        // Validate other fields as per your form
-    ]);
+    {
+        $validatedData = $request->validate([
+            'title' => 'required',
+            'description' => 'required',
+            'is_active' => 'required',
+            'services' => 'array',
+            // Validate other fields as per your form
+        ]);
 
-    // Create the package
-    $package = Package::create($validatedData);
-    $packageId = $package->id;
+        // Create the package
+        $package = Package::create($validatedData);
+        $packageId = $package->id;
 
-    // Handle association of services
-    if ($request->has('services')) {
-        foreach ($request->input('services') as $serviceId) {
-            // Extract price and discount for each service
-            $servicePrice = $request->input('prices.' . $serviceId);
-            $discount = $request->input('discounts.' . $serviceId);
+        // Handle association of services
+        if ($request->has('services')) {
+            foreach ($request->input('services') as $serviceId) {
+                // Extract price and discount for each service
+                $servicePrice = $request->input('prices.' . $serviceId);
+                $discount = $request->input('discounts.' . $serviceId);
 
-            // Create the PackageService record for each service
-            PackageService::create([
-                'user_id' => auth()->user()->id,
-                'package_id' => $packageId,
-                'service_id' => $serviceId,
-                'price' => $servicePrice,
-                'discount' => $discount,
-            ]);
+                // Create the PackageService record for each service
+                PackageService::create([
+                    'user_id' => auth()->user()->id,
+                    'package_id' => $packageId,
+                    'service_id' => $serviceId,
+                    'price' => $servicePrice,
+                    'discount' => $discount,
+                ]);
+            }
         }
+
+        // Calculate the total price after creating the package and its associated services
+        $totalPrice = $this->calculateTotalPrice($packageId);
+
+        // Return JSON response with the total price
+        return response()->json(['total_price' => $totalPrice]);
     }
-
-    // Calculate the total price after creating the package and its associated services
-    $totalPrice = $this->calculateTotalPrice($packageId);
-
-    // Retrieve the package with its associated services to pass it to the view
-    $packageWithServices = Package::with('packageServices')->find($packageId);
-
-    // Pass the data to the view and include the total price
-    return view('Frontend.profile', [
-        'packageWithServices' => $packageWithServices,
-        'totalPrice' => $totalPrice,
-    ]);
-}
-
 
 public function edit($id)
 {
@@ -113,15 +106,11 @@ public function update(Request $request, $id)
     // Calculate the total price after updating the package and its associated services
     $totalPrice = $this->calculateTotalPrice($id);
 
-    // Retrieve the package with its associated services to pass it to the view
-    $packageWithServices = Package::with('packageServices')->find($id);
-
-    // Pass the data to the view and include the total price
-    return view('Frontend.profile', [
-        'packageWithServices' => $packageWithServices,
-        'totalPrice' => $totalPrice,
-    ]);
+    // Return JSON response with the total price
+    return response()->json(['total_price' => $totalPrice]);
 }
+
+
 
 
 public function delete($id)

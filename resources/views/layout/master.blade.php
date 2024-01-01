@@ -105,10 +105,6 @@
         </div>
     </nav>
 
-
-
-
-
       @yield('kuchb')
 
 <!-- footer-->

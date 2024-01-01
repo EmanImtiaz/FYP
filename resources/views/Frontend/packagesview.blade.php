@@ -49,6 +49,7 @@
 <script>
     // Function to fetch and display total price via AJAX
     function calculateTotalPrice(packageId) {
+        
         $.ajax({
             url: "{{ route('calculate.package.total', '') }}/" + packageId,
             type: 'GET',
