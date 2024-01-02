@@ -11,13 +11,13 @@
                         <h5 class="card-title">{{ $packageService->package->title }}</h5>
                         <p class="card-text">{{ $packageService->package->description }}</p>
 
-                        {{-- Display Total Price with discount --}}
-                        <p class="card-text" id="totalPrice_{{ $packageService->package->id }}" class="calculate-price" data-package-id="{{ $packageService->package->id }}">
+                        <!-- Display Total Price with discount -->
+                        <b class="card-text" id="totalPrice_{{ $packageService->package->id }}" class="calculate-price" data-package-id="{{ $packageService->package->id }}">
                             Total Price:
-                        </p>
+                        </b>
 
                         {{-- Display individual services --}}
-                        <p class="card-text">Services:</p>
+                        <h2><b class="card-text">Services:</b></h2>
                         <ul>
                             @foreach($packageService->package->services as $service)
                                 {{-- Display service name for each selected service --}}
@@ -47,15 +47,12 @@
 
 
 <script>
-    // Function to fetch and display total price via AJAX
     function calculateTotalPrice(packageId) {
-        
         $.ajax({
             url: "{{ route('calculate.package.total', '') }}/" + packageId,
             type: 'GET',
             success: function(response) {
-                // Assuming you have an element to display the total price
-                $('#totalPrice_' + packageId).text('Total Price: $' + response.total_price);
+                $('#totalPrice_' + packageId).text('Total Price: Rs. ' + response.total_price);
             },
             error: function(error) {
                 console.error('Error fetching total price');
@@ -63,12 +60,9 @@
         });
     }
 
-     // Document ready function
-     $(document).ready(function() {
-        // Example array of package IDs
-        const packageIds = [1, 2, 3]; // Replace this with your array of package IDs
+    $(document).ready(function() {
+        const packageIds = {!! json_encode($packages->pluck('package_id')->unique()->toArray()) !!};
 
-        // Loop through each package ID and calculate total price
         packageIds.forEach(packageId => {
             calculateTotalPrice(packageId);
         });

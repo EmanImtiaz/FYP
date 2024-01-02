@@ -56,12 +56,9 @@ class PackagesController extends Controller
             }
         }
 
-        // Calculate the total price after creating the package and its associated services
-        $totalPrice = $this->calculateTotalPrice($packageId);
-
-        // Return JSON response with the total price
-        return response()->json(['total_price' => $totalPrice]);
+        return redirect()->route('Frontend.profile');
     }
+
 
 public function edit($id)
 {
@@ -103,14 +100,8 @@ public function update(Request $request, $id)
         }
     }
 
-    // Calculate the total price after updating the package and its associated services
-    $totalPrice = $this->calculateTotalPrice($id);
-
-    // Return JSON response with the total price
-    return response()->json(['total_price' => $totalPrice]);
+    return redirect()->route('Frontend.profile');
 }
-
-
 
 
 public function delete($id)
@@ -122,8 +113,16 @@ public function delete($id)
     return redirect()->route('Frontend.profile');
 }
 
+public function calculateTotalPrice($packageId)
+    {
+        $totalPrice = $this->calculateTotalPriceLogic($packageId); 
 
-private function calculateTotalPrice($packageId): float
+        return response()->json(['total_price' => $totalPrice]);
+    }
+
+
+    private function calculateTotalPriceLogic($packageId): float
+
 {
     $package = Package::with('packageServices')->find($packageId);
 
