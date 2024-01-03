@@ -62,21 +62,7 @@
                             <label for="totalAmount" class="form-label"><h4><b>Total Amount:</b></h4></label>
                         </div>
                         <div class="col-md-6">
-                            @php
-                                $totalAmount = 0; // Initialize total amount variable
-
-                                foreach ($packageServices as $packageService) {
-                                $servicePrice = $packageService->service->price;
-                                $serviceDiscount = $packageService->discount;
-
-
-                              // Subtract discount from price if applicable
-                                $totalAmount += $servicePrice - $serviceDiscount ;
-
-                            }
-                            @endphp
-
-                            <input type="text" class="form-control" value="{{ $totalAmount }}" readonly>
+                            <input type="text" class="form-control" id="totalAmount" name="totalAmount" readonly>
                         </div>
                         <div class="col-md-2">
                             <button class="btn btn-danger btn-block" type="submit">Continue</button>
@@ -90,17 +76,43 @@
             </div>
         </div>
 
-    <!-- for calendar -->
-    <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            const datepicker = $('#date').datepicker({
-                multidate: true, // Enable multi-date selection
-                format: 'yyyy-mm-dd', // Specify your desired date format
-            }).data('datepicker');
-        });
+        <script>
+            // Function to calculate total price
+            function calculateTotalPrice(packageId, selectedServices) {
+                $.ajax({
+                    url: "{{ route('calculate.package.total', '') }}/" + packageId,
+                    type: 'GET',
+                    data: { services: selectedServices },
+                    success: function(response) {
+                        $('#totalAmount').val(response.total_price);
+                    },
+                    error: function(error) {
+                        console.error('Error fetching total price');
+                    }
+                });
+            }
 
+            // When a service checkbox is changed
+            $('input[type=checkbox]').change(function() {
+                const packageId = "{{ $package->id }}";
+                const selectedServices = $('input[type=checkbox]:checked').map(function() {
+                    return $(this).val();
+                }).get();
 
-    </script>
+                calculateTotalPrice(packageId, selectedServices);
+            });
+
+            // On document ready, calculate total price for initially checked services
+            $(document).ready(function() {
+                const packageId = "{{ $package->id }}";
+                const selectedServices = $('input[type=checkbox]:checked').map(function() {
+                    return $(this).val();
+                }).get();
+
+                calculateTotalPrice(packageId, selectedServices);
+            });
+        </script>
+
 
 @endsection
 

@@ -49,7 +49,7 @@ Route::get('booking', [BookingController::class,'booking'])->name('booking');;
 
 Route::get('bookinginfo', [BookinginfoController::class,'bookinginfo'])->name('bookinginfo');;
 
-Route::get('bookingform', [BookingformController::class,'bookingform'])->name('bookingform');;
+Route::get('bookingform', [BookingformController::class,'bookingform'])->name('Bookingform');;
 
 Route::get('bookingpkg', [BookingpkgController::class,'bookingpkg'])->name('bookingpkg');
 

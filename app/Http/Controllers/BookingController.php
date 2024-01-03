@@ -14,12 +14,36 @@ class BookingController extends Controller
     public function bookingForm($packageId)
     {
         $package = Package::with('packageServices')->find($packageId);
-
         $packageServices = $package->packageServices;
 
-     return view('Frontend.bookingphotographer.bookingform', compact('package','packageServices'));
+        return view('Frontend.bookingphotographer.bookingform', compact('package', 'packageServices'));
+    }
+
+  public function calculateTotalPrice($packageId)
+  {
+      $services = request()->input('services');
+      $totalPrice = $this->calculateTotalPriceLogic($packageId, $services);
+
+      return response()->json(['total_price' => $totalPrice]);
   }
 
+  private function calculateTotalPriceLogic($packageId, $selectedServices): float
+  {
+      $packageServices = PackageService::whereIn('service_id', $selectedServices)
+          ->where('package_id', $packageId)
+          ->get();
+
+      $totalAmount = 0;
+
+      foreach ($packageServices as $packageService) {
+          $servicePrice = $packageService->price;
+          $serviceDiscount = $packageService->discount;
+
+          $totalAmount += ($servicePrice - $serviceDiscount);
+      }
+
+      return $totalAmount;
+  }
 
 
     public function storeBooking(Request $request)

@@ -103,7 +103,6 @@ public function update(Request $request, $id)
     return redirect()->route('Frontend.profile');
 }
 
-
 public function delete($id)
 {
     $package = Package::findOrFail($id);
@@ -115,7 +114,7 @@ public function delete($id)
 
 public function calculateTotalPrice($packageId)
     {
-        $totalPrice = $this->calculateTotalPriceLogic($packageId); 
+        $totalPrice = $this->calculateTotalPriceLogic($packageId);
 
         return response()->json(['total_price' => $totalPrice]);
     }

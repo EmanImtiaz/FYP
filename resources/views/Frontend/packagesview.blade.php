@@ -20,7 +20,6 @@
                         <h2><b class="card-text">Services:</b></h2>
                         <ul>
                             @foreach($packageService->package->services as $service)
-                                {{-- Display service name for each selected service --}}
                                 <li>{{ $service->title }}</li>
 
                             @endforeach
@@ -43,8 +42,6 @@
         @endforeach
     </div>
 </div>
-
-
 
 <script>
     function calculateTotalPrice(packageId) {
