@@ -80,7 +80,7 @@
             // Function to calculate total price
             function calculateTotalPrice(packageId, selectedServices) {
                 $.ajax({
-                    url: "{{ route('calculate.package.total', '') }}/" + packageId,
+                    url: "{{ route('calculate.package.price', '') }}/" + packageId,
                     type: 'GET',
                     data: { services: selectedServices },
                     success: function(response) {
