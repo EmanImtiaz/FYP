@@ -19,13 +19,14 @@ class BookingController extends Controller
         return view('Frontend.bookingphotographer.bookingform', compact('package', 'packageServices'));
     }
 
-  public function calculateTotalPrice($packageId)
-  {
-      $services = request()->input('services');
-      $totalPrice = $this->calculateTotalPriceLogic($packageId, $services);
+    public function calculateTotalPrice(Request $request, $packageId)
+    {
+        $services = $request->input('services');
+        $totalPrice = $this->calculateTotalPriceLogic($packageId, $services);
 
-      return response()->json(['total_price' => $totalPrice]);
-  }
+        return response()->json(['total_price' => $totalPrice]);
+    }
+
 
   private function calculateTotalPriceLogic($packageId, $selectedServices): float
   {

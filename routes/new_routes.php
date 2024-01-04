@@ -81,7 +81,6 @@ Route::get('/profileportfolio', [ProfilePortfolioController::class, 'view'])->na
 
 // Photographer Booking  //
 
-
 Route::get('/booking/{packageId}', [BookingController::class, 'bookingForm'])->name('bookingform');
 Route::post('/booking/store', [BookingController::class, 'storeBooking'])->name('booking.store');
 Route::get('/calculate-package-total/{id}', [BookingController::class, 'calculateTotalPrice'])->name('calculate.package.total');
