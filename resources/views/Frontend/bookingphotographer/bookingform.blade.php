@@ -4,7 +4,7 @@
     <img src="https://rstheme.com/products/html/shooter/shooter-html/images/banner/2.jpg" alt="">
     <style>
         #calendar-container {
-            width: 305px;
+            width: 200px;
         }
     </style>
     <div class="container py-4">
@@ -37,9 +37,9 @@
 
                     <h3>Select Date</h3>
                     <div id="calendar-container">
-                        <input type="text" id="date" class="form-control" name="date" placeholder="Select a date"
-                               readonly>
+                        <input type="text" id="dates" class="form-control" name="dates" placeholder="Select dates" readonly>
                     </div>
+
 
                     <h3>Select Services</h3>
                     <div class="row">
@@ -77,6 +77,18 @@
         </div>
 
         <script>
+             document.addEventListener('DOMContentLoaded', function () {
+        flatpickr('#dates', {
+            mode: 'multiple', // Enable multiple date selection
+            dateFormat: 'Y-m-d', // Set the date format as needed
+            onClose: function (selectedDates, dateStr, instance) {
+                // You can add further logic here when dates are selected
+                console.log(selectedDates);
+            }
+            // You can include more options as per your requirements
+        });
+    });
+
             // Function to calculate total price
             function calculateTotalPrice(packageId, selectedServices) {
                 $.ajax({
