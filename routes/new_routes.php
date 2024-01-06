@@ -83,5 +83,5 @@ Route::get('/profileportfolio', [ProfilePortfolioController::class, 'view'])->na
 
 Route::get('/booking/{packageId}', [BookingController::class, 'bookingForm'])->name('bookingform');
 Route::post('/booking/store', [BookingController::class, 'storeBooking'])->name('booking.store');
-Route::get('/calculate-package-price/{id}', [BookingController::class, 'calculateTotalPrice'])->name('calculate.package.price');
+Route::get('/calculate-services-price/{id}', [BookingController::class, 'calculateTotalPrice'])->name('calculate.services.price');
 
