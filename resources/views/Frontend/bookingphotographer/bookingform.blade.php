@@ -37,7 +37,9 @@
 
                     <h3>Select Date</h3>
                     <div id="calendar-container">
-                        <input type="text" id="dates" class="form-control" name="dates" placeholder="Select dates" readonly>
+                        <label for="dates" class="form-label"><h3>Select Dates</h3></label>
+                    <input type="text" id="dates" class="form-control" name="dates[]" placeholder="Select dates" readonly multiple>
+                   {{--     <input type="text" id="dates" class="form-control" name="dates" placeholder="Select dates" readonly>    --}}
                     </div>
 
 
@@ -68,16 +70,16 @@
                             <button class="btn btn-danger btn-block" type="submit">Continue</button>
                         </div>
                     </div>
-
-
-                        </div>
-                    </form>
                 </div>
-            </div>
+            </form>
         </div>
+    </div>
+</div>
 
-        <script>
-             document.addEventListener('DOMContentLoaded', function () {
+
+<script>
+
+    document.addEventListener('DOMContentLoaded', function () {
         flatpickr('#dates', {
             mode: 'multiple', // Enable multiple date selection
             dateFormat: 'Y-m-d', // Set the date format as needed
@@ -89,42 +91,42 @@
         });
     });
 
-            // Function to calculate total price
-            function calculateTotalPrice(packageId, selectedServices) {
-                $.ajax({
-                    url: "{{ route('calculate.services.price', '') }}/" + packageId,
-                    type: 'GET',
-                    data: { services: selectedServices },
-                    success: function(response) {
-                        $('#totalAmount').val(response.total_price);
-                    },
-                    error: function(error) {
-                        console.error('Error fetching total price');
-                    }
-                });
-            }
-
-            // When a service checkbox is changed
-            $('input[type=checkbox]').change(function() {
-                const packageId = "{{ $package->id }}";
-                const selectedServices = $('input[type=checkbox]:checked').map(function() {
-                    return $(this).val();
-                }).get();
-
-                calculateTotalPrice(packageId, selectedServices);
+    // Function to calculate total price
+        function calculateTotalPrice(packageId, selectedServices) {
+            $.ajax({
+                url: "{{ route('calculate.services.price', '') }}/" + packageId,
+                type: 'GET',
+                data: { services: selectedServices },
+                success: function(response) {
+                    $('#totalAmount').val(response.total_price);
+                },
+                error: function(error) {
+                    console.error('Error fetching total price');
+                }
             });
+        }
 
-            // On document ready, calculate total price for initially checked services
-            $(document).ready(function() {
-                const packageId = "{{ $package->id }}";
-                const selectedServices = $('input[type=checkbox]:checked').map(function() {
-                    return $(this).val();
-                }).get();
+    // When a service checkbox is changed
+        $('input[type=checkbox]').change(function() {
+            const packageId = "{{ $package->id }}";
+            const selectedServices = $('input[type=checkbox]:checked').map(function() {
+                return $(this).val();
+            }).get();
 
-                calculateTotalPrice(packageId, selectedServices);
-            });
-        </script>
+            calculateTotalPrice(packageId, selectedServices);
+        });
 
+    // On document ready, calculate total price for initially checked services
+        $(document).ready(function() {
+            const packageId = "{{ $package->id }}";
+            const selectedServices = $('input[type=checkbox]:checked').map(function() {
+                return $(this).val();
+            }).get();
+
+            calculateTotalPrice(packageId, selectedServices);
+        });
+
+</script>
 
 @endsection
 

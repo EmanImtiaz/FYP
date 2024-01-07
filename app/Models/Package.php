@@ -23,34 +23,4 @@ class Package extends Model
     return $this->belongsToMany(Service::class, 'package_services');
 }
 
- //   public function service()
-//    {
- //       return $this->belongsToMany(PackageService::class);
- //   }
-
-// Define the relationship for fetching package services
-// for delete pacakge with selected services
-
-
-
-
-// Add this function for fetching service price
-//public function servicePrice($serviceId)
-//{
- //   return $this->packageServices->where('service_id', $serviceId)->first()->price ?? null;
-//}
-
- // Add this function for fetching service discount
- //public function serviceDiscount($serviceId)
- //{
- //    return $this->packageServices->where('service_id', $serviceId)->first()->discount ?? null;
-// }
-
- // Add this function for updating total price in the Package model
- //public function updateTotalPrice()
-// {
-  //   $totalPrice = $this->packageServices()->sum('price') - $this->packageServices()->sum('discount');
- //    $this->update(['price' => $totalPrice]);
- //}
-
 }

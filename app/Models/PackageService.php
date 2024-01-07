@@ -24,14 +24,12 @@ class PackageService extends Model
     {
         return $this->belongsTo(Service::class);
     }
-
     public function user()
     {
         return $this->belongsTo(User::class, 'user_id');
     }
-
-    //   public function package()
-  //  {
-  //      return $this->belongsTo(Package::class, 'package_id');
- //   }
+    public function bookingServices()
+    {
+        return $this->hasMany(BookingService::class, 'package_service_id');
+    }
 }

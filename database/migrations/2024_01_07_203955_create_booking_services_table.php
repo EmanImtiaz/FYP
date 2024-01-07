@@ -15,7 +15,8 @@ return new class extends Migration
             $table->id();
             $table->unsignedBigInteger('booking_id');
             $table->unsignedBigInteger('package_service_id');
-            $table->decimal('total_amount');
+            $table->date('date_selected');
+            $table->float('total_amount');
 
             $table->foreign('booking_id')->references('id')->on('bookings')->onDelete('cascade');
             $table->foreign('package_service_id')->references('id')->on('package_services')->onDelete('cascade');

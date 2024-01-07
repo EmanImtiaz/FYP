@@ -47,43 +47,43 @@ class BookingController extends Controller
   }
 
 
-    public function storeBooking(Request $request)
+    public function store(Request $request)
     {
-        $request->validate([
+        $validatedData = $request->validate([
             'name' => 'required',
-            'email' => 'required|email',
+            'email' => 'required',
             'phone' => 'required',
             'address' => 'required',
-            'date' => 'required|date',
-            'services' => 'required|array',
-            'totalAmount' => 'required|numeric',
+            'remarks' => 'nullable',
+            'dates' => 'array',
+            'services' => 'array',
+            'totalAmount' => 'required',
+
         ]);
 
-        // Create a booking
-        $booking = Booking::create([
-            'user_id' => auth()->user()->id,
-            'name' => $request->input('name'),
-            'email' => $request->input('email'),
-            'phone' => $request->input('phone'),
-            'address' => $request->input('address'),
-            'remarks' => $request->input('remarks'),
-            'date' => $request->input('date'),
-        ]);
+        // Get the authenticated user's ID
+        $validatedData['user_id'] = Auth::id();
 
-        // Attach services to the booking
-        foreach ($request->input('services') as $serviceId) {
-            $packageService = PackageService::find($serviceId);
+        $booking = Booking::create($validatedData);
 
-            BookingService::create([
-                'booking_id' => $booking->id,
-                'package_service_id' => $serviceId,
-                'total_amount' => $packageService->price - $packageService->discount,
-            ]);
+        $dates = $request->input('dates');
+        $selectedServices = $request->input('services');
+        $totalAmount = $validatedData['totalAmount'];
+
+        foreach ($selectedServices as $serviceId) {
+            foreach ($dates as $date) {
+                // Create a BookingService entry for each service and date combination
+                BookingService::create([
+                    'booking_id' => $booking->id,
+                    'package_service_id' => $serviceId,
+                    'date_selected' => $date,
+                    'total_amount' => $totalAmount,
+                    // Add other fields as needed
+                ]);
+            }
         }
 
-        // Redirect to success page or wherever needed
-        return redirect()->route('booking.success');
+        return redirect()->route('bookingform');
     }
-
 
 }
