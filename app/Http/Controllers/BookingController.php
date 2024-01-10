@@ -61,7 +61,6 @@ class BookingController extends Controller
 
         ]);
 
-        // Get the authenticated user's ID
         $validatedData['user_id'] = Auth::id();
 
         $booking = Booking::create($validatedData);
@@ -72,13 +71,11 @@ class BookingController extends Controller
 
         foreach ($selectedServices as $serviceId) {
             foreach ($dates as $date) {
-                // Create a BookingService entry for each service and date combination
                 BookingService::create([
                     'booking_id' => $booking->id,
                     'package_service_id' => $serviceId,
                     'date_selected' => $date,
                     'total_amount' => $totalAmount,
-                    // Add other fields as needed
                 ]);
             }
         }

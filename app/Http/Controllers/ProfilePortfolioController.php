@@ -93,14 +93,11 @@ public function delete(Request $request, $id)
 {
     $profileportfolio = ProfilePortfolio::find($id);
 
-    // Delete the image file
-    if (file_exists(public_path($profileportfolio->img))) {
-        unlink(public_path($profileportfolio->img));
-    }
-
+    $data=$request->all();
     $profileportfolio->delete();
 
     return redirect()->route('profileportfolio.index');
+
 }
 
 public function view()

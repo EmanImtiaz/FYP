@@ -28,7 +28,7 @@
         <td>{{ $profileportfolio->category->cat_name }}</td>
         <td>
             <a class="btn btn-primary" href="{{ route('profileportfolio.edit',['id'=>$profileportfolio->id]) }}">Edit</a>
-            <a class="btn btn-danger" href="{{ route('profileportfolio.delete',['id'=>$profileportfolio->id]) }}">Delete</a>
+       {{--     <a class="btn btn-danger" href="{{ route('profileportfolio.delete',['id'=>$profileportfolio->id]) }}">Delete</a>   --}}
         </td>
     </tr>
 @endforeach

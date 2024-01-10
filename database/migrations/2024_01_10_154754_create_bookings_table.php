@@ -19,6 +19,7 @@ return new class extends Migration
             $table->string('phone');
             $table->string('address');
             $table->text('remarks')->nullable();
+            $table->float('total_amount');
 
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->timestamps();

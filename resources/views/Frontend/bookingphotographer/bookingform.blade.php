@@ -35,11 +35,9 @@
                     <input id="remarks" type="text" class="form-control" name="remarks"
                            placeholder="Enter your remarks">
 
-                    <h3>Select Date</h3>
+                    <label for="dates" class="form-label"><h3>Select Dates</h3></label>
                     <div id="calendar-container">
-                        <label for="dates" class="form-label"><h3>Select Dates</h3></label>
-                    <input type="text" id="dates" class="form-control" name="dates[]" placeholder="Select dates" readonly multiple>
-                   {{--     <input type="text" id="dates" class="form-control" name="dates" placeholder="Select dates" readonly>    --}}
+                        <input type="text" id="dates" class="form-control" name="dates[]" placeholder="Select dates" readonly multiple>
                     </div>
 
 
