@@ -77,17 +77,16 @@
 
 <script>
 
-    document.addEventListener('DOMContentLoaded', function () {
-        flatpickr('#dates', {
-            mode: 'multiple', // Enable multiple date selection
-            dateFormat: 'Y-m-d', // Set the date format as needed
-            onClose: function (selectedDates, dateStr, instance) {
-                // You can add further logic here when dates are selected
-                console.log(selectedDates);
-            }
-            // You can include more options as per your requirements
-        });
+document.addEventListener('DOMContentLoaded', function () {
+    flatpickr('#dates', {
+        mode: 'multiple', // Enable multiple date selection
+        dateFormat: 'Y-m-d', // Set the date format as needed
+        onClose: function (selectedDates, dateStr, instance) {
+            document.getElementById('selected_dates').value = JSON.stringify(selectedDates);
+        }
     });
+});
+
 
     // Function to calculate total price
         function calculateTotalPrice(packageId, selectedServices) {

@@ -46,41 +46,46 @@ class BookingController extends Controller
       return $totalAmount;
   }
 
+  public function store(Request $request)
+{
+    $validatedData = $request->validate([
+        'name' => 'required',
+        'email' => 'required',
+        'phone' => 'required',
+        'address' => 'required',
+        'remarks' => 'nullable',
+        'dates' => 'array',
+        'services' => 'array',
+        'totalAmount' => 'required',
+    ]);
 
-    public function store(Request $request)
-    {
-        $validatedData = $request->validate([
-            'name' => 'required',
-            'email' => 'required',
-            'phone' => 'required',
-            'address' => 'required',
-            'remarks' => 'nullable',
-            'dates' => 'array',
-            'services' => 'array',
-            'totalAmount' => 'required',
+    $validatedData['user_id'] = Auth::id();
+    $totalAmount = $validatedData['totalAmount'];
 
-        ]);
 
-        $validatedData['user_id'] = Auth::id();
 
-        $booking = Booking::create($validatedData);
 
-        $dates = $request->input('dates');
-        $selectedServices = $request->input('services');
-        $totalAmount = $validatedData['totalAmount'];
+
+    $booking = Booking::create($validatedData);
+
+    $selectedServices = $request->input('services');
+    $dates = $request->input('dates');
+
+    foreach ($dates as $date) {
+        $formattedDate = date('Y-m-d', strtotime($date));
 
         foreach ($selectedServices as $serviceId) {
-            foreach ($dates as $date) {
-                BookingService::create([
-                    'booking_id' => $booking->id,
-                    'package_service_id' => $serviceId,
-                    'date_selected' => $date,
-                    'total_amount' => $totalAmount,
-                ]);
-            }
+            BookingService::create([
+                'booking_id' => $booking->id,
+                'package_service_id' => $serviceId,
+                'date_selected' => $formattedDate,
+            ]);
         }
-
-        return redirect()->route('bookingform');
     }
+
+    $booking->update(['total_amount' => $totalAmount]);
+
+    return redirect()->route('Frontend.profile');
+}
 
 }
