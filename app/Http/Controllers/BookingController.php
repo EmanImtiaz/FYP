@@ -9,6 +9,7 @@ use App\Models\BookingService;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 
+
 class BookingController extends Controller
 {
     public function bookingForm($packageId)
@@ -47,45 +48,39 @@ class BookingController extends Controller
   }
 
   public function store(Request $request)
-{
-    $validatedData = $request->validate([
-        'name' => 'required',
-        'email' => 'required',
-        'phone' => 'required',
-        'address' => 'required',
-        'remarks' => 'nullable',
-        'dates' => 'array',
-        'services' => 'array',
-        'totalAmount' => 'required',
-    ]);
+  {
+      $validatedData = $request->validate([
+          'name' => 'required',
+          'email' => 'required',
+          'phone' => 'required',
+          'address' => 'required',
+          'remarks' => 'nullable',
+          'dates' => 'array',
+          'services' => 'array',
+          'totalAmount' => 'required',
+      ]);
 
-    $validatedData['user_id'] = Auth::id();
-    $totalAmount = $validatedData['totalAmount'];
+      $validatedData['user_id'] = Auth::id();
+      $totalAmount = $validatedData['totalAmount'];
 
+      $booking = Booking::create($validatedData);
 
+      $selectedServices = $request->input('services');
+      $dates = $request->input('dates');
 
+      foreach ($dates as $date) {
+          $formattedDate = date('Y-m-d', strtotime($date));
 
-
-    $booking = Booking::create($validatedData);
-
-    $selectedServices = $request->input('services');
-    $dates = $request->input('dates');
-
-    foreach ($dates as $date) {
-        $formattedDate = date('Y-m-d', strtotime($date));
-
-        foreach ($selectedServices as $serviceId) {
-            BookingService::create([
-                'booking_id' => $booking->id,
-                'package_service_id' => $serviceId,
-                'date_selected' => $formattedDate,
-            ]);
-        }
-    }
-
-    $booking->update(['total_amount' => $totalAmount]);
-
-    return redirect()->route('Frontend.profile');
-}
+          foreach ($selectedServices as $serviceId) {
+              BookingService::create([
+                  'booking_id' => $booking->id,
+                  'package_service_id' => $serviceId,
+                  'date_selected' => $formattedDate,
+              ]);
+          }
+      }
+      $booking->update(['total_amount' => $totalAmount]);
+      return redirect()->route('Frontend.profile');
+  }
 
 }

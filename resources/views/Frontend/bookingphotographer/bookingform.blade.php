@@ -78,15 +78,14 @@
 <script>
 
 document.addEventListener('DOMContentLoaded', function () {
-    flatpickr('#dates', {
-        mode: 'multiple', // Enable multiple date selection
-        dateFormat: 'Y-m-d', // Set the date format as needed
-        onClose: function (selectedDates, dateStr, instance) {
-            document.getElementById('selected_dates').value = JSON.stringify(selectedDates);
-        }
+        flatpickr('#dates', {
+            mode: 'multiple',
+            dateFormat: 'Y-m-d',
+            onClose: function (selectedDates, dateStr, instance) {
+                console.log(selectedDates);
+            }
+        });
     });
-});
-
 
     // Function to calculate total price
         function calculateTotalPrice(packageId, selectedServices) {
