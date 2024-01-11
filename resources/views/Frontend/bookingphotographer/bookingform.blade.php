@@ -88,7 +88,7 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 
     // Function to calculate total price
-        function calculateTotalPrice(packageId, selectedServices) {
+        function calculateServicesTotalPrice(packageId, selectedServices) {
             $.ajax({
                 url: "{{ route('calculate.services.price', '') }}/" + packageId,
                 type: 'GET',
@@ -109,7 +109,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 return $(this).val();
             }).get();
 
-            calculateTotalPrice(packageId, selectedServices);
+            calculateServicesTotalPrice(packageId, selectedServices);
         });
 
     // On document ready, calculate total price for initially checked services
@@ -119,7 +119,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 return $(this).val();
             }).get();
 
-            calculateTotalPrice(packageId, selectedServices);
+            calculateServicesTotalPrice(packageId, selectedServices);
         });
 
 </script>

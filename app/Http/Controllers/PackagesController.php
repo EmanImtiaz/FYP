@@ -31,17 +31,13 @@ class PackagesController extends Controller
             'description' => 'required',
             'is_active' => 'required',
             'services' => 'array',
-            // Validate other fields as per your form
         ]);
 
-        // Create the package
         $package = Package::create($validatedData);
         $packageId = $package->id;
 
-        // Handle association of services
         if ($request->has('services')) {
             foreach ($request->input('services') as $serviceId) {
-                // Extract price and discount for each service
                 $servicePrice = $request->input('prices.' . $serviceId);
                 $discount = $request->input('discounts.' . $serviceId);
 
@@ -120,7 +116,7 @@ public function calculateTotalPrice($packageId)
     }
 
 
-    private function calculateTotalPriceLogic($packageId): float
+private function calculateTotalPriceLogic($packageId): float
 
 {
     $package = Package::with('packageServices')->find($packageId);

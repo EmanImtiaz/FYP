@@ -20,16 +20,16 @@ class BookingController extends Controller
         return view('Frontend.bookingphotographer.bookingform', compact('package', 'packageServices'));
     }
 
-    public function calculateTotalPrice(Request $request, $packageId)
+    public function calculateServicesTotalPrice(Request $request, $packageId)
     {
         $services = $request->input('services');
-        $totalPrice = $this->calculateTotalPriceLogic($packageId, $services);
+        $totalPrice = $this->calculateServicesTotalPriceLogic($packageId, $services);
 
         return response()->json(['total_price' => $totalPrice]);
     }
 
 
-  private function calculateTotalPriceLogic($packageId, $selectedServices): float
+  private function calculateServicesTotalPriceLogic($packageId, $selectedServices): float
   {
       $packageServices = PackageService::whereIn('service_id', $selectedServices)
           ->where('package_id', $packageId)
@@ -69,16 +69,19 @@ class BookingController extends Controller
       $dates = $request->input('dates');
 
       foreach ($dates as $date) {
-          $formattedDate = date('Y-m-d', strtotime($date));
+          $dateArray = explode(',', $date);
 
-          foreach ($selectedServices as $serviceId) {
-              BookingService::create([
-                  'booking_id' => $booking->id,
-                  'package_service_id' => $serviceId,
-                  'date_selected' => $formattedDate,
-              ]);
+          foreach ($dateArray as $singleDate) {
+              foreach ($selectedServices as $serviceId) {
+                  BookingService::create([
+                      'booking_id' => $booking->id,
+                      'package_service_id' => $serviceId,
+                      'date_selected' => $singleDate,
+                  ]);
+              }
           }
       }
+
       $booking->update(['total_amount' => $totalAmount]);
       return redirect()->route('Frontend.profile');
   }
