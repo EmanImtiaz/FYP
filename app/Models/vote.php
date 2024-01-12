@@ -5,10 +5,8 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Town extends Model
+class vote extends Model
 {
     use HasFactory;
-
-    protected $fillable=['id','town_name','province_id','city_id'];
+    protected $fillable=['id','likes','dislikes'];
 }
-

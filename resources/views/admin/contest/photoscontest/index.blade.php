@@ -15,24 +15,24 @@
                 <tr>
                     <th>#</th>
                     <th>Contest Image</th>
-                    <th>Likes</th>
-                    <th>Dislikes</th>
-                    <th>Photographer Name</th>
-                    <th>Profile Image</th>
+                    <th>description</th>
+                    <th>views</th>
+                    <th>tags</th>
+
                     <th>action</th>
                 </tr>
             </thead>
             <tbody>
-                @foreach ($photoscontest as $key=> $photoscontest)
+                @foreach ($photocontest as $key=> $photocontest)
                 <tr>
                     <td>{{  ++$key }}</td>
-                    <td><img src="{{ $photoscontest->contest_img }}" width="100"></td>
-                    <td>{{ $photoscontest->likes }}</td>
-                    <td>{{ $photoscontest->dislikes }}</td>
-                    <td>{{ $photoscontest->photographer_name }}</td>
-                    <td><img src="{{ $photoscontest->profile_img }}" width="100"></td>
-                    <td><a class="btn btn-primary" href="{{ route('photoscontest.edit',['id'=>$photoscontest->id]) }}">Edit</a>
-                    <a class="btn btn-danger" href="{{ route('photoscontest.delete',['id'=>$photoscontest->id]) }}">Delete</a></td>
+                    <td><img src="{{ $photocontest->contest_img }}" width="100"></td>
+                    <td>{{ $photocontest->description }}</td>
+                    <td>{{ $photocontest->views }}</td>
+                    <td>{{ $photocontest->tags }}</td>
+
+                    <td><a class="btn btn-primary" href="{{ route('photoscontest.edit',['id'=>$photocontest->id]) }}">Edit</a>
+                    <a class="btn btn-danger" href="{{ route('photoscontest.delete',['id'=>$photocontest->id]) }}">Delete</a></td>
                 </tr>
                 @endforeach
             </tbody>
