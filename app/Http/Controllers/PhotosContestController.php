@@ -21,31 +21,26 @@ class PhotosContestController extends Controller
 
     public function store(Request $request)
     {
-        // Validate input data
-        $request->validate([
+        $data = $request->validate([
             'description' => 'required',
             'views' => 'numeric',
             'tags' => 'nullable',
-            'contest_img' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
         ]);
 
-    //    $data = array_merge($request->all(), $validatedData);
 
-        // Handle image upload
-        if ($request->hasFile('contest_img')) {
-            $picture = $request->file('contest_img');
-            $ext = $picture->getClientOriginalExtension();
-            $file_name = time() . '.' . $ext;
-            $file_path = '/assets/photoscontest/';
-            $picture->move(public_path() . $file_path, $file_name);
+        if($request->has('contest_img'))
+        {
+            $picture=$request->contest_img;
+            $ext=$picture->getClientOriginalExtension();
+            $file_name=time().'.'.$ext;
+            $file_path='/assets/photoscontest/';
+            $picture->move(public_path().$file_path,$file_name);
 
-            $data['contest_img'] = $file_path . $file_name;
+            $data['contest_img']=$file_path.$file_name;
+            PhotoContest::create($data);
         }
 
-        // Create a new PhotoContest record
-        PhotoContest::create($data);
-
-        return redirect()->route('photocontest.index');
+        return redirect()->route('photoscontest.index');
     }
 
     public function edit($id)

@@ -17,18 +17,18 @@
             <input type="file" name="contest_img" id="" value={{$photocontest->contest_img}}>
         </div>
         <div class="col">
-            <label for="likes" class="form-label">description</label>
-            <input id="likes" class="form-control" type="text" name="likes" value={{$photocontest->likes}} >
+            <label for="description" class="form-label">description</label>
+            <input id="description" class="form-control" type="text" name="description" value={{$photocontest->description}} >
         </div>
         <div class="col">
-            <label for="dislikes" class="form-label">views</label>
-            <input id="dislikes" class="form-control" type="text" name="dislikes" value={{$photocontest->dislikes}} >
+            <label for="views" class="form-label">views</label>
+            <input id="views" class="form-control" type="text" name="views" value={{$photocontest->views}} >
         </div>
     </div>
     <div class="row py-2">
         <div class="col">
-            <label for="photographer_name" class="form-label">tags</label>
-            <input id="photographer_name" class="form-control" type="text" name="photographer_name" value={{$photocontest->photographer_name}}  >
+            <label for="tags" class="form-label">tags</label>
+            <input id="tags" class="form-control" type="text" name="tags" value={{$photocontest->tags}}  >
         </div>
 
         <div class="col text-start">

@@ -4,7 +4,7 @@
 
 <div class="container py-3">
     <div class="text-center py-2">
-        <h1>Category Table</h1>
+        <h1>Photocontest Table</h1>
         </div>
         <div class="text-end">
             <a class="btn btn-primary"href="{{route('photoscontest.create')}}">Create</a>
