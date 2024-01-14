@@ -27,8 +27,8 @@
                     @endforeach
                 </tbody>
             </table>
-            <div class="d-grid gap-2 d-md-flex justify-content-md-end py-5">
-                <button class="btn btn-danger me-md-2" type="button">confirmed</button>
+            <div class="d-grid gap-2 d-md-flex justify-content-md-end py-1">
+                <button class="btn btn-danger me-md-2" type="button">Pay Now</button>
             </div>
         </div>
     </div>
