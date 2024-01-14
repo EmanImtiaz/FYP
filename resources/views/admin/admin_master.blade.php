@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" >
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -30,9 +30,8 @@
 	<!-- endinject -->
 <!-- ckeditor -->
 <script src="https://cdn.ckeditor.com/ckeditor5/40.0.0/classic/ckeditor.js"></script>
-
-  <!-- Layout styles -->
-	<link rel="stylesheet" href="{{ asset('../assets/css/demo2/style.css')  }}">
+  <!-- Make sure to include your light theme CSS file -->
+  <link rel="stylesheet" href="{{ asset('../assets/css/demo2/style.css') }}">
   <!-- End layout styles -->
 
   <link rel="shortcut icon" href="{{ asset('../assets/images/favicon.png')  }}" />
@@ -84,6 +83,40 @@
                 </li>
                 <li class="nav-item">
                   <a href="" class="nav-link">Service-Packages</a>
+                </li>
+              </ul>
+            </div>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" data-bs-toggle="collapse" href="#emails" role="button" aria-expanded="false" aria-controls="emails">
+              <i class="link-icon" data-feather="mail"></i>
+              <span class="link-title"> Booking</span>
+              <i class="link-arrow" data-feather="chevron-down"></i>
+            </a>
+            <div class="collapse" id="emails">
+              <ul class="nav sub-menu">
+                <li class="nav-item">
+                  <a href="" class="nav-link">Booking</a>
+                </li>
+                <li class="nav-item">
+                  <a href="" class="nav-link">Booking-Service</a>
+                </li>
+              </ul>
+            </div>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" data-bs-toggle="collapse" href="#emails" role="button" aria-expanded="false" aria-controls="emails">
+              <i class="link-icon" data-feather="mail"></i>
+              <span class="link-title">Payment</span>
+              <i class="link-arrow" data-feather="chevron-down"></i>
+            </a>
+            <div class="collapse" id="emails">
+              <ul class="nav sub-menu">
+                <li class="nav-item">
+                  <a href="{{ route('payment.index')  }}" class="nav-link">Payment</a>
+                </li>
+                <li class="nav-item">
+                  <a href="" class="nav-link">Payment-Amount</a>
                 </li>
               </ul>
             </div>
@@ -194,7 +227,7 @@
 	<!-- endinject -->
 
 	<!-- Custom js for this page -->
-  <script src="{{ asset('../assets/js/dashboard-dark.js') }}"></script>
+    <script src="{{ asset('../assets/js/dashboard-dark.js') }}"></script>
 	<!-- End custom js for this page -->
 
 </body>

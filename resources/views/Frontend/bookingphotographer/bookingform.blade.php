@@ -1,7 +1,12 @@
 @extends('layout.master')
 
 @section('kuchb')
-    <img src="https://rstheme.com/products/html/shooter/shooter-html/images/banner/2.jpg" alt="">
+ <!-- Page Header -->
+<header class="page-header bg-danger text-white text-center py-5">
+    <div class="container">
+        <h1 class="display-4">Book Package</h1>
+    </div>
+</header>
     <style>
         #calendar-container {
             width: 200px;
@@ -15,99 +20,84 @@
                     <form action="{{ route('booking.store') }}" method="post">
                         @csrf
                         <input type="hidden" name="package_id" value="{{ $package->id }}">
-                        <label for="name" class="form-label">Name</label>
-                        <input id="name" type="text" required class="form-control" name="name"
-                               placeholder="Enter your name">
-
-                        <label for="email" class="form-label">Email</label>
-                        <input id="email" type="text" required class="form-control" name="email"
+                        <div class="row mt-3">
+                            <div class=" col-lg-6 col-sm-6 col-md-6">
+                                <label for="name" class="form-label">Name</label>
+                                <input id="name" type="text" required class="form-control" name="name"
+                                       placeholder="Enter your name">
+                           </div>
+                            <div class=" col-lg-6 col-sm-6 col-md-6">
+                                <label for="email" class="form-label">Email</label>
+                                <input id="email" type="text" required class="form-control" name="email"
                                placeholder="Enter your e-mail">
+                            </div>
+                        </div>
 
-                        <label for="phone" class="form-label">Phone</label>
-                        <input id="phone" type="text" required class="form-control" name="phone"
+                        <div class="row mt-3">
+                            <div class=" col-lg-6 col-sm-6 col-md-6">
+                                <label for="phone" class="form-label">Phone</label>
+                                <input id="phone" type="text" required class="form-control" name="phone"
                                placeholder="Enter your phone">
-
-                        <label for="address" class="form-label">Address</label>
-                        <input id="address" type="text" required class="form-control" name="address"
+                           </div>
+                            <div class=" col-lg-6 col-sm-6 col-md-6">
+                                <label for="address" class="form-label">Address</label>
+                                <input id="address" type="text" required class="form-control" name="address"
                                placeholder="Enter your address">
-
-                        <label for="remarks" class="form-label">Remarks</label>
-                        <input id="remarks" type="text" class="form-control" name="remarks"
-                               placeholder="Enter your remarks">
-
-                        <label for="dates" class="form-label"><h3>Select Dates</h3></label>
-                        <div id="calendar-container">
-                            <input type="text" id="dates" class="form-control" name="dates[]" placeholder="Select dates" readonly multiple>
+                            </div>
                         </div>
 
+                        <div class="row mt-3">
+                            <div class=" col-lg col-sm col-md">
+                                <label for="remarks" class="form-label">Remarks</label>
+                                <textarea id="remarks" type="text" class="form-control" name="remarks"
+                                placeholder="Enter your remarks" cols="3" rows="3"></textarea>
+                            </div>
+                        </div>
 
-                        <h3>Select Services</h3>
-                        <div class="row">
-                            @foreach($package->packageServices as $packageService)
-                                <div class="col">
-                                    <div class="form-check">
-                                        <input class="form-check-input" type="checkbox" id="{{ $packageService->service->title }}"
-                                               name="services[]" value="{{ $packageService->service->id }}"
-                                               {{ $packageServices->pluck('service_id')->contains($packageService->service->id) ? 'checked' : '' }}>
-                                        <label class="form-check-label" for="{{ $packageService->service->title }}">
-                                            {{ $packageService->service->title }}
-                                        </label>
-                                    </div>
+                        <div class="row mt-3">
+                            <div class=" col-lg-6 col-sm-6 col-md-6">
+                                <label for="dates" class="form-label">Select Dates</label>
+                                <input type="text" id="dates" class="form-control" name="dates[]" placeholder="Select dates" readonly multiple>
+                           </div>
+                        </div>
+
+                        <div class="row mt-3">
+                            <div class=" col-lg col-sm col-md">
+                                <label class="form-label">Select Services</label>
+                                <div class="container row">
+                                    @foreach($package->packageServices as $packageService)
+                                        <div class="col">
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="checkbox" id="{{ $packageService->service->title }}"
+                                                       name="services[]" value="{{ $packageService->service->id }}"
+                                                       {{ $packageServices->pluck('service_id')->contains($packageService->service->id) ? 'checked' : '' }}>
+                                                <label class="form-check-label" for="{{ $packageService->service->title }}">
+                                                    {{ $packageService->service->title }}
+                                                </label>
+                                            </div>
+                                        </div>
+                                    @endforeach
                                 </div>
-                            @endforeach
+                           </div>
                         </div>
 
-                        <div class="row">
-                            <div class="col-md-4">
-                                <label for="totalAmount" class="form-label"><h4><b>Total Amount:</b></h4></label>
-                            </div>
-                            <div class="col-md-6">
-                                <input type="text" class="form-control" id="totalAmount" name="totalAmount" readonly>
-                            </div>
-                            <div class="col-md-2">
-                                <button class="btn btn-danger btn-block" type="submit">Continue</button>
-                            </div>
+                        <div class="row mt-3">
+                                <div class="col-lg-4 col-sm-4 col-md-4">
+                                    <label for="totalAmount" class="form-label"><b>Total Amount:</b></label>
+                                </div>
+                                <div class="col-lg-4 col-sm-4 col-md-4">
+                                    <input type="text" class="form-control" id="totalAmount" name="totalAmount" readonly>
+                                </div>
+                                <div class="col-lg-4 col-sm-4 col-md-4">
+                                    <button class="btn btn-danger btn-block" type="submit">Continue</button>
+                                </div>
                         </div>
                     </div>
                 </form>
                 </div>
-                <div class="col-6">
-                    <h1>Select Payment Method</h1>
-                    <table class="table">
-                        <tbody>
-                            <tr>
-                                <td>
-                                    <label for="creditCard" class="form-label">Credit Card</label>
-                                </td>
-                                <td>
-                                    <input type="radio" id="creditCard" name="paymentMethod" class="form-check-input" value="creditCard">
-                                </td>
-                            </tr>
-
-                            <tr>
-                                <td>
-                                    <label for="cod" class="form-label">Cash </label>
-                                </td>
-                                <td>
-                                    <input type="radio" id="cod" name="paymentMethod" class="form-check-input" value="cod">
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <label for="cod" class="form-label">jazz cash </label>
-                                </td>
-                                <td>
-                                    <input type="radio" id="jazzcash" name="paymentMethod" class="form-check-input" value="cod">
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                    <div class="d-grid gap-2 d-md-flex justify-content-md-end py-1">
-                        <button class="btn btn-danger me-md-2" type="button">confirmed</button>
-                    </div>
-                </div>
             </div>
-        </div>
+</div>
+
 
 <script>
 

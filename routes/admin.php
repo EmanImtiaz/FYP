@@ -7,6 +7,7 @@ use App\Http\Controllers\BookingController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\CityController;
 use App\Http\Controllers\PackagesController;
+use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\PhotographerController;
 use App\Http\Controllers\PhotosContestController;
 use App\Http\Controllers\ProfileCategoryController;
@@ -163,6 +164,19 @@ Route::group(['prefix'=>'booking'],function()
     Route::get('/create',[BookingController::class,'create'])->name('booking.create');
     Route::post('/store',[BookingController::class,'store'])->name('booking.store');
 
+
+});
+
+//  payment method  //
+Route::group(['prefix'=>'payment'],function()
+{
+
+    Route::get('/',[PaymentController::class,'index'])->name('payment.index');
+    Route::get('/create',[PaymentController::class,'create'])->name('payment.create');
+    Route::post('/store',[PaymentController::class,'store'])->name('payment.store');
+    Route::get('/edit/{id}',[PaymentController::class,'edit'])->name('payment.edit');
+    Route::post('/update/{id}',[PaymentController::class,'update'])->name('payment.update');
+    Route::get('/delete/{id}',[PaymentController::class,'delete'])->name('payment.delete');
 
 });
 

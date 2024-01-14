@@ -16,6 +16,7 @@ use App\Http\Controllers\MainController;
 use App\Http\Controllers\PhotoContestController;
 use App\Http\Controllers\ProfilePortfolioController;
 use App\Http\Controllers\PackagesController;
+use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\PhotographerProfileController;
 use App\Http\Controllers\PhotographerCompanyController;
 use App\Http\Controllers\PortfolioController;
@@ -84,4 +85,11 @@ Route::get('/profileportfolio', [ProfilePortfolioController::class, 'view'])->na
 Route::get('/booking/{packageId}', [BookingController::class, 'bookingForm'])->name('bookingform');
 Route::post('/booking/store', [BookingController::class, 'store'])->name('booking.store');
 Route::get('/calculate-services-price/{id}', [BookingController::class, 'calculateServicesTotalPrice'])->name('calculate.services.price');
+Route::get('/display-booking-information/{booking}', [BookingController::class, 'displayBookingInformation'])->name('display.booking.information');
+Route::get('/booking/{bookingId}/payment', [BookingController::class, 'paymentForm'])->name('booking.payment.form');
+Route::post('/booking/{bookingId}/process-payment', [BookingController::class, 'processPayment'])->name('booking.process.payment');
 
+
+// display payment methods from payment table //
+
+Route::get('/display-payment-methods', [PaymentController::class, 'displayPaymentMethods'])->name('display.payment.methods');

@@ -5,7 +5,10 @@ namespace App\Http\Controllers;
 use App\Models\PackageService;
 use App\Models\Package;
 use App\Models\Booking;
+use App\Models\Payment;
 use App\Models\BookingService;
+use Stripe\Stripe;
+use Stripe\PaymentIntent;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 
@@ -82,8 +85,11 @@ class BookingController extends Controller
           }
       }
 
-      $booking->update(['total_amount' => $totalAmount]);
-      return redirect()->route('Frontend.profile');
-  }
+    $booking->update(['total_amount' => $totalAmount]);
+
+    return redirect()->route('display.payment.methods');
+
+}
+
 
 }
