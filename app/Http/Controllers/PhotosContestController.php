@@ -4,15 +4,16 @@ namespace App\Http\Controllers;
 use App\Models\Category;
 use App\Models\PhotoContest;
 use Illuminate\Http\Request;
-
+use Illuminate\Support\Facades\Auth;
 class PhotosContestController extends Controller
 {
     public function create()
     {
         $categories = Category::all();
         $photocontest = new PhotoContest;
-        return view('Frontend.contestform', compact('photocontest'));
+        return view('Frontend.contestform', compact('photocontest', 'categories'));
     }
+
 
     public function index()
     {
@@ -38,9 +39,11 @@ class PhotosContestController extends Controller
             $picture->move(public_path().$file_path,$file_name);
 
             $data['contest_img']=$file_path.$file_name;
-            PhotoContest::create($data);
-        }
 
+        }
+        $data['category_id'] = $request->input('category_id');
+        $data['user_id'] = Auth::id();
+        PhotoContest::create($data);
         return redirect()->route('photoscontest.index');
     }
 
@@ -88,4 +91,11 @@ class PhotosContestController extends Controller
 
         return redirect()->route('photocontest.index');
     }
+    public function view()
+{
+    $photocontest = PhotoContest::with('category')->where('user_id', auth()->id())->get();
+    $categories = Category::all();
+
+    return view('Frontend.contestform', compact('photocontest', 'categories'));
+}
 }

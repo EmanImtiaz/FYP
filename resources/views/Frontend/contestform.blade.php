@@ -9,6 +9,22 @@
         <form action="{{$photocontest->id !=null?route('photoscontest.update',['id'=>$photocontest->id]):route('photoscontest.store')}}" method="post" enctype="multipart/form-data">
             @csrf
     {{-- 2 --}}
+      <!-- Category Dropdown -->
+      <div class="row row-cols-6 py-4">
+        <div class="col">
+            <div class="form-group">
+                <label for="category_id" class="form-label">Select Category</label>
+                <select id="category_id" required class="form-control" name="category_id">
+                    @foreach($categories as $category)
+                        <option value="{{ $category->id }}" {{ $photocontest->category_id == $category->id ? 'selected' : '' }}>
+                            {{ $category->cat_name }}
+                        </option>
+                    @endforeach
+                </select>
+            </div>
+
+        </div>
+    </div>
     <div class="container py-2">
         <div class="row py-2">
             <div class="col text-start">
