@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\Models\Category;
 use App\Models\PhotoContest;
 use Illuminate\Http\Request;
 
@@ -9,8 +9,9 @@ class PhotosContestController extends Controller
 {
     public function create()
     {
+        $categories = Category::all();
         $photocontest = new PhotoContest;
-        return view('admin.contest.photoscontest.create', compact('photocontest'));
+        return view('Frontend.contestform', compact('photocontest'));
     }
 
     public function index()

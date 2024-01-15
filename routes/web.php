@@ -12,6 +12,7 @@ use App\Http\Controllers\BookinginfoController;
 use App\Http\Controllers\BookingformController;
 use App\Http\Controllers\BookingpkgController;
 use App\Http\Controllers\PaymentController;
+use App\Http\Controllers\PhotosContestController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
@@ -77,3 +78,20 @@ Route::middleware(['auth'])->group(function () {
 
     Route::get('/profile/photographer', [ProfileController::class, 'showProfile'])->name('user.profile');
 });
+
+
+Route::group(['prefix'=>'photocontest'],function()
+{
+
+
+    Route::get('/create',[PhotosContestController::class,'create'])->name('photocontest.create');
+    Route::post('/store',[PhotosContestController::class,'store'])->name('photocontest.store');
+    Route::get('/edit/{id}',[PhotosContestController::class,'edit'])->name('photocontest.edit');
+    Route::post('/update/{id}',[PhotosContestController::class,'update'])->name('photocontest.update');
+    Route::get('/delete/{id}',[PhotosContestController::class,'delete'])->name('photocontest.delete');
+
+});
+
+
+
+Route::get('/contestform', [PhotosContestController::class, 'create'])->name('contest.form');
