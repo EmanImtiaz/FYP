@@ -82,8 +82,6 @@ Route::middleware(['auth'])->group(function () {
 
 Route::group(['prefix'=>'photocontest'],function()
 {
-
-
     Route::get('/create',[PhotosContestController::class,'create'])->name('photocontest.create');
     Route::post('/store',[PhotosContestController::class,'store'])->name('photocontest.store');
     Route::get('/edit/{id}',[PhotosContestController::class,'edit'])->name('photocontest.edit');
@@ -92,6 +90,3 @@ Route::group(['prefix'=>'photocontest'],function()
 
 });
 
-
-
-Route::get('/contestform', [PhotosContestController::class, 'create'])->name('contest.form');

@@ -17,7 +17,7 @@
                 <select id="category_id" required class="form-control" name="category_id">
                     @foreach($categories as $category)
                         <option value="{{ $category->id }}" {{ $photocontest->category_id == $category->id ? 'selected' : '' }}>
-                            {{ $category->cat_name }}
+                            {{ $category->category_name }}
                         </option>
                     @endforeach
                 </select>
@@ -25,6 +25,7 @@
 
         </div>
     </div>
+
     <div class="container py-2">
         <div class="row py-2">
             <div class="col text-start">
@@ -54,7 +55,5 @@
     </div>
     </form>
     </div>
-
-
 
 @endsection
