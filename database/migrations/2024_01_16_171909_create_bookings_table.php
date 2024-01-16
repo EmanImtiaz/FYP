@@ -20,7 +20,7 @@ return new class extends Migration
             $table->string('address');
             $table->text('remarks')->nullable();
             $table->float('total_amount')->default(0);
-
+            $table->string('payment_method');
 
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->timestamps();

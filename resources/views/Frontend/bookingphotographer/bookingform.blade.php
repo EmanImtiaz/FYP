@@ -7,29 +7,23 @@
         <h1 class="display-4">Book Package</h1>
     </div>
 </header>
-    <style>
-        #calendar-container {
-            width: 200px;
-        }
-    </style>
         <div class="container py-3">
             <div class="row">
                 <div class="col-6">
                     <h3>Complete your booking</h3>
                     <p>Please enter your contact information to proceed</p>
-                    <form action="{{ route('booking.store') }}" method="post">
+                    <form action="{{ route('booking.store') }}" method="post" enctype="multipart/form-data">
                         @csrf
-                        <input type="hidden" name="package_id" value="{{ $package->id }}">
                         <div class="row mt-3">
                             <div class=" col-lg-6 col-sm-6 col-md-6">
                                 <label for="name" class="form-label">Name</label>
                                 <input id="name" type="text" required class="form-control" name="name"
-                                       placeholder="Enter your name">
+                                       placeholder="Enter your name" value="{{  $booking->name }}">
                            </div>
                             <div class=" col-lg-6 col-sm-6 col-md-6">
                                 <label for="email" class="form-label">Email</label>
                                 <input id="email" type="text" required class="form-control" name="email"
-                               placeholder="Enter your e-mail">
+                               placeholder="Enter your e-mail" value="{{  $booking->email }}">
                             </div>
                         </div>
 
@@ -37,12 +31,12 @@
                             <div class=" col-lg-6 col-sm-6 col-md-6">
                                 <label for="phone" class="form-label">Phone</label>
                                 <input id="phone" type="text" required class="form-control" name="phone"
-                               placeholder="Enter your phone">
+                               placeholder="Enter your phone" value="{{  $booking->phone }}">
                            </div>
                             <div class=" col-lg-6 col-sm-6 col-md-6">
                                 <label for="address" class="form-label">Address</label>
                                 <input id="address" type="text" required class="form-control" name="address"
-                               placeholder="Enter your address">
+                               placeholder="Enter your address" value="{{  $booking->address }}">
                             </div>
                         </div>
 
@@ -50,7 +44,7 @@
                             <div class=" col-lg col-sm col-md">
                                 <label for="remarks" class="form-label">Remarks</label>
                                 <textarea id="remarks" type="text" class="form-control" name="remarks"
-                                placeholder="Enter your remarks" cols="3" rows="3"></textarea>
+                                placeholder="Enter your remarks" cols="3" rows="2" value="{{  $booking->remarks }}"></textarea>
                             </div>
                         </div>
 
@@ -59,7 +53,23 @@
                                 <label for="dates" class="form-label">Select Dates</label>
                                 <input type="text" id="dates" class="form-control" name="dates[]" placeholder="Select dates" readonly multiple>
                            </div>
-                        </div>
+
+                        <div class="col-lg-6 col-sm-6 col-md-6">
+    <label class="form-label">Select Payment Method</label>
+
+    @foreach($payments as $payment)
+        <div class="form-check">
+            <input class="form-check-input" type="radio" id="payment_method_{{ $payment->id }}"
+                   name="payment_method" value="{{ $payment->id }}" required>
+            <label class="form-check-label" for="payment_method_{{ $payment->id }}">
+                {{ $payment->payment_method }}
+            </label>
+        </div>
+    @endforeach
+</div>
+
+
+                    </div>
 
                         <div class="row mt-3">
                             <div class=" col-lg col-sm col-md">

@@ -7,8 +7,6 @@ use App\Models\Package;
 use App\Models\Booking;
 use App\Models\Payment;
 use App\Models\BookingService;
-use Stripe\Stripe;
-use Stripe\PaymentIntent;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 
@@ -17,11 +15,14 @@ class BookingController extends Controller
 {
     public function bookingForm($packageId)
     {
+        $booking = new Booking();
         $package = Package::with('packageServices')->find($packageId);
         $packageServices = $package->packageServices;
+        $payments = Payment::all(); // Get all payment methods
 
-        return view('Frontend.bookingphotographer.bookingform', compact('package', 'packageServices'));
+        return view('Frontend.bookingphotographer.bookingform', compact('booking', 'package', 'packageServices', 'payments'));
     }
+
 
     public function calculateServicesTotalPrice(Request $request, $packageId)
     {
@@ -58,6 +59,7 @@ class BookingController extends Controller
           'phone' => 'required',
           'address' => 'required',
           'remarks' => 'nullable',
+          'payment_method' => 'required',
           'dates' => 'array',
           'services' => 'array',
           'totalAmount' => 'required',
@@ -87,9 +89,21 @@ class BookingController extends Controller
 
     $booking->update(['total_amount' => $totalAmount]);
 
-    return redirect()->route('display.payment.methods');
+    return redirect()->route('Frontend.profile');
 
 }
 
+public function bookings()
+{
+  //  $user = Auth::user();
+ ////   $photographerProfile = PhotographerProfile::where('user_id', $user->id)->first();
+ //   if ($photographerProfile) {
+    return view('Frontend.bookings');
+//  }
+//  else
+//  {
+  //  return view('Frontend.profile', compact('user', 'photographerProfile'));
+//  }
+}
 
 }

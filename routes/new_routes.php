@@ -6,25 +6,14 @@ use App\Http\Controllers\AboutController;
 use App\Http\Controllers\AllPortfolioController;
 use App\Http\Controllers\BlogPostController;
 use App\Http\Controllers\BookingController;
-use App\Http\Controllers\ClientController;
-use App\Http\Controllers\CompanyController;
 use App\Http\Controllers\ContestDetailController;
-use App\Http\Controllers\ContestFormController;
 use App\Http\Controllers\ExplorePhotoContestController;
-use App\Http\Controllers\JoinController;
 use App\Http\Controllers\MainController;
-use App\Http\Controllers\PhotoContestController;
 use App\Http\Controllers\ProfilePortfolioController;
 use App\Http\Controllers\PackagesController;
-use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\PhotographerProfileController;
-use App\Http\Controllers\PhotographerCompanyController;
-use App\Http\Controllers\PortfolioController;
-use App\Http\Controllers\PortfolioDetailsController;
-use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\SingleWinnerDetailsController;
 use App\Http\Controllers\UserProfileUpdateController;
-use App\Http\Controllers\WinnersController;
 
 Route::get('contact', [ContactController::class,'contact'])->name('contact');
 
@@ -90,6 +79,4 @@ Route::get('/booking/{bookingId}/payment', [BookingController::class, 'paymentFo
 Route::post('/booking/{bookingId}/process-payment', [BookingController::class, 'processPayment'])->name('booking.process.payment');
 
 
-// display payment methods from payment table //
-
-Route::get('/display-payment-methods', [PaymentController::class, 'displayPaymentMethods'])->name('display.payment.methods');
+Route::get('/bookings', [BookingController::class, 'bookings'])->name('Frontend.bookings');
