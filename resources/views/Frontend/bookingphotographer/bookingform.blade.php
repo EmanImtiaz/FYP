@@ -8,8 +8,9 @@
     </div>
 </header>
         <div class="container py-3">
-            <div class="row">
-                <div class="col-6">
+            <div class="row ">
+                <div class="col-lg-6">
+                    <!-- Form 1 -->
                     <h3>Complete your booking</h3>
                     <p>Please enter your contact information to proceed</p>
                     <form action="{{ route('booking.store') }}" method="post" enctype="multipart/form-data">
@@ -67,11 +68,8 @@
         </div>
     @endforeach
 </div>
-
-
-                    </div>
-
-                        <div class="row mt-3">
+</div>
+<div class="row mt-3">
                             <div class=" col-lg col-sm col-md">
                                 <label class="form-label">Select Services</label>
                                 <div class="container row">
@@ -107,7 +105,6 @@
                 </div>
             </div>
 </div>
-
 
 <script>
 
