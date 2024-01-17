@@ -9,7 +9,7 @@ class Booking extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['id','user_id','name', 'email', 'phone', 'address', 'remarks','total_amount','payment_method'];
+    protected $fillable = ['id','user_id','name', 'email', 'phone', 'address', 'remarks','total_amount','payment_id'];
 
     public function user()
     {
@@ -19,5 +19,10 @@ class Booking extends Model
     public function bookingServices()
     {
         return $this->hasMany(BookingService::class, 'booking_id');
+    }
+
+    public function payment()
+    {
+        return $this->belongsTo(Payment::class, 'payment_id');
     }
 }

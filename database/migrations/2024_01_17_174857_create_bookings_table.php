@@ -20,9 +20,10 @@ return new class extends Migration
             $table->string('address');
             $table->text('remarks')->nullable();
             $table->float('total_amount')->default(0);
-            $table->string('payment_method');
+            $table->unsignedBigInteger('payment_id')->nullable();
 
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+            $table->foreign('payment_id')->references('id')->on('payments')->onDelete('set null');
             $table->timestamps();
         });
     }

@@ -54,22 +54,20 @@
                                 <label for="dates" class="form-label">Select Dates</label>
                                 <input type="text" id="dates" class="form-control" name="dates[]" placeholder="Select dates" readonly multiple>
                            </div>
-
-                        <div class="col-lg-6 col-sm-6 col-md-6">
-    <label class="form-label">Select Payment Method</label>
-
-    @foreach($payments as $payment)
-        <div class="form-check">
-            <input class="form-check-input" type="radio" id="payment_method_{{ $payment->id }}"
-                   name="payment_method" value="{{ $payment->id }}" required>
-            <label class="form-check-label" for="payment_method_{{ $payment->id }}">
-                {{ $payment->payment_method }}
-            </label>
-        </div>
-    @endforeach
-</div>
-</div>
-<div class="row mt-3">
+                           <div class="col-lg-6 col-sm-6 col-md-6">
+                            <label class="form-label">Select Payment Method</label>
+                            @foreach($payments as $payment)
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" id="payment_method_{{ $payment->id }}"
+                                           name="payment_method" value="{{ $payment->id }}" {{ old('payment_method', $booking->payment_id) == $payment->id ? 'checked' : '' }}>
+                                    <label class="form-check-label" for="payment_method_{{ $payment->id }}">
+                                        {{ $payment->payment_method }}
+                                    </label>
+                                </div>
+                            @endforeach
+                        </div>
+                    </div>
+                    <div class="row mt-3">
                             <div class=" col-lg col-sm col-md">
                                 <label class="form-label">Select Services</label>
                                 <div class="container row">
@@ -154,6 +152,4 @@ document.addEventListener('DOMContentLoaded', function () {
         });
 
 </script>
-
 @endsection
-

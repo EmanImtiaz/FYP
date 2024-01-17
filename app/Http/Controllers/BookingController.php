@@ -87,7 +87,7 @@ class BookingController extends Controller
           }
       }
 
-    $booking->update(['total_amount' => $totalAmount]);
+   $booking->update(['total_amount' => $totalAmount, 'payment_id' => $validatedData['payment_method']]);
 
     return redirect()->route('Frontend.profile');
 
