@@ -95,15 +95,9 @@ class BookingController extends Controller
 
 public function bookings()
 {
-  //  $user = Auth::user();
- ////   $photographerProfile = PhotographerProfile::where('user_id', $user->id)->first();
- //   if ($photographerProfile) {
-    return view('Frontend.bookings');
-//  }
-//  else
-//  {
-  //  return view('Frontend.profile', compact('user', 'photographerProfile'));
-//  }
+    $bookings = Booking::all();
+    return view('Frontend.bookings', compact('bookings'));
+
 }
 
 }
