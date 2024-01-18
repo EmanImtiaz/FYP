@@ -13,7 +13,12 @@
                     <!-- Form 1 -->
                     <h3>Complete your booking</h3>
                     <p>Please enter your contact information to proceed</p>
-                    <form action="{{ route('booking.store') }}" method="post" enctype="multipart/form-data">
+                    @if(session('message'))
+    <div class="alert alert-info">
+        {{ session('message') }}
+    </div>
+@endif
+                    <form action="{{ route('booking.store') }}" method="post" enctype="multipart/form-data" onsubmit="return handleSubmit()">
                         @csrf
                         <div class="row mt-3">
                             <div class=" col-lg-6 col-sm-6 col-md-6">
@@ -88,36 +93,36 @@
                         </div>
 
                         <div class="row mt-3">
-                                <div class="col-lg-4 col-sm-4 col-md-4">
-                                    <label for="totalAmount" class="form-label"><b>Total Amount:</b></label>
-                                </div>
-                                <div class="col-lg-4 col-sm-4 col-md-4">
-                                    <input type="text" class="form-control" id="totalAmount" name="totalAmount" readonly>
-                                </div>
-                                <div class="col-lg-4 col-sm-4 col-md-4">
-                                    <button class="btn btn-danger btn-block" type="submit">Continue</button>
-                                </div>
+                            <div class="col-lg-4 col-sm-4 col-md-4">
+                                <label for="totalAmount" class="form-label"><b>Total Amount:</b></label>
+                            </div>
+                            <div class="col-lg-4 col-sm-4 col-md-4">
+                                <input type="text" class="form-control" id="totalAmount" name="totalAmount" readonly>
+                            </div>
+                            <div class="col-lg-4 col-sm-4 col-md-4">
+                                <button class="btn btn-danger btn-block" type="submit">Continue</button>
+                            </div>
                         </div>
+
                     </div>
                 </form>
                 </div>
             </div>
 </div>
 
-<script>
-
-document.addEventListener('DOMContentLoaded', function () {
-        flatpickr('#dates', {
-            mode: 'multiple',
-            dateFormat: 'Y-m-d',
-            onClose: function (selectedDates, dateStr, instance) {
-                console.log(selectedDates);
-            }
-        });
-    });
+ <script>
+     document.addEventListener('DOMContentLoaded', function () {
+         flatpickr('#dates', {
+             mode: 'multiple',
+             dateFormat: 'Y-m-d',
+             onClose: function (selectedDates, dateStr, instance) {
+                 console.log(selectedDates);
+             }
+         });
+     });
 
     // Function to calculate total price
-        function calculateServicesTotalPrice(packageId, selectedServices) {
+    function calculateServicesTotalPrice(packageId, selectedServices) {
             $.ajax({
                 url: "{{ route('calculate.services.price', '') }}/" + packageId,
                 type: 'GET',
@@ -151,5 +156,19 @@ document.addEventListener('DOMContentLoaded', function () {
             calculateServicesTotalPrice(packageId, selectedServices);
         });
 
-</script>
+     // Handle form submission
+     function handleSubmit() {
+         const paymentMethod = $("input[name='payment_method']:checked").val();
+
+
+         if (paymentMethod === '1') {
+             alert('Complete your payment.');
+             return false;
+         }
+
+         return true;
+     }
+ </script>
+
+
 @endsection

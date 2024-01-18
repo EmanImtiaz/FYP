@@ -87,11 +87,16 @@ class BookingController extends Controller
           }
       }
 
-   $booking->update(['total_amount' => $totalAmount, 'payment_id' => $validatedData['payment_method']]);
+      $paymentMethod = $request->input('payment_method');
 
-    return redirect()->route('Frontend.profile');
+      if ($paymentMethod == '1') {
+          return redirect()->back()->with('message', 'Complete your payment.');
+      }
 
-}
+      $booking->update(['total_amount' => $totalAmount, 'payment_id' => $paymentMethod]);
+
+      return redirect()->route('Frontend.profile');
+  }
 
 public function bookings()
 {
