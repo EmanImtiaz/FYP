@@ -90,13 +90,17 @@ class BookingController extends Controller
       $paymentMethod = $request->input('payment_method');
 
       if ($paymentMethod == '1') {
-          return redirect()->back()->with('message', 'Complete your payment.');
+          // Offline payment, update total amount and payment id
+          $booking->update(['total_amount' => $totalAmount, 'payment_id' => $paymentMethod]);
+          return redirect()->route('Frontend.profile');
       }
 
-      $booking->update(['total_amount' => $totalAmount, 'payment_id' => $paymentMethod]);
+      // Online payment, show payment options and prevent form submission
+      $payments = Payment::all(); // Fetch payment options from the payment table
 
-      return redirect()->route('Frontend.profile');
+      return view('Frontend.payment_options', compact('booking', 'payments'));
   }
+
 
 public function bookings()
 {

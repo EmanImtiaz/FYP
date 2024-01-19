@@ -176,18 +176,17 @@
     });
 
      // Handle form submission
-     function handleSubmit() {
-         const paymentMethod = $("input[name='payment_method']:checked").val();
+function handleSubmit() {
+    const paymentMethod = $("select[name='payment_method']").val();
 
+    if (paymentMethod === '2') {
+        // Show error message for online payment
+        alert('Complete your payment.');
+        return false;
+    }
 
-         if (paymentMethod === '1') {
-             alert('Complete your payment.');
-             return false;
-         }
-
-         return true;
-     }
+    return true;
+}
  </script>
-
 
 @endsection
