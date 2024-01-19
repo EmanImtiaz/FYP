@@ -8,7 +8,7 @@
     </div>
 </header>
         <div class="container py-3">
-            <div class="row ">
+            <div class="row justify-content-start">
                 <div class="col-lg-6">
                     <!-- Form 1 -->
                     <h3>Complete your booking</h3>
@@ -54,24 +54,33 @@
                             </div>
                         </div>
 
+
                         <div class="row mt-3">
-                            <div class=" col-lg-6 col-sm-6 col-md-6">
+                            <div class="col-lg-5 col-sm-5 col-md-5">
                                 <label for="dates" class="form-label">Select Dates</label>
                                 <input type="text" id="dates" class="form-control" name="dates[]" placeholder="Select dates" readonly multiple>
-                           </div>
-                           <div class="col-lg-6 col-sm-6 col-md-6">
-                            <label class="form-label">Select Payment Method</label>
-                            @foreach($payments as $payment)
-                                <div class="form-check">
-                                    <input class="form-check-input" type="radio" id="payment_method_{{ $payment->id }}"
-                                           name="payment_method" value="{{ $payment->id }}" {{ old('payment_method', $booking->payment_id) == $payment->id ? 'checked' : '' }}>
-                                    <label class="form-check-label" for="payment_method_{{ $payment->id }}">
-                                        {{ $payment->payment_method }}
-                                    </label>
-                                </div>
-                            @endforeach
+                            </div>
+                            <div class="col-lg-4 col-sm-4 col-md-4">
+                                <label class="form-label">Select Payment Method</label>
+                                <select class="form-control" name="payment_method" id="paymentMethodSelect">
+                                    <option value="1">Offline</option>
+                                    <option value="2">Online</option>
+                                </select>
+                            </div>
+                            <div class="col-lg-3 col-sm-3 col-md-3" id="onlinePaymentOptions" style="display: none;">
+                                @foreach($payments as $payment)
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="radio" id="payment_method_{{ $payment->id }}"
+                                               name="payment_method" value="{{ $payment->id }}" {{ old('payment_method', $booking->payment_id) == $payment->id ? 'checked' : '' }}>
+                                        <label class="form-check-label" for="payment_method_{{ $payment->id }}">
+                                            {{ $payment->payment_method }}
+                                        </label>
+                                    </div>
+                                @endforeach
+                            </div>
                         </div>
-                    </div>
+
+
                     <div class="row mt-3">
                             <div class=" col-lg col-sm col-md">
                                 <label class="form-label">Select Services</label>
@@ -155,6 +164,16 @@
 
             calculateServicesTotalPrice(packageId, selectedServices);
         });
+
+         // On payment method change, toggle the display of online payment options
+    $('#paymentMethodSelect').change(function () {
+        const selectedPaymentMethod = $(this).val();
+        if (selectedPaymentMethod === '2') {
+            $('#onlinePaymentOptions').show();
+        } else {
+            $('#onlinePaymentOptions').hide();
+        }
+    });
 
      // Handle form submission
      function handleSubmit() {
