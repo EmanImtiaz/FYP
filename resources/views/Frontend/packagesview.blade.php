@@ -12,7 +12,7 @@
                         <p class="card-text">{{ $packageService->package->description }}</p>
 
                         <!-- Display Total Price with discount -->
-                        <b class="card-text" id="totalPrice_{{ $packageService->package->id }}" class="calculate-price" data-package-id="{{ $packageService->package->id }}">
+                        <b class="card-text calculate-price" id="totalPrice_{{ $packageService->package->id }}" data-package-id="{{ $packageService->package->id }}">
                             Total Price:
                         </b>
 
@@ -21,7 +21,6 @@
                         <ul>
                             @foreach($packageService->package->services as $service)
                                 <li>{{ $service->title }}</li>
-
                             @endforeach
                         </ul>
 
@@ -44,6 +43,7 @@
 </div>
 
 <script>
+
     function calculateTotalPrice(packageId) {
         $.ajax({
             url: "{{ route('calculate.package.total', '') }}/" + packageId,
@@ -58,9 +58,8 @@
     }
 
     $(document).ready(function() {
-        const packageIds = {!! json_encode($packages->pluck('package_id')->unique()->toArray()) !!};
-
-        packageIds.forEach(packageId => {
+        $('.calculate-price').each(function() {
+            var packageId = $(this).data('package-id');
             calculateTotalPrice(packageId);
         });
     });
