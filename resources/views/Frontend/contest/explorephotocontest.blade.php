@@ -8,6 +8,7 @@
             <div class="carousel-caption head_caption">
                 <h3 class="display-4 text-light">Imagine a place where you can join hundreds of photo contests to challenge and reward your creativity</h3>
                 <a href="{{  route('signup') }}" class="btn btn-light button_css">Sign up for free</a>
+                <a href="{{  route('contestform') }}" class="btn btn-light button_css">apply for photocontest</a>
             </div>
         </div>
     </div>

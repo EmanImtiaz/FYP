@@ -90,3 +90,8 @@ Route::group(['prefix'=>'photocontest'],function()
 
 });
 
+
+
+
+
+Route::get('/contestform', [PhotosContestController::class, 'create'])->name('contestform');
