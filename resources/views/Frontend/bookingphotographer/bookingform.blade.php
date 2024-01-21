@@ -9,7 +9,7 @@
 </header>
     <div class="container py-5 ">
         <div class="row ">
-        <div class="col-lg-5 col-md-5 col-sm-5">
+        <div class="col-lg-6 col-md-6 col-sm-6">
         <h2>Edit Your detail</h2>
         <h3>Complete your booking</h3>
                     <p>Please enter your contact information to proceed</p>
@@ -55,7 +55,7 @@
             </div>
 
             <div class="row mb-2">
-                <div class="col-lg-4 col-sm-4 col-md-4 mt-3">
+                <div class="col-lg-4 col-sm-4 col-md-4 ">
                     <label for="dates" class="form-label">Select Dates</label>
                     <input type="text" id="dates" class="form-control" name="dates[]" placeholder="Select dates" readonly multiple>
                 </div>
