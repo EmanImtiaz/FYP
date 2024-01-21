@@ -66,40 +66,48 @@ class BookingController extends Controller
       ]);
 
       $validatedData['user_id'] = Auth::id();
-      $totalAmount = $validatedData['totalAmount'];
+        $totalAmount = $validatedData['totalAmount'];
 
-      $booking = Booking::create($validatedData);
+        $booking = Booking::create($validatedData);
 
-      $selectedServices = $request->input('services');
-      $dates = $request->input('dates');
+        $selectedServices = $request->input('services');
+        $dates = $request->input('dates');
 
-      foreach ($dates as $date) {
-          $dateArray = explode(',', $date);
+        foreach ($dates as $date) {
+            $dateArray = explode(',', $date);
 
-          foreach ($dateArray as $singleDate) {
-              foreach ($selectedServices as $serviceId) {
-                  BookingService::create([
-                      'booking_id' => $booking->id,
-                      'package_service_id' => $serviceId,
-                      'date_selected' => $singleDate,
-                  ]);
-              }
-          }
-      }
+            foreach ($dateArray as $singleDate) {
+                foreach ($selectedServices as $serviceId) {
+                    BookingService::create([
+                        'booking_id' => $booking->id,
+                        'package_service_id' => $serviceId,
+                        'date_selected' => $singleDate,
+                    ]);
+                }
+            }
+        }
 
-      $paymentMethod = $request->input('payment_method');
+        $paymentMethod = $request->input('payment_method');
 
-      if ($paymentMethod == '1') {
-          // Offline payment, update total amount and payment id
-          $booking->update(['total_amount' => $totalAmount, 'payment_id' => $paymentMethod]);
-          return redirect()->route('Frontend.profile');
-      }
+        if ($paymentMethod == '1') {
+            // Offline payment, update total amount and payment id
+            $booking->update(['total_amount' => $totalAmount, 'payment_id' => $paymentMethod]);
+            return redirect()->route('Frontend.profile');
+        } elseif ($paymentMethod == '2') {
+            // Online payment, check if a payment option is selected
+            $selectedPayment = $request->input('payment_option');
 
-      // Online payment, show payment options and prevent form submission
-      $payments = Payment::all(); // Fetch payment options from the payment table
+            if (!$selectedPayment) {
+                return redirect()->back()->with('error', 'Select an online payment method');
+            }
 
-      return view('Frontend.payment_options', compact('booking', 'payments'));
-  }
+            return redirect()->back()->with('message', 'Complete your payment');
+        } else {
+            // Invalid payment method selected
+            return redirect()->back()->with('error', 'Invalid payment method');
+        }
+    }
+
 
 
 public function bookings()

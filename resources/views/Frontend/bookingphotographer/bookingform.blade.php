@@ -176,18 +176,26 @@
         }
     });
 
-     // Handle form submission
-function handleSubmit() {
-    const paymentMethod = $("select[name='payment_method']").val();
+ // Handle form submission
+ function handleSubmit() {
+        const paymentMethod = $("select[name='payment_method']").val();
 
-    if (paymentMethod === '2') {
-        // Show error message for online payment
-        alert('Complete your payment.');
-        return false;
+        if (paymentMethod === '2') {
+            const selectedOnlinePayment = $("input[name='payment_method']:checked").val();
+
+            if (!selectedOnlinePayment) {
+                // Show error message for online payment
+                alert('Select an Online payment method.');
+                return false;
+            } else {
+                // Show message for completing payment
+                alert('Complete your payment.');
+                return false;
+            }
+        }
+
+        return true;
     }
-
-    return true;
-}
  </script>
 
 @endsection
