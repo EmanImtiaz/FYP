@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('bookings', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('user_id');
+            $table->unsignedBigInteger('photographer_profile_id');
             $table->string('name');
             $table->string('email');
             $table->string('phone');
@@ -23,6 +24,7 @@ return new class extends Migration
             $table->unsignedBigInteger('payment_id')->nullable();
 
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+            $table->foreign('photographer_profile_id')->references('id')->on('photographer_profiles')->onDelete('cascade');
             $table->foreign('payment_id')->references('id')->on('payments')->onDelete('set null');
             $table->timestamps();
         });

@@ -66,6 +66,7 @@ class BookingController extends Controller
       ]);
 
       $validatedData['user_id'] = Auth::id();
+      $validatedData['photographer_profile_id'] = Auth::id();
         $totalAmount = $validatedData['totalAmount'];
 
         $booking = Booking::create($validatedData);
@@ -79,6 +80,8 @@ class BookingController extends Controller
             foreach ($dateArray as $singleDate) {
                 foreach ($selectedServices as $serviceId) {
                     BookingService::create([
+                        'user_id' => Auth::id(),
+                        'photographer_profile_id' => Auth::id(),
                         'booking_id' => $booking->id,
                         'package_service_id' => $serviceId,
                         'date_selected' => $singleDate,
@@ -107,8 +110,6 @@ class BookingController extends Controller
             return redirect()->back()->with('error', 'Invalid payment method');
         }
     }
-
-
 
 public function bookings()
 {
