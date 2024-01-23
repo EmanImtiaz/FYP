@@ -66,6 +66,10 @@
                         <option value="2">Online</option>
                     </select>
                 </div>
+                    <div class="col-lg-4 col-sm-4 col-md-4 mt-4" id="offlinePaymentButton" style="display: none;">
+                        <button class="btn btn-danger btn-block" type="button">Accounts detail </button>
+                    </div>
+
                 <div class="col-lg-4 col-sm-4 col-md-4 mt-2" id="onlinePaymentOptions" style="display: none;">
                     @foreach($payments as $payment)
                         <div class="form-check">
@@ -106,10 +110,10 @@
                     <div class="col-lg-4 col-sm-4 col-md-4">
                         <label for="totalAmount" class="form-label"><b>Total Amount:</b></label>
                     </div>
-                    <div class="col-lg-4 col-sm-4 col-md-4">
+                    <div class="col-lg-3 col-sm-3 col-md-3">
                         <input type="text" class="form-control" id="totalAmount" name="totalAmount" readonly>
                     </div>
-                    <div class="col-lg-4 col-sm-4 col-md-4">
+                    <div class="col-lg-5 col-sm-5 col-md-5">
                         <button class="btn btn-danger btn-block" type="submit">Continue</button>
                     </div>
                 </div>
@@ -117,7 +121,7 @@
         </form>
     </div>
     <div class="col-lg-6 col-sm-6 col-md-6">
-        
+
     </div>
 </div>
 </div>
@@ -179,6 +183,23 @@
         }
     });
 
+    function toggleOfflinePaymentButton() {
+        const selectedPaymentMethod = $("#paymentMethodSelect").val();
+        if (selectedPaymentMethod === '1') {
+            $('#offlinePaymentButton').show();
+        } else {
+            $('#offlinePaymentButton').hide();
+        }
+    }
+
+    // Call the function initially to handle any pre-selected payment method
+    toggleOfflinePaymentButton();
+
+    // Update the onchange event of the payment method dropdown
+    $("#paymentMethodSelect").on("change", function () {
+        toggleOfflinePaymentButton();
+    });
+
  // Handle form submission
  function handleSubmit() {
         const paymentMethod = $("select[name='payment_method']").val();
@@ -199,6 +220,7 @@
 
         return true;
     }
+
  </script>
 
 @endsection
