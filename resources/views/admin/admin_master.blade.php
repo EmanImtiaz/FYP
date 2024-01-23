@@ -107,7 +107,7 @@
           <li class="nav-item">
             <a class="nav-link" data-bs-toggle="collapse" href="#emails" role="button" aria-expanded="false" aria-controls="emails">
               <i class="link-icon" data-feather="mail"></i>
-              <span class="link-title">Payment</span>
+              <span class="link-title">Payment Methods</span>
               <i class="link-arrow" data-feather="chevron-down"></i>
             </a>
             <div class="collapse" id="emails">
@@ -181,6 +181,13 @@
                 </li>
               </ul>
             </div>
+          </li>
+          <li class="nav-item nav-category">Accounts Payment</li>
+          <li class="nav-item">
+            <a href="{{ route('paymentaccounts.index')  }}" class="nav-link">
+              <i class="link-icon" data-feather="message-square"></i>
+              <span class="link-title">Accounts</span>
+            </a>
           </li>
           <li class="nav-item nav-category">Other Pages</li>
           <li class="nav-item">

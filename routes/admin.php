@@ -7,6 +7,7 @@ use App\Http\Controllers\BookingController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\CityController;
 use App\Http\Controllers\PackagesController;
+use App\Http\Controllers\PaymentAccountController;
 use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\PhotographerController;
 use App\Http\Controllers\PhotosContestController;
@@ -167,7 +168,7 @@ Route::group(['prefix'=>'booking'],function()
 
 });
 
-//  payment method  //
+//  payment accounts  //
 Route::group(['prefix'=>'payment'],function()
 {
 
@@ -177,6 +178,19 @@ Route::group(['prefix'=>'payment'],function()
     Route::get('/edit/{id}',[PaymentController::class,'edit'])->name('payment.edit');
     Route::post('/update/{id}',[PaymentController::class,'update'])->name('payment.update');
     Route::get('/delete/{id}',[PaymentController::class,'delete'])->name('payment.delete');
+
+});
+
+//  payment accounts  //
+Route::group(['prefix'=>'paymentaccounts'],function()
+{
+
+    Route::get('/',[PaymentAccountController::class,'index'])->name('paymentaccounts.index');
+    Route::get('/create',[PaymentAccountController::class,'create'])->name('paymentaccounts.create');
+    Route::post('/store',[PaymentAccountController::class,'store'])->name('paymentaccounts.store');
+    Route::get('/edit/{id}',[PaymentAccountController::class,'edit'])->name('paymentaccounts.edit');
+    Route::post('/update/{id}',[PaymentAccountController::class,'update'])->name('paymentaccounts.update');
+    Route::get('/delete/{id}',[PaymentAccountController::class,'delete'])->name('paymentaccounts.delete');
 
 });
 

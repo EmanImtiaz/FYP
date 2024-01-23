@@ -119,10 +119,17 @@
                                                 </div>
                                             </div>
                                             <hr>
-                                                <div class="d-grid justify-content-start gap-2">
-                                                    <a href="{{ route('detailedit') }}" class="btn btn-danger">Edit details</a>
-                                                    <a href="{{ route('packages.create') }}" class="btn btn-danger">Create Packages</a>
-                                                    <a href="{{ route('profileportfolio.create') }}" class="btn btn-danger">Create portfolio</a>
+
+                                                <div class="row justify-content-center">
+                                                    <div class="col-3 d-flex">
+                                                        <a href="{{ route('detailedit') }}" class="btn btn-danger">Edit details</a>
+                                                    </div>
+                                                    <div class="col-4 d-flex">
+                                                        <a href="{{ route('packages.create') }}" class="btn btn-danger">Create Packages</a>
+                                                    </div>
+                                                    <div class="col-4 d-flex">
+                                                        <a href="{{ route('profileportfolio.create') }}" class="btn btn-danger">Create portfolio</a>
+                                                    </div>
                                                 </div>
                                             </div>
                                     </div>
