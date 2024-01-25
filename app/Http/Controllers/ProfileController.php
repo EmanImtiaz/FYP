@@ -29,8 +29,6 @@ class ProfileController extends Controller
             return view(); // You need to specify the view for non-photographer users
         }
     }
-
-
     public function profile()
     {
         $user = Auth::user();
@@ -201,6 +199,15 @@ public function detail_edit()
     $photographerProfile = $user->photographerProfile;
     return view('Frontend.detail-edit', compact('photographerProfile'));
 }
+
+public function bookphotographer()
+{
+    $photographerProfiles = PhotographerProfile::with('user')->get();
+    return view('Frontend.bookingphotographer.booking', compact('photographerProfiles'));
+}
+
+
+
 
 }
 

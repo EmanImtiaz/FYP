@@ -66,7 +66,7 @@
             <div id="nvam" class="collapse navbar-collapse">
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item"><a class="nav-link" href="{{ route('main') }}">Home</a></li>
-                    <li class="nav-item"><a class="nav-link" href="{{ route('booking') }}">Booking</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{{ route('book.photographer') }}">Booking</a></li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="photocontest">Contest</a>
                         <ul class="dropdown-menu">

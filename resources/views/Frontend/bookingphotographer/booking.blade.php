@@ -43,10 +43,31 @@
 
         </form>
 
+        <div class="container py-5">
+            <div class="row justify-content-center">
+                @foreach($photographerProfiles as $photographer)
+                    <div class="col">
+                        <div class="card">
+                            <img src="{{ $photographer->user->profile_image }}" class="" alt="Photographer Image">
+                            <div class="card-body">
+                                <h5 class="card-title">{{ $photographer->user->name }}</h5>
+                                <p>{{ $photographer->company_name }}</p>
+                                <span style="color: #d32f2f;">
+                                    <i class="fa-solid fa-location-dot fa-sm" style="color: #d32f2f;"></i>
+                                    {{ $photographer->user->address }}
+                                </span>
+                                <a href="" class="btn btn-danger">Book Me</a>
+                            </div>
+                        </div>
+                    </div>
+                @endforeach
+            </div>
+        </div>
+{{--
 <div class="row row-cols-1 row-cols-md-4 g-4 py-5">
     <div class="col">
         <div class="card">
-            <img src="https://static.wixstatic.com/media/1e56a559887b4527ad701b376d854ea1.jpg/v1/fill/w_319,h_213,fp_0.50_0.50,q_80,usm_0.66_1.00_0.01,enc_auto/1e56a559887b4527ad701b376d854ea1.jpg" class="" alt="" >
+            <img src="https://images.pexels.com/photos/277559/pexels-photo-277559.jpeg?auto=compress&cs=tinysrgb&w=600" class="" alt="" >
             <div class="card-body">
                 <h5 class="card-title">Andrea Piacquadio</h5>
                 <p>A Photography lnc.</p>
@@ -57,7 +78,7 @@
     </div>
     <div class="col">
         <div class="card">
-            <img src="https://static.wixstatic.com/media/1e56a559887b4527ad701b376d854ea1.jpg/v1/fill/w_319,h_213,fp_0.50_0.50,q_80,usm_0.66_1.00_0.01,enc_auto/1e56a559887b4527ad701b376d854ea1.jpg" class="" alt="" >
+            <img src="https://images.pexels.com/photos/277559/pexels-photo-277559.jpeg?auto=compress&cs=tinysrgb&w=600" class="" alt="" >
             <div class="card-body">
                 <h5 class="card-title">Andrea Piacquadio</h5>
                 <p>A Photography lnc.</p>
@@ -68,7 +89,7 @@
     </div>
     <div class="col">
         <div class="card">
-            <img src="https://static.wixstatic.com/media/1e56a559887b4527ad701b376d854ea1.jpg/v1/fill/w_319,h_213,fp_0.50_0.50,q_80,usm_0.66_1.00_0.01,enc_auto/1e56a559887b4527ad701b376d854ea1.jpg" class="" alt="" >
+            <img src="https://images.pexels.com/photos/277559/pexels-photo-277559.jpeg?auto=compress&cs=tinysrgb&w=600" class="" alt="" >
             <div class="card-body">
                 <h5 class="card-title">Andrea Piacquadio</h5>
                 <p>A Photography lnc.</p>
@@ -79,7 +100,7 @@
     </div>
     <div class="col">
         <div class="card">
-            <img src="https://static.wixstatic.com/media/1e56a559887b4527ad701b376d854ea1.jpg/v1/fill/w_319,h_213,fp_0.50_0.50,q_80,usm_0.66_1.00_0.01,enc_auto/1e56a559887b4527ad701b376d854ea1.jpg" class="" alt="" >
+            <img src="https://images.pexels.com/photos/277559/pexels-photo-277559.jpeg?auto=compress&cs=tinysrgb&w=600" class="" alt="" >
             <div class="card-body">
                 <h5 class="card-title">Andrea Piacquadio</h5>
                 <p>A Photography lnc.</p>
@@ -90,7 +111,7 @@
     </div>
     <div class="col">
         <div class="card">
-            <img src="https://static.wixstatic.com/media/1e56a559887b4527ad701b376d854ea1.jpg/v1/fill/w_319,h_213,fp_0.50_0.50,q_80,usm_0.66_1.00_0.01,enc_auto/1e56a559887b4527ad701b376d854ea1.jpg" class="" alt="" >
+            <img src="https://images.pexels.com/photos/277559/pexels-photo-277559.jpeg?auto=compress&cs=tinysrgb&w=600" class="" alt="" >
             <div class="card-body">
                 <h5 class="card-title">Andrea Piacquadio</h5>
                 <p>A Photography lnc.</p>
@@ -101,7 +122,7 @@
     </div>
     <div class="col">
         <div class="card">
-            <img src="https://static.wixstatic.com/media/1e56a559887b4527ad701b376d854ea1.jpg/v1/fill/w_319,h_213,fp_0.50_0.50,q_80,usm_0.66_1.00_0.01,enc_auto/1e56a559887b4527ad701b376d854ea1.jpg" class="" alt="" >
+            <img src="https://images.pexels.com/photos/277559/pexels-photo-277559.jpeg?auto=compress&cs=tinysrgb&w=600" class="" alt="" >
             <div class="card-body">
                 <h5 class="card-title">Andrea Piacquadio</h5>
                 <p>A Photography lnc.</p>
@@ -112,10 +133,10 @@
     </div>
 
 </div>
+
+    --}}
+
      </div>
-
-
-
 
 @endsection
 
