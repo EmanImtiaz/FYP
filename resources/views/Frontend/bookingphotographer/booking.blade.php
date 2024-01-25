@@ -46,9 +46,9 @@
         <div class="container py-5">
             <div class="row justify-content-center">
                 @foreach($photographerProfiles as $photographer)
-                    <div class="col">
+                    <div class="col-md-4 mb-4"> <!-- Use col-md-4 to have 3 cards in 1 row on medium screens and above -->
                         <div class="card">
-                            <img src="{{ $photographer->user->profile_image }}" class="" alt="Photographer Image">
+                            <img src="{{ $photographer->user->profile_image }}" class="card-img-top" alt="">
                             <div class="card-body">
                                 <h5 class="card-title">{{ $photographer->user->name }}</h5>
                                 <p>{{ $photographer->company_name }}</p>
@@ -56,13 +56,15 @@
                                     <i class="fa-solid fa-location-dot fa-sm" style="color: #d32f2f;"></i>
                                     {{ $photographer->user->address }}
                                 </span>
-                                <a href="" class="btn btn-danger">Book Me</a>
+                                <a href="{{ route('view.photographer.profile', ['id' => $photographer->id]) }}" class="btn btn-danger">View Profile</a>
+
                             </div>
                         </div>
                     </div>
                 @endforeach
             </div>
         </div>
+
 {{--
 <div class="row row-cols-1 row-cols-md-4 g-4 py-5">
     <div class="col">

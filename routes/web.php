@@ -46,7 +46,6 @@ Route::get('reset', [ResetController::class,'reset'])->name('reset');;
 //Route::get('profile/upload', [ProfileController::class, 'show'])->middleware('auth')->name('profile.upload'); // Display the upload form
 //Route::post('profile/upload', [ProfileController::class, 'upload'])->middleware('auth'); // Handle the file upload
 
-//Route::get('booking', [BookingController::class,'booking'])->name('booking');
 
 Route::get('bookinginfo', [BookinginfoController::class,'bookinginfo'])->name('bookinginfo');
 
@@ -73,6 +72,8 @@ Route::post('/joinphotographer', [ProfileController::class, 'becomePhotographer'
 Route::get('/detail.edit', [ProfileController::class, 'detail_edit'])->name('detailedit');
 Route::post('/detail-updatee', [ProfileController::class, 'detail_updatee'])->name('profileupdatee');
 Route::get('/book.photographer', [ProfileController::class, 'bookphotographer'])->name('book.photographer');
+// web.php
+Route::get('/photographer/{id}',[ProfileController::class, 'viewPhotographerProfile'])->name('view.photographer.profile');
 
 
 

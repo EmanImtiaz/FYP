@@ -7,9 +7,9 @@
         <h1 class="display-4">Book Package</h1>
     </div>
 </header>
-    <div class="container py-5 ">
-        <div class="row ">
-        <div class="col-lg-6 col-md-6 col-sm-6">
+    <div class="container py-4 ">
+        <div class="row justify-content-center">
+        <div class="col-lg-7 col-md-7 col-sm-7">
         <h2>Edit Your detail</h2>
         <h3>Complete your booking</h3>
                     <p>Please enter your contact information to proceed</p>
@@ -67,7 +67,7 @@
                     </select>
                 </div>
                     <div class="col-lg-4 col-sm-4 col-md-4 mt-4" id="offlinePaymentButton" style="display: none;">
-                        <button class="btn btn-danger btn-block" type="button">Accounts detail </button>
+                        <button class="btn btn-danger btn-block" type="button" data-toggle="modal" data-target="#accountsDetailModal">Accounts Detail</button>
                     </div>
 
                 <div class="col-lg-4 col-sm-4 col-md-4 mt-2" id="onlinePaymentOptions" style="display: none;">
@@ -120,9 +120,35 @@
             </div>
         </form>
     </div>
-    <div class="col-lg-6 col-sm-6 col-md-6">
 
+
+    <!-- Modal for Accounts Detail -->
+    <div class="modal fade" id="accountsDetailModal" tabindex="-1" role="dialog" aria-labelledby="accountsDetailModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="accountsDetailModalLabel">Accounts Detail</h5>
+                    <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <!-- Display Payment Accounts Details here -->
+                    @foreach($paymentAccounts as $account)
+                        <p><strong>Account Holder Name:</strong> {{ $account->accountholder_name }}</p>
+                        <p><strong>Bank Name:</strong> {{ $account->bank_name }}</p>
+                        <p><strong>Account Holder Number:</strong> {{ $account->accountholder_no }}</p>
+                        @if($account->IBAN)
+                            <p><strong>IBAN:</strong> {{ $account->IBAN }}</p>
+                        @endif
+                        <hr>
+                    @endforeach
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
     </div>
+
 </div>
 </div>
 

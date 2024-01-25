@@ -6,6 +6,7 @@ use App\Models\PackageService;
 use App\Models\Package;
 use App\Models\Booking;
 use App\Models\Payment;
+use App\Models\PaymentAccount;
 use App\Models\BookingService;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
@@ -19,8 +20,9 @@ class BookingController extends Controller
         $package = Package::with('packageServices')->find($packageId);
         $packageServices = $package->packageServices;
         $payments = Payment::all(); // Get all payment methods
+        $paymentAccounts = PaymentAccount::all();
 
-        return view('Frontend.bookingphotographer.bookingform', compact('booking', 'package', 'packageServices', 'payments'));
+        return view('Frontend.bookingphotographer.bookingform', compact('booking', 'package', 'packageServices', 'payments','paymentAccounts'));
     }
 
 
@@ -117,5 +119,7 @@ public function bookings()
     return view('Frontend.bookings', compact('bookings'));
 
 }
+
+
 
 }

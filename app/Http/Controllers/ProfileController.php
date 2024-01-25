@@ -206,8 +206,19 @@ public function bookphotographer()
     return view('Frontend.bookingphotographer.booking', compact('photographerProfiles'));
 }
 
+public function viewPhotographerProfile($id)
+{
+    $photographerProfile = PhotographerProfile::find($id);
 
+        if (!$photographerProfile) {
+            // Handle the case where the photographer profile is not found
+            return redirect()->back()->with('error', 'Photographer profile not found.');
+        }
 
+        // Retrieve the authenticated user
+        $user = auth()->user();
 
+        return view('Frontend.profile', compact('user', 'photographerProfile'));
+    }
 }
 

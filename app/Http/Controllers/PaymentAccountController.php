@@ -12,6 +12,7 @@ class PaymentAccountController extends Controller
         return view('admin.FinanacialInformation.adminaccount.create', compact('paymentaccounts'));
     }
 
+
     public function index()
  {
     $paymentaccounts=PaymentAccount::get();
