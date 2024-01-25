@@ -1,16 +1,40 @@
 @extends('layout.master')
 
 @section('kuchb')
- <!-- Page Header -->
-<header class="page-header bg-danger text-white text-center py-5">
+
+<style>
+    /* Custom styles to change the active tab color to red */
+    .nav-pills .nav-item .active {
+        background-color:#d32f2f !important;
+    }
+</style>
+
+<!-- Page Header -->
+<header class="page-header  text-white text-center py-5" style="  background-color:#d32f2f">
     <div class="container">
         <h1 class="display-4">All Bookings</h1>
     </div>
 </header>
 
 <div class="container py-3">
-    <h1 class="text-center">Your Bookings</h1>
-</div>
+
+<ul class="nav nav-pills nav-fill" id="bookingTabs">
+    <li class="nav-item">
+        <a class="nav-link active" href="#all" data-toggle="pill">
+            All Bookings
+        </a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link " href="#pending" data-toggle="pill">
+            Bookings: Payment Pending
+        </a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="#confirmed" data-toggle="pill">
+            Confirmed Bookings
+        </a>
+    </li>
+</ul>
 
 <div class="container py-3">
     <div class="row justify-content-center">
@@ -22,15 +46,21 @@
                         <p class="card-text">Total Amount: {{ $booking->total_amount }}</p>
                         <p class="card-text">Payment Method: {{ $booking->payment_method }}</p>
                         <!-- Add other booking details as needed -->
-
-
                     </div>
                 </div>
             @endforeach
         </div>
     </div>
 </div>
-
+</div>
+<script>
+    // JavaScript for handling tab switching
+    $(document).ready(function(){
+        $('#bookingTabs a').on('click', function (e) {
+            e.preventDefault();
+            $(this).tab('show');
+        });
+    });
+</script>
 
 @endsection
-
