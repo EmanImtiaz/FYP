@@ -148,13 +148,13 @@
             <div class="collapse" id="emails">
               <ul class="nav sub-menu">
                 <li class="nav-item">
-                  <a href="{{ route('province.create') }}" class="nav-link">Province</a>
+                  <a href="{{ route('province.index') }}" class="nav-link">Province</a>
                 </li>
                 <li class="nav-item">
-                  <a href="{{ route('city.create') }}" class="nav-link">City</a>
+                  <a href="{{ route('city.index') }}" class="nav-link">City</a>
                 </li>
                 <li class="nav-item">
-                  <a href="{{ route('town.create') }}" class="nav-link">Town</a>
+                  <a href="{{ route('town.index') }}" class="nav-link">Town</a>
                 </li>
               </ul>
             </div>

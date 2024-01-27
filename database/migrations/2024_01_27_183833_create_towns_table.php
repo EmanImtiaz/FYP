@@ -13,7 +13,12 @@ return new class extends Migration
     {
         Schema::create('towns', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('province_id');
+            $table->unsignedBigInteger('city_id');
             $table->string('town_name');
+
+            $table->foreign('province_id')->references('id')->on('provinces')->onDelete('cascade');
+            $table->foreign('city_id')->references('id')->on('cities')->onDelete('cascade');
             $table->timestamps();
         });
     }

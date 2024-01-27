@@ -11,6 +11,8 @@
             <thead class="bg-dark text-light">
               <tr>
                 <th>#</th>
+                <th>Province Name</th>
+                <th>City Name</th>
                 <th>Town Name</th>
                 <th>Action</th>
               </tr>
@@ -20,12 +22,14 @@
 
                 <tr>
                     <td>{{  ++$key }}</td>
-
-                   <td>{{ $town->town_name }}</td>
-                   <td><a class="btn btn-primary" href="{{ route('town.edit',['id'=>$town->id]) }}">Edit</a>
-                   <a class="btn btn-danger" href="{{ route('town.delete',['id'=>$town->id]) }}">Delete</a></td>
-
-                  </tr>
+                    <td>{{ $town->province->province_name }}</td>
+                    <td>{{ $town->city->city_name }}</td>
+                    <td>{{ $town->town_name }}</td>
+                    <td>
+                        <a class="btn btn-primary" href="{{ route('town.edit',['id'=>$town->id]) }}">Edit</a>
+                        <a class="btn btn-danger" href="{{ route('town.delete',['id'=>$town->id]) }}">Delete</a>
+                    </td>
+                </tr>
 
                 @endforeach
             </tbody>

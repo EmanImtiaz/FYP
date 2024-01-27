@@ -11,7 +11,15 @@ class City extends Model
 
     protected $fillable=['id','city_name','province_id'];
 
-  
+    public function province()
+    {
+        return $this->belongsTo(Province::class);
+    }
+
+    public function towns()
+    {
+        return $this->hasMany(Town::class);
+    }
 }
 
 

@@ -11,10 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('sliders', function (Blueprint $table) {
+        Schema::create('cities', function (Blueprint $table) {
             $table->id();
-            $table->text('img');
-            $table->double('priority')->default(1);
+            $table->unsignedBigInteger('province_id');
+            $table->string('city_name');
+
+            $table->foreign('province_id')->references('id')->on('provinces')->onDelete('cascade');
             $table->timestamps();
         });
     }
@@ -24,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('sliders');
+        Schema::dropIfExists('cities');
     }
 };
