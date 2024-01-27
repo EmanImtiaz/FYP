@@ -12,17 +12,9 @@
                         <label for="province">Province:</label>
                         <select class="form-select" id="province">
                             <option selected>Select a Province.</option>
-                            <option value="new-york">Punjab</option>
-                            <option value="los-angeles">Sindh</option>
-                            <option value="chicago">KPK</option>
-                            <option value="miami">Balochistan</option>
-                            <option value="miami">Gilgit Baltistan</option>
-                            <!-- Add more location options as needed -->
                         </select>
                     </div>
                 </div>
-
-
                 <div class="col-lg-3">
                     <div class="form-group">
                         <label for="city">City</label>
@@ -42,6 +34,7 @@
             </div>
 
         </form>
+
 
         <div class="container py-5">
             <div class="row justify-content-center">
