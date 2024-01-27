@@ -19,7 +19,7 @@ class BookingController extends Controller
         $booking = new Booking();
         $package = Package::with('packageServices')->find($packageId);
         $packageServices = $package->packageServices;
-        $payments = Payment::all(); // Get all payment methods
+        $payments = Payment::all(); 
         $paymentAccounts = PaymentAccount::all();
 
         return view('Frontend.bookingphotographer.bookingform', compact('booking', 'package', 'packageServices', 'payments','paymentAccounts'));
@@ -119,7 +119,5 @@ public function bookings()
     return view('Frontend.bookings', compact('bookings'));
 
 }
-
-
 
 }
