@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Slider;
+use App\Models\PhotographerProfile;
 
 
 class MainController extends Controller
@@ -11,7 +12,8 @@ class MainController extends Controller
     public function main()
     {
         $sliders = Slider::orderBy('priority')->get();
-        return view('Frontend.main',compact('sliders'));
+        $photographerProfiles = PhotographerProfile::with('user')->get();
+        return view('Frontend.main',compact('sliders','photographerProfiles'));
     }
 
    // public function index()

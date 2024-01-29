@@ -23,9 +23,11 @@
             <div class="carousel-item{{ $key == 0 ? ' active' : '' }} bg-danger">
                 <img class="" src="{{ asset($slider->img) }}" alt="" height="600" width="1920">
                 <div class="carousel-caption justify-content-center py-5">
-                    <h1 class="display-4 text-danger"></h1>
-                    <p class="lead text-danger"></p>
-                    <a href="{{ route('signup') }}" class="btn btn-danger">Join Us Today</a>
+                    <h1 class="display-4 text-danger">{{ $slider->caption_title }}</h1>
+                    <p class="lead text-danger">{{ $slider->caption_text }}</p>
+                    @if ($key == 0)
+                        <a href="{{ route('signup') }}" class="btn btn-danger">Join Us Today</a>
+                    @endif
                 </div>
             </div>
         @endforeach
@@ -37,6 +39,7 @@
         <span class="carousel-control-prev-icon" style="color: #d32f2f;"></span>
     </button>
 </div>
+
 
 {{--
 <div id="slider"class="carousel slide carousel-dark" class="carousel-fade" data-bs-ride="carousel">
@@ -131,7 +134,7 @@
 </section>
 
 <!-- Profiles in Card Slider-->
-
+{{--
 <div class="card_body">
 <div class="slide-container swiper">
     <h2 class="text-center py-1">Photographers Profiles</h2>
@@ -222,8 +225,47 @@
 <div class="swiper-pagination"></div>
 </div>
 </div>
+--}}
+
+<div class="card_body">
+    <div class="slide-container swiper">
+        <h2 class="text-center py-1">Photographers Profiles</h2>
+        <div class="slide-content">
+            <div class="card-wrapper swiper-wrapper">
+                @foreach($photographerProfiles as $photographer)
+                    <div class="card swiper-slide">
+                        <div class="image-content">
+                            <span class="overlay"></span>
+                            <div class="card-image">
+                                <img src="{{ $photographer->user->profile_image }}" alt="" class="card-img">
+                            </div>
+                        </div>
+                        <div class="card-content">
+                            <h2 class="name">{{ $photographer->user->name }}</h2>
+                            <p class="description">{{ $photographer->company_name }}</p>
+                            <!-- Add any additional fields you want to display -->
+                            <a href="{{ route('view.photographer.profile', ['id' => $photographer->id]) }}"><button class="button">View More</button></a>
+                        </div>
+                    </div>
+                @endforeach
+            </div>
+        </div>
+        <div class="swiper-button-next swiper-navBtn"></div>
+        <div class="swiper-button-prev swiper-navBtn"></div>
+        <div class="swiper-pagination"></div>
+    </div>
+</div>
+
 
 <script>
+
+document.addEventListener("DOMContentLoaded", function() {
+        // Enable the carousel to slide automatically
+        var myCarousel = new bootstrap.Carousel(document.getElementById('slider'), {
+            interval: 5000 // Set the interval (in milliseconds) for auto-sliding
+        });
+    });
+
     var swiper = new Swiper(".slide-content", {
       slidesPerView: 3,
       spaceBetween: 25,
