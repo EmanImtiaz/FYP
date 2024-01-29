@@ -5,29 +5,26 @@
 <div>
 <h1 class="text-center">{{$slider->id!=null?'update':'Create'}}Slider</h1>
 </div>
-<div class="container text-center">
-    <form action="{{$slider->id !=null?route('slider.update',['id'=>$slider->id]):route('slider.store')}}" method="post" enctype="multipart/form-data">
-        @csrf
-{{-- 2 --}}
-<div class="container">
-    <div class="row">
-        <div class="col-4">
-         <input id="priority" class="form-control" type="number"   name="priority" placeholder="">
-        </div>
-        <div class="col-4">
-            <input type="file" name="img" id="" value={{$slider->img}}>
-        </div>
-        <div class="col-4 text-start">
-            <input type="Submit" value="save" class="btn btn-success">
-            <a class="btn btn-info" href="{{  route('slider.index') }}">Index</a>
-        </div>
+<div class="cotainer py-5">
+    <div class="row justify-content-center">
+        <div class="col-lg-4 col-md-4 col-sm-4">
+            <form action="{{$slider->id !=null?route('slider.update',['id'=>$slider->id]):route('slider.store')}}" method="post" enctype="multipart/form-data">
+                @csrf
+            <div class="mb-3">
+                <label for="priority" class="form-label">Priority</label>
+                <input id="priority" class="form-control" type="number" name="priority" placeholder="">
+            </div>
+            <div class="mb-3">
+                <p>Select Image</p>
+                <input type="file" name="img" id="" value={{$slider->img}}>
+            </div>
+            <div class="d-flex justify-content-center ">
+                <input type="Submit" value="save" class="btn btn-success">
+            </div>
+        </form>
     </div>
 </div>
-
-    </form>
 </div>
-
-
 @endsection
 
 

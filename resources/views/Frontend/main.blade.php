@@ -12,6 +12,33 @@
     @endforeach --}}
 </div>-->
 
+<div id="slider" class="carousel slide carousel-dark" class="carousel-fade" data-bs-ride="carousel">
+    <div class="carousel-indicators">
+        @foreach ($sliders as $key => $slider)
+            <button style="border-radius: 50%;" data-bs-target="#slider" class="{{ $key == 0 ? 'active' : '' }}" data-bs-slide-to="{{ $key }}"></button>
+        @endforeach
+    </div>
+    <div class="carousel-inner">
+        @foreach ($sliders as $key => $slider)
+            <div class="carousel-item{{ $key == 0 ? ' active' : '' }} bg-danger">
+                <img class="" src="{{ asset($slider->img) }}" alt="" height="600" width="1920">
+                <div class="carousel-caption justify-content-center py-5">
+                    <h1 class="display-4 text-danger"></h1>
+                    <p class="lead text-danger"></p>
+                    <a href="{{ route('signup') }}" class="btn btn-danger">Join Us Today</a>
+                </div>
+            </div>
+        @endforeach
+    </div>
+    <button style="color: #d32f2f;" class="carousel-control-next" data-bs-slide="next" data-bs-target="#slider">
+        <span class="carousel-control-next-icon"></span>
+    </button>
+    <button style="color: #d32f2f;" class="carousel-control-prev" data-bs-slide="prev" data-bs-target="#slider">
+        <span class="carousel-control-prev-icon" style="color: #d32f2f;"></span>
+    </button>
+</div>
+
+{{--
 <div id="slider"class="carousel slide carousel-dark" class="carousel-fade" data-bs-ride="carousel">
     <div class="carousel-indicators">
         <button style="border-radius: 50%;" data-bs-target="#slider" class="active" data-bs-slide-to="0"></button>
@@ -41,7 +68,7 @@
         <span class="carousel-control-prev-icon" style="color: #d32f2f;"></span>
     </button>
 </div>
-
+--}}
 <!-- About Us Section -->
 <section class="about py-5">
     <div class="container">

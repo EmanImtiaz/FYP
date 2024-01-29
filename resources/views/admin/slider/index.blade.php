@@ -9,7 +9,7 @@
         <a class="btn  btn-primary"href="{{route('slider.create')}}">Create</a>
     </div>
 
-    <table class="container text-center table table-warning table-striped-columns table-striped table-border border-5 border-danger">
+    <table class="container text-center table table-striped-columns table-striped table-border border-5 border-danger">
         <thead class="table-dark">
             <tr>
                 <th>#</th>
@@ -28,8 +28,6 @@
                     {{-- <div class="text-center"> --}}
                         <td><a class="btn btn-primary" href="{{ route('slider.edit',['id'=>$slider->id]) }}">Edit</a>
                        <a class="btn btn-danger" href="{{ route('slider.delete',['id'=>$slider->id]) }}">delete</a></td>
-                    {{-- </div> --}}
-                    {{-- </div> --}}
              @endforeach
 
         </tr>
