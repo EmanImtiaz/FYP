@@ -200,11 +200,11 @@ public function detail_edit()
     return view('Frontend.detail-edit', compact('photographerProfile'));
 }
 
-public function bookphotographer()
-{
-    $photographerProfiles = PhotographerProfile::with('user')->get();
-    return view('Frontend.bookingphotographer.booking', compact('photographerProfiles'));
-}
+//public function bookphotographer()
+//{
+//    $photographerProfiles = PhotographerProfile::with('user')->get();
+ //   return view('Frontend.bookingphotographer.booking', compact('photographerProfiles'));
+// }
 
 public function viewPhotographerProfile($id)
 {

@@ -9,6 +9,7 @@ use App\Http\Controllers\BookingController;
 use App\Http\Controllers\ContestDetailController;
 use App\Http\Controllers\ExplorePhotoContestController;
 use App\Http\Controllers\MainController;
+use App\Http\Controllers\LocationController;
 use App\Http\Controllers\ProfilePortfolioController;
 use App\Http\Controllers\PackagesController;
 use App\Http\Controllers\PhotographerProfileController;
@@ -77,3 +78,10 @@ Route::get('/calculate-services-price/{id}', [BookingController::class, 'calcula
 
 //location based bookings //
 Route::get('/bookings', [BookingController::class, 'bookings'])->name('Frontend.bookings');
+
+// Location //
+Route::get('/booking',[LocationController::class,'view'])->name('booking.view');
+Route::get('/get-cities',[LocationController::class,'getCities'])->name('get-cities');
+Route::get('/get-towns',[LocationController::class,'getTowns'])->name('get-towns');
+
+

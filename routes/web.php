@@ -71,7 +71,7 @@ Route::post('/joinphotographer', [ProfileController::class, 'becomePhotographer'
 
 Route::get('/detail.edit', [ProfileController::class, 'detail_edit'])->name('detailedit');
 Route::post('/detail-updatee', [ProfileController::class, 'detail_updatee'])->name('profileupdatee');
-Route::get('/book.photographer', [ProfileController::class, 'bookphotographer'])->name('book.photographer');
+//Route::get('/book.photographer', [ProfileController::class, 'bookphotographer'])->name('book.photographer');
 // web.php
 Route::get('/photographer/{id}',[ProfileController::class, 'viewPhotographerProfile'])->name('view.photographer.profile');
 
