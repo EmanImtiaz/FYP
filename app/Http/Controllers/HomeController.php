@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Gate;
+use App\Models\Slider;
+use App\Models\PhotographerProfile;
 
 class HomeController extends Controller
 {
@@ -25,7 +27,9 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('Frontend.main');
+        $sliders = Slider::orderBy('priority')->get();
+        $photographerProfiles = PhotographerProfile::with('user')->get();
+        return view('Frontend.main',compact('sliders','photographerProfiles'));
     }
     public function adminpanel()
     {
@@ -37,7 +41,7 @@ class HomeController extends Controller
        abort(404);
       //return view('admin.admin_master');
     }
-    
+
      public function userpanel()
     {
 
