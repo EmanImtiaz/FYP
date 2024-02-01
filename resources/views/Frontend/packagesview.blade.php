@@ -1,4 +1,27 @@
 
+{{--
+<div class="container py-3">
+    <div class="packages-body">
+        <h2 class="heading-danger">Packages</h2>
+        <div class="row">
+            @foreach($packages->unique('package_id') as $packageService)
+                <div class="col-md-4">
+                    <div class="plan-basic">
+                        <h2 class="plan-heading">{{ $packageService->package->title }}</h2>
+                        <h1 class="plan-price"><span class="rupees">Rs.</span>{{ $packageService->package->price }}</h1>
+                        <ul class="plan-features">
+                            @foreach($packageService->package->services as $service)
+                                <li class="plan-item">{{ $service->title }}</li>
+                            @endforeach
+                        </ul>
+                        <a href="{{ route('bookingform', ['packageId' => $packageService->package->id]) }}" class="btn book-now">Book Now</a>
+                    </div>
+                </div>
+            @endforeach
+        </div>
+    </div>
+</div>
+--}}
 
 <div class="container pb-3">
     <h2 class="text-center pb-2">Packages</h2>
@@ -41,6 +64,7 @@
         @endforeach
     </div>
 </div>
+
 
 <script>
 

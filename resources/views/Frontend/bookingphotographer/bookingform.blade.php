@@ -8,7 +8,7 @@
     </div>
 </header>
     <div class="container py-4 ">
-        <div class="row justify-content-center">
+        <div class="row justify-content-start">
         <div class="col-lg-7 col-md-7 col-sm-7">
         <h2>Edit Your detail</h2>
         <h3>Complete your booking</h3>
