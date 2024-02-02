@@ -121,6 +121,7 @@
                                             <hr>
 
                                                 <div class="row justify-content-center">
+                                                    @if($user->role === 'photographer')
                                                     <div class="col-3 d-flex">
                                                         <a href="{{ route('detailedit') }}" class="btn btn-danger">Edit details</a>
                                                     </div>
@@ -130,6 +131,8 @@
                                                     <div class="col-4 d-flex">
                                                         <a href="{{ route('profileportfolio.create') }}" class="btn btn-danger">Create portfolio</a>
                                                     </div>
+                                                    @endif
+
                                                 </div>
                                             </div>
                                     </div>

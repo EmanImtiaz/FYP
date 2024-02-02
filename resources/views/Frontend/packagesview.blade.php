@@ -51,12 +51,14 @@
                             <div class="col">
                                 <a href="{{ route('bookingform', ['packageId' => $packageService->package->id]) }}" class="btn btn-success btn-block">Book Package</a>
                             </div>
+                            @if($user->role === 'photographer')
                             <div class="col">
                                 <a href="{{ route('packages.edit',['id'=>$packageService->package->id]) }}" class="btn btn-primary btn-block">Edit Package</a>
                             </div>
                             <div class="col">
                                 <a href="{{ route('packages.delete',['id'=>$packageService->package->id]) }}" class="btn btn-danger btn-block">Delete Package</a>
                             </div>
+                            @endif
                         </div>
                     </div>
                 </div>
