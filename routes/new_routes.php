@@ -14,6 +14,7 @@ use App\Http\Controllers\ProfilePortfolioController;
 use App\Http\Controllers\PackagesController;
 use App\Http\Controllers\PhotographerProfileController;
 use App\Http\Controllers\SingleWinnerDetailsController;
+use App\Http\Controllers\StripeController;
 use App\Http\Controllers\UserProfileUpdateController;
 
 Route::get('contact', [ContactController::class,'contact'])->name('contact');
@@ -84,4 +85,6 @@ Route::get('/booking',[LocationController::class,'view'])->name('booking.view');
 Route::get('/get-cities',[LocationController::class,'getCities'])->name('get-cities');
 Route::get('/get-towns',[LocationController::class,'getTowns'])->name('get-towns');
 
-
+// Stripe Payent //
+Route::get('stripe',[StripeController::class,'stripe']);
+Route::post('stripe',[StripeController::class,'stripePost'])->name('stripe.post');
