@@ -15,7 +15,7 @@
                     <h1 class="display-4 text-danger">{{ $slider->caption_title }}</h1>
                     <p class="lead text-danger">{{ $slider->caption_text }}</p>
                     @if ($key == 0)
-                        <a href="{{ route('signup') }}" class="btn btn-danger">Join Us Today</a>
+                        <a href="{{ route('register') }}" class="btn btn-danger">Join Us Today</a>
                     @endif
                 </div>
             </div>
