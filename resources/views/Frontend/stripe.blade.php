@@ -214,7 +214,7 @@ width: 61%;
         </div>
     </div>
 </div>
-</body>
+
 
 <script type="text/javascript" src="https://js.stripe.com/v2/"></script>
 <script type="text/javascript">
