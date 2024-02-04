@@ -32,20 +32,10 @@ use Symfony\Component\HttpKernel\Profiler\Profile;
 Route::get('welcome', function () {
     return view('welcome');
 });
-Route::get('signin', [SigninController::class,'signin'])->name('signin');;
-
-Route::get('signup', [SignupController::class,'signup'])->name('signup');;
 
 Route::get('forget', [ForgetController::class,'forget'])->name('forget');;
 
 Route::get('reset', [ResetController::class,'reset'])->name('reset');;
-//Route::get('joinphotographer', [JoinphotographerController::class,'joinphotographer'])->name('joinphotographer');;
-// Route::get('profile', [ProfileController::class,'profile'])->name('profile');;
-
-//Route::get('profile', [ProfileController::class, 'profile'])->middleware('auth')->name('profile');
-//Route::get('profile/upload', [ProfileController::class, 'show'])->middleware('auth')->name('profile.upload'); // Display the upload form
-//Route::post('profile/upload', [ProfileController::class, 'upload'])->middleware('auth'); // Handle the file upload
-
 
 Route::get('bookinginfo', [BookinginfoController::class,'bookinginfo'])->name('bookinginfo');
 
@@ -71,8 +61,6 @@ Route::post('/joinphotographer', [ProfileController::class, 'becomePhotographer'
 
 Route::get('/detail.edit', [ProfileController::class, 'detail_edit'])->name('detailedit');
 Route::post('/detail-updatee', [ProfileController::class, 'detail_updatee'])->name('profileupdatee');
-//Route::get('/book.photographer', [ProfileController::class, 'bookphotographer'])->name('book.photographer');
-// web.php
 Route::get('/photographer/{id}',[ProfileController::class, 'viewPhotographerProfile'])->name('view.photographer.profile');
 
 
@@ -93,9 +81,6 @@ Route::group(['prefix'=>'photocontest'],function()
     Route::get('/delete/{id}',[PhotosContestController::class,'delete'])->name('photocontest.delete');
 
 });
-
-
-
 
 
 Route::get('/contestform', [PhotosContestController::class, 'create'])->name('contestform');
