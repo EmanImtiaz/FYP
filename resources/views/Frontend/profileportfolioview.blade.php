@@ -20,10 +20,10 @@
                     All
                 </a>
             </li>
-            @foreach($profilecategories as $category)
+            @foreach($profilecategories as  $profilecategory)
                 <li class="nav-item">
-                    <a class="nav-link" href="#{{ $category->cat_name }}" data-toggle="pill">
-                        {{ $category->cat_name }}
+                    <a class="nav-link" href="#{{ $profilecategory->cat_name  }}" data-toggle="pill">
+                        {{ $profilecategory->cat_name  }}
                     </a>
                 </li>
             @endforeach
