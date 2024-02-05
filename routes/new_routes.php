@@ -8,7 +8,6 @@ use App\Http\Controllers\BlogPostController;
 use App\Http\Controllers\BookingController;
 use App\Http\Controllers\ContestDetailController;
 use App\Http\Controllers\ExplorePhotoContestController;
-use App\Http\Controllers\MainController;
 use App\Http\Controllers\LocationController;
 use App\Http\Controllers\ProfilePortfolioController;
 use App\Http\Controllers\PackagesController;
@@ -23,7 +22,7 @@ Route::get('about',[AboutController::class,'about'])->name('about');
 
 Route::get('singlewinnerdetail',[SingleWinnerDetailsController::class,'singlewinnerdetail'])->name('singlewinnerdetail');
 
-Route::get('/',[MainController::class,'main'])->name('main');
+
 
 Route::get('allportfolio',[AllPortfolioController::class,'allportfolio'])->name('allportfolio');
 

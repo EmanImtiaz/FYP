@@ -14,6 +14,7 @@ use App\Http\Controllers\BookingpkgController;
 use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\PhotosContestController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\MainController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 use Symfony\Component\HttpKernel\Profiler\Profile;
@@ -49,7 +50,9 @@ Route::get('winners', [WinnersController::class,'winners'])->name('winners');
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Route::get('/',[MainController::class,'main'])->name('main');
 
 Route::get('/profile', [ProfileController::class, 'profile'])->name('Frontend.profile');
 Route::get('/profile.edit', [ProfileController::class, 'edit_profile'])->name('profile.edit');
