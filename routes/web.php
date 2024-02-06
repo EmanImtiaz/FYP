@@ -2,8 +2,6 @@
 
 use App\Http\Controllers\BookingController;
 use App\Http\Controllers\ForgetController;
-
-use App\Http\Controllers\SigninController;
 use App\Http\Controllers\ResetController;
 use App\Http\Controllers\SignupController;
 use App\Http\Controllers\WinnersController;
@@ -50,7 +48,7 @@ Route::get('winners', [WinnersController::class,'winners'])->name('winners');
 
 Auth::routes();
 
-Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 Route::get('/',[MainController::class,'main'])->name('main');
 

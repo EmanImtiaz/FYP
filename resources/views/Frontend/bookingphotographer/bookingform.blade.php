@@ -67,7 +67,7 @@
                     </select>
                 </div>
                     <div class="col-lg-4 col-sm-4 col-md-4 mt-4" id="offlinePaymentButton" style="display: none;">
-                        <button class="btn btn-danger btn-block" type="button" data-toggle="modal" data-target="#accountsDetailModal">Accounts Detail</button>
+                        <button class="btn btn-danger btn-md btn-block" type="button" data-toggle="modal" data-target="#accountsDetailModal">Accounts Detail</button>
                     </div>
 
                 <div class="col-lg-4 col-sm-4 col-md-4 mt-2" id="onlinePaymentOptions" style="display: none;">
@@ -82,7 +82,6 @@
                     @endforeach
                 </div>
             </div>
-
 
             <div class="mb-3">
                 <div class="row ">
@@ -114,46 +113,142 @@
                         <input type="text" class="form-control" id="totalAmount" name="totalAmount" readonly>
                     </div>
                     <div class="col-lg-5 col-sm-5 col-md-5">
-                        <button class="btn btn-danger btn-block" type="submit">Continue</button>
+                        <button class="btn btn-danger btn-md btn-block" type="submit">Continue</button>
                     </div>
                 </div>
             </div>
         </form>
     </div>
+    <div class="col-lg-5 col-md-5 col-sm-5 payment-details-section" style="display: none;">
+        <h3 class="text-center" >Payment Details</h3>
+        <div class="panel-body">
+            @if (Session::has('success'))
+            <div class="alert alert-success text-center">
+                <a href="#" class="close" data-dismiss="alert" aria-label="close">×</a>
+                <p>{{ Session::get('success') }}</p>
+            </div>
+            @endif
+            <form role="form" action="{{route('stripe.post')}}" method="post" class="require-validation" data-cc-on-file="false" data-stripe-publishable-key="{{ env('STRIPE_KEY') }}" id="payment-form">
+                @csrf
+                <div class="mb-2">
+                    <div class="row ">
+                            <div class='col-xs-12 form-group required'>
+                                <label class='control-label'>Name on Card</label>
+                                <input class='form-control' size='4' type='text'>
+                            </div>
+                    </div>
+                </div>
+                <div class="mb-2">
+                    <div class="row ">
+                        <div class='col-xs-12 form-group card required'>
+                            <label class='control-label'>Card Number</label>
+                            <input autocomplete='off' class='form-control card-number' size='20' type='text'>
+                        </div>
+                    </div>
+                </div>
+                <div class="mb-2">
+                    <div class="row ">
+                        <div class='col-xs-12 col-md-4 form-group cvc required'>
+                            <label class='control-label'>CVC</label> <input autocomplete='off' class='form-control card-cvc' placeholder='ex. 311' size='4' type='text'>
+                        </div>
+                        <div class='col-xs-12 col-md-4 form-group expiration required'>
+                            <label class='control-label'>Expiration Month</label>
+                            <input class='form-control card-expiry-month' placeholder='MM' size='2' type='text'>
+                        </div>
+                        <div class='col-xs-12 col-md-4 form-group expiration required'>
+                            <label class='control-label'>Expiration Year</label>
+                            <input class='form-control card-expiry-year' placeholder='YYYY' size='4' type='text'>
+                        </div>
+                    </div>
+                    <div class="row py-2 ">
+                        <div class="col">
+                            <button class=" btn btn-danger btn-md btn-block" type="submit">Pay Now ($100)</button>
+                        </div>
+                    </div>
 
+        </div>
+    </div>
+</div>
+</div>
 
-    <!-- Modal for Accounts Detail -->
-    <div class="modal fade" id="accountsDetailModal" tabindex="-1" role="dialog" aria-labelledby="accountsDetailModalLabel" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="accountsDetailModalLabel">Accounts Detail</h5>
-                    <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <!-- Display Payment Accounts Details here -->
-                    @foreach($paymentAccounts as $account)
-                        <p><strong>Account Holder Name:</strong> {{ $account->accountholder_name }}</p>
-                        <p><strong>Bank Name:</strong> {{ $account->bank_name }}</p>
-                        <p><strong>Account Holder Number:</strong> {{ $account->accountholder_no }}</p>
-                        @if($account->IBAN)
-                            <p><strong>IBAN:</strong> {{ $account->IBAN }}</p>
-                        @endif
-                        <hr>
-                    @endforeach
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-                </div>
+<!-- Modal for Accounts Detail -->
+<div class="modal fade" id="accountsDetailModal" tabindex="-1" role="dialog" aria-labelledby="accountsDetailModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="accountsDetailModalLabel">Accounts Detail</h5>
+                <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <!-- Display Payment Accounts Details here -->
+                @foreach($paymentAccounts as $account)
+                    <p><strong>Account Holder Name:</strong> {{ $account->accountholder_name }}</p>
+                    <p><strong>Bank Name:</strong> {{ $account->bank_name }}</p>
+                    <p><strong>Account Holder Number:</strong> {{ $account->accountholder_no }}</p>
+                    @if($account->IBAN)
+                        <p><strong>IBAN:</strong> {{ $account->IBAN }}</p>
+                    @endif
+                    <hr>
+                @endforeach
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
             </div>
         </div>
     </div>
-
-</div>
 </div>
 
 
- <script>
+<script type="text/javascript" src="https://js.stripe.com/v2/"></script>
+<script type="text/javascript">
+
+$(function() {
+    var $form = $(".require-validation");
+    $('form.require-validation').bind('submit', function(e) {
+        var $form = $(".require-validation"),
+        inputSelector = ['input[type=email]', 'input[type=password]',
+        'input[type=text]', 'input[type=file]',
+        'textarea'
+    ].join(', '),
+    $inputs = $form.find('.required').find(inputSelector),
+    $errorMessage = $form.find('div.error'),
+    valid = true;
+    $errorMessage.addClass('hide');
+    $('.has-error').removeClass('has-error');
+    $inputs.each(function(i, el) {
+        var $input = $(el);
+        if ($input.val() === '') {
+            $input.parent().addClass('has-error');
+            $errorMessage.removeClass('hide');
+            e.preventDefault();
+        }
+    });
+    if (!$form.data('cc-on-file')) {
+        e.preventDefault();
+        Stripe.setPublishableKey($form.data('stripe-publishable-key'));
+        Stripe.createToken({
+            number: $('.card-number').val(),
+            cvc: $('.card-cvc').val(),
+            exp_month: $('.card-expiry-month').val(),
+            exp_year: $('.card-expiry-year').val()
+        }, stripeResponseHandler);
+    }
+});
+function stripeResponseHandler(status, response) {
+    if (response.error) {
+        $('.error')
+        .removeClass('hide')
+        .find('.alert')
+        .text(response.error.message);
+    } else {
+        /* token contains id, last4, and card type */
+        var token = response['id'];
+        $form.find('input[type=text]').empty();
+        $form.append("<input type='hidden' name='stripeToken' value='" + token + "'/>");
+        $form.get(0).submit();
+    }
+}
+});
      document.addEventListener('DOMContentLoaded', function () {
          flatpickr('#dates', {
              mode: 'multiple',
@@ -226,26 +321,28 @@
         toggleOfflinePaymentButton();
     });
 
- // Handle form submission
- function handleSubmit() {
-        const paymentMethod = $("select[name='payment_method']").val();
+// Handle form submission
+function handleSubmit() {
+    const paymentMethod = $("select[name='payment_method']").val();
 
-        if (paymentMethod === '2') {
-            const selectedOnlinePayment = $("input[name='payment_method']:checked").val();
+    if (paymentMethod === '2') {
+        const selectedOnlinePayment = $("input[name='payment_method']:checked").val();
 
-            if (!selectedOnlinePayment) {
-                // Show error message for online payment
-                alert('Select an Online payment method.');
-                return false;
-            } else {
-                // Show message for completing payment
-                alert('Complete your payment.');
-                return false;
-            }
+        if (!selectedOnlinePayment) {
+            // Show error message for online payment
+            alert('Select an Online payment method.');
+            return false;
+        } else {
+            // Display payment details section
+            $('.payment-details-section').show();
+            return false;
         }
-
-        return true;
     }
+
+    // Hide payment details section for offline payment
+    $('.payment-details-section').hide();
+    return true;
+}
 
  </script>
 
