@@ -2,12 +2,10 @@
 
 use App\Http\Controllers\BookingController;
 use App\Http\Controllers\ForgetController;
-<<<<<<< Updated upstream
-=======
+
 
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\SigninController;
->>>>>>> Stashed changes
 use App\Http\Controllers\ResetController;
 use App\Http\Controllers\SignupController;
 use App\Http\Controllers\WinnersController;
