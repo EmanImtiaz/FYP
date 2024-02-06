@@ -23,6 +23,8 @@ class PhotosContestController extends Controller
 
     public function store(Request $request)
     {
+         // Ensure the user is authenticated
+         $this->middleware('auth');
         $data = $request->validate([
             'description' => 'required',
             'views' => 'numeric',
@@ -104,10 +106,13 @@ class PhotosContestController extends Controller
 
     public function view()
 {
-    $photocontest = PhotoContest::with('category')->where('user_id', auth()->id())->get();
-    $categories = Category::all();
+         // Ensure the user is authenticated
+         $this->middleware('auth');
 
-    return view('Frontend.contestform', compact('photocontest', 'categories'));
+         $photocontest = PhotoContest::with('category')->where('user_id', auth()->id())->get();
+         $categories = Category::all();
+
+         return view('Frontend.contestform', compact('photocontest', 'categories'));
 }
 
 }

@@ -8,14 +8,15 @@ class CategoryController extends Controller
 {
     public function create()
     {
-       $category=new Category;
-       return view('admin.contest.category.create',compact('category'));
+       $categories=new Category;
+       return view('admin.contest.category.create',compact('categories'));
     }
+
 
     public function index()
  {
-    $category=Category::get();
-    return view('admin.contest.category.index',compact('category'));
+    $categories=Category::get();
+    return view('admin.contest.category.index',compact('categories'));
  }
 
  public function store(Request $request)
@@ -71,4 +72,11 @@ public function update(Request $request,$id)
      $category->delete();
      return redirect()->route('category.index');
    }
+   public function views()
+   {
+       $categories = Category::get();
+       return view('Frontend.contest.explorephotocontest', compact('categories'));
+   }
+
+
 }

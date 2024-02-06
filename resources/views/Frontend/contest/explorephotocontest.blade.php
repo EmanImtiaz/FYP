@@ -43,55 +43,24 @@ amazing brands and opportunities.  </p>
 
 <div class="py-5">
     <h3 class="display-4 text-center">Discover all photo contests</h3>
-    <div class="carousel-inner pt-4">
-        <div class="carousel-item active bg-danager">
-            <img class="img-fluid" src="https://www.viewbug.com/media/images/contests/contest10350_banner.jpg" alt=""  height="600" width="1920" >
-            <div class="carousel-caption heading_caption ">
-                <h3 class=" text-danger ">Ultimate Homes</h3>
-                <p class=" text-danger" >Win Poladriod snap touch</p>
-                <a href="{{ route('contestdetail')}}" class="btn btn-danger button_css">Participate</a>
-            </div>
-        </div>
-    </div>
+
+
     <div class="carousel-inner ">
-        <div class="carousel-item active bg-danager">
-            <img class="img-fluid" src="https://www.viewbug.com/media/images/contests/contest10352_banner.jpg" alt=""  height="600" width="1920" >
-            <div class="carousel-caption heading_caption">
-                <h3 class=" text-danger "> Monthly pro</h3>
-                <p class=" text-danger ">Win Photographer of the month!</p>
-                <a href="{{ route('contestdetail')}}" class="btn btn-danger button_css">Participate</a>
-            </div>
-        </div>
+
+
+
+    <div class="container py-5">
+        <h2>Explore Photo Contests</h2>
+        @foreach($categories as $category)
+        <p>Category Name: {{ $category->category_name }}</p>
+        <p>Description: {{ $category->description }}</p>
+        <!-- Add more fields as needed -->
+        <img src="{{ asset($category->img) }}" alt="Category Image" width="100" height="100">
+        @endforeach
     </div>
-    <div class="carousel-inner ">
-        <div class="carousel-item active bg-danager">
-            <img class="img-fluid" src="https://www.viewbug.com/media/images/contests/contest10351_banner.jpg" alt=""  height="600" width="1920" >
-            <div class="carousel-caption heading_caption">
-                <h3 class="  ">Image of the month </h3>
-                <p>Win Photographer of the month!</p>
-                <a href="{{ route('contestdetail')}}" class="btn btn-danger button_css">Participate</a>
-            </div>
-        </div>
+
     </div>
-    <div class="carousel-inner">
-        <div class="carousel-item active bg-danager">
-            <img class="img-fluid" src="https://www.viewbug.com/media/images/contests/contest10349_banner.jpg" alt=""  height="600" width="1920" >
-            <div class="carousel-caption heading_caption">
-                <h3 class=" ">Wedding Fashion</h3>
-                <p>With Sigma lens!</p>
-                <a href="{{ route('contestdetail')}}" class="btn btn-light button_css">Participate</a>
-            </div>
-        </div>
-    </div>
-    <div class="carousel-inner">
-        <div class="carousel-item active bg-danager">
-            <img class="img-fluid" src="https://www.viewbug.com/media/images/contests/contest10315_banner.jpg" alt=""  height="600" width="1920" >
-            <div class="carousel-caption heading_caption">
-                <h3 class=" ">Tree Vibes</h3>
-                <p>With Sigma lens!</p>
-                <a href="{{ route('contestdetail')}}" class="btn btn-danger button_css">Participate</a>
-            </div>
-        </div>
-    </div>
+
+
 </div>
 @endsection
