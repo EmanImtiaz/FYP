@@ -53,7 +53,7 @@
                     <i class="fa-solid fa-location-dot fa-sm" style="color: #d32f2f;"></i>
                     {{ $photographer->user->address }}
                 </span>
-                <a href="{{ route('view.photographer.profile', ['id' => $photographer->id, 'role' => 'photographer']) }}" class="btn btn-danger">View Profile</a>
+                <a href="{{ route('view.photographer.profile', ['id' => $photographer->id]) }}" class="btn btn-danger">View Profile</a>
             </div>
         </div>
     </div>

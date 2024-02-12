@@ -23,7 +23,6 @@ Route::get('about',[AboutController::class,'about'])->name('about');
 Route::get('singlewinnerdetail',[SingleWinnerDetailsController::class,'singlewinnerdetail'])->name('singlewinnerdetail');
 
 
-
 Route::get('allportfolio',[AllPortfolioController::class,'allportfolio'])->name('allportfolio');
 
 Route::get('photographerprofile',[PhotographerProfileController::class,'photographerprofile'])->name('photographerprofile');

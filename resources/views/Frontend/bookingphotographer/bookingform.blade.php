@@ -62,7 +62,7 @@
                 <div class="col-lg-4 col-sm-4 col-md-4">
                     <label class="form-label">Select Payment Method</label>
                     <select class="form-control" name="payment_method" id="paymentMethodSelect">
-                        <option value="1">Offline</option>
+                        <option value="1" selected>Offline</option>
                         <option value="2">Online</option>
                     </select>
                 </div>
@@ -119,6 +119,19 @@
             </div>
         </form>
     </div>
+    <div class="col-lg-5 col-sm-5 col-md-5 mt-4" id="offlinedetails" style="display: none;">
+        <h5>Accounts Detail</h5>
+        <!-- Display Payment Accounts Details here -->
+        @foreach($paymentAccounts as $account)
+            <p><strong>Account Holder Name:</strong> {{ $account->accountholder_name }}</p>
+            <p><strong>Bank Name:</strong> {{ $account->bank_name }}</p>
+            <p><strong>Account Holder Number:</strong> {{ $account->accountholder_no }}</p>
+            @if($account->IBAN)
+                <p><strong>IBAN:</strong> {{ $account->IBAN }}</p>
+            @endif
+            <hr>
+        @endforeach
+    </div>
     <div class="col-lg-5 col-md-5 col-sm-5 payment-details-section" style="display: none;">
         <h3 class="text-center" >Payment Details</h3>
         <div class="panel-body">
@@ -165,38 +178,14 @@
                             <button class=" btn btn-danger btn-md btn-block" type="submit">Pay Now ($100)</button>
                         </div>
                     </div>
-
-        </div>
-    </div>
-</div>
-</div>
-
-<!-- Modal for Accounts Detail -->
-<div class="modal fade" id="accountsDetailModal" tabindex="-1" role="dialog" aria-labelledby="accountsDetailModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="accountsDetailModalLabel">Accounts Detail</h5>
-                <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                <!-- Display Payment Accounts Details here -->
-                @foreach($paymentAccounts as $account)
-                    <p><strong>Account Holder Name:</strong> {{ $account->accountholder_name }}</p>
-                    <p><strong>Bank Name:</strong> {{ $account->bank_name }}</p>
-                    <p><strong>Account Holder Number:</strong> {{ $account->accountholder_no }}</p>
-                    @if($account->IBAN)
-                        <p><strong>IBAN:</strong> {{ $account->IBAN }}</p>
-                    @endif
-                    <hr>
-                @endforeach
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                </div>
             </div>
         </div>
     </div>
 </div>
+
+
+
 
 
 <script type="text/javascript" src="https://js.stripe.com/v2/"></script>
@@ -304,21 +293,21 @@ function stripeResponseHandler(status, response) {
         }
     });
 
-    function toggleOfflinePaymentButton() {
+    function toggleOfflineDetails() {
         const selectedPaymentMethod = $("#paymentMethodSelect").val();
         if (selectedPaymentMethod === '1') {
-            $('#offlinePaymentButton').show();
+            $('#offlinedetails').show();
         } else {
-            $('#offlinePaymentButton').hide();
+            $('#offlinedetails').hide();
         }
     }
 
     // Call the function initially to handle any pre-selected payment method
-    toggleOfflinePaymentButton();
+    toggleOfflineDetails();
 
     // Update the onchange event of the payment method dropdown
     $("#paymentMethodSelect").on("change", function () {
-        toggleOfflinePaymentButton();
+        toggleOfflineDetails();
     });
 
 // Handle form submission
