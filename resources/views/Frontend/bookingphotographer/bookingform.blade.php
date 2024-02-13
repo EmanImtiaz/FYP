@@ -293,14 +293,17 @@ function stripeResponseHandler(status, response) {
         }
     });
 
-    function toggleOfflineDetails() {
-        const selectedPaymentMethod = $("#paymentMethodSelect").val();
-        if (selectedPaymentMethod === '1') {
-            $('#offlinedetails').show();
-        } else {
-            $('#offlinedetails').hide();
-        }
+   // Function to toggle display of account details section based on payment method
+   function toggleOfflineDetails() {
+    const selectedPaymentMethod = $("#paymentMethodSelect").val();
+    if (selectedPaymentMethod === '1') {
+        $('#offlinedetails').show();
+        $('.payment-details-section').hide(); // Hide payment details section
+    } else {
+        $('#offlinedetails').hide();
     }
+}
+
 
     // Call the function initially to handle any pre-selected payment method
     toggleOfflineDetails();
@@ -324,12 +327,14 @@ function handleSubmit() {
         } else {
             // Display payment details section
             $('.payment-details-section').show();
+            $('#offlinedetails').hide(); // Hide account details section
             return false;
         }
     }
 
     // Hide payment details section for offline payment
     $('.payment-details-section').hide();
+    $('#offlinedetails').show(); // Show account details section
     return true;
 }
 
