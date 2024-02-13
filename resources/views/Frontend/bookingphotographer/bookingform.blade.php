@@ -19,33 +19,49 @@
                     </div>
                     @endif
 
-                    <form action="{{ route('booking.store') }}" method="post" enctype="multipart/form-data" onsubmit="return handleSubmit()">
-                        @csrf
+        <form action="{{ route('booking.store') }}" method="post" enctype="multipart/form-data" onsubmit="return handleSubmit()">
+        @csrf
             <div class="mb-2">
                 <div class="row ">
-                    <div class=" col-lg-6 col-sm-6 col-md-6">
+                    <div class=" col-lg col-sm col-md">
                         <label for="name" class="form-label">Name</label>
                         <input id="name" type="text" required class="form-control" name="name"
                                placeholder="Enter your name" value="{{  $booking->name }}">
                    </div>
-                    <div class=" col-lg-6 col-sm-6 col-md-6">
+                    <div class=" col-lg col-sm col-md">
                         <label for="email" class="form-label">Email</label>
                         <input id="email" type="text" required class="form-control" name="email"
                        placeholder="Enter your e-mail" value="{{  $booking->email }}">
                     </div>
-                </div>
-            </div>
-            <div class="mb-2">
-                <div class="row ">
-                    <div class=" col-lg-6 col-sm-6 col-md-6">
+                    <div class=" col-lg col-sm col-md">
                         <label for="phone" class="form-label">Phone</label>
                         <input id="phone" type="text" required class="form-control" name="phone"
                        placeholder="Enter your phone" value="{{  $booking->phone }}">
                    </div>
-                    <div class=" col-lg-6 col-sm-6 col-md-6">
-                        <label for="address" class="form-label">Address</label>
-                        <input id="address" type="text" required class="form-control" name="address"
-                       placeholder="Enter your address" value="{{  $booking->address }}">
+                </div>
+            </div>
+            <div class="mb-2">
+                <div class="row ">
+                   <div class="col-lg col-sm col-md">
+                        <label for="province">Province:</label>
+                        <select class="form-select" id="province">
+                            <option selected>Select a Province.</option>
+                            @foreach($provinces as $province)
+                                <option value="{{ $province->id }}">{{ $province->province_name }}</option>
+                            @endforeach
+                        </select>
+                    </div>
+                    <div class="col-lg col-sm col-md">
+                        <label for="city">City:</label>
+                        <select class="form-select" id="city" name="city">
+                            <option selected>Select a City.</option>
+                        </select>
+                    </div>
+                    <div class="col-lg col-sm col-md">
+                        <label for="town">Town:</label>
+                        <select class="form-select" id="town" name="town">
+                            <option selected>Select a Town.</option>
+                        </select>
                     </div>
                 </div>
             </div>
@@ -61,12 +77,12 @@
                 </div>
                 <div class="col-lg-4 col-sm-4 col-md-4">
                     <label class="form-label">Select Payment Method</label>
-                    <select class="form-control" name="payment_method" id="paymentMethodSelect">
-                        <option value="1" selected>Offline</option>
-                        <option value="2">Online</option>
+                    <select class="form-control" name="payment_method" id="paymentMethodSelect" required>
+                        <option value="0" selected {{ $booking->payment_method == 0 ? 'selected' : '' }}>Offline</option>
+                        <option value="1" {{ $booking->payment_method == 1 ? 'selected' : '' }}>Online</option>
                     </select>
                 </div>
-                    
+
 
                 <div class="col-lg-4 col-sm-4 col-md-4 mt-2" id="onlinePaymentOptions" style="display: none;">
                     @foreach($payments as $payment)
@@ -117,7 +133,7 @@
             </div>
         </form>
     </div>
-    <div class="col-lg-5 col-sm-5 col-md-5 mt-4" id="offlinedetails" style="display: none;">
+    <div class="col-lg-5 col-sm-5 col-md-5 mt-4 text-center" id="offlinedetails" style="display: none;">
         <h5>Accounts Detail</h5>
         <!-- Display Payment Accounts Details here -->
         @foreach($paymentAccounts as $account)
@@ -281,10 +297,56 @@ function stripeResponseHandler(status, response) {
             calculateServicesTotalPrice(packageId, selectedServices);
         });
 
+    // address Ajax code//
+    $(document).ready(function () {
+            $('#province').change(function () {
+                var provinceId = $(this).val();
+
+                $.ajax({
+                    url: '{{ route("get-cities") }}',
+                    method: 'GET',
+                    data: {province_id: provinceId},
+                    success: function (data) {
+                        var citiesDropdown = $('#city');
+                        citiesDropdown.empty();
+
+                        $.each(data.cities, function (index, city) {
+                            citiesDropdown.append($('<option>', {
+                                value: city.id,
+                                text: city.city_name
+                            }));
+                        });
+                    }
+                });
+            });
+
+            $('#city').change(function () {
+                var cityId = $(this).val();
+
+                $.ajax({
+                    url: '{{ route("get-towns") }}',
+                    method: 'GET',
+                    data: {city_id: cityId},
+                    success: function (data) {
+                        var townsDropdown = $('#town');
+                        townsDropdown.empty();
+
+                        $.each(data.towns, function (index, town) {
+                            townsDropdown.append($('<option>', {
+                                value: town.id,
+                                text: town.town_name
+                            }));
+                        });
+                    }
+                });
+            });
+        });
+
+
     // On payment method change, toggle the display of online payment options
     $('#paymentMethodSelect').change(function () {
         const selectedPaymentMethod = $(this).val();
-        if (selectedPaymentMethod === '2') {
+        if (selectedPaymentMethod === '1') {
             $('#onlinePaymentOptions').show();
         } else {
             $('#onlinePaymentOptions').hide();
@@ -294,7 +356,7 @@ function stripeResponseHandler(status, response) {
    // Function to toggle display of account details section based on payment method
    function toggleOfflineDetails() {
     const selectedPaymentMethod = $("#paymentMethodSelect").val();
-    if (selectedPaymentMethod === '1') {
+    if (selectedPaymentMethod === '0') {
         $('#offlinedetails').show();
         $('.payment-details-section').hide(); // Hide payment details section
     } else {
@@ -315,7 +377,7 @@ function stripeResponseHandler(status, response) {
 function handleSubmit() {
     const paymentMethod = $("select[name='payment_method']").val();
 
-    if (paymentMethod === '2') {
+    if (paymentMethod === '1') {
         const selectedOnlinePayment = $("input[name='payment_method']:checked").val();
 
         if (!selectedOnlinePayment) {

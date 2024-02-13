@@ -8,6 +8,9 @@ use App\Models\Booking;
 use App\Models\Payment;
 use App\Models\PaymentAccount;
 use App\Models\BookingService;
+use App\Models\City;
+use App\Models\Town;
+use App\Models\Province;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 
@@ -19,12 +22,28 @@ class BookingController extends Controller
         $booking = new Booking();
         $package = Package::with('packageServices')->find($packageId);
         $packageServices = $package->packageServices;
-        $payments = Payment::all(); 
+        $payments = Payment::all();
+        $provinces = Province::all();
         $paymentAccounts = PaymentAccount::all();
 
-        return view('Frontend.bookingphotographer.bookingform', compact('booking', 'package', 'packageServices', 'payments','paymentAccounts'));
+        return view('Frontend.bookingphotographer.bookingform', compact('booking', 'provinces','package', 'packageServices', 'payments','paymentAccounts'));
     }
 
+    public function getCities(Request $request)
+    {
+        $provinceId = $request->input('province_id');
+        $cities = City::where('province_id', $provinceId)->get();
+
+        return response()->json(['cities' => $cities]);
+    }
+
+    public function getTowns(Request $request)
+    {
+        $cityId = $request->input('city_id');
+        $towns = Town::where('city_id', $cityId)->get();
+
+        return response()->json(['towns' => $towns]);
+    }
 
     public function calculateServicesTotalPrice(Request $request, $packageId)
     {
@@ -65,10 +84,18 @@ class BookingController extends Controller
           'dates' => 'array',
           'services' => 'array',
           'totalAmount' => 'required',
+          'province' => 'required',
+          'city' => 'required',
+          'town' => 'required',
+          'payment_method' => 'required',
+          'evidence' => 'nullable',
+          'account_name' => 'nullable',
+          'account_number' => 'nullable',
+          'is_paid' => 'required',
       ]);
 
-      $validatedData['user_id'] = Auth::id();
-      $validatedData['photographer_profile_id'] = Auth::id();
+        $validatedData['user_id'] = Auth::id();
+        $validatedData['photographer_profile_id'] = Auth::id();
         $totalAmount = $validatedData['totalAmount'];
 
         $booking = Booking::create($validatedData);
@@ -94,11 +121,11 @@ class BookingController extends Controller
 
         $paymentMethod = $request->input('payment_method');
 
-        if ($paymentMethod == '1') {
+        if ($paymentMethod == '0') {
             // Offline payment, update total amount and payment id
             $booking->update(['total_amount' => $totalAmount, 'payment_id' => $paymentMethod]);
             return redirect()->route('Frontend.profile');
-        } elseif ($paymentMethod == '2') {
+        } elseif ($paymentMethod == '1') {
             // Online payment, check if a payment option is selected
             $selectedPayment = $request->input('payment_option');
 

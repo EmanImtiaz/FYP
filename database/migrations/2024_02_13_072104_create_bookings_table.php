@@ -18,7 +18,14 @@ return new class extends Migration
             $table->string('name');
             $table->string('email');
             $table->string('phone');
-            $table->string('address');
+            $table->string('province');
+            $table->string('city');
+            $table->string('town');
+            $table->boolean('payment_method')->default(0);
+            $table->text('evidence')->nullable();
+            $table->string('account_name')->nullable();
+            $table->string('account_number')->nullable();
+            $table->boolean('is_paid')->default(0);
             $table->text('remarks')->nullable();
             $table->float('total_amount')->default(0);
             $table->unsignedBigInteger('payment_id')->nullable();

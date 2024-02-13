@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\AboutController;
 use App\Http\Controllers\AllPortfolioController;
+use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\BlogPostController;
 use App\Http\Controllers\BookingController;
 use App\Http\Controllers\ContestDetailController;
@@ -69,11 +70,13 @@ Route::group(['prefix'=>'profileportfolio'],function()
 
 Route::get('/profileportfolio', [ProfilePortfolioController::class, 'view'])->name('profile.view');
 
-// Photographer Booking  //
+// user Book photographer form //
 
 Route::get('/booking/{packageId}', [BookingController::class, 'bookingForm'])->name('bookingform');
 Route::post('/booking/store', [BookingController::class, 'store'])->name('booking.store');
 Route::get('/calculate-services-price/{id}', [BookingController::class, 'calculateServicesTotalPrice'])->name('calculate.services.price');
+Route::get('/get-cities',[BookingController::class,'getCities'])->name('get-cities');
+Route::get('/get-towns',[BookingController::class,'getTowns'])->name('get-towns');
 
 //location based bookings //
 Route::get('/bookings', [BookingController::class, 'bookings'])->name('Frontend.bookings');
@@ -83,6 +86,7 @@ Route::get('/booking',[LocationController::class,'view'])->name('booking.view');
 Route::get('/get-cities',[LocationController::class,'getCities'])->name('get-cities');
 Route::get('/get-towns',[LocationController::class,'getTowns'])->name('get-towns');
 
-// Stripe Payent //
+// Stripe Payment //
 Route::get('stripe',[StripeController::class,'stripe']);
 Route::post('stripe',[StripeController::class,'stripePost'])->name('stripe.post');
+

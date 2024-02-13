@@ -11,8 +11,8 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::table('photographer_profiles', function (Blueprint $table) {
-            $table->string('credit_card')->nullable();
+        Schema::table('users', function (Blueprint $table) {
+            $table->dropColumn('address');
         });
     }
 
@@ -21,7 +21,7 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::table('photographer_profiles', function (Blueprint $table) {
+        Schema::table('users', function (Blueprint $table) {
             //
         });
     }
