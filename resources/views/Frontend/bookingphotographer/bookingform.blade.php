@@ -66,9 +66,7 @@
                         <option value="2">Online</option>
                     </select>
                 </div>
-                    <div class="col-lg-4 col-sm-4 col-md-4 mt-4" id="offlinePaymentButton" style="display: none;">
-                        <button class="btn btn-danger btn-md btn-block" type="button" data-toggle="modal" data-target="#accountsDetailModal">Accounts Detail</button>
-                    </div>
+                    
 
                 <div class="col-lg-4 col-sm-4 col-md-4 mt-2" id="onlinePaymentOptions" style="display: none;">
                     @foreach($payments as $payment)
