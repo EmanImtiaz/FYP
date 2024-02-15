@@ -5,9 +5,13 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use App\Models\User;
+use App\Models\City;
+use App\Models\Town;
+use App\Models\Province;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Http\Request;
 
 class RegisterController extends Controller
 {
@@ -41,6 +45,27 @@ class RegisterController extends Controller
         $this->middleware('guest');
     }
 
+    public function showRegistrationForm()
+    {
+        $provinces = Province::all(); // Fetch all provinces
+        return view('auth.register', compact('provinces'));
+    }
+    public function getCities(Request $request)
+    {
+        $provinceId = $request->input('province_id');
+        $cities = City::where('province_id', $provinceId)->get();
+
+        return response()->json(['cities' => $cities]);
+    }
+
+    public function getTowns(Request $request)
+    {
+        $cityId = $request->input('city_id');
+        $towns = Town::where('city_id', $cityId)->get();
+
+        return response()->json(['towns' => $towns]);
+    }
+
     /**
      * Get a validator for an incoming registration request.
      *
@@ -53,8 +78,10 @@ class RegisterController extends Controller
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
-            'address' => ['required', 'string', 'max:255'],
-            'contact' => ['required', 'string', 'max:255'], 
+            'province' => ['required', 'string', 'max:255'],
+            'city' => ['required', 'string', 'max:255'],
+            'town' => ['required', 'string', 'max:255'],
+            'contact' => ['required', 'string', 'max:255'],
         ]);
     }
 
@@ -70,7 +97,9 @@ class RegisterController extends Controller
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
-            'address' => $data['address'],
+            'province' => $data['province'],
+            'city' => $data['city'],
+            'town' => $data['town'],
             'contact' => $data['contact'],
         ]);
     }

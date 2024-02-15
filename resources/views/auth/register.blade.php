@@ -62,14 +62,38 @@
                         </div>
 
                         <div class="row mb-3">
-                            <label for="address" class="col-md-4 col-form-label text-md-end">{{ __('Address') }}</label>
-                            <div class="col-md-6">
-                                <input id="address" type="text" class="form-control @error('address') is-invalid @enderror" name="address" value="{{ old('address') }}" required autocomplete="address">
-                                @error('address')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
+                            <label for="province" class="col-md-4 col-form-label text-md-end">{{ __('Province') }}</label>
+                            <div class="col-lg">
+                                <div class="form-group">
+                                    <select class="form-select" id="province">
+                                        <option selected>Select a Province.</option>
+                                        @foreach($provinces as $province)
+                                            <option value="{{ $province->id }}">{{ $province->province_name }}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row mb-3">
+                            <label for="city" class="col-md-4 col-form-label text-md-end">{{ __('City') }}</label>
+                            <div class="col-lg">
+                                <div class="form-group">
+                                    <select class="form-select" id="city" name="city">
+                                        <option selected>Select a City.</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row mb-3">
+                            <label for="town" class="col-md-4 col-form-label text-md-end">{{ __('Town') }}</label>
+                            <div class="col-lg">
+                                <div class="form-group">
+                                    <select class="form-select" id="town" name="town">
+                                        <option selected>Select a Town.</option>
+                                    </select>
+                                </div>
                             </div>
                         </div>
 
@@ -85,7 +109,6 @@
                             </div>
                         </div>
 
-
                         <div class="row mb-0">
                             <div class="col-md-6 offset-md-4">
                                 <button type="submit" class="btn btn-danger">
@@ -100,4 +123,49 @@
     </div>
 </div>
 
+<script>
+    $(document).ready(function () {
+        $('#province').change(function () {
+            var provinceId = $(this).val();
+
+            $.ajax({
+                url: '{{ route("get-cities") }}',
+                method: 'GET',
+                data: {province_id: provinceId},
+                success: function (data) {
+                    var citiesDropdown = $('#city');
+                    citiesDropdown.empty();
+
+                    $.each(data.cities, function (index, city) {
+                        citiesDropdown.append($('<option>', {
+                            value: city.id,
+                            text: city.city_name
+                        }));
+                    });
+                }
+            });
+        });
+
+        $('#city').change(function () {
+            var cityId = $(this).val();
+
+            $.ajax({
+                url: '{{ route("get-towns") }}',
+                method: 'GET',
+                data: {city_id: cityId},
+                success: function (data) {
+                    var townsDropdown = $('#town');
+                    townsDropdown.empty();
+
+                    $.each(data.towns, function (index, town) {
+                        townsDropdown.append($('<option>', {
+                            value: town.id,
+                            text: town.town_name
+                        }));
+                    });
+                }
+            });
+        });
+    });
+</script>
 @endsection

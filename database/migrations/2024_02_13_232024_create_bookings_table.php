@@ -21,7 +21,7 @@ return new class extends Migration
             $table->string('province');
             $table->string('city');
             $table->string('town');
-            $table->boolean('payment_method')->default(0);
+            $table->boolean('payment_method_options')->default(0);
             $table->text('evidence')->nullable();
             $table->string('account_name')->nullable();
             $table->string('account_number')->nullable();
