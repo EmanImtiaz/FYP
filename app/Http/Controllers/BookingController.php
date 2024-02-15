@@ -118,7 +118,7 @@ class BookingController extends Controller
             }
         }
 
-        $paymentMethod = $request->input('payment_method');
+        $paymentMethod = $request->input('payment_method_options');
 
         if ($paymentMethod == '0') {
             // Offline payment, update total amount and payment id
@@ -126,7 +126,7 @@ class BookingController extends Controller
             return redirect()->route('Frontend.profile');
         } elseif ($paymentMethod == '1') {
             // Online payment, check if a payment option is selected
-            $selectedPayment = $request->input('payment_option');
+            $selectedPayment = $request->input('payment_method');
 
             if (!$selectedPayment) {
                 return redirect()->back()->with('error', 'Select an online payment method');
@@ -137,6 +137,7 @@ class BookingController extends Controller
             // Invalid payment method selected
             return redirect()->back()->with('error', 'Invalid payment method');
         }
+
     }
 
 public function bookings()
