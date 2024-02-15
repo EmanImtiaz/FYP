@@ -129,7 +129,7 @@
             var provinceId = $(this).val();
 
             $.ajax({
-                url: '{{ route("get-cities") }}',
+                url: '{{ route("gotted-cities") }}',
                 method: 'GET',
                 data: {province_id: provinceId},
                 success: function (data) {
@@ -150,7 +150,7 @@
             var cityId = $(this).val();
 
             $.ajax({
-                url: '{{ route("get-towns") }}',
+                url: '{{ route("gotted-towns") }}',
                 method: 'GET',
                 data: {city_id: cityId},
                 success: function (data) {

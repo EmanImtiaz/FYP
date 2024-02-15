@@ -75,8 +75,8 @@ Route::get('/profileportfolio', [ProfilePortfolioController::class, 'view'])->na
 Route::get('/booking/{packageId}', [BookingController::class, 'bookingForm'])->name('bookingform');
 Route::post('/booking/store', [BookingController::class, 'store'])->name('booking.store');
 Route::get('/calculate-services-price/{id}', [BookingController::class, 'calculateServicesTotalPrice'])->name('calculate.services.price');
-Route::get('/get-cities',[BookingController::class,'getCities'])->name('get-cities');
-Route::get('/get-towns',[BookingController::class,'getTowns'])->name('get-towns');
+Route::get('/got-cities',[BookingController::class,'getCities'])->name('got-cities');
+Route::get('/got-towns',[BookingController::class,'getTowns'])->name('got-towns');
 
 //location based bookings //
 Route::get('/bookings', [BookingController::class, 'bookings'])->name('Frontend.bookings');
@@ -89,6 +89,6 @@ Route::get('/get-towns',[LocationController::class,'getTowns'])->name('get-towns
 
 // register//
 
-Route::get('/get-cities',[RegisterController::class,'getCities'])->name('get-cities');
-Route::get('/get-towns',[RegisterController::class,'getTowns'])->name('get-towns');
+Route::get('/gotted-cities',[RegisterController::class,'getCities'])->name('gotted-cities');
+Route::get('/gotted-towns',[RegisterController::class,'getTowns'])->name('gotted-towns');
 
