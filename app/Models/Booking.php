@@ -9,7 +9,7 @@ class Booking extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['id','user_id','photographer_profile_id','name', 'email', 'phone', 'province','city','town','payment_method_options','evidence','account_name', 'account_no','is_paid', 'remarks','total_amount','payment_id'];
+    protected $fillable = ['id','user_id','photographer_profile_id','name', 'email', 'phone', 'province_id','city_id','town_id','payment_method_options','evidence','account_name', 'account_no','is_paid', 'remarks','total_amount','payment_id'];
 
     public function user()
     {
@@ -35,5 +35,18 @@ class Booking extends Model
     {
         return $this->hasMany(BookingService::class);
     }
+    public function province()
+    {
+        return $this->belongsTo(Province::class);
+    }
 
+    public function city()
+    {
+        return $this->belongsTo(City::class);
+    }
+
+    public function town()
+    {
+        return $this->belongsTo(Town::class);
+    }
 }

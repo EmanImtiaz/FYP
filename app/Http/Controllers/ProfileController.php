@@ -6,6 +6,9 @@ use App\Models\User;
 use App\Models\Package;
 use App\Models\PackageService;
 use App\Models\PhotographerProfile;
+use App\Models\City;
+use App\Models\Town;
+use App\Models\Province;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -57,8 +60,25 @@ public function photographerindex()
 public function edit_profile()
 {
     $user = Auth::user();
-    return view('Frontend.profile-edit', compact('user'));
+    $provinces = Province::all();
+    return view('Frontend.profile-edit', compact('user','provinces'));
 }
+
+public function getCities(Request $request)
+    {
+        $provinceId = $request->input('province_id');
+        $cities = City::where('province_id', $provinceId)->get();
+
+        return response()->json(['cities' => $cities]);
+    }
+
+    public function getTowns(Request $request)
+    {
+        $cityId = $request->input('city_id');
+        $towns = Town::where('city_id', $cityId)->get();
+
+        return response()->json(['towns' => $towns]);
+    }
 
 public function update_profile(Request $request)
 {
@@ -82,7 +102,9 @@ public function update_profile(Request $request)
     // Update other user attributes
     $user->name = $request->input('name');
     $user->contact = $request->input('contact');
-    $user->address = $request->input('address');
+    $user->province_id = $request->input('province_id');
+    $user->city_id = $request->input('city_id');
+    $user->town_id = $request->input('town_id');
 
     // Save the updated user model to the database
     $user->save();

@@ -36,31 +36,37 @@
                    </div>
                 </div>
             </div>
+
+
             <div class="mb-2">
                 <div class="row ">
-                   <div class="col-lg col-sm col-md">
-                   <label for="province" >{{ __('Province') }}</label>
-                   <select class="form-select " id="province" name="province">
-                        <option selected>Select a Province.</option>
-                        @foreach($provinces as $province)
-                        <option value="{{ $province->id }}">{{ $province->province_name }}</option>
-                        @endforeach
-                    </select>
-                    </div>
-                    <div class="col-lg col-sm col-md">
-                        <label for="city" >{{ __('City') }}</label>
-                        <select class="form-select" id="city" name="city">
+                    <div class=" col-lg col-sm col-md">
+                        <label for="province"  class="col-md-4 col-form-label text-md-end">{{ __('Province') }}</label>
+                        <select class="form-select " id="province" name="province">
+                            <option selected>Select a Province.</option>
+                            @foreach($provinces as $province)
+                                <option value="{{ $province->id }}">{{ $province->province_name }}</option>
+                            @endforeach
+                        </select>
+                   </div>
+                    <div class=" col-lg col-sm col-md">
+                        <label for="city" class="col-md-4 col-form-label text-md-end">{{ __('City') }}</label>
+                        <select class="form-select " id="city" name="city">
                             <option selected>Select a City.</option>
                         </select>
                     </div>
-                    <div class="col-lg col-sm col-md">
-                        <label for="city" >{{ __('Town') }}</label>
-                        <select class="form-select" id="town" name="town">
+                    <div class=" col-lg col-sm col-md">
+                        <label for="town" class="col-md-4 col-form-label text-md-end">{{ __('Town') }}</label>
+                        <select class="form-select " id="town" name="town">
                             <option selected>Select a Town.</option>
                         </select>
                     </div>
                 </div>
             </div>
+            <input type="hidden" id="province_id" name="province_id">
+            <input type="hidden" id="city_id" name="city_id">
+            <input type="hidden" id="town_id" name="town_id">
+
             <div class="mb-2">
                 <label for="remarks" class="form-label">Remarks</label>
                 <textarea id="remarks" type="text" class="form-control" name="remarks" placeholder="Enter your remarks" cols="3" rows="2" value="{{  $booking->remarks }}"></textarea>
@@ -213,8 +219,7 @@
         });
 
     // address Ajax code//
-
-        document.addEventListener("DOMContentLoaded", function() {
+    document.addEventListener("DOMContentLoaded", function() {
         // Function to set default options for city and town
         function setDefaultOptions() {
             $('#city').html('<option selected>Select a City.</option>');
@@ -226,6 +231,7 @@
 
         $('#province').change(function () {
             var provinceId = $(this).val();
+            $('#province_id').val(provinceId); // Set the selected province ID
 
             $.ajax({
                 url: '{{ route("got-cities") }}',
@@ -250,6 +256,7 @@
 
         $('#city').change(function () {
             var cityId = $(this).val();
+            $('#city_id').val(cityId); // Set the selected city ID
 
             $.ajax({
                 url: '{{ route("got-towns") }}',
@@ -267,6 +274,11 @@
                     });
                 }
             });
+        });
+
+        $('#town').change(function () {
+            var townId = $(this).val();
+            $('#town_id').val(townId); // Set the selected town ID
         });
     });
 

@@ -15,12 +15,13 @@ return new class extends Migration
             $table->id();
             $table->unsignedBigInteger('user_id');
             $table->unsignedBigInteger('photographer_profile_id');
+            $table->unsignedBigInteger('province_id');
+            $table->unsignedBigInteger('city_id');
+            $table->unsignedBigInteger('town_id');
+
             $table->string('name');
             $table->string('email');
             $table->string('phone');
-            $table->string('province');
-            $table->string('city');
-            $table->string('town');
             $table->boolean('payment_method_options')->default(0);
             $table->text('evidence')->nullable();
             $table->string('account_name')->nullable();
@@ -28,10 +29,14 @@ return new class extends Migration
             $table->boolean('is_paid')->default(0);
             $table->text('remarks')->nullable();
             $table->float('total_amount')->default(0);
-            $table->unsignedBigInteger('payment_id')->nullable();
 
+            
+            $table->unsignedBigInteger('payment_id')->nullable();
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->foreign('photographer_profile_id')->references('id')->on('photographer_profiles')->onDelete('cascade');
+            $table->foreign('province_id')->references('id')->on('users')->onDelete('cascade');
+            $table->foreign('city_id')->references('id')->on('users')->onDelete('cascade');
+            $table->foreign('town_id')->references('id')->on('users')->onDelete('cascade');
             $table->foreign('payment_id')->references('id')->on('payments')->onDelete('set null');
             $table->timestamps();
         });

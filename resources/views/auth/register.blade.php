@@ -110,7 +110,7 @@
                                 </div>
                             </div>
                         </div>
-
+                        
                         <input type="hidden" id="province_id" name="province_id">
                         <input type="hidden" id="city_id" name="city_id">
                         <input type="hidden" id="town_id" name="town_id">
@@ -204,9 +204,8 @@
             $('#town_id').val(townId); // Set the selected town ID
         });
     });
+
+
 </script>
-
-
-
 
 @endsection

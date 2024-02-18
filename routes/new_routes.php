@@ -13,8 +13,8 @@ use App\Http\Controllers\LocationController;
 use App\Http\Controllers\ProfilePortfolioController;
 use App\Http\Controllers\PackagesController;
 use App\Http\Controllers\PhotographerProfileController;
+use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\SingleWinnerDetailsController;
-use App\Http\Controllers\StripeController;
 use App\Http\Controllers\UserProfileUpdateController;
 
 Route::get('contact', [ContactController::class,'contact'])->name('contact');
@@ -91,3 +91,6 @@ Route::get('/get-towns',[LocationController::class,'getTowns'])->name('get-towns
 Route::get('/gotted-cities',[RegisterController::class,'getCities'])->name('gotted-cities');
 Route::get('/gotted-towns',[RegisterController::class,'getTowns'])->name('gotted-towns');
 
+// Profile //
+Route::get('/edit-cities',[ProfileController::class,'getCities'])->name('edit-cities');
+Route::get('/edit-towns',[ProfileController::class,'getTowns'])->name('edit-towns');
