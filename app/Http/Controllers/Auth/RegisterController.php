@@ -102,5 +102,6 @@ class RegisterController extends Controller
             'town' => $data['town'],
             'contact' => $data['contact'],
         ]);
+
     }
 }

@@ -86,7 +86,6 @@ Route::get('/booking',[LocationController::class,'view'])->name('booking.view');
 Route::get('/get-cities',[LocationController::class,'getCities'])->name('get-cities');
 Route::get('/get-towns',[LocationController::class,'getTowns'])->name('get-towns');
 
-
 // register//
 
 Route::get('/gotted-cities',[RegisterController::class,'getCities'])->name('gotted-cities');

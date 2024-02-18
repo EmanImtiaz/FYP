@@ -86,11 +86,15 @@ class BookingController extends Controller
           'province' => 'required',
           'city' => 'required',
           'town' => 'required',
-          'payment_method' => 'required',
+          'payment_method' => $request->input('payment_method_options') == 1 ? 'required' : '',
           'evidence' => 'nullable',
-          'account_name' => 'nullable',
-          'account_number' => 'nullable',
-          'is_paid' => 'required',
+          'account_name' => $request->input('payment_method_options') == 1 ? 'required' : 'nullable',
+          'account_number' =>$request->input('payment_method_options') == 1 ? 'required' : 'nullable',
+          'is_paid' => 'nullable',
+          'services' => 'required|array',
+          'dates' => 'required|array',
+
+
       ]);
 
         $validatedData['user_id'] = Auth::id();

@@ -56,7 +56,7 @@
                                                 <p class="mb-0">Address</p>
                                             </div>
                                             <div class="col-sm-9">
-                                                <strong>{{ $user->address}}</strong>
+                                                <strong>{{ $user->province }},{{ $user->city }},{{ $user->town }}</strong>
                                             </div>
                                         </div>
                                         <hr>

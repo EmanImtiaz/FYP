@@ -7,17 +7,12 @@
         <h1 class="display-4">Book Package</h1>
     </div>
 </header>
+@include('Frontend.errors')
     <div class="container py-4 ">
         <div class="row justify-content-start">
             <div class="col-lg-7 col-md-7 col-sm-7">
                 <h2>Edit Your detail</h2>
                 <h3>Complete your booking</h3>
-                            <p>Please enter your contact information to proceed</p>
-                            @if(session('message'))
-                            <div class="alert alert-info">
-                                {{ session('message') }}
-                            </div>
-                            @endif
 
         <form action="{{ route('booking.store') }}" method="post" enctype="multipart/form-data" onsubmit="return handleSubmit()">
         @csrf
@@ -44,22 +39,22 @@
             <div class="mb-2">
                 <div class="row ">
                    <div class="col-lg col-sm col-md">
-                        <label for="province">Province:</label>
-                        <select class="form-select" id="province">
-                            <option selected>Select a Province.</option>
-                            @foreach($provinces as $province)
-                                <option value="{{ $province->id }}">{{ $province->province_name }}</option>
-                            @endforeach
-                        </select>
+                   <label for="province" >{{ __('Province') }}</label>
+                   <select class="form-select " id="province" name="province">
+                        <option selected>Select a Province.</option>
+                        @foreach($provinces as $province)
+                        <option value="{{ $province->id }}">{{ $province->province_name }}</option>
+                        @endforeach
+                    </select>
                     </div>
                     <div class="col-lg col-sm col-md">
-                        <label for="city">City:</label>
+                        <label for="city" >{{ __('City') }}</label>
                         <select class="form-select" id="city" name="city">
                             <option selected>Select a City.</option>
                         </select>
                     </div>
                     <div class="col-lg col-sm col-md">
-                        <label for="town">Town:</label>
+                        <label for="city" >{{ __('Town') }}</label>
                         <select class="form-select" id="town" name="town">
                             <option selected>Select a Town.</option>
                         </select>
@@ -150,7 +145,7 @@
         <h3 class="text-center" >Payment Details</h3>
         <div class="mb-2">
             <div class="row ">
-                <div class='col-xs-12 form-group required'>
+                <div class='col-xs-12 form-group '>
                                 <label class='control-label'>Name on Card</label>
                                 <input class='form-control' size='4' type='text' value="{{  $booking->account_name }}">
                 </div>
@@ -158,16 +153,13 @@
         </div>
         <div class="mb-2">
                 <div class="row ">
-                        <div class='col-xs-12 form-group card required'>
+                        <div class='col-xs-12 form-group card '>
                             <label class='control-label'>Card Number</label>
                             <input autocomplete='off' class='form-control card-number' size='20' type='text' value="{{  $booking->account_number }}">
                         </div>
                 </div>
         </div>
     </div>
-
-
-
 </form>
 </div>
     </div>
@@ -221,50 +213,62 @@
         });
 
     // address Ajax code//
-    $(document).ready(function () {
-            $('#province').change(function () {
-                var provinceId = $(this).val();
 
-                $.ajax({
-                    url: '{{ route("got-cities") }}',
-                    method: 'GET',
-                    data: {province_id: provinceId},
-                    success: function (data) {
-                        var citiesDropdown = $('#city');
-                        citiesDropdown.empty();
+        document.addEventListener("DOMContentLoaded", function() {
+        // Function to set default options for city and town
+        function setDefaultOptions() {
+            $('#city').html('<option selected>Select a City.</option>');
+            $('#town').html('<option selected>Select a Town.</option>');
+        }
 
-                        $.each(data.cities, function (index, city) {
-                            citiesDropdown.append($('<option>', {
-                                value: city.id,
-                                text: city.city_name
-                            }));
-                        });
-                    }
-                });
-            });
+        // Call the function to set default options when the page loads
+        setDefaultOptions();
 
-            $('#city').change(function () {
-                var cityId = $(this).val();
+        $('#province').change(function () {
+            var provinceId = $(this).val();
 
-                $.ajax({
-                    url: '{{ route("got-towns") }}',
-                    method: 'GET',
-                    data: {city_id: cityId},
-                    success: function (data) {
-                        var townsDropdown = $('#town');
-                        townsDropdown.empty();
+            $.ajax({
+                url: '{{ route("got-cities") }}',
+                method: 'GET',
+                data: {province_id: provinceId},
+                success: function (data) {
+                    var citiesDropdown = $('#city');
+                    citiesDropdown.empty().append('<option selected>Select a City.</option>');
 
-                        $.each(data.towns, function (index, town) {
-                            townsDropdown.append($('<option>', {
-                                value: town.id,
-                                text: town.town_name
-                            }));
-                        });
-                    }
-                });
+                    $.each(data.cities, function (index, city) {
+                        citiesDropdown.append($('<option>', {
+                            value: city.id,
+                            text: city.city_name
+                        }));
+                    });
+
+                    // Reset town dropdown when province changes
+                    $('#town').html('<option selected>Select a Town.</option>');
+                }
             });
         });
 
+        $('#city').change(function () {
+            var cityId = $(this).val();
+
+            $.ajax({
+                url: '{{ route("got-towns") }}',
+                method: 'GET',
+                data: {city_id: cityId},
+                success: function (data) {
+                    var townsDropdown = $('#town');
+                    townsDropdown.empty().append('<option selected>Select a Town.</option>');
+
+                    $.each(data.towns, function (index, town) {
+                        townsDropdown.append($('<option>', {
+                            value: town.id,
+                            text: town.town_name
+                        }));
+                    });
+                }
+            });
+        });
+    });
 
     // On payment method change, toggle the display of online payment options
    $('#payment_method_options').change(function () {
@@ -314,6 +318,13 @@
                 alert('Select an Online payment method.');
                 return false;
             } else {
+                // Check if account name and number are filled for online payment
+                var accountName = $('#account_name').val().trim();
+                var accountNumber = $('#account_number').val().trim();
+                if (!accountName || !accountNumber) {
+                    alert('Please fill in Account Name and Account Number for online payment.');
+                    return false;
+                }
                 // Display payment details section
                 $('.payment-details-section').show();
                 $('#offlinedetails').hide(); // Hide account details section
@@ -326,7 +337,6 @@
         $('#offlinedetails').show(); // Show account details section
         return true;
     }
-
 
 </script>
 
