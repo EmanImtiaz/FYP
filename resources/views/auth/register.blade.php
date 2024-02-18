@@ -110,9 +110,10 @@
                                 </div>
                             </div>
                         </div>
+
                         <input type="hidden" id="province_id" name="province_id">
-    <input type="hidden" id="city_id" name="city_id">
-    <input type="hidden" id="town_id" name="town_id">
+                        <input type="hidden" id="city_id" name="city_id">
+                        <input type="hidden" id="town_id" name="town_id">
 
                         <div class="row mb-3">
                             <label for="contact" class="col-md-4 col-form-label text-md-end">{{ __('Contact') }}</label>
@@ -141,8 +142,7 @@
 </div>
 
 <script>
-
-document.addEventListener("DOMContentLoaded", function() {
+    document.addEventListener("DOMContentLoaded", function() {
         // Function to set default options for city and town
         function setDefaultOptions() {
             $('#city').html('<option selected>Select a City.</option>');
@@ -154,6 +154,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
         $('#province').change(function () {
             var provinceId = $(this).val();
+            $('#province_id').val(provinceId); // Set the selected province ID
 
             $.ajax({
                 url: '{{ route("gotted-cities") }}',
@@ -170,14 +171,15 @@ document.addEventListener("DOMContentLoaded", function() {
                         }));
                     });
 
-                  // Reset town dropdown when province changes
-                  $('#town').html('<option selected>Select a Town.</option>');
+                    // Reset town dropdown when province changes
+                    $('#town').html('<option selected>Select a Town.</option>');
                 }
             });
         });
 
         $('#city').change(function () {
             var cityId = $(this).val();
+            $('#city_id').val(cityId); // Set the selected city ID
 
             $.ajax({
                 url: '{{ route("gotted-towns") }}',
@@ -196,9 +198,15 @@ document.addEventListener("DOMContentLoaded", function() {
                 }
             });
         });
-    });
 
-    </script>
+        $('#town').change(function () {
+            var townId = $(this).val();
+            $('#town_id').val(townId); // Set the selected town ID
+        });
+    });
+</script>
+
+
 
 
 @endsection

@@ -23,9 +23,9 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
-        'province',
-        'city',
-        'town',
+        'province_id', 
+        'city_id',
+        'town_id',
         'contact',
         'profile_image',
         'role',
@@ -68,7 +68,6 @@ class User extends Authenticatable
     {
         return $this->hasMany(Booking::class, 'user_id');
     }
-
     public function province()
     {
         return $this->belongsTo(Province::class);
@@ -83,6 +82,6 @@ class User extends Authenticatable
     {
         return $this->belongsTo(Town::class);
     }
-    
+
 }
 

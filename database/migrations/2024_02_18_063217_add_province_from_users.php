@@ -12,7 +12,9 @@ return new class extends Migration
     public function up(): void
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->dropColumn('province');
+            $table->unsignedBigInteger('province_id');
+
+            $table->foreign('province_id')->references('id')->on('users')->onDelete('cascade');
         });
     }
 
