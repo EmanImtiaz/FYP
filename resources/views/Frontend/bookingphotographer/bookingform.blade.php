@@ -152,16 +152,17 @@
         <div class="mb-2">
             <div class="row ">
                 <div class='col-xs-12 form-group '>
-                                <label class='control-label'>Name on Card</label>
-                                <input class='form-control' size='4' type='text' value="{{  $booking->account_name }}">
+                    <label for="account_name" class="form-label">Account Name</label>
+                    <input id="account_name" type="text" required class="form-control" name="account_name"
+                       placeholder="Enter your account_name" value="{{  $booking->account_name }}">
                 </div>
             </div>
         </div>
         <div class="mb-2">
                 <div class="row ">
                         <div class='col-xs-12 form-group card '>
-                            <label class='control-label'>Card Number</label>
-                            <input autocomplete='off' class='form-control card-number' size='20' type='text' value="{{  $booking->account_number }}">
+                            <label for="account_number" class="form-label">Account Number</label>
+                            <input id="account_number" type="text" required class="form-control" name="account_number" placeholder="Enter your account_number" value="{{  $booking->account_number }}">
                         </div>
                 </div>
         </div>
