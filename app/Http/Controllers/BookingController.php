@@ -86,7 +86,7 @@ class BookingController extends Controller
           'province_id' => 'required',
           'city_id' => 'required',
           'town_id' => 'required',
-          'payment_method' => $request->input('payment_method_options') == 1 ? 'required' : '',
+          'payment_id' => $request->input('payment_method_options') == 1 ? 'required' : '',
           'evidence' => 'nullable',
           'account_name' => $request->input('payment_method_options') == 1 ? 'required' : 'nullable',
           'account_number' =>$request->input('payment_method_options') == 1 ? 'required' : 'nullable',
