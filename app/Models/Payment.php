@@ -11,8 +11,8 @@ class Payment extends Model
 
     protected $fillable = ['id', 'payment_method'];
 
-  //  public function booking()
- //   {
-  //      return $this->belongsTo(Booking::class);
- //   }
+   public function booking()
+   {
+       return $this->belongsTo(Booking::class);
+    }
 }

@@ -9,7 +9,7 @@ class Booking extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['id','user_id','photographer_profile_id','name', 'email', 'phone', 'province_id','city_id','town_id','payment_method_options','evidence','account_name', 'account_number','is_paid', 'remarks','total_amount','payment_id'];
+    protected $fillable = ['id','user_id','photographer_profile_id','province_id','city_id','town_id', 'payment_id','name', 'email', 'phone','payment_method_options','evidence','account_name', 'account_number','is_paid', 'remarks','total_amount'];
 
     public function user()
     {
@@ -23,7 +23,7 @@ class Booking extends Model
 
     public function payment()
     {
-        return $this->belongsTo(Payment::class, 'payment_id');
+        return $this->belongsTo(Payment::class);
     }
 
     public function package()
