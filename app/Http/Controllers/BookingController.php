@@ -86,7 +86,7 @@ class BookingController extends Controller
           'province_id' => 'required',
           'city_id' => 'required',
           'town_id' => 'required',
-          'payment_id' => $request->input('payment_method_options') == 1 ? 'required' : '',
+          'payment_id' => $request->input('payment_method_options') == 1 ? 'required' : 'nullable',
           'evidence' => 'nullable',
           'account_name' => $request->input('payment_method_options') == 1 ? 'required' : 'nullable',
           'account_number' =>$request->input('payment_method_options') == 1 ? 'required' : 'nullable',
@@ -126,17 +126,14 @@ class BookingController extends Controller
 
         if ($paymentMethod == '0') {
             // Offline payment, update total amount and payment id
-            $booking->update(['total_amount' => $totalAmount, 'payment_id' => $paymentMethod]);
+            $booking->update(['total_amount' => $totalAmount]);
             return redirect()->route('Frontend.profile');
         } elseif ($paymentMethod == '1') {
             // Online payment, check if a payment option is selected
             $selectedPayment = $request->input('payment_id');
-
-            if (!$selectedPayment) {
-                return redirect()->back()->with('error', 'Select an online payment method');
-            }
+            
             $booking->update(['total_amount' => $totalAmount]);
-            return redirect()->route('Frontend.profile');
+            return redirect()->route('Frontend.profile')->with('message', 'Your Booking is Confirmed');
        //     return redirect()->back()->with('message', 'Complete your payment');
         } else {
             // Invalid payment method selected
