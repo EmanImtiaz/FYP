@@ -130,13 +130,14 @@ class BookingController extends Controller
             return redirect()->route('Frontend.profile');
         } elseif ($paymentMethod == '1') {
             // Online payment, check if a payment option is selected
-            $selectedPayment = $request->input('payment_method');
+            $selectedPayment = $request->input('payment_id');
 
             if (!$selectedPayment) {
                 return redirect()->back()->with('error', 'Select an online payment method');
             }
-
-            return redirect()->back()->with('message', 'Complete your payment');
+            $booking->update(['total_amount' => $totalAmount]);
+            return redirect()->route('Frontend.profile');
+       //     return redirect()->back()->with('message', 'Complete your payment');
         } else {
             // Invalid payment method selected
             return redirect()->back()->with('error', 'Invalid payment method');
