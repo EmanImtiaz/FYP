@@ -293,30 +293,44 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 
 
- // Function to handle changes in the radio buttons
-$('input[type=radio][name=payment_id]').change(function() {
-    // If a radio button is selected, show the payment details section
-    $('.payment-details-section').show();
-});
 
-// On payment method change, toggle the display of payment options and payment details sections
-$('#payment_method_options').change(function () {
-    const selectedPaymentMethod = $(this).val();
-    if (selectedPaymentMethod === '0') {
-        // If offline payment is selected, hide payment options and payment details sections
-        $('#onlinePaymentOptions').hide();
-        $('.payment-details-section').hide();
-    } else if (selectedPaymentMethod === '1') {
-        // If online payment is selected, show payment options section
-        $('#onlinePaymentOptions').show();
+
+
+
+    // On payment method change, toggle the display of online payment options
+    $('#payment_method_options').change(function () {
+        const selectedPaymentMethod = $(this).val();
+        if (selectedPaymentMethod === '1') {
+            $('#onlinePaymentOptions').show();
+            $('.form-check-input[name="payment_id"]:checked').trigger('click'); // Trigger click event on checked radio button
+        } else {
+            $('#onlinePaymentOptions').hide();
+        }
+    });
+
+    // Function to toggle display of account details section based on payment method
+    function toggleOfflineDetails() {
+        const selectedPaymentMethod = $("#payment_method_options").val();
+        if (selectedPaymentMethod === '0') {
+            $('#offlinedetails').show();
+            $('.payment-details-section').hide(); // Hide payment details section
+        } else {
+            $('#offlinedetails').hide();
+        }
     }
-});
 
-// Call the function initially to handle any pre-selected payment method
-$(document).ready(function () {
-    $('#payment_method_options').trigger('change');
-});
+    // Call the function initially to handle any pre-selected payment method
+    toggleOfflineDetails();
 
+    // Update the onchange event of the payment method dropdown
+    $("#payment_method_options").on("change", function () {
+        toggleOfflineDetails();
+    });
+
+     // Handle click event on radio buttons
+     $('input[name="payment_id"]').on('click', function() {
+        $('.payment-details-section').show();
+    });
 
 
 </script>
