@@ -2,7 +2,7 @@
 @section('kuchb')
 
 
-
+@include('Frontend.errors')
 
     <!-- Your form fields here -->
     <div class="container py-5 ">
@@ -12,12 +12,12 @@
         <form action="{{ route('profileupdatee') }}" method="POST" enctype="multipart/form-data">
             @csrf
             <div class="mb-3">
-                <label for="document" class="form-label"> your logo</label>
-                <input type="file" class="form-control" id="document" name="logo">
+                <label for="logo" class="form-label"> your logo</label>
+                <input type="file" class="form-control" id="logo" name="logo">
             </div>
             <div class="mb-3">
-                <label for="name" class="form-label"> Company Name</label>
-                <input  class="form-control" type="text" name="company name"value="{{  $photographerProfile->company_name }}">
+                <label for="company_name" class="form-label"> Company Name</label>
+                <input  class="form-control" type="text" name="company_name"value="{{  $photographerProfile->company_name }}">
             </div>
             <div class="mb-3">
                 <label for="bio" class="form-label">Contact</label>
@@ -25,7 +25,7 @@
             </div>
             <div class="mb-3">
                 <label for="documents" class="form-label">documents</label>
-                <input class="form-control"type="documents" name="documents"value="{{  $photographerProfile->documents }}">
+                <input class="form-control" type="file" name="documents"value="{{  $photographerProfile->documents }}">
             </div>
             <div class="d-flex justify-content-center align-items-center">
                 <button type="submit" class="btn btn-danger">Update details</button>

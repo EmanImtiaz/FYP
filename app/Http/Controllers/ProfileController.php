@@ -139,8 +139,18 @@ public function becomePhotographer(Request $request)
         'documents' => 'required|mimes:pdf',
         'company_name' => 'required',
         'bio' => 'required',
-        'logo' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048', // Adjust the image validation rules as needed.
+        'logo' => 'image|mimes:jpeg,png,jpg,svg|max:2048',
     ]);
+
+    // Check if photographer profile exists for the user
+    if ($user->photographerProfile) {
+        // Update the existing photographer profile
+        $photographerProfile = $user->photographerProfile;
+    } else {
+       // Create a new photographer profile
+       $photographerProfile = new PhotographerProfile();
+       $photographerProfile->user_id = $user->id; // Assign user ID to the photographer profile
+    }
 
     if ($request->hasFile('documents')) {
         $document = $request->file('documents');
@@ -149,24 +159,24 @@ public function becomePhotographer(Request $request)
     }
 
     if ($request->hasFile('logo')) {
-        $logo = $request->file('logo');
-        $logoPath = $logo->store('public/assets/logo');
-        $data['logo_path'] = $logoPath;
+        $image = $request->file('logo');
+        $image_name = time() . '.' . $image->getClientOriginalExtension();
+        $image->move(public_path('photographerprofiles'), $image_name);
+        $path = "/photographerprofiles/" . $image_name;
+
+        // Save the image path to the photographer profile
+        $photographerProfile->logo = $path;
     }
 
-    if ($user->photographerProfile) {
-        // Update the existing photographer profile
-        $photographerProfile = $user->photographerProfile;
-        $photographerProfile->update($data);
-    } else {
-       // Create a new photographer profile
-       $photographerProfile = new PhotographerProfile($data);
-       $user->photographerProfile()->save($photographerProfile);
-   }
+    // Fill the photographer profile with data
+    $photographerProfile->fill($data);
 
-   // Do not update user role here; let admin approval handle it
+    // Save or update the photographer profile
+    $photographerProfile->save();
 
-   return redirect()->route('Frontend.profile')->with('success', 'You have applied as a photographer. Your profile is pending approval.');
+    // Do not update user role here; let admin approval handle it
+
+    return redirect()->route('Frontend.profile')->with('success', 'You have applied as a photographer. Your profile is pending approval.');
 }
 
 public function approvePhotographerProfile($id)
@@ -203,17 +213,39 @@ public function detail_updatee(Request $request)
         $photographerProfile->user_id = $user->id;
     }
 
-    // Update other user attributes
-    $photographerProfile->logo = $request->input('logo');
-    $photographerProfile->company_name = $request->input('companyname');
+    $request->validate([
+        'documents' => 'required|mimes:pdf',
+        'company_name' => 'required',
+        'bio' => 'required',
+        'logo' => 'image|mimes:jpeg,png,jpg,svg|max:2048',
+    ]);
+
+    if ($request->hasFile('documents')) {
+        $document = $request->file('documents');
+        $documentPath = $document->store('public/assets/documents/user_' . $user->id);
+        $photographerProfile->documents = $documentPath; // Assign the document path to the photographer profile
+    }
+
+    if ($request->hasFile('logo')) {
+        $image = $request->file('logo');
+        $image_name = time() . '.' . $image->getClientOriginalExtension();
+        $image->move(public_path('photographerprofiles'), $image_name);
+        $path = "/photographerprofiles/" . $image_name;
+
+        // Save the image path to the photographer profile
+        $photographerProfile->logo = $path;
+    }
+
+    // Update other photographer profile attributes
+    $photographerProfile->company_name = $request->input('company_name');
     $photographerProfile->bio = $request->input('bio');
-    $photographerProfile->documents = $request->input('documents');
 
     // Save the updated photographer profile to the database
     $photographerProfile->save();
 
     return redirect()->route('Frontend.profile');
 }
+
 
 public function detail_edit()
 {
