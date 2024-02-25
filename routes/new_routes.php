@@ -41,11 +41,6 @@ Route::get('contestdetail',[ContestDetailController::class,'contestdetail'])->na
 
 Route::group(['prefix'=>'packages'],function()
 {
-
-    // Add these routes for viewing packages
-    Route::get('/view', [PackagesController::class, 'view'])->name('packages.view');
-
-
     Route::get('/create',[PackagesController::class,'create'])->name('packages.create');
     Route::post('/store',[PackagesController::class,'store'])->name('packages.store');
     Route::get('/edit/{id}',[PackagesController::class,'edit'])->name('packages.edit');

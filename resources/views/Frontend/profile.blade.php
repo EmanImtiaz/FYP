@@ -1,7 +1,6 @@
 @extends('layout.master')
 @section('kuchb')
 
-
 <div class="container py-5">
     <div class="row justify-content-center">
         <div class="col-md-8">
@@ -146,13 +145,8 @@
     </div>
 </div>
 
-@if(auth()->user()->role == 'photographer')
-
-  {{--  @include('Frontend.profileportfolioview', ['profileportfolios' => $profileportfolios]) --}}
-
-    @include('Frontend.packagesview', ['packages' => auth()->user()->packages])
-@endif
-
+   
+    @include('Frontend.packagesview')
 
 @endsection
 

@@ -16,9 +16,10 @@ use Illuminate\Support\Facades\Storage;
 
 class ProfileController extends Controller
 {
-    public function showProfile()
+    public function profile()
     {
         $user = Auth::user();
+        $photographerProfile = PhotographerProfile::where('user_id', $user->id)->first();
 
         if ($user->role == 'photographer') {
             // Load unique packages with services
@@ -26,24 +27,15 @@ class ProfileController extends Controller
                 ->with('package.services') // Eager load relationships
                 ->get();
 
-            return view('Frontend.profile', compact('user', 'packages'));
+            return view('Frontend.profile', compact('user', 'photographerProfile', 'packages'));
         } else {
             // Handle users without the photographer role
-            return view(); // You need to specify the view for non-photographer users
+            return view('Frontend.profile', compact('user', 'photographerProfile'));
         }
     }
-    public function profile()
-    {
-        $user = Auth::user();
-        $photographerProfile = PhotographerProfile::where('user_id', $user->id)->first();
-        if ($photographerProfile) {
-        return view('Frontend.profile', compact('user', 'photographerProfile'));
-    }
-    else
-    {
-        return view('Frontend.profile', compact('user', 'photographerProfile'));
-    }
-}
+
+
+
 //admin panel user table//
 public function userindex()
 {
@@ -271,7 +263,6 @@ public function viewPhotographerProfile($id)
 
         // Retrieve the authenticated user
         $user = auth()->user();
-
         return view('Frontend.profile', compact('user', 'photographerProfile'));
     }
 }
