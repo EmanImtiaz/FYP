@@ -23,7 +23,7 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
-        'province_id', 
+        'province_id',
         'city_id',
         'town_id',
         'contact',
@@ -82,6 +82,16 @@ class User extends Authenticatable
     {
         return $this->belongsTo(Town::class);
     }
-
+    //admin panel role// 
+     /**
+     * Check if the user has any of the specified roles.
+     *
+     * @param array $roles
+     * @return bool
+     */
+    public function hasAnyRole(...$roles)
+    {
+        return in_array($this->role, $roles);
+    }
 }
 

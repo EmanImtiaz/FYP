@@ -1,11 +1,12 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\AdminPanelController;
+// use App\Http\Controllers\AdminPanelController;
 use App\Http\Controllers\BlogPostController;
 use App\Http\Controllers\BookingController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\CityController;
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PackagesController;
 use App\Http\Controllers\PaymentAccountController;
 use App\Http\Controllers\PaymentController;
@@ -19,13 +20,10 @@ use App\Http\Controllers\ServicesController;
 use App\Http\Controllers\SliderController;
 use App\Http\Controllers\TownController;
 
-// Route::get('admin',[AdminPanelController::class,'adminpanel'])->name('adminpanel');
+Route::group(['prefix'=>'admin', 'middleware' => ['auth', 'role:admin']], function() {
+    Route::get('/',[HomeController::class,'adminpanel'])->name('adminpanel');
 
 
-
-Route::group(['prefix'=>'admin'],function()
-{
-    Route::get('/',[AdminPanelController::class,'adminpanel'])->name('adminpanel');
 
 // Slider //
     Route::group(['prefix'=>'slider'],function()

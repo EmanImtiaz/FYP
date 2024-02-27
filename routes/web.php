@@ -32,9 +32,9 @@ use Symfony\Component\HttpKernel\Profiler\Profile;
 |
 */
 
-Route::get('welcome', function () {
-    return view('welcome');
-});
+// Route::get('welcome', function () {
+ //   return view('welcome');
+ //  });
 
 Route::get('forget', [ForgetController::class,'forget'])->name('forget');;
 
@@ -50,30 +50,25 @@ Route::get('payment', [PaymentController::class,'payment'])->name('payment');
 
 Route::get('winners', [WinnersController::class,'winners'])->name('winners');
 
+Route::get('/',[MainController::class,'main'])->name('main');
+
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-Route::get('/',[MainController::class,'main'])->name('main');
-
-Route::get('/profile', [ProfileController::class, 'profile'])->name('Frontend.profile');
-Route::get('/profile.edit', [ProfileController::class, 'edit_profile'])->name('profile.edit');
-Route::post('/profile-update', [ProfileController::class, 'update_profile'])->name('profileupdate');
-
-Route::get('/joinphotographer', [ProfileController::class, 'joinphotographer'])->name('joinphotographer');
-
-Route::post('/joinphotographer', [ProfileController::class, 'becomePhotographer'])->name('joinphotographer.submit');
-
-Route::get('/detail.edit', [ProfileController::class, 'detail_edit'])->name('detailedit');
-Route::post('/detail-updatee', [ProfileController::class, 'detail_updatee'])->name('profileupdatee');
 Route::get('/photographer/{id}',[ProfileController::class, 'viewPhotographerProfile'])->name('view.photographer.profile');
 
 
-
 Route::middleware(['auth'])->group(function () {
-    // Your existing routes...
 
-    Route::get('/profile/photographer', [ProfileController::class, 'showProfile'])->name('user.profile');
+    // Your existing routes...
+    Route::get('/profile', [ProfileController::class, 'profile'])->name('Frontend.profile');
+    Route::get('/profile.edit', [ProfileController::class, 'edit_profile'])->name('profile.edit');
+    Route::post('/profile-update', [ProfileController::class, 'update_profile'])->name('profileupdate');
+    Route::get('/joinphotographer', [ProfileController::class, 'joinphotographer'])->name('joinphotographer');
+    Route::post('/joinphotographer', [ProfileController::class, 'becomePhotographer'])->name('joinphotographer.submit');
+    Route::get('/detail.edit', [ProfileController::class, 'detail_edit'])->name('detailedit');
+    Route::post('/detail-updatee', [ProfileController::class, 'detail_updatee'])->name('profileupdatee');
 });
 
 

@@ -31,22 +31,25 @@ class HomeController extends Controller
         $photographerProfiles = PhotographerProfile::with('user')->get();
         return view('Frontend.main',compact('sliders','photographerProfiles'));
     }
-    public function adminpanel()
-    {
-        if(Gate::allows('is_admin'))
-        {
-           return view('admin.admin_master');
-       }
-        else
-       abort(404);
-      //return view('admin.admin_master');
-    }
 
-     public function userpanel()
+   public function adminpanel()
+{
+    if(Gate::allows('is_admin'))
     {
+        return view('admin.admin_master');
+    }
+    else
+    {
+        abort(401);
+    }
+}
+
+
+ //    public function userpanel()
+ //   {
 
           // return view('fronted.main');
-          abort(404);
+  //        abort(404);
 
-    }
+ //   }
 }
