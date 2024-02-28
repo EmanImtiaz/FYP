@@ -141,7 +141,7 @@ class BookingController extends Controller
         }
 
     }
-
+// profile bookings //
 public function bookings()
 {
     $bookings = Booking::all();

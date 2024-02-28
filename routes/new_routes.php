@@ -73,7 +73,7 @@ Route::get('/calculate-services-price/{id}', [BookingController::class, 'calcula
 Route::get('/got-cities',[BookingController::class,'getCities'])->name('got-cities');
 Route::get('/got-towns',[BookingController::class,'getTowns'])->name('got-towns');
 
-//location based bookings //
+//all bookings //
 Route::get('/bookings', [BookingController::class, 'bookings'])->name('Frontend.bookings');
 
 // Location //

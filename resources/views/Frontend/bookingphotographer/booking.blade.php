@@ -56,7 +56,6 @@
                                         {{ $photographer->user->province->province_name }}, {{ $photographer->user->city->city_name }}, {{ $photographer->user->town->town_name }}
                                     </span>
                                     <a href="{{ route('photographerprofile.show', ['id' => $photographer->user->id]) }}" class="btn btn-danger">View Profile</a>
-
                                 </div>
                             </div>
                         </div>

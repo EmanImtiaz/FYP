@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use App\Models\Package;
 use App\Models\PackageService;
+use App\Models\ProfileCategory;
+use App\Models\ProfilePortfolio;
 use App\Models\PhotographerProfile;
 use App\Models\City;
 use App\Models\Town;
@@ -18,17 +20,26 @@ class ProfileController extends Controller
 {
     public function profile()
     {
+
         $user = Auth::user();
         $photographerProfile = PhotographerProfile::where('user_id', $user->id)->first();
+    //    $profileportfolios = [];
+    //    $profilecategories = [];
 
-        if ($user->role == 'photographer') {
-            // Load unique packages with services
-            $packages = PackageService::where('user_id', $user->id)
-                ->with('package.services') // Eager load relationships
-                ->get();
+    // Check if the user is a photographer
+    if ($user->role === 'photographer') {
+        // Load unique packages with services
+        $packages = PackageService::where('user_id', $user->id)
+            ->with('package.services') // Eager load relationships
+            ->get();
 
-            return view('Frontend.profile', compact('user', 'photographerProfile', 'packages'));
-        } else {
+        // Check if there are profile portfolios and categories
+   //     $profileportfolios = ProfilePortfolio::where('user_id', $user->id)->get();
+   //     $profilecategories = ProfileCategory::all();
+
+        return view('Frontend.profile', compact('user', 'photographerProfile', 'packages'));
+    }
+  else {
             // Handle users without the photographer role
             return view('Frontend.profile', compact('user', 'photographerProfile'));
         }
