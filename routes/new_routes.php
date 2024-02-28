@@ -24,11 +24,11 @@ Route::get('about',[AboutController::class,'about'])->name('about');
 Route::get('singlewinnerdetail',[SingleWinnerDetailsController::class,'singlewinnerdetail'])->name('singlewinnerdetail');
 
 
-Route::get('allportfolio',[AllPortfolioController::class,'allportfolio'])->name('allportfolio');
+// Route::get('allportfolio',[AllPortfolioController::class,'allportfolio'])->name('allportfolio');
 
-Route::get('photographerprofile',[PhotographerProfileController::class,'photographerprofile'])->name('photographerprofile');
+//Route::get('photographerprofile',[PhotographerProfileController::class,'photographerprofile'])->name('photographerprofile');
 
-Route::get('userprofileupdate',[UserProfileUpdateController::class,'userprofileupdate'])->name('userprofileupdate');
+//Route::get('userprofileupdate',[UserProfileUpdateController::class,'userprofileupdate'])->name('userprofileupdate');
 
 Route::get('blog',[BlogPostController::class,'show'])->name('blogpost.show');
 

@@ -246,24 +246,21 @@ public function detail_edit()
     return view('Frontend.detail-edit', compact('photographerProfile'));
 }
 
-//public function bookphotographer()
-//{
-//    $photographerProfiles = PhotographerProfile::with('user')->get();
- //   return view('Frontend.bookingphotographer.booking', compact('photographerProfiles'));
-// }
 
-public function viewPhotographerProfile($id)
+
+public function show($id)
 {
-    $photographerProfile = PhotographerProfile::find($id);
+    $photographerProfile = PhotographerProfile::findOrFail($id);
+    $user = User::findOrFail($photographerProfile->user_id); // Fetch the associated user
+    $packages = PackageService::where('user_id', $user->id)
+    ->with('package.services') // Eager load relationships
+    ->get();
 
-        if (!$photographerProfile) {
-            // Handle the case where the photographer profile is not found
-            return redirect()->back()->with('error', 'Photographer profile not found.');
-        }
+    return view('Frontend.profile', compact('photographerProfile', 'user','packages'));
+}
 
-        // Retrieve the authenticated user
-        $user = auth()->user();
-        return view('Frontend.profile', compact('user', 'photographerProfile'));
-    }
+
+
+
 }
 

@@ -32,9 +32,7 @@ use Symfony\Component\HttpKernel\Profiler\Profile;
 |
 */
 
-// Route::get('welcome', function () {
- //   return view('welcome');
- //  });
+
 
 Route::get('forget', [ForgetController::class,'forget'])->name('forget');;
 
@@ -52,11 +50,11 @@ Route::get('winners', [WinnersController::class,'winners'])->name('winners');
 
 Route::get('/',[MainController::class,'main'])->name('main');
 
+Route::get('/photographer-profile/{id}', [ProfileController::class, 'show'])->name('photographerprofile.show');
+
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-
-Route::get('/photographer/{id}',[ProfileController::class, 'viewPhotographerProfile'])->name('view.photographer.profile');
 
 
 Route::middleware(['auth'])->group(function () {

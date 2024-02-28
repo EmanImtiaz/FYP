@@ -55,7 +55,8 @@
                                         <i class="fa-solid fa-location-dot fa-sm" style="color: #d32f2f;"></i>
                                         {{ $photographer->user->province->province_name }}, {{ $photographer->user->city->city_name }}, {{ $photographer->user->town->town_name }}
                                     </span>
-                                    <a href="{{ route('view.photographer.profile', ['id' => $photographer->id]) }}" class="btn btn-danger">View Profile</a>
+                                    <a href="{{ route('photographerprofile.show', ['id' => $photographer->user->id]) }}" class="btn btn-danger">View Profile</a>
+
                                 </div>
                             </div>
                         </div>
