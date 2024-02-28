@@ -19,11 +19,11 @@ class CheckRole
 
         // Example: Check if the user has the required role
          if (!$request->user() || !$request->user()->hasAnyRole(...$roles)) {
-             abort(403, 'Unauthorized action.');
+             abort(403, 'Unauthorized Action.');
          }
 
         // For now, let's return the result of the next middleware in the pipeline
         return $next($request);
     }
-    
+
 }
