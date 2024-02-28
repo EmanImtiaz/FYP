@@ -43,22 +43,24 @@
         <div class="container py-5">
             <div class="row justify-content-center">
                 @foreach($photographerProfiles as $photographer)
-    <div class="col-md-4 mb-4">
-        <div class="card">
-            <img src="{{ $photographer->user->profile_image }}" class="card-img-top" alt="">
-            <div class="card-body">
-                <h5 class="card-title">{{ $photographer->user->name }}</h5>
-                <p>{{ $photographer->company_name }}</p>
-                <span style="color: #d32f2f;">
-                    <i class="fa-solid fa-location-dot fa-sm" style="color: #d32f2f;"></i>
-                    {{ $photographer->user->address }}
-                </span>
-                <a href="{{ route('view.photographer.profile', ['id' => $photographer->id]) }}" class="btn btn-danger">View Profile</a>
-            </div>
-        </div>
-    </div>
-@endforeach
-
+                    @if($photographer->user && $photographer->user->role === 'photographer') <!-- Check if user exists and role is 'photographer' -->
+                        <div class="col-md-4 mb-4">
+                            <div class="card">
+                                <img src="{{ $photographer->user->profile_image }}" class="card-img-top" alt="">
+                                <div class="card-body">
+                                    <h5 class="card-title">{{ $photographer->user->name }}</h5>
+                                    <p>{{ $photographer->company_name }}</p>
+                                    <span style="color: #d32f2f;">
+                                        <!-- Display Province, City, and Town instead of Address -->
+                                        <i class="fa-solid fa-location-dot fa-sm" style="color: #d32f2f;"></i>
+                                        {{ $photographer->user->province->province_name }}, {{ $photographer->user->city->city_name }}, {{ $photographer->user->town->town_name }}
+                                    </span>
+                                    <a href="{{ route('view.photographer.profile', ['id' => $photographer->id]) }}" class="btn btn-danger">View Profile</a>
+                                </div>
+                            </div>
+                        </div>
+                    @endif
+                @endforeach
             </div>
         </div>
     </div>

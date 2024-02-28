@@ -76,6 +76,7 @@
         <div class="slide-content">
             <div class="card-wrapper swiper-wrapper">
                 @foreach($photographerProfiles as $photographer)
+                    @if($photographer->user && $photographer->user->role === 'photographer') <!-- Check if user exists and role is 'photographer' -->
                     <div class="card swiper-slide">
                         <div class="image-content">
                             <span class="overlay"></span>
@@ -90,7 +91,8 @@
                             <a href="{{ route('view.photographer.profile', ['id' => $photographer->id]) }}"><button class="button">View More</button></a>
                         </div>
                     </div>
-                @endforeach
+                    @endif
+                    @endforeach
             </div>
         </div>
         <div class="swiper-button-next swiper-navBtn"></div>
