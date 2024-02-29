@@ -72,8 +72,6 @@ class BookingController extends Controller
       return $totalAmount;
   }
 
-
-
   public function store(Request $request)
   {
       // Validate the incoming request data
@@ -152,7 +150,7 @@ class BookingController extends Controller
         $selectedPayment = $request->input('payment_id');
 
         // Update total amount and redirect
-        $booking->update(['total_amount' => $validatedData['totalAmount']]);
+        $booking->update(['total_amount' => $validatedData['totalAmount'], 'is_paid' => 1]);
         return redirect()->route('Frontend.profile');
     } else {
         // Invalid payment method selected
@@ -160,13 +158,25 @@ class BookingController extends Controller
     }
 }
 
-
 // profile bookings //
 public function bookings()
 {
-    $bookings = Booking::all();
-    return view('Frontend.bookings', compact('bookings'));
+    // Check if the authenticated user is a photographer
+    if (Auth::user()->hasAnyRole('photographer')) {
+        // Get the photographer's profile ID
+        $photographerProfileId = Auth::user()->photographerProfile->id;
 
+        // Retrieve bookings associated with the photographer's profile ID
+        $bookings = Booking::whereHas('bookingServices', function ($query) use ($photographerProfileId) {
+            $query->where('photographer_profile_id', $photographerProfileId);
+        })->get();
+    } else {
+        // If the user is not a photographer, retrieve all bookings
+        $bookings = Booking::all();
+    }
+
+    return view('Frontend.bookings', compact('bookings'));
 }
+
 
 }
