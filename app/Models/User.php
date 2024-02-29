@@ -82,7 +82,7 @@ class User extends Authenticatable
     {
         return $this->belongsTo(Town::class);
     }
-    //admin panel role// 
+    //admin panel role//
      /**
      * Check if the user has any of the specified roles.
      *
@@ -93,5 +93,6 @@ class User extends Authenticatable
     {
         return in_array($this->role, $roles);
     }
+    
 }
 

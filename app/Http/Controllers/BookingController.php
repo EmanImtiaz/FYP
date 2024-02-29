@@ -171,12 +171,17 @@ public function bookings()
             $query->where('photographer_profile_id', $photographerProfileId);
         })->get();
     } else {
-        // If the user is not a photographer, retrieve all bookings
-        $bookings = Booking::all();
+        // Retrieve bookings associated with the user's ID
+        $userId = Auth::id();
+        $bookings = Booking::whereHas('bookingServices', function ($query) use ($userId) {
+            $query->where('user_id', $userId);
+        })->get();
     }
 
     return view('Frontend.bookings', compact('bookings'));
 }
+
+
 
 
 }
