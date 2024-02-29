@@ -44,7 +44,13 @@
                         <div class="card-body">
                             <h5 class="card-title">Customer Name: {{ $booking->name }}</h5>
                             <p class="card-text">Total Amount: {{ $booking->total_amount }}</p>
-                            <p class="card-text">Payment Method: {{ $booking->payment_method_options }}</p>
+                            <p class="card-text">Payment Method:
+                                @if($booking->payment_method_options == 1)
+                                    Online Payment
+                                @else
+                                    Offline Payment
+                                @endif
+                            </p>
                             <!-- Add other booking details as needed -->
                         </div>
                     </div>
