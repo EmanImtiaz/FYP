@@ -65,21 +65,6 @@ Route::group(['prefix'=>'profileportfolio'],function()
 
 Route::get('/profileportfolio', [ProfilePortfolioController::class, 'view'])->name('profile.view');
 
-// user Book photographer form //
-
-Route::get('/booking/{packageId}', [BookingController::class, 'bookingForm'])->name('bookingform');
-Route::post('/booking/store', [BookingController::class, 'store'])->name('booking.store');
-Route::get('/calculate-services-price/{id}', [BookingController::class, 'calculateServicesTotalPrice'])->name('calculate.services.price');
-Route::get('/got-cities',[BookingController::class,'getCities'])->name('got-cities');
-Route::get('/got-towns',[BookingController::class,'getTowns'])->name('got-towns');
-
-//all bookings //
-Route::get('/bookings', [BookingController::class, 'bookings'])->name('Frontend.bookings');
-
-// Location //
-Route::get('/booking',[LocationController::class,'view'])->name('booking.view');
-Route::get('/get-cities',[LocationController::class,'getCities'])->name('get-cities');
-Route::get('/get-towns',[LocationController::class,'getTowns'])->name('get-towns');
 
 // register//
 
@@ -89,3 +74,30 @@ Route::get('/gotted-towns',[RegisterController::class,'getTowns'])->name('gotted
 // Profile //
 Route::get('/edit-cities',[ProfileController::class,'getCities'])->name('edit-cities');
 Route::get('/edit-towns',[ProfileController::class,'getTowns'])->name('edit-towns');
+
+
+// bookingform //
+Route::group(['prefix'=>'booking'],function()
+{
+
+    Route::get('/',[BookingController::class,'index'])->name('booking.index');
+
+
+});
+
+
+Route::get('/booking/{packageId}', [BookingController::class, 'bookingForm'])->name('bookingform');
+Route::post('/booking/store', [BookingController::class, 'store'])->name('booking.store');
+Route::get('/calculate-services-price/{id}', [BookingController::class, 'calculateServicesTotalPrice'])->name('calculate.services.price');
+Route::get('/got-cities',[BookingController::class,'getCities'])->name('got-cities');
+Route::get('/got-towns',[BookingController::class,'getTowns'])->name('got-towns');
+
+
+
+//all bookings //
+Route::get('/bookings', [BookingController::class, 'bookings'])->name('Frontend.bookings');
+
+// Location //
+Route::get('/booking',[LocationController::class,'view'])->name('booking.view');
+Route::get('/get-cities',[LocationController::class,'getCities'])->name('get-cities');
+Route::get('/get-towns',[LocationController::class,'getTowns'])->name('get-towns');

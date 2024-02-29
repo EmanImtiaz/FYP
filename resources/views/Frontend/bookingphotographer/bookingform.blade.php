@@ -95,7 +95,7 @@
                             </select>
                         </div>
 
-                        <div class="col-lg-4 col-sm-4 col-md-4 mt-2" id="onlinePaymentOptions" style="display: none;">
+                        <div class="col-lg-4 col-sm-4 col-md-4 mt-2" id="onlinePaymentOptions" style="display: {{ old('payment_method_options', $booking->payment_method_options) == '1' ? 'block' : 'none' }}">
                             @foreach($payments as $payment)
                                 <div class="form-check">
                                     <input class="form-check-input" type="radio" id="payment_id_{{ $payment->id }}" name="payment_id" value="{{ $payment->id }}" {{ old('payment_id', $booking->payment_id) == $payment->id ? 'checked' : '' }}>
@@ -103,6 +103,8 @@
                                 </div>
                             @endforeach
                         </div>
+
+
                     </div>
 
                     <div class="mb-3">
@@ -162,7 +164,7 @@
                     <div class="row ">
                         <div class='col-xs-12 form-group '>
                             <label for="account_name" class="form-label">Account Name</label>
-                            <input id="account_name" type="text" required class="form-control" name="account_name" placeholder="Enter your account_name" value="{{  $booking->account_name }}">
+                            <input id="account_name" type="text"  class="form-control" name="account_name" placeholder="Enter your account_name" value="{{  $booking->account_name }}">
                         </div>
                     </div>
                 </div>
@@ -171,7 +173,7 @@
                     <div class="row ">
                         <div class='col-xs-12 form-group card '>
                             <label for="account_number" class="form-label">Account Number</label>
-                            <input id="account_number" type="text" required class="form-control" name="account_number" placeholder="Enter your account_number" value="{{  $booking->account_number }}">
+                            <input id="account_number" type="text"  class="form-control" name="account_number" placeholder="Enter your account_number" value="{{  $booking->account_number }}">
                         </div>
                     </div>
                 </div>

@@ -86,17 +86,15 @@ class BookingController extends Controller
           'province_id' => 'required',
           'city_id' => 'required',
           'town_id' => 'required',
-          'payment_id' => $request->input('payment_method_options') == 1 ? 'required' : 'nullable',
+          'payment_id' => $request->input('payment_method_options') == '1' ? 'required' : 'nullable',
           'evidence' => 'nullable',
-          'account_name' => $request->input('payment_method_options') == 1 ? 'required' : 'nullable',
-          'account_number' =>$request->input('payment_method_options') == 1 ? 'required' : 'nullable',
+          'account_name' => $request->input('payment_method_options') == '1' ? 'required' : 'nullable',
+          'account_number' =>$request->input('payment_method_options') == '1' ? 'required' : 'nullable',
           'is_paid' => 'nullable',
           'services' => 'required|array',
           'dates' => 'required|array',
 
-
       ]);
-
         $validatedData['user_id'] = Auth::id();
         $validatedData['photographer_profile_id'] = Auth::id();
         $totalAmount = $validatedData['totalAmount'];
@@ -139,7 +137,6 @@ class BookingController extends Controller
             // Invalid payment method selected
             return redirect()->back()->with('error', 'Invalid payment method');
         }
-
     }
 // profile bookings //
 public function bookings()

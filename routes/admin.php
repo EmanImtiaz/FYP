@@ -3,7 +3,6 @@
 use Illuminate\Support\Facades\Route;
 // use App\Http\Controllers\AdminPanelController;
 use App\Http\Controllers\BlogPostController;
-use App\Http\Controllers\BookingController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\CityController;
 use App\Http\Controllers\HomeController;
@@ -156,15 +155,7 @@ Route::group(['prefix'=>'blog'],function()
 
 });
 
-Route::group(['prefix'=>'booking'],function()
-{
 
-    Route::get('/',[BookingController::class,'index'])->name('booking.index');
-    Route::get('/create',[BookingController::class,'create'])->name('booking.create');
-    Route::post('/store',[BookingController::class,'store'])->name('booking.store');
-
-
-});
 
 //  payment methods  //
 Route::group(['prefix'=>'payment'],function()
@@ -197,6 +188,8 @@ Route::get('/user', [ProfileController::class, 'userindex'])->name('profile.inde
 Route::get('/photographer', [ProfileController::class, 'photographerindex'])->name('photogrpherprofile.index');
 Route::put('/photographer/approve/{id}', [ProfileController::class, 'approvePhotographerProfile'])->name('photogrpherprofile.approve');
 Route::put('/photographer/disapprove/{id}', [ProfileController::class, 'disapprovePhotographerProfile'])->name('photogrpherprofile.disapprove');
+
+
 
 
 });
