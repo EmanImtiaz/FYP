@@ -72,9 +72,13 @@ class BookingController extends Controller
       return $totalAmount;
   }
 
+
+
   public function store(Request $request)
   {
+      // Validate the incoming request data
       $validatedData = $request->validate([
+        'package_id' => 'required',
           'name' => 'required',
           'email' => 'required',
           'phone' => 'required',
@@ -93,51 +97,70 @@ class BookingController extends Controller
           'is_paid' => 'nullable',
           'services' => 'required|array',
           'dates' => 'required|array',
-
       ]);
-        $validatedData['user_id'] = Auth::id();
-        $validatedData['photographer_profile_id'] = Auth::id();
-        $totalAmount = $validatedData['totalAmount'];
 
-        $booking = Booking::create($validatedData);
+    // Retrieve the selected package ID from the request
+    $packageId = $validatedData['package_id'];
 
-        $selectedServices = $request->input('services');
-        $dates = $request->input('dates');
+    // Retrieve the corresponding photographer_profile_id from the PackageService model
+    $packageService = PackageService::where('package_id', $packageId)->first();
 
-        foreach ($dates as $date) {
-            $dateArray = explode(',', $date);
+    // Check if a matching package service is found
+    if ($packageService) {
+        // Add the photographer_profile_id to the validated data
+        $validatedData['photographer_profile_id'] = $packageService->user_id;
+    } else {
+        // Handle the case where no matching package service is found
+        return redirect()->route('Frontend.profile')->with('error', 'Selected package is not valid.');
+    }
 
-            foreach ($dateArray as $singleDate) {
-                foreach ($selectedServices as $serviceId) {
-                    BookingService::create([
-                        'user_id' => Auth::id(),
-                        'photographer_profile_id' => Auth::id(),
-                        'booking_id' => $booking->id,
-                        'package_service_id' => $serviceId,
-                        'date_selected' => $singleDate,
-                    ]);
-                }
+    // Add user_id
+    $validatedData['user_id'] = Auth::id();
+
+      // Create a new booking record with the validated data
+    $booking = Booking::create($validatedData);
+
+    // Process booking services
+    $selectedServices = $request->input('services');
+    $dates = $request->input('dates');
+
+    foreach ($dates as $date) {
+        $dateArray = explode(',', $date);
+
+        foreach ($dateArray as $singleDate) {
+            foreach ($selectedServices as $serviceId) {
+                BookingService::create([
+                    'user_id' => Auth::id(),
+                    'photographer_profile_id' => $packageService->user_id,
+                    'booking_id' => $booking->id,
+                    'package_service_id' => $serviceId,
+                    'date_selected' => $singleDate,
+                ]);
             }
         }
-
-        $paymentMethod = $request->input('payment_method_options');
-
-        if ($paymentMethod == '0') {
-            // Offline payment, update total amount and payment id
-            $booking->update(['total_amount' => $totalAmount]);
-            return redirect()->route('Frontend.profile');
-        } elseif ($paymentMethod == '1') {
-            // Online payment, check if a payment option is selected
-            $selectedPayment = $request->input('payment_id');
-
-            $booking->update(['total_amount' => $totalAmount]);
-            return redirect()->route('Frontend.profile');
-       //     return redirect()->back()->with('message', 'Complete your payment');
-        } else {
-            // Invalid payment method selected
-            return redirect()->back()->with('error', 'Invalid payment method');
-        }
     }
+
+    // Determine payment method and redirect accordingly
+    $paymentMethod = $request->input('payment_method_options');
+
+    if ($paymentMethod == '0') {
+        // Offline payment, update total amount and redirect
+        $booking->update(['total_amount' => $validatedData['totalAmount']]);
+        return redirect()->route('Frontend.profile');
+    } elseif ($paymentMethod == '1') {
+        // Online payment, check if a payment option is selected
+        $selectedPayment = $request->input('payment_id');
+
+        // Update total amount and redirect
+        $booking->update(['total_amount' => $validatedData['totalAmount']]);
+        return redirect()->route('Frontend.profile');
+    } else {
+        // Invalid payment method selected
+        return redirect()->back()->with('error', 'Invalid payment method');
+    }
+}
+
+
 // profile bookings //
 public function bookings()
 {

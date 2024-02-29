@@ -23,6 +23,8 @@
                 <form action="{{ route('booking.store') }}" method="post" enctype="multipart/form-data" >
                     @csrf
 
+                    <input type="hidden" name="package_id" value="{{ $package->id }}">
+                    
                     <div class="mb-2">
                         <div class="row ">
                             <div class=" col-lg col-sm col-md">
