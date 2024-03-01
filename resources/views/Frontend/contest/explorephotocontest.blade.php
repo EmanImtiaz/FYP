@@ -53,7 +53,9 @@ amazing brands and opportunities.  </p>
             <div style="position: absolute; top: 50%; left: 100px; transform: translateY(-50%); text-align: center; color: white;">
                 <h5 style="font-size: 24px;">{{ $category->category_name }}</h5>
                 <p style="font-size: 18px;">{{ $category->description }}</p>
-                <a href="{{ route('contestdetail') }}" class="btn btn-danger" style="font-size: 40px;">View</a>
+                <a href="{{ route('contestdetail', ['categoryId' => $category->id]) }}">View Contests</a>
+
+
 
             </div>
             <img class="img-fluid" src="{{ $category->img }}" alt="{{ $category->category_name }}" style="width: 100%; height: 100vh;">

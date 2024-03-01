@@ -16,6 +16,7 @@
 <div class="container py-3">
     <div class="row">
         @foreach($photocontests as $photocontest)
+        @if($photocontest->category_id == $category->id)
         <div class="col-md-3 pb-3 pl-2">
             <div class="card position-relative" onmouseover="showInfo(this)" onmouseout="hideInfo(this)">
                 <div class="position-relative">
@@ -43,6 +44,7 @@
                 </div>
             </div>
         </div>
+        @endif
         @endforeach
     </div>
 
