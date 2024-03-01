@@ -24,24 +24,24 @@
                     @csrf
 
                     <input type="hidden" name="package_id" value="{{ $package->id }}">
-                    
+
                     <div class="mb-2">
                         <div class="row ">
                             <div class=" col-lg col-sm col-md">
                                 <label for="name" class="form-label">Name</label>
-                                <input id="name" type="text" required class="form-control" name="name" placeholder="Enter your name" value="{{  $booking->name }}">
+                                <input id="name" type="text" required class="form-control" name="name" placeholder="Enter your name" value="{{ old('name', $booking->name) }}">
                             </div>
 
                             <div class=" col-lg col-sm col-md">
                                 <label for="email" class="form-label">Email</label>
                                 <input id="email" type="text" required class="form-control" name="email"
-                                placeholder="Enter your e-mail" value="{{  $booking->email }}">
+                                placeholder="Enter your e-mail" value="{{ old('email', $booking->email) }}">
                             </div>
 
                             <div class=" col-lg col-sm col-md">
                                 <label for="phone" class="form-label">Phone</label>
                                 <input id="phone" type="text" required class="form-control" name="phone"
-                                placeholder="Enter your phone" value="{{  $booking->phone }}">
+                                placeholder="Enter your phone" value="{{ old('phone', $booking->phone) }}">
                             </div>
                         </div>
                     </div>
@@ -80,7 +80,7 @@
 
                     <div class="mb-2">
                         <label for="remarks" class="form-label">Remarks</label>
-                        <textarea id="remarks" type="text" class="form-control" name="remarks" placeholder="Enter your remarks" cols="3" rows="2" value="{{  $booking->remarks }}"></textarea>
+                        <textarea id="remarks" type="text" class="form-control" name="remarks" placeholder="Enter your remarks" cols="3" rows="2">{{ old('remarks', $booking->remarks) }}</textarea>
                     </div>
 
                     <div class="row mb-2">
@@ -92,8 +92,8 @@
                         <div class="col-lg-4 col-sm-4 col-md-4">
                             <label class="form-label">Select Payment Method</label>
                             <select class="form-control" name="payment_method_options" id="payment_method_options" required>
-                                <option value="0" {{ $booking->payment_method_options == 0 ? 'selected' : '' }}>Offline</option>
-                                <option value="1" {{ $booking->payment_method_options == 1 ? 'selected' : '' }}>Online</option>
+                                <option value="0" {{ old('payment_method_options', $booking->payment_method_options) == '0' ? 'selected' : '' }}>Offline</option>
+                                <option value="1" {{ old('payment_method_options', $booking->payment_method_options) == '1' ? 'selected' : '' }}>Online</option>
                             </select>
                         </div>
 
@@ -166,7 +166,7 @@
                     <div class="row ">
                         <div class='col-xs-12 form-group '>
                             <label for="account_name" class="form-label">Account Name</label>
-                            <input id="account_name" type="text"  class="form-control" name="account_name" placeholder="Enter your account_name" value="{{  $booking->account_name }}">
+                            <input id="account_name" type="text"  class="form-control" name="account_name" placeholder="Enter your account_name" value="{{ old('account_name', $booking->account_name) }}">
                         </div>
                     </div>
                 </div>
@@ -175,7 +175,7 @@
                     <div class="row ">
                         <div class='col-xs-12 form-group card '>
                             <label for="account_number" class="form-label">Account Number</label>
-                            <input id="account_number" type="text"  class="form-control" name="account_number" placeholder="Enter your account_number" value="{{  $booking->account_number }}">
+                            <input id="account_number" type="text"  class="form-control" name="account_number" placeholder="Enter your account_number" value="{{ old('account_number', $booking->account_number) }}">
                         </div>
                     </div>
                 </div>
@@ -297,10 +297,6 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 
 
-
-
-
-
     // On payment method change, toggle the display of online payment options
     $('#payment_method_options').change(function () {
         const selectedPaymentMethod = $(this).val();
@@ -340,5 +336,3 @@ document.addEventListener('DOMContentLoaded', function () {
 </script>
 
 @endsection
-
-

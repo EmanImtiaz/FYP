@@ -4,6 +4,17 @@
 <div class="container py-5">
     <div class="row justify-content-center">
         <div class="col-md-8">
+            @if(session('success'))
+    <div class="alert alert-success">
+        {{ session('success') }}
+    </div>
+@endif
+
+@if(session('error'))
+    <div class="alert alert-danger">
+        {{ session('error') }}
+    </div>
+@endif
             <div class="card">
                 <div class="card-body">
                     <div class="container py-2">

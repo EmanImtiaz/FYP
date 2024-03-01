@@ -19,6 +19,7 @@ class BookingController extends Controller
 {
     public function bookingForm($packageId)
     {
+
         $booking = new Booking();
         $package = Package::with('packageServices')->find($packageId);
         $packageServices = $package->packageServices;
@@ -28,6 +29,36 @@ class BookingController extends Controller
 
         return view('Frontend.bookingphotographer.bookingform', compact('booking', 'provinces','package', 'packageServices', 'payments','paymentAccounts'));
     }
+
+    public function index()
+
+    {
+        $bookings = Booking::all();
+        return view('admin.paymentapproved.index', compact('bookings'));
+    }
+    public function approveBooking($id)
+    {
+        $booking = Booking::findOrFail($id);
+        $booking->is_paid = 1;
+        $booking->save();
+
+        // Check if the payment method was offline, then update it to online
+    if ($booking->payment_method_options == 0) {
+        $booking->update(['payment_method_options' => 1]);
+    }
+
+    return redirect()->route('Frontend.profile')->with('success', 'Your evidence has been approved successfully & Booking is Confirmed');
+    }
+
+    public function disapproveBooking($id)
+    {
+        $booking = Booking::findOrFail($id);
+        $booking->is_paid = 0;
+        $booking->save();
+
+        return redirect()->back()->with('success', 'Booking disapproved successfully.');
+    }
+
 
     public function getCities(Request $request)
     {
@@ -86,23 +117,20 @@ class BookingController extends Controller
         // Find the booking based on the provided ID
         $booking = Booking::findOrFail($bookingId);
 
-        // Handle file upload and storage
-        if ($request->hasFile('evidence')) {
-            $image = $request->file('evidence');
-            $imageName = time().'.'.$image->getClientOriginalExtension();
+        // Move the uploaded file to the desired location
+        $picture = $request->evidence;
+        $ext = $picture->getClientOriginalExtension();
+        $file_name = time() . '.' . $ext;
+        $file_path = '/assets/booking/';
+        $picture->move(public_path() . $file_path, $file_name);
 
-            // Store the image in the storage/app/public directory
-            $path = $image->storeAs('public/evidence', $imageName);
+        // Update the booking with the evidence path
+        $booking->evidence = $file_path . $file_name;
+        $booking->save();
 
-            // Update the evidence field in the booking
-            $booking->evidence = $path;
-            $booking->save();
-
-            return redirect()->route('Frontend.profile');
-        } else {
-            return redirect()->back()->with('error', 'No file uploaded.');
-        }
+        return redirect()->route('Frontend.profile')->with('success', 'Wait your Evidence is curently in review');
     }
+
 
   public function store(Request $request)
   {
@@ -174,14 +202,15 @@ class BookingController extends Controller
     if ($paymentMethod == '0') {
         // Offline payment, update total amount and redirect
         $booking->update(['total_amount' => $validatedData['totalAmount']]);
-        return redirect()->route('Frontend.profile');
+        return redirect()->route('Frontend.profile')->with('error', 'Your Booking is Pending.Pls give an Evidene from Booking Panel');
     } elseif ($paymentMethod == '1') {
         // Online payment, check if a payment option is selected
         $selectedPayment = $request->input('payment_id');
 
         // Update total amount and redirect
         $booking->update(['total_amount' => $validatedData['totalAmount'], 'is_paid' => 1]);
-        return redirect()->route('Frontend.profile');
+        // After successful booking creation
+    return redirect()->route('Frontend.profile')->with('success', 'Booking has been successfully created.');
     } else {
         // Invalid payment method selected
         return redirect()->back()->with('error', 'Invalid payment method');

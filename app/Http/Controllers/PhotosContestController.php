@@ -59,7 +59,6 @@ class PhotosContestController extends Controller
     }
 
 
-
     public function edit($id)
     {
         $categories = Category::all();

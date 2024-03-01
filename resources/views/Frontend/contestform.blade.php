@@ -10,6 +10,7 @@
 </div>
 
 @auth
+@include('Frontend.errors')
 <div class="container py-5">
     <div class="row justify-content-center">
         <div class="col-lg-6 col-md-12 col-sm-12">
@@ -50,7 +51,7 @@
                         <div id="tagList" class="mt-2"></div>
                         <input type="hidden" name="tags" id="tagsInput">
                     </div>
-                    
+
                     <div class="mb-3">
                         <button type="submit" class="btn btn-danger">Save</button>
                     </div>

@@ -25,7 +25,9 @@
 
                         <div class="row mt-3">
                             <div class="col-3  ">
-                                <a href="{{ route('bookingform', ['packageId' => $packageService->package->id]) }}" class="btn btn-success btn-block">Book Package</a>
+                                <div class="col-3  ">
+                                    <a href="{{ route('bookingform', ['packageId' => $packageService->package->id]) }}" class="btn btn-success btn-block">Book Package</a>
+                                </div>
                             </div>
                             @auth
                                         @if(Auth::user()->id === $user->id)
