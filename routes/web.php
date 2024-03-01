@@ -91,4 +91,5 @@ Route::post('/contestformstore', [PhotosContestController::class, 'store'])->nam
 //Route::get('/contestdetail', [PhotosContestController::class,'view'])->name('contestdetail');
 Route::get('/contestdetail/{categoryId}', [PhotosContestController::class,'view'])->name('contestdetail');
 
+Route::post('/vote', [PhotosContestController::class, 'storeVote'])->name('vote.store');
 

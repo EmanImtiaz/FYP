@@ -85,12 +85,19 @@ function hideInfo(card) {
                 </div>
                 <!-- Collection Icons (Font Awesome) on the top right -->
                 <div class="position-absolute top-0 end-0 m-4">
-                    <button class="btn btn-light custom-button ">
+                   <!-- Add these buttons inside the card body -->
+                   <form action="{{ route('vote.store') }}" method="post">
+                    @csrf
+                    <input type="hidden" name="photo_contest_id" value="{{ $photocontest->id }}">
+                    <button type="submit" name="type" value="like" class="btn btn-light custom-button like-btn">
                         <i class="fa-solid fa-thumbs-up fa-lg text-dark"></i>
                     </button>
-                    <button class="btn btn-light custom-button ">
+                    <button type="submit" name="type" value="dislike" class="btn btn-light custom-button dislike-btn">
                         <i class="fa-solid fa-thumbs-down fa-lg text-dark"></i>
                     </button>
+                </form>
+
+
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
             </div>
@@ -148,6 +155,7 @@ function hideInfo(card) {
         });
     });
 </script>
+
 
 @endsection
 

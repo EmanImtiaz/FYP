@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Vote extends Model
 {
-    protected $fillable = ['id', 'category_id', 'user_id', 'photocontest_id', 'likes', 'dislikes'];
+    protected $fillable = ['id', 'category_id', 'user_id', 'photo_contest_id', 'likes', 'dislikes'];
 
     public function category()
     {
@@ -21,6 +21,6 @@ class Vote extends Model
 
     public function photocontest()
     {
-        return $this->belongsTo(PhotoContest::class, 'photocontest_id');
+        return $this->belongsTo(PhotoContest::class, 'photo_contest_id');
     }
 }

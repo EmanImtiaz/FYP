@@ -21,3 +21,4 @@ class PhotoContest extends Model
     }
 
 }
+

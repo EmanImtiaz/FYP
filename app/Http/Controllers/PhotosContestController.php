@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 use App\Models\Category;
 use App\Models\PhotoContest;
 use Illuminate\Http\Request;
+use App\Models\Vote;
+
 use Illuminate\Support\Facades\Auth;
 class PhotosContestController extends Controller
 {
@@ -16,11 +18,6 @@ class PhotosContestController extends Controller
         return view('admin.contest.photoscontest.index', compact('photocontests', 'categories')); // Pass data to the view
     }
 
- //   public function __construct()
-  //  {
-        // Apply authentication middleware
-  //      $this->middleware('auth');
- //   }
 
     public function create()
     {
@@ -128,6 +125,36 @@ class PhotosContestController extends Controller
         $categories = Category::all();
 
         return view('Frontend.contest.contestdetail', compact('photocontests', 'categories', 'category'));
+    }
+
+    public function storeVote(Request $request)
+    {
+        // Validate request data
+        $validatedData = $request->validate([
+            'photo_contest_id' => 'required|exists:photo_contests,id',
+            'type' => 'required|in:like,dislike',
+        ]);
+
+        try {
+            // Get the authenticated user
+            $user = Auth::user();
+
+            // Find the associated photo contest
+            $photoContest = PhotoContest::findOrFail($validatedData['photo_contest_id']);
+
+            // Create a new vote record
+            $vote = new Vote();
+            $vote->photo_contest_id = $photoContest->id;
+            $vote->user_id = $user->id;
+            $vote->category_id = $photoContest->category_id; // Use the category_id from the photo contest
+            $vote->likes = ($validatedData['type'] === 'like') ? 1 : 0;
+            $vote->dislikes = ($validatedData['type'] === 'dislike') ? 1 : 0;
+            $vote->save();
+
+            return redirect()->back()->with('success', 'Vote recorded successfully');
+        } catch (\Exception $e) {
+            return redirect()->back()->with('error', 'Failed to record vote');
+        }
     }
 
 
