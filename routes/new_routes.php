@@ -34,9 +34,9 @@ Route::get('blog',[BlogPostController::class,'show'])->name('blogpost.show');
 
 Route::get('blog/{id}', [BlogPostController::class, 'blogdetail'])->name('blogdetail.show');
 
-Route::get('contest',[ExplorePhotoContestController::class,'explorephotocontest'])->name('explorephotocontest');
+//Route::get('contest',[ExplorePhotoContestController::class,'explorephotocontest'])->name('explorephotocontest');
 
-Route::get('contestdetail',[ContestDetailController::class,'contestdetail'])->name('contestdetail');
+//Route::get('contestdetail',[ContestDetailController::class,'contestdetail'])->name('contestdetail');
 
 
 Route::group(['prefix'=>'packages'],function()

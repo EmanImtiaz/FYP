@@ -23,7 +23,7 @@
                 </tr>
             </thead>
             <tbody>
-                @foreach ($photocontest as $key=> $photocontest)
+                @foreach ($photocontests as $key=> $photocontest)
                 <tr>
                     <td>{{  ++$key }}</td>
                     <td><img src="{{ $photocontest->contest_img }}" width="100"></td>

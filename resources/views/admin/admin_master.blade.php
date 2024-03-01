@@ -177,7 +177,7 @@
                   <a href="{{ route('category.create') }}" class="nav-link">Category</a>
                 </li>
                 <li class="nav-item">
-                  <a href="{{ route('photoscontest.create') }}" class="nav-link">Photos Contest</a>
+                  <a href="{{ route('photoscontest.index') }}" class="nav-link">Photos Contest</a>
                 </li>
               </ul>
             </div>

@@ -11,17 +11,17 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('photo_contests', function (Blueprint $table) {
+        Schema::create('votes', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('category_id');
             $table->unsignedBigInteger('user_id');
-            $table->text('contest_img');
-            $table->string('description');
-            $table->string('views');
-            $table->longText('tags');
+            $table->unsignedBigInteger('photocontest_id');
 
+            $table->bigInteger('likes');
+            $table->bigInteger('dislikes');
             $table->foreign('category_id')->references('id')->on('categories')->onDelete('cascade');
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+            $table->foreign('photocontest_id')->references('id')->on('photocontests')->onDelete('cascade');
             $table->timestamps();
         });
     }
@@ -31,6 +31,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('photo_contests');
+        Schema::dropIfExists('votes');
     }
 };

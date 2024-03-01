@@ -86,7 +86,7 @@ Route::group(['prefix'=>'town'],function()
 // Category //
 Route::group(['prefix'=>'category'],function()
 {
-   
+
     Route::get('/',[CategoryController::class,'index'])->name('category.index');
     Route::get('/create',[CategoryController::class,'create'])->name('category.create');
     Route::post('/store',[CategoryController::class,'store'])->name('category.store');
@@ -98,17 +98,7 @@ Route::group(['prefix'=>'category'],function()
 
 // Contest //
 // PhotosContest //
-Route::group(['prefix'=>'photoscontest'],function()
-{
 
-    Route::get('/',[PhotosContestController::class,'index'])->name('photoscontest.index');
-    Route::get('/create',[PhotosContestController::class,'create'])->name('photoscontest.create');
-    Route::post('/store',[PhotosContestController::class,'store'])->name('photoscontest.store');
-    Route::get('/edit/{id}',[PhotosContestController::class,'edit'])->name('photoscontest.edit');
-    Route::post('/update/{id}',[PhotosContestController::class,'update'])->name('photoscontest.update');
-    Route::get('/delete/{id}',[PhotosContestController::class,'delete'])->name('photoscontest.delete');
-
-});
 
 // Services //
 Route::group(['prefix'=>'services'],function()

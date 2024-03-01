@@ -108,3 +108,132 @@
 
 
 
+@extends('layout.master')
+@section('kuchb')
+
+<div class="container py-3">
+    @auth
+        <h1 class="text-center">{{ $photocontest->id != null ? 'Update' : 'Create' }} Photos Contest</h1>
+    @else
+        <h1 class="text-center">Log in to Create Photos Contest</h1>
+    @endauth
+</div>
+
+@auth
+<div class="container py-5 ">
+    <div class="row justify-content-center">
+        <div class="col-lg-6 col-md-12 col-sm-12">
+    <h2>Contest Form</h2>
+    <form action="{{ $photocontest->id != null ? route('photoscontest.update', ['id' => $photocontest->id]) : route('photoscontest.store') }}" method="post" enctype="multipart/form-data">
+        @csrf
+        {{-- 2 --}}
+        <!-- Category Dropdown -->
+        <div class="row row-cols-6 py-4">
+            <div class="col">
+                <div class="form-group">
+                    <label for="category_id" class="form-label">Select Category</label>
+                    <select id="category_id" required class="form-control" name="category_id">
+                        @foreach($categories as $category)
+                            <option value="{{ $category->id }}" {{ $photocontest->category_id == $category->id ? 'selected' : '' }}>
+                                {{ $category->category_name }}
+                            </option>
+                        @endforeach
+                    </select>
+                </div>
+            </div>
+        </div>
+
+        <div class="container py-2">
+            <div class="mb-3">
+
+                    <label for="contest_img" class="form-label ">Contest Image</label>
+                    <br>
+                    <input type="file" name="contest_img" id="" value={{ $photocontest->contest_img }}>
+
+            </div>
+            <div class="mb-3">
+
+                    <label for="description" class="form-label">Description</label>
+                    <input id="description" class="form-control" type="text" name="description" value="{{ $photocontest->description }}" >
+
+            </div>
+
+            <div class="mb-3">
+
+                    <ul id="tags"></ul>
+                    <label for="tags" class="form-label">Tags</label>
+                    <input type="hidden" id="tagsInput" name="tags" value="{{ $photocontest->tags }}">
+                    <input type="text" id="tagz" placeholder="Enter tag name" />
+
+            </div>
+            <div class="mb-3">
+
+                <button type="submit" class="btn btn-danger">save</button>
+
+            </div>
+        </div>
+    </form>
+</div>
+    </div>
+</div>
+
+@endauth
+<script>
+    // Get the tags and input elements from the DOM
+    const tags = document.getElementById('tags');
+    const input = document.getElementById('tagz');
+    const tagsInput = document.getElementById('tagsInput');
+
+    // Populate initial tags from hidden input field
+    const initialTags = tagsInput.value.split(',');
+    initialTags.forEach(tag => {
+        addTag(tag);
+    });
+
+    // Function to add a tag
+    function addTag(tagContent) {
+        // Create a new list item element for the tag
+        const tag = document.createElement('li');
+        tag.innerText = tagContent.trim();
+        // Add a delete button to the tag
+        tag.innerHTML += '<button class="delete-button">X</button>';
+        // Append the tag to the tags list
+        tags.appendChild(tag);
+    }
+
+    // Function to update hidden input field with tags data
+    function updateTagsInput() {
+        const tagList = Array.from(tags.children).map(tag => tag.innerText.trim());
+        tagsInput.value = tagList.join(',');
+    }
+
+    // Add an event listener for keydown on the input element
+    input.addEventListener('keydown', function(event) {
+        // Check if the key pressed is 'Enter'
+        if (event.key === 'Enter') {
+            // Prevent the default action of the keypress event (submitting the form)
+            event.preventDefault();
+            // Get the trimmed value of the input element
+            const tagContent = input.value.trim();
+            // If the trimmed value is not an empty string
+            if (tagContent !== '') {
+                addTag(tagContent);
+                updateTagsInput();
+                // Clear the input element's value
+                input.value = '';
+            }
+        }
+    });
+
+    // Add an event listener for click on the tags list
+    tags.addEventListener('click', function(event) {
+        // If the clicked element has the class 'delete-button'
+        if (event.target.classList.contains('delete-button')) {
+            // Remove the parent element (the tag)
+            event.target.parentNode.remove();
+            updateTagsInput();
+        }
+    });
+</script>
+
+@endsection

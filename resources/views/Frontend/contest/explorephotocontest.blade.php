@@ -7,8 +7,11 @@
             <img class="img-fluid" src="https://www.viewbug.com/media/images/contests/contest10320_banner.jpg" alt=""  height="600" width="1920" >
             <div class="carousel-caption head_caption">
                 <h3 class="display-4 text-light">Imagine a place where you can join hundreds of photo contests to challenge and reward your creativity</h3>
-                <a href="{{  route('register') }}" class="btn btn-light button_css">Sign up for free</a>
-                <a href="{{  route('contestform') }}" class="btn btn-light button_css">apply for photocontest</a>
+                @auth
+                    <a href="{{ route('contestform.create') }}" class="btn btn-light button_css">apply for photocontest</a>
+                @else
+                    <a href="{{ route('login') }}" class="btn btn-light button_css">Login to apply for photocontest</a>
+                @endauth
             </div>
         </div>
     </div>
@@ -44,23 +47,31 @@ amazing brands and opportunities.  </p>
 <div class="py-5">
     <h3 class="display-4 text-center">Discover all photo contests</h3>
 
-
-    <div class="carousel-inner ">
-
-
-
-    <div class="container py-5">
-        <h2>Explore Photo Contests</h2>
+    <div class="row pt-4">
         @foreach($categories as $category)
-        <p>Category Name: {{ $category->category_name }}</p>
-        <p>Description: {{ $category->description }}</p>
-        <!-- Add more fields as needed -->
-        <img src="{{ asset($category->img) }}" alt="Category Image" width="100" height="100">
+        <div class="col-md-12 mb-4" style="position: relative;">
+            <div style="position: absolute; top: 50%; left: 100px; transform: translateY(-50%); text-align: center; color: white;">
+                <h5 style="font-size: 24px;">{{ $category->category_name }}</h5>
+                <p style="font-size: 18px;">{{ $category->description }}</p>
+                <a href="{{ route('contestdetail') }}" class="btn btn-danger" style="font-size: 40px;">View</a>
+
+            </div>
+            <img class="img-fluid" src="{{ $category->img }}" alt="{{ $category->category_name }}" style="width: 100%; height: 100vh;">
+        </div>
         @endforeach
     </div>
-
-    </div>
-
-
 </div>
+
+
 @endsection
+
+
+
+
+
+
+
+
+
+
+

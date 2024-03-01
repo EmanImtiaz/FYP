@@ -7,10 +7,11 @@ use Illuminate\Http\Request;
 class CategoryController extends Controller
 {
     public function create()
-    {
-       $categories=new Category;
-       return view('admin.contest.category.create',compact('categories'));
-    }
+{
+    $category = new Category();
+    return view('admin.contest.category.create', compact('category'));
+}
+
 
 
     public function index()
@@ -77,6 +78,8 @@ public function update(Request $request,$id)
        $categories = Category::get();
        return view('Frontend.contest.explorephotocontest', compact('categories'));
    }
+
+  
 
 
 }

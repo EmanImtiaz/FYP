@@ -16,40 +16,43 @@ class PhotosContestController extends Controller
 
     public function index()
     {
-        $photocontest = PhotoContest::get();
+        $photocontests = PhotoContest::get(); // Retrieve all photo contests
         $categories = Category::all();
-        return view('admin.contest.photoscontest.index', compact('photocontest','categories'));
+        return view('admin.contest.photoscontest.index', compact('photocontests', 'categories')); // Pass data to the view
     }
+
 
     public function store(Request $request)
+{
+    // Ensure the user is authenticated
+    $this->middleware('auth');
+
+    $data = $request->validate([
+        'description' => 'required',
+        'tags' => 'nullable',
+        'category_id' => 'required',
+    ]);
+
+    $data['views'] = 0; // Set the views count to 0
+
+    if($request->has('contest_img'))
     {
-         // Ensure the user is authenticated
-         $this->middleware('auth');
-        $data = $request->validate([
-            'description' => 'required',
-            'views' => 'numeric',
-            'tags' => 'nullable',
-            'category_id' => 'required',
-        ]);
+        $picture=$request->contest_img;
+        $ext=$picture->getClientOriginalExtension();
+        $file_name=time().'.'.$ext;
+        $file_path='/assets/photoscontest/';
+        $picture->move(public_path().$file_path,$file_name);
 
+        $data['contest_img']=$file_path.$file_name;
 
-        if($request->has('contest_img'))
-        {
-            $picture=$request->contest_img;
-            $ext=$picture->getClientOriginalExtension();
-            $file_name=time().'.'.$ext;
-            $file_path='/assets/photoscontest/';
-            $picture->move(public_path().$file_path,$file_name);
-
-            $data['contest_img']=$file_path.$file_name;
-
-        }
-        $data['category_id'] = $request->input('category_id');
-        $data['user_id'] = Auth::id();
-        PhotoContest::create($data);
-
-        return redirect()->route('photoscontest.index');
     }
+    $data['category_id'] = $request->input('category_id');
+    $data['user_id'] = Auth::id();
+    PhotoContest::create($data);
+
+    return redirect()->route('contestdetail'); // Redirect to contestdetail route after storing
+}
+
 
     public function edit($id)
     {
@@ -104,15 +107,21 @@ class PhotosContestController extends Controller
 
     }
 
+
     public function view()
-{
-         // Ensure the user is authenticated
-         $this->middleware('auth');
+    {
+             // Ensure the user is authenticated
+             $this->middleware('auth');
 
-         $photocontest = PhotoContest::with('category')->where('user_id', auth()->id())->get();
-         $categories = Category::all();
+             $photocontests = PhotoContest::with('category')->where('user_id', auth()->id())->get();
+             $categories = Category::all();
 
-         return view('Frontend.contestform', compact('photocontest', 'categories'));
+             return view('Frontend.contest.contestdetail', compact('photocontests', 'categories'));
+    }
+
+
+
 }
 
-}
+
+
