@@ -1,5 +1,4 @@
 
-
 <div class="container pb-3">
     <h2 class="text-center pb-2">Packages</h2>
     <div class="row">
@@ -25,17 +24,19 @@
                         </ul>
 
                         <div class="row mt-3">
-                            <div class="col">
+                            <div class="col-3  ">
                                 <a href="{{ route('bookingform', ['packageId' => $packageService->package->id]) }}" class="btn btn-success btn-block">Book Package</a>
                             </div>
-                            @if($user->role === 'photographer')
-                            <div class="col">
-                                <a href="{{ route('packages.edit',['id'=>$packageService->package->id]) }}" class="btn btn-primary btn-block">Edit Package</a>
-                            </div>
-                            <div class="col">
-                                <a href="{{ route('packages.delete',['id'=>$packageService->package->id]) }}" class="btn btn-danger btn-block">Delete Package</a>
-                            </div>
+                            @auth
+                                        @if(Auth::user()->id === $user->id)
+                                        <div class="col-3 d-flex">
+                                            <a href="{{ route('packages.edit',['id'=>$packageService->package->id]) }}" class="btn btn-primary btn-block">Edit Package</a>
+                                    </div>
+                                    <div class="col-3 d-flex">
+                                        <a href="{{ route('packages.delete',['id'=>$packageService->package->id]) }}" class="btn btn-danger btn-block">Delete Package</a>
+                                </div>
                             @endif
+                        @endauth
                         </div>
                     </div>
                 </div>

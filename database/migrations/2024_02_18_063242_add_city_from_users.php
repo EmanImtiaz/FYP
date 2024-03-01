@@ -11,8 +11,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::table('photographer_profiles', function (Blueprint $table) {
-            $table->dropColumn('easypaisa');
+        Schema::table('users', function (Blueprint $table) {
+            $table->unsignedBigInteger('city_id');
+
+            $table->foreign('city_id')->references('id')->on('users')->onDelete('cascade');
         });
     }
 
@@ -21,7 +23,7 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::table('photographer_profiles', function (Blueprint $table) {
+        Schema::table('users', function (Blueprint $table) {
             //
         });
     }

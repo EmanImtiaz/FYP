@@ -1,7 +1,6 @@
 @extends('layout.master')
 @section('kuchb')
 
-
 <div class="container py-5">
     <div class="row justify-content-center">
         <div class="col-md-8">
@@ -56,12 +55,17 @@
                                                 <p class="mb-0">Address</p>
                                             </div>
                                             <div class="col-sm-9">
-                                                <strong>{{ $user->address}}</strong>
+                                                <strong>{{ $user->province->province_name }},{{ $user->city->city_name }},{{ $user->town->town_name }}</strong>
                                             </div>
                                         </div>
                                         <hr>
 
-                                        <a href="{{ route('profile.edit') }}" class="btn btn-danger">Edit Profile</a>
+
+                                        @auth
+                                        @if(Auth::user()->id === $user->id) <!-- Check if authenticated user ID matches the profile ID -->
+                                                    <a href="{{ route('profile.edit') }}" class="btn btn-danger">Edit Profile</a>
+                                        @endif
+                                        @endauth
                                         @if (!$photographerProfile || !$photographerProfile->isApproved())
                                                 <a href="{{ route('joinphotographer') }}" class="btn btn-danger">Apply as photographer</a>
                                         @endif
@@ -120,20 +124,26 @@
                                             </div>
                                             <hr>
 
+                                            <div class="row justify-content-center">
+                                                <!-- Conditional buttons based on user role -->
+                                                @auth
+                                                @if(Auth::user()->id === $user->id)
                                                 <div class="row justify-content-center">
-                                                    @if($user->role === 'photographer')
-                                                    <div class="col-3 d-flex">
-                                                        <a href="{{ route('detailedit') }}" class="btn btn-danger">Edit details</a>
-                                                    </div>
-                                                    <div class="col-4 d-flex">
-                                                        <a href="{{ route('packages.create') }}" class="btn btn-danger">Create Packages</a>
-                                                    </div>
-                                                    <div class="col-4 d-flex">
-                                                        <a href="{{ route('profileportfolio.create') }}" class="btn btn-danger">Create portfolio</a>
-                                                    </div>
-                                                    @endif
-
+                                                <div class="col-3 d-flex">
+                                                 <a href="{{ route('detailedit') }}" class="btn btn-danger">Edit details</a>
+                                            </div>
+                                            <div class="col-4 d-flex">
+                                                <a href="{{ route('packages.create') }}" class="btn btn-danger">Create Packages</a>
+                                            </div>
+                                            <div class="col-4 d-flex">
+                                                <a href="{{ route('profileportfolio.create') }}" class="btn btn-danger">Create portfolio</a>
+                                            </div>
+                                        </div>
+                                    @endif
+                                @endauth
                                                 </div>
+
+
                                             </div>
                                     </div>
                                 </div>
@@ -146,16 +156,17 @@
     </div>
 </div>
 
-@if(auth()->user()->role == 'photographer')
-
-  {{--  @include('Frontend.profileportfolioview', ['profileportfolios' => $profileportfolios]) --}}
-
-    @include('Frontend.packagesview', ['packages' => auth()->user()->packages])
+    <!-- Packages Section (Only for Photographer) -->
+    @if ($user->role === 'photographer')
+    <div class="row">
+        <div class="col-md-12">
+            @include('Frontend.packagesview')
+        </div>
+    </div>
 @endif
-
+<!-- End of Packages Section -->
 
 @endsection
-
 
 
 

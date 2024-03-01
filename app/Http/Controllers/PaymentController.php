@@ -6,10 +6,7 @@ use Illuminate\Http\Request;
 
 class PaymentController extends Controller
 {
-    public function payment()
-    {
-         return view('Frontend.bookingphotographer.payment');
-   }
+   
 
    public function displayPaymentMethods()
    {

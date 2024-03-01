@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\AboutController;
 use App\Http\Controllers\AllPortfolioController;
+use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\BlogPostController;
 use App\Http\Controllers\BookingController;
 use App\Http\Controllers\ContestDetailController;
@@ -12,8 +13,8 @@ use App\Http\Controllers\LocationController;
 use App\Http\Controllers\ProfilePortfolioController;
 use App\Http\Controllers\PackagesController;
 use App\Http\Controllers\PhotographerProfileController;
+use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\SingleWinnerDetailsController;
-use App\Http\Controllers\StripeController;
 use App\Http\Controllers\UserProfileUpdateController;
 
 Route::get('contact', [ContactController::class,'contact'])->name('contact');
@@ -23,12 +24,11 @@ Route::get('about',[AboutController::class,'about'])->name('about');
 Route::get('singlewinnerdetail',[SingleWinnerDetailsController::class,'singlewinnerdetail'])->name('singlewinnerdetail');
 
 
+// Route::get('allportfolio',[AllPortfolioController::class,'allportfolio'])->name('allportfolio');
 
-Route::get('allportfolio',[AllPortfolioController::class,'allportfolio'])->name('allportfolio');
+//Route::get('photographerprofile',[PhotographerProfileController::class,'photographerprofile'])->name('photographerprofile');
 
-Route::get('photographerprofile',[PhotographerProfileController::class,'photographerprofile'])->name('photographerprofile');
-
-Route::get('userprofileupdate',[UserProfileUpdateController::class,'userprofileupdate'])->name('userprofileupdate');
+//Route::get('userprofileupdate',[UserProfileUpdateController::class,'userprofileupdate'])->name('userprofileupdate');
 
 Route::get('blog',[BlogPostController::class,'show'])->name('blogpost.show');
 
@@ -41,11 +41,6 @@ Route::get('blog/{id}', [BlogPostController::class, 'blogdetail'])->name('blogde
 
 Route::group(['prefix'=>'packages'],function()
 {
-
-    // Add these routes for viewing packages
-    Route::get('/view', [PackagesController::class, 'view'])->name('packages.view');
-
-
     Route::get('/create',[PackagesController::class,'create'])->name('packages.create');
     Route::post('/store',[PackagesController::class,'store'])->name('packages.store');
     Route::get('/edit/{id}',[PackagesController::class,'edit'])->name('packages.edit');
@@ -70,20 +65,40 @@ Route::group(['prefix'=>'profileportfolio'],function()
 
 Route::get('/profileportfolio', [ProfilePortfolioController::class, 'view'])->name('profile.view');
 
-// Photographer Booking  //
+
+// register//
+
+Route::get('/gotted-cities',[RegisterController::class,'getCities'])->name('gotted-cities');
+Route::get('/gotted-towns',[RegisterController::class,'getTowns'])->name('gotted-towns');
+
+// Profile //
+Route::get('/edit-cities',[ProfileController::class,'getCities'])->name('edit-cities');
+Route::get('/edit-towns',[ProfileController::class,'getTowns'])->name('edit-towns');
+
+
+// bookingform //
+Route::group(['prefix'=>'booking'],function()
+{
+
+    Route::get('/',[BookingController::class,'index'])->name('booking.index');
+
+
+});
+
 
 Route::get('/booking/{packageId}', [BookingController::class, 'bookingForm'])->name('bookingform');
 Route::post('/booking/store', [BookingController::class, 'store'])->name('booking.store');
 Route::get('/calculate-services-price/{id}', [BookingController::class, 'calculateServicesTotalPrice'])->name('calculate.services.price');
-
-//location based bookings //
+Route::get('/got-cities',[BookingController::class,'getCities'])->name('got-cities');
+Route::get('/got-towns',[BookingController::class,'getTowns'])->name('got-towns');
+Route::post('/evidence/store', [BookingController::class, 'storeevidence'])->name('evidence.store');
+//all bookings //
 Route::get('/bookings', [BookingController::class, 'bookings'])->name('Frontend.bookings');
+
+
+
 
 // Location //
 Route::get('/booking',[LocationController::class,'view'])->name('booking.view');
 Route::get('/get-cities',[LocationController::class,'getCities'])->name('get-cities');
 Route::get('/get-towns',[LocationController::class,'getTowns'])->name('get-towns');
-
-// Stripe Payent //
-Route::get('stripe',[StripeController::class,'stripe']);
-Route::post('stripe',[StripeController::class,'stripePost'])->name('stripe.post');

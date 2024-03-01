@@ -134,14 +134,6 @@ private function calculateTotalPriceLogic($packageId): float
     return $totalAmount;
 }
 
-public function view()
-{
-    $packages = PackageService::with('package')->get();
-
-    return view('Frontend.profile', compact('packages'));
-
-}
-
 }
 
 

@@ -1,11 +1,11 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\AdminPanelController;
+// use App\Http\Controllers\AdminPanelController;
 use App\Http\Controllers\BlogPostController;
-use App\Http\Controllers\BookingController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\CityController;
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PackagesController;
 use App\Http\Controllers\PaymentAccountController;
 use App\Http\Controllers\PaymentController;
@@ -19,13 +19,10 @@ use App\Http\Controllers\ServicesController;
 use App\Http\Controllers\SliderController;
 use App\Http\Controllers\TownController;
 
-// Route::get('admin',[AdminPanelController::class,'adminpanel'])->name('adminpanel');
+Route::group(['prefix'=>'admin', 'middleware' => ['auth', 'role:admin']], function() {
+    Route::get('/',[HomeController::class,'adminpanel'])->name('adminpanel');
 
 
-
-Route::group(['prefix'=>'admin'],function()
-{
-    Route::get('/',[AdminPanelController::class,'adminpanel'])->name('adminpanel');
 
 // Slider //
     Route::group(['prefix'=>'slider'],function()
@@ -148,17 +145,9 @@ Route::group(['prefix'=>'blog'],function()
 
 });
 
-Route::group(['prefix'=>'booking'],function()
-{
-
-    Route::get('/',[BookingController::class,'index'])->name('booking.index');
-    Route::get('/create',[BookingController::class,'create'])->name('booking.create');
-    Route::post('/store',[BookingController::class,'store'])->name('booking.store');
 
 
-});
-
-//  payment accounts  //
+//  payment methods  //
 Route::group(['prefix'=>'payment'],function()
 {
 
@@ -189,6 +178,8 @@ Route::get('/user', [ProfileController::class, 'userindex'])->name('profile.inde
 Route::get('/photographer', [ProfileController::class, 'photographerindex'])->name('photogrpherprofile.index');
 Route::put('/photographer/approve/{id}', [ProfileController::class, 'approvePhotographerProfile'])->name('photogrpherprofile.approve');
 Route::put('/photographer/disapprove/{id}', [ProfileController::class, 'disapprovePhotographerProfile'])->name('photogrpherprofile.disapprove');
+
+
 
 
 });
