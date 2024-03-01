@@ -76,15 +76,6 @@ Route::get('/edit-cities',[ProfileController::class,'getCities'])->name('edit-ci
 Route::get('/edit-towns',[ProfileController::class,'getTowns'])->name('edit-towns');
 
 
-// bookingform //
-Route::group(['prefix'=>'booking'],function()
-{
-
-    Route::get('/',[BookingController::class,'index'])->name('booking.index');
-
-
-});
-
 
 Route::get('/booking/{packageId}', [BookingController::class, 'bookingForm'])->name('bookingform');
 Route::post('/booking/store', [BookingController::class, 'store'])->name('booking.store');

@@ -182,6 +182,13 @@
               </ul>
             </div>
           </li>
+          <li class="nav-item nav-category">Payments Approved</li>
+          <li class="nav-item">
+            <a href="{{ route('booking.index')  }}" class="nav-link">
+              <i class="link-icon" data-feather="message-square"></i>
+              <span class="link-title">Payment Approving</span>
+            </a>
+          </li>
           <li class="nav-item nav-category">Accounts Payment</li>
           <li class="nav-item">
             <a href="{{ route('paymentaccounts.index')  }}" class="nav-link">

@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 // use App\Http\Controllers\AdminPanelController;
 use App\Http\Controllers\BlogPostController;
+use App\Http\Controllers\BookingController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\CityController;
 use App\Http\Controllers\HomeController;
@@ -21,7 +22,6 @@ use App\Http\Controllers\TownController;
 
 Route::group(['prefix'=>'admin', 'middleware' => ['auth', 'role:admin']], function() {
     Route::get('/',[HomeController::class,'adminpanel'])->name('adminpanel');
-
 
 
 // Slider //
@@ -114,6 +114,7 @@ Route::group(['prefix'=>'services'],function()
 Route::get('/',[PackagesController::class,'index'])->name('packages.index');
 
 
+
 // Photographer Profile Portfolio Portion (Category) //
 Route::group(['prefix'=>'profilecategory'],function()
 {
@@ -180,6 +181,16 @@ Route::put('/photographer/approve/{id}', [ProfileController::class, 'approvePhot
 Route::put('/photographer/disapprove/{id}', [ProfileController::class, 'disapprovePhotographerProfile'])->name('photogrpherprofile.disapprove');
 
 
+// bookingform //
+Route::group(['prefix'=>'booking'],function()
+{
+
+    Route::get('/',[BookingController::class,'index'])->name('booking.index');
+    Route::get('/booking',[BookingController::class,'delete'])->name('booking.delete');
+    Route::post('/booking/approve/{id}', [BookingController::class, 'approveBooking'])->name('approve.booking');
+Route::post('/booking/disapprove/{id}', [BookingController::class, 'disapproveBooking'])->name('disapprove.booking');
+
+});
 
 
 });

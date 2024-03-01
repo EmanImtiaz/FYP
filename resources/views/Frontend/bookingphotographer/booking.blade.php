@@ -4,12 +4,14 @@
     <img src="https://rstheme.com/products/html/shooter/shooter-html/images/banner/2.jpg" alt="">
     <div class="container py-5">
         <h1>Photographer Search for Booking</h1>
-        <form id="searchForm">
+        <form action="" method="get" enctype="multipart/form-data" >
+            @csrf
+
             <div class="row">
                 <div class="col-lg-3">
                     <div class="form-group">
                         <label for="province">Province:</label>
-                        <select class="form-select" id="province">
+                        <select class="form-select" id="province" name="province">
                             <option selected>Select a Province.</option>
                             @foreach($provinces as $province)
                                 <option value="{{ $province->id }}">{{ $province->province_name }}</option>
@@ -67,49 +69,71 @@
 
 
     <script>
-        $(document).ready(function () {
-            $('#province').change(function () {
-                var provinceId = $(this).val();
+      document.addEventListener("DOMContentLoaded", function() {
+        // Function to set default options for city and town
+        function setDefaultOptions() {
+            $('#city').html('<option selected>Select a City.</option>');
+            $('#town').html('<option selected>Select a Town.</option>');
+        }
 
-                $.ajax({
-                    url: '{{ route("get-cities") }}',
-                    method: 'GET',
-                    data: {province_id: provinceId},
-                    success: function (data) {
-                        var citiesDropdown = $('#city');
-                        citiesDropdown.empty();
+        // Call the function to set default options when the page loads
+        setDefaultOptions();
 
-                        $.each(data.cities, function (index, city) {
-                            citiesDropdown.append($('<option>', {
-                                value: city.id,
-                                text: city.city_name
-                            }));
-                        });
-                    }
-                });
-            });
+        $('#province').change(function () {
+            var provinceId = $(this).val();
+            $('#province_id').val(provinceId); // Set the selected province ID
 
-            $('#city').change(function () {
-                var cityId = $(this).val();
+            $.ajax({
+                url: '{{ route("get-cities") }}',
+                method: 'GET',
+                data: {province_id: provinceId},
+                success: function (data) {
+                    var citiesDropdown = $('#city');
+                    citiesDropdown.empty().append('<option selected>Select a City.</option>');
 
-                $.ajax({
-                    url: '{{ route("get-towns") }}',
-                    method: 'GET',
-                    data: {city_id: cityId},
-                    success: function (data) {
-                        var townsDropdown = $('#town');
-                        townsDropdown.empty();
+                    $.each(data.cities, function (index, city) {
+                        citiesDropdown.append($('<option>', {
+                            value: city.id,
+                            text: city.city_name
+                        }));
+                    });
 
-                        $.each(data.towns, function (index, town) {
-                            townsDropdown.append($('<option>', {
-                                value: town.id,
-                                text: town.town_name
-                            }));
-                        });
-                    }
-                });
+                    // Reset town dropdown when province changes
+                    $('#town').html('<option selected>Select a Town.</option>');
+                }
             });
         });
+
+        $('#city').change(function () {
+            var cityId = $(this).val();
+            $('#city_id').val(cityId); // Set the selected city ID
+
+            $.ajax({
+                url: '{{ route("get-towns") }}',
+                method: 'GET',
+                data: {city_id: cityId},
+                success: function (data) {
+                    var townsDropdown = $('#town');
+                    townsDropdown.empty().append('<option selected>Select a Town.</option>');
+
+                    $.each(data.towns, function (index, town) {
+                        townsDropdown.append($('<option>', {
+                            value: town.id,
+                            text: town.town_name
+                        }));
+                    });
+                }
+            });
+        });
+
+        $('#town').change(function () {
+            var townId = $(this).val();
+            $('#town_id').val(townId); // Set the selected town ID
+        });
+    });
+
+
+
     </script>
 
 
