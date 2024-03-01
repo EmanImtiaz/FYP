@@ -166,22 +166,36 @@ public function bookings()
         // Get the photographer's profile ID
         $photographerProfileId = Auth::user()->photographerProfile->id;
 
-        // Retrieve bookings associated with the photographer's profile ID
-        $bookings = Booking::whereHas('bookingServices', function ($query) use ($photographerProfileId) {
+        // Retrieve all bookings associated with the photographer's profile ID
+        $allBookings = Booking::whereHas('bookingServices', function ($query) use ($photographerProfileId) {
             $query->where('photographer_profile_id', $photographerProfileId);
         })->get();
+
+        // Retrieve confirmed bookings associated with the photographer's profile ID
+        $confirmedBookings = Booking::whereHas('bookingServices', function ($query) use ($photographerProfileId) {
+            $query->where('photographer_profile_id', $photographerProfileId)
+                ->where('is_paid', 1); // Filter for confirmed bookings
+        })->get();
+
+        // Retrieve payment pending bookings associated with the photographer's profile ID
+        $paymentPendingBookings = Booking::whereHas('bookingServices', function ($query) use ($photographerProfileId) {
+            $query->where('photographer_profile_id', $photographerProfileId)
+                ->where('is_paid', 0); // Filter for payment pending bookings
+        })->get();
     } else {
-        // Retrieve bookings associated with the user's ID
+        // Retrieve all bookings associated with the user's ID
         $userId = Auth::id();
-        $bookings = Booking::whereHas('bookingServices', function ($query) use ($userId) {
+        $allBookings = Booking::whereHas('bookingServices', function ($query) use ($userId) {
             $query->where('user_id', $userId);
         })->get();
+
+        // For non-photographer users, confirmed and payment pending bookings will be empty arrays
+        $confirmedBookings = [];
+        $paymentPendingBookings = [];
     }
 
-    return view('Frontend.bookings', compact('bookings'));
+    return view('Frontend.bookings', compact('allBookings', 'confirmedBookings', 'paymentPendingBookings'));
 }
-
-
 
 
 }
