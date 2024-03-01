@@ -102,11 +102,11 @@ public function delete(Request $request, $id)
 
 public function view()
 {
-   $profileportfolios = ProfilePortfolio::with('category')->where('user_id', auth()->id())->get();
+   $profileportfolios = ProfilePortfolio::with('category')->get();
     $profilecategories = ProfileCategory::all();
 
     return view('Frontend.profileportfolioview', compact('profileportfolios', 'profilecategories'));
-}
+ }
 
 }
 

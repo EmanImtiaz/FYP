@@ -17,6 +17,12 @@ use Illuminate\Http\Request;
 
 class BookingController extends Controller
 {
+    
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     public function bookingForm($packageId)
     {
 
@@ -29,6 +35,7 @@ class BookingController extends Controller
 
         return view('Frontend.bookingphotographer.bookingform', compact('booking', 'provinces','package', 'packageServices', 'payments','paymentAccounts'));
     }
+
 
     public function index()
 

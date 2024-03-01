@@ -18,33 +18,24 @@ use Illuminate\Support\Facades\Storage;
 
 class ProfileController extends Controller
 {
+
     public function profile()
     {
-
         $user = Auth::user();
         $photographerProfile = PhotographerProfile::where('user_id', $user->id)->first();
-    //    $profileportfolios = [];
-    //    $profilecategories = [];
-
-    // Check if the user is a photographer
-    if ($user->role === 'photographer') {
         // Load unique packages with services
         $packages = PackageService::where('user_id', $user->id)
             ->with('package.services') // Eager load relationships
             ->get();
 
-        // Check if there are profile portfolios and categories
-   //     $profileportfolios = ProfilePortfolio::where('user_id', $user->id)->get();
-   //     $profilecategories = ProfileCategory::all();
-
-        return view('Frontend.profile', compact('user', 'photographerProfile', 'packages'));
-    }
-  else {
+        // Check if the user is a photographer
+        if ($user->role === 'photographer') {
+            return view('Frontend.profile', compact('user', 'photographerProfile' ,'packages'));
+        } else {
             // Handle users without the photographer role
             return view('Frontend.profile', compact('user', 'photographerProfile'));
         }
     }
-
 
 
 //admin panel user table//
@@ -263,12 +254,12 @@ public function show($id)
 {
     $photographerProfile = PhotographerProfile::findOrFail($id);
     $user = User::findOrFail($photographerProfile->user_id); // Fetch the associated user
-    $packages = PackageService::where('user_id', $user->id)
+   $packages = PackageService::where('user_id', $user->id)
     ->with('package.services') // Eager load relationships
-    ->get();
+   ->get();
 
     return view('Frontend.profile', compact('photographerProfile', 'user','packages'));
-}
+ }
 
 
 

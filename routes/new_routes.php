@@ -63,7 +63,7 @@ Route::group(['prefix'=>'profileportfolio'],function()
 
 });
 
-Route::get('/profileportfolio', [ProfilePortfolioController::class, 'view'])->name('profile.view');
+Route::get('/profileportfolio', [ProfilePortfolioController::class, 'view'])->name('profileportfolio.view');
 
 
 // register//
