@@ -91,6 +91,7 @@ Route::post('/booking/store', [BookingController::class, 'store'])->name('bookin
 Route::get('/calculate-services-price/{id}', [BookingController::class, 'calculateServicesTotalPrice'])->name('calculate.services.price');
 Route::get('/got-cities',[BookingController::class,'getCities'])->name('got-cities');
 Route::get('/got-towns',[BookingController::class,'getTowns'])->name('got-towns');
+Route::post('/evidence/store', [BookingController::class, 'storeevidence'])->name('evidence.store');
 //all bookings //
 Route::get('/bookings', [BookingController::class, 'bookings'])->name('Frontend.bookings');
 

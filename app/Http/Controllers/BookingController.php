@@ -53,7 +53,6 @@ class BookingController extends Controller
         return response()->json(['total_price' => $totalPrice]);
     }
 
-
   private function calculateServicesTotalPriceLogic($packageId, $selectedServices): float
   {
       $packageServices = PackageService::whereIn('service_id', $selectedServices)
@@ -70,7 +69,40 @@ class BookingController extends Controller
       }
 
       return $totalAmount;
-  }
+    }
+
+
+    public function storeevidence(Request $request)
+    {
+        // Validate the incoming request data
+        $validatedData = $request->validate([
+            'evidence' => 'required|image|max:2048', // Adjust max file size as needed
+            'booking_id' => 'required|exists:bookings,id',
+        ]);
+
+        // Retrieve the booking ID from the request
+        $bookingId = $validatedData['booking_id'];
+
+        // Find the booking based on the provided ID
+        $booking = Booking::findOrFail($bookingId);
+
+        // Handle file upload and storage
+        if ($request->hasFile('evidence')) {
+            $image = $request->file('evidence');
+            $imageName = time().'.'.$image->getClientOriginalExtension();
+
+            // Store the image in the storage/app/public directory
+            $path = $image->storeAs('public/evidence', $imageName);
+
+            // Update the evidence field in the booking
+            $booking->evidence = $path;
+            $booking->save();
+
+            return redirect()->route('Frontend.profile');
+        } else {
+            return redirect()->back()->with('error', 'No file uploaded.');
+        }
+    }
 
   public function store(Request $request)
   {
@@ -80,7 +112,6 @@ class BookingController extends Controller
           'name' => 'required',
           'email' => 'required',
           'phone' => 'required',
-          'remarks' => 'nullable',
           'payment_method_options' => 'required',
           'dates' => 'array',
           'services' => 'array',
@@ -89,7 +120,6 @@ class BookingController extends Controller
           'city_id' => 'required',
           'town_id' => 'required',
           'payment_id' => $request->input('payment_method_options') == '1' ? 'required' : 'nullable',
-          'evidence' => 'nullable',
           'account_name' => $request->input('payment_method_options') == '1' ? 'required' : 'nullable',
           'account_number' =>$request->input('payment_method_options') == '1' ? 'required' : 'nullable',
           'is_paid' => 'nullable',

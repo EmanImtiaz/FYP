@@ -62,10 +62,24 @@
                                         @endif
                                     </p>
                                     <!-- Add other booking details as needed -->
+                                     <!-- Add other booking details as needed -->
+                                     @if($booking->payment_method_options == 0 && !Auth::user()->hasAnyRole('photographer'))
+                                     <!-- Display image upload form -->
+                                     <form method="post" action="{{ route('evidence.store') }}" enctype="multipart/form-data">
+                                         @csrf
+                                         <div class="form-group">
+                                             <label for="evidence">Upload Evidence</label>
+                                             <input type="file" name="evidence" id="evidence" value={{$booking->evidence}}>
+                                             <input type="hidden" name="booking_id" value="{{ $booking->id }}">
+                                             <button type="submit" class="btn btn-primary">Submit</button>
+                                         </div>
+                                     </form>
+                                 @endif
                                 </div>
                             </div>
                         @endforeach
                     </div>
+
 
                     <div class="tab-pane fade" id="confirmed">
                         @foreach($confirmedBookings as $booking)
