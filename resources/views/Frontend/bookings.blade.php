@@ -16,7 +16,7 @@
     </div>
 </header>
 
-<div class="container py-3">
+<div class="container py-5">
 
     <ul class="nav nav-pills nav-fill" id="bookingTabs">
         @if(Auth::user()->hasAnyRole('photographer'))
@@ -100,22 +100,28 @@
                     </div>
 
                     <div class="tab-pane fade" id="pending">
-                        @foreach($paymentPendingBookings as $booking)
-                            <div class="card mb-3">
-                                <div class="card-body">
-                                    <h5 class="card-title">Customer Name: {{ $booking->name }}</h5>
-                                    <p class="card-text">Total Amount: {{ $booking->total_amount }}</p>
-                                    <p class="card-text">Payment Method:
-                                        @if($booking->payment_method_options == 1)
-                                            Online Payment
-                                        @else
-                                            Offline Payment
-                                        @endif
-                                    </p>
-                                    <!-- Add other booking details as needed -->
-                                </div>
+                        @if(count($paymentPendingBookings) === 0)
+                            <div class="alert alert-danger" role="alert">
+                                No payment is Pending
                             </div>
-                        @endforeach
+                        @else
+                            @foreach($paymentPendingBookings as $booking)
+                                <div class="card mb-3">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Customer Name: {{ $booking->name }}</h5>
+                                        <p class="card-text">Total Amount: {{ $booking->total_amount }}</p>
+                                        <p class="card-text">Payment Method:
+                                            @if($booking->payment_method_options == 1)
+                                                Online Payment
+                                            @else
+                                                Offline Payment
+                                            @endif
+                                        </p>
+                                        <!-- Add other booking details as needed -->
+                                    </div>
+                                </div>
+                            @endforeach
+                        @endif
                     </div>
                 </div>
             </div>

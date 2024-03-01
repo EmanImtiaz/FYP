@@ -44,8 +44,14 @@
 
         <div class="container py-5">
             <div class="row justify-content-center">
-                @foreach($photographerProfiles as $photographer)
-                    @if($photographer->user && $photographer->user->role === 'photographer') <!-- Check if user exists and role is 'photographer' -->
+                @if($photographerProfiles->isEmpty())
+                    <div class="alert alert-danger" role="alert">
+                        No photographer available at this location.
+                    </div>
+                @else
+                    @foreach($photographerProfiles as $photographer)
+                        <!-- Your photographer profile cards -->
+                        @if($photographer->user && $photographer->user->role === 'photographer') <!-- Check if user exists and role is 'photographer' -->
                         <div class="col-md-4 mb-4">
                             <div class="card">
                                 <img src="{{ $photographer->user->profile_image }}" class="card-img-top" alt="">
@@ -62,7 +68,8 @@
                             </div>
                         </div>
                     @endif
-                @endforeach
+                    @endforeach
+                @endif
             </div>
         </div>
     </div>
