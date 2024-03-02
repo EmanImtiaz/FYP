@@ -29,7 +29,11 @@
                             <i class="fa-solid fa-thumbs-down fa-lg text-dark"></i>
                         </button>
                     </div>
-                    <img src="{{ $photocontest->contest_img }}" class="card-img-top w-100 h-100" alt="Card Image" data-tags="{{ $photocontest->tags }}">
+                    <img src="{{ $photocontest->contest_img }}" class="card-img-top w-100 h-100" alt="Card Image"
+                         data-photographer-name="{{ $photocontest->user->name }}"
+                         data-photographer-image="{{ $photocontest->user->profile_picture }}"
+                         data-description="{{ $photocontest->description }}"
+                         data-tags="{{ $photocontest->tags }}">
                 </div>
                 <div class="card-body position-absolute bottom-0 start-0 p-3 hidden-on-hover">
                     <!-- Photographer Profile Picture and Name on the bottom left -->
@@ -77,10 +81,10 @@ function hideInfo(card) {
             <div class="modal-header d-flex flex-column align-items-start">
                 <!-- Photographer Profile Picture and Name on the bottom left -->
                 <div class="d-flex align-items-center">
-                    <img src="https://images.pexels.com/photos/774909/pexels-photo-774909.jpeg?auto=compress&cs=tinysrgb&w=600" class="rounded-img " alt="Photographer" height="52" width="52">
+                    <img src="" id="photographerImage" class="rounded-img " alt="Photographer" height="52" width="52">
                     <div class="ms-2">
-                        <h5 class="card-title text-dark">Photographer Name</h5>
-                        <p class="card-text text-dark">Image Description</p>
+                        <h5 class="card-title text-dark" id="photographerName">Photographer Name</h5>
+                        <p class="card-text text-dark" id="imageDescription">Image Description</p>
                     </div>
                 </div>
                 <!-- Collection Icons (Font Awesome) on the top right -->
@@ -88,7 +92,7 @@ function hideInfo(card) {
                    <!-- Add these buttons inside the card body -->
                    <form action="{{ route('vote.store') }}" method="post">
                     @csrf
-                    <input type="hidden" name="photo_contest_id" value="{{ $photocontest->id }}">
+                    <input type="hidden" name="photo_contest_id" id="photo_contest_id" value="">
                     <button type="submit" name="type" value="like" class="btn btn-light custom-button like-btn">
                         <i class="fa-solid fa-thumbs-up fa-lg text-dark"></i>
                     </button>
@@ -117,7 +121,7 @@ function hideInfo(card) {
                         </div>
                         <div class="col-1 vote-css">
                             <h3 class="vote_css">Tags</h3>
-                            <span class="vote-no" id="voteCount">{{ $photocontest->tags }}</span>
+                            <span class="vote-no" id="tags"></span>
                         </div>
 
                     </div>
@@ -137,6 +141,9 @@ function hideInfo(card) {
 
 <script>
     const modalImage1 = document.getElementById('modalImage1');
+    const photographerImage = document.getElementById('photographerImage');
+    const photographerNameElement = document.getElementById('photographerName');
+    const imageDescriptionElement = document.getElementById('imageDescription');
     const cardImages = document.querySelectorAll('.card-img-top');
     let viewCount = 0;
     let voteCount = 0;
@@ -144,20 +151,34 @@ function hideInfo(card) {
     cardImages.forEach((image, index) => {
         image.addEventListener('click', () => {
             const imagePath = image.getAttribute('src');
-            const tags = image.getAttribute('data-tags'); // Fetch tags for the corresponding photocontest
+            const photographerName = image.getAttribute('data-photographer-name');
+            const photographerImageSrc = image.getAttribute('data-photographer-image');
+            const imageDescription = image.getAttribute('data-description');
+            const tags = image.getAttribute('data-tags');
+            const photoContestId = image.getAttribute('data-photo-contest-id');
+
             modalImage1.setAttribute('src', imagePath);
-            $('#imageModal1').modal('show'); // Show the modal
-            viewCount++; // Increment view count
-            document.getElementById('viewCount').textContent = viewCount; // Update view count in modal
-            voteCount++; // Increment vote count
-            document.getElementById('voteCount').textContent = voteCount; // Update vote count in modal
-            document.getElementById('tags').textContent = tags; // Update tags in modal
+            photographerImage.setAttribute('src', photographerImageSrc);
+            photographerNameElement.textContent = photographerName;
+            imageDescriptionElement.textContent = imageDescription;
+            $('#imageModal1').modal('show');
+            viewCount++;
+            document.getElementById('viewCount').textContent = viewCount;
+            voteCount++;
+            document.getElementById('voteCount').textContent = voteCount;
+            document.getElementById('tags').textContent = tags;
+            document.getElementById('photo_contest_id').value = photoContestId;
         });
     });
 </script>
 
 
 @endsection
+
+
+
+
+
 
 
 
