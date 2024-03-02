@@ -53,12 +53,17 @@
 
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.1/dist/umd/popper.min.js"></script>
 <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+<style>
+    .body{
+        overflow-x: hidden;
+    }
+</style>
 
 </head>
 <body class="bg-light" >
     <nav class="navbar navbar-light navbar-expand-md" style="color: #d32f2f;">
         <div class="container">
-            <a class="nav-brand text-danger" href="">Raise Photography</a>
+            <a class="nav-brand text-danger nav-link "  href=""><strong>Raise Photography</strong></a>
             <img width="250" src="" alt="">
             <button class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#nvam">
                 <span class="navbar-toggler-icon"></span>
@@ -72,11 +77,12 @@
                         <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="photocontest">Contest</a>
                         <ul class="dropdown-menu">
                             <li><a class="dropdown-item" href="{{ route('explorephotocontest') }}">Explore Photos Contest</a></li>
-                            <li><a class="dropdown-item" href="{{ route('winners') }}">Winners</a></li>
+                       {{--     <li><a class="dropdown-item" href="{{ route('winners') }}">Winners</a></li>  --}}
                         </ul>
                     </li>
                     <li class="nav-item"><a class="nav-link" href="{{ route('about') }}">About Us</a></li>
-                    <li class="nav-item"><a class="nav-link" href="{{ route('contact') }}">Contact Us</a></li>
+        {{--           <li class="nav-item"><a class="nav-link" href="{{ route('contact') }}">Contact</a></li>   --}} 
+                    <li class="nav-item"><a class="nav-link" href="{{ route('blogpost.show') }}">Blog</a></li>
                     @auth
                         <li class="nav-item dropdown">
                             <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
@@ -105,8 +111,10 @@
                 </ul>
             </div>
         </div>
+
     </nav>
 
+<
       @yield('kuchb')
 
 <!-- footer-->

@@ -10,6 +10,7 @@ use App\Models\PaymentAccount;
 use App\Models\BookingService;
 use App\Models\City;
 use App\Models\Town;
+
 use App\Models\Province;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
@@ -17,7 +18,7 @@ use Illuminate\Http\Request;
 
 class BookingController extends Controller
 {
-    
+
     public function __construct()
     {
         $this->middleware('auth');
@@ -53,9 +54,9 @@ class BookingController extends Controller
     if ($booking->payment_method_options == 0) {
         $booking->update(['payment_method_options' => 1]);
     }
-
-    return redirect()->route('Frontend.profile')->with('success', 'Your evidence has been approved successfully & Booking is Confirmed');
+   return redirect()->back()->with('success', 'Your evidence has been approved successfully & Booking is Confirmed');
     }
+
 
     public function disapproveBooking($id)
     {

@@ -23,7 +23,8 @@
                 <tr>
                     <td>{{  ++$key }}</td>
                     <td>{{ $town->province->province_name }}</td>
-                    <td>{{ $town->city->city_name }}</td>
+                    <td>{{ optional($town->city)->city_name }}</td>
+                
                     <td>{{ $town->town_name }}</td>
                     <td>
                         <a class="btn btn-primary" href="{{ route('town.edit',['id'=>$town->id]) }}">Edit</a>

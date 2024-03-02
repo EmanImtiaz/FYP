@@ -98,6 +98,7 @@
                         </div>
 
                         <div class="col-lg-4 col-sm-4 col-md-4 mt-2" id="onlinePaymentOptions" style="display: {{ old('payment_method_options', $booking->payment_method_options) == '1' ? 'block' : 'none' }}">
+                            <label class="form-label"> Payment ID</label>
                             @foreach($payments as $payment)
                                 <div class="form-check">
                                     <input class="form-check-input" type="radio" id="payment_id_{{ $payment->id }}" name="payment_id" value="{{ $payment->id }}" {{ old('payment_id', $booking->payment_id) == $payment->id ? 'checked' : '' }}>

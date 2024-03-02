@@ -126,15 +126,15 @@
                                                 </div>
                                             </div>
                                             <hr>
-                                            <div class="row">
+                                          {{--     <div class="row">
                                                 <div class="col-sm-3">
                                                     <p class="mb-0">Document:</p>
                                                 </div>
                                                 <div class="col-sm-9">
-                                                   <a href="{{ $photographerProfile->documents }}">{{ $photographerProfile->documents }}</a>
+                                                <a href="{{ $photographerProfile->documents }}">{{ $photographerProfile->documents }}</a>
                                                 </div>
                                             </div>
-                                            <hr>
+                                            <hr>  --}}
 
                                             <div class="row justify-content-center">
                                                 <!-- Conditional buttons based on user role -->

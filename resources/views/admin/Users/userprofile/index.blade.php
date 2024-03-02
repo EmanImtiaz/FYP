@@ -6,10 +6,7 @@
     <div class="text-center py-2">
         <h1>Users</h1>
         </div>
-        <div class="text-end">
-            <a class="btn btn-primary"href="">Create</a>
-        </div>
-
+       
         <table class="container text-center table  table-striped-columns table-striped table-border border-5 border-danger py-2">
             <thead class="">
                 <tr>
