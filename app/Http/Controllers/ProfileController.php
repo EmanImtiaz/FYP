@@ -249,7 +249,6 @@ public function detail_edit()
 }
 
 
-
 public function show($id)
 {
     $photographerProfile = PhotographerProfile::findOrFail($id);

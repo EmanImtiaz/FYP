@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\ProfilePortfolio;
 use App\Models\ProfileCategory;
+use App\Models\User;
+use App\Models\PhotographerProfile;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -27,8 +29,9 @@ class ProfilePortfolioController extends Controller
     public function store(Request $request)
 {
     $request->validate([
+        'profile_category_id' => 'required', // Ensure category exists
         'img' => 'required',
-        'category_id' => 'required', // Ensure category exists
+
     ]);
 
     $data = [];
@@ -44,7 +47,7 @@ class ProfilePortfolioController extends Controller
         $data['img'] = $file_path . $file_name;
     }
 
-    $data['category_id'] = $request->input('category_id');
+    $data['profile_category_id'] = $request->input('profile_category_id');
     $data['user_id'] = Auth::id();
 
     ProfilePortfolio::create($data);
@@ -63,7 +66,7 @@ public function edit($id)
 public function update(Request $request, $id)
 {
     $request->validate([
-        'category_id' => 'required',
+        'profile_category_id' => 'required',
         'img' => 'required',
     ]);
 
@@ -81,7 +84,7 @@ public function update(Request $request, $id)
         $data['img'] = $file_path . $file_name;
     }
 
-    $data['category_id'] = $request->input('category_id');
+    $data['profile_category_id'] = $request->input('profile_category_id');
     $data['user_id'] = Auth::id();
 
     $profileportfolio->update($data);
@@ -100,13 +103,26 @@ public function delete(Request $request, $id)
 
 }
 
-public function view()
+
+public function viewss()
 {
-   $profileportfolios = ProfilePortfolio::with('category')->get();
+    // Fetch profile portfolios based on the authenticated user's ID
+    $profileportfolios = ProfilePortfolio::with('category')
+        ->where('user_id', auth()->id())
+        ->get();
+
+    // Pass the fetched profile portfolios to the view
+    return view('Frontend.profileportfolioview', compact('profileportfolios'));
+}
+
+public function view($id)
+{
+    $user = User::find($id); // Fetch the photographer data
+    $profileportfolios = ProfilePortfolio::with('category')->where('user_id', $id)->get();
     $profilecategories = ProfileCategory::all();
 
-    return view('Frontend.profileportfolioview', compact('profileportfolios', 'profilecategories'));
- }
+    return view('Frontend.profileportfolioview', compact('profileportfolios', 'profilecategories','user'));
+}
 
 }
 

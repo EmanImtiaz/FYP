@@ -53,7 +53,7 @@ amazing brands and opportunities.  </p>
             <div style="position: absolute; top: 50%; left: 100px; transform: translateY(-50%); text-align: center; color: white;">
                 <h5 style="font-size: 24px;">{{ $category->category_name }}</h5>
                 <p style="font-size: 18px;">{{ $category->description }}</p>
-                <a href="{{ route('contestdetail', ['categoryId' => $category->id]) }}">View Contests</a>
+                <a class="btn btn-danger"  href="{{ route('contestdetail', ['categoryId' => $category->id]) }}">View Contests</a>
 
 
 

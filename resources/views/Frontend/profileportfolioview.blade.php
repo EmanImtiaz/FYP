@@ -9,7 +9,7 @@
 
     }
 </style>
-<div class="container py-5">
+<div class="container mt-5 py-5">
     <div class="row">
         <h1 class="text-center"> Portfolio</h1>
 
@@ -64,42 +64,51 @@
 @endforeach
 
 <script>
-    document.addEventListener('DOMContentLoaded', function () {
-        const categoryLinks = document.querySelectorAll('.nav-link');
-        const portfolioItems = document.querySelectorAll('.portfolio-item');
+   document.addEventListener('DOMContentLoaded', function () {
+    const categoryLinks = document.querySelectorAll('.nav-link');
+    const portfolioItems = document.querySelectorAll('.portfolio-item');
 
-        categoryLinks.forEach(function (link) {
-            link.addEventListener('click', function (event) {
-               
-                const selectedCategory = link.getAttribute('href').substring(1); // Extract category from href
+    categoryLinks.forEach(function (link) {
+        link.addEventListener('click', function (event) {
+            event.preventDefault(); // Prevent default link behavior
 
-                // Filter and display portfolio items based on the selected category
-                portfolioItems.forEach(function (item) {
-                    const categories = item.dataset.categories.split(',');
+            const selectedCategory = link.getAttribute('href').substring(1); // Extract category from href
 
-                    if (selectedCategory === 'all' || categories.indexOf(selectedCategory) !== -1) {
-                        item.style.display = 'block'; // Show items for the selected category or "All"
-                    } else {
-                        item.style.display = 'none'; // Hide items for other categories
-                    }
-                });
-
-                // Log the selected category to the console
-                console.log('Selected Category:', selectedCategory);
+            // Toggle active class for category links
+            categoryLinks.forEach(function (categoryLink) {
+                categoryLink.classList.remove('active');
             });
-        });
+            link.classList.add('active');
 
-        portfolioItems.forEach(function (item) {
-            const image = item.querySelector('.card-img-top');
-            const imageId = image.dataset.bsTarget.split('imageModal')[1];
-            const modalImage = document.getElementById('modalImage' + imageId);
+            // Filter and display portfolio items based on the selected category
+            portfolioItems.forEach(function (item) {
+                const categories = item.dataset.categories.split(',');
 
-            image.addEventListener('click', function () {
-                const imagePath = image.getAttribute('src');
-                modalImage.setAttribute('src', imagePath);
+                if (selectedCategory === 'all' || categories.includes(selectedCategory)) {
+                    item.style.display = 'block'; // Show items for the selected category or "All"
+                } else {
+                    item.style.display = 'none'; // Hide items for other categories
+                }
             });
+
+            // Log the selected category to the console
+            console.log('Selected Category:', selectedCategory);
         });
     });
+
+    portfolioItems.forEach(function (item) {
+        const image = item.querySelector('.card-img-top');
+        const imageId = image.dataset.bsTarget.split('imageModal')[1];
+        const modalImage = document.getElementById('modalImage' + imageId);
+
+        image.addEventListener('click', function () {
+            const imagePath = image.getAttribute('src');
+            modalImage.setAttribute('src', imagePath);
+        });
+    });
+});
+
+
 </script>
 
 @endsection

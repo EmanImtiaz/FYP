@@ -93,6 +93,13 @@ class User extends Authenticatable
     {
         return in_array($this->role, $roles);
     }
+
+    // profile portfolio //
     
+       public function profileportfolio()
+       {
+           return $this->hasMany(ProfilePortfolio::class);
+       }
+
 }
 

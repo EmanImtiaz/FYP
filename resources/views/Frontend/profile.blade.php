@@ -155,7 +155,10 @@
                                     @endif
                                 @endauth
                                 <div class="col d-flex">
-                                    <a href="{{ route('profileportfolio.view') }}" class="btn btn-danger">Vew My Portfolio</a>
+                                    <a href="{{ route('profileportfolio.view', ['id' => $user->id]) }}" class="btn btn-danger">View Portfolio</a>
+
+
+
                                 </div>
                             </div>
                                                 </div>
