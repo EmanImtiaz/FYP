@@ -14,6 +14,7 @@ use App\Models\Town;
 use App\Models\Province;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Redirect;
 
 
 class BookingController extends Controller
@@ -44,23 +45,23 @@ class BookingController extends Controller
         $bookings = Booking::all();
         return view('admin.paymentapproved.index', compact('bookings'));
     }
+    public function approveBooking($id)
+    {
+        $booking = Booking::findOrFail($id);
 
- // Function to approve a booking
- public function approveBooking($id)
- {
-     $booking = Booking::findOrFail($id);
+        // Check if payment_method_options is 1 (Online Payment)
+        if ($booking->payment_method_options == 1) {
+            $booking->is_paid = 1; // Set is_paid to 1 for approved booking with online payment
+        } elseif ($booking->payment_method_options == 0 && !is_null($booking->evidence)) {
+            $booking->is_paid = 1; // Set is_paid to 1 for approved booking with evidence (Offline Payment)
+        }
 
-     // Check if payment_method_options is 1 (Online Payment)
-     if ($booking->payment_method_options == 1) {
-         $booking->is_paid = 1; // Set is_paid to 1 for approved booking with online payment
-     } elseif ($booking->payment_method_options == 0 && !is_null($booking->evidence)) {
-         $booking->is_paid = 1; // Set is_paid to 1 for approved booking with evidence (Offline Payment)
-     }
+        $booking->save();
 
-     $booking->save();
+        // Redirect to the profile page of the user associated with the booking
+        return redirect()->back()->with('success', 'Booking approved successfully.');
+    }
 
-     return redirect()->back()->with('success', 'Booking approved successfully.');
- }
 
  // Function to disapprove a booking
  public function disapproveBooking($id)

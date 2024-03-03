@@ -81,7 +81,7 @@
                         </ul>
                     </li>
                     <li class="nav-item"><a class="nav-link" href="{{ route('about') }}">About Us</a></li>
-        {{--           <li class="nav-item"><a class="nav-link" href="{{ route('contact') }}">Contact</a></li>   --}} 
+        {{--           <li class="nav-item"><a class="nav-link" href="{{ route('contact') }}">Contact</a></li>   --}}
                     <li class="nav-item"><a class="nav-link" href="{{ route('blogpost.show') }}">Blog</a></li>
                     @auth
                         <li class="nav-item dropdown">
@@ -105,8 +105,8 @@
                         </li>
                     @endauth
                     @guest
-                        <li class="nav-item"><a class="nav-link" href="{{ route('login') }}">Sign In</a></li>
-                        <li class="nav-item"><a class="nav-link" href="{{ route('register') }}">Sign Up</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{{ route('login') }}">Log in</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{{ route('register') }}">Register</a></li>
                     @endguest
                 </ul>
             </div>

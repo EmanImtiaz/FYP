@@ -49,4 +49,12 @@ class Booking extends Model
     {
         return $this->belongsTo(Town::class);
     }
+
+    //// bookings info //
+    public function photographerProfile()
+{
+    return $this->belongsTo(PhotographerProfile::class, 'photographer_profile_id');
+}
+
+
 }
