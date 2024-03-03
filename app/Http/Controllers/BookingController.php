@@ -44,28 +44,40 @@ class BookingController extends Controller
         $bookings = Booking::all();
         return view('admin.paymentapproved.index', compact('bookings'));
     }
-    public function approveBooking($id)
-    {
-        $booking = Booking::findOrFail($id);
-        $booking->is_paid = 1;
-        $booking->save();
 
-        // Check if the payment method was offline, then update it to online
-    if ($booking->payment_method_options == 0) {
-        $booking->update(['payment_method_options' => 1]);
-    }
-   return redirect()->back()->with('success', 'Your evidence has been approved successfully & Booking is Confirmed');
-    }
+ // Function to approve a booking
+ public function approveBooking($id)
+ {
+     $booking = Booking::findOrFail($id);
 
+     // Check if payment_method_options is 1 (Online Payment)
+     if ($booking->payment_method_options == 1) {
+         $booking->is_paid = 1; // Set is_paid to 1 for approved booking with online payment
+     } elseif ($booking->payment_method_options == 0 && !is_null($booking->evidence)) {
+         $booking->is_paid = 1; // Set is_paid to 1 for approved booking with evidence (Offline Payment)
+     }
 
-    public function disapproveBooking($id)
-    {
-        $booking = Booking::findOrFail($id);
-        $booking->is_paid = 0;
-        $booking->save();
+     $booking->save();
 
-        return redirect()->back()->with('success', 'Booking disapproved successfully.');
-    }
+     return redirect()->back()->with('success', 'Booking approved successfully.');
+ }
+
+ // Function to disapprove a booking
+ public function disapproveBooking($id)
+ {
+     $booking = Booking::findOrFail($id);
+
+     // Check if payment_method_options is 1 (Online Payment)
+     if ($booking->payment_method_options == 1) {
+         $booking->is_paid = 0; // Set is_paid to 0 for disapproved booking with online payment
+     } elseif ($booking->payment_method_options == 0 && !is_null($booking->evidence)) {
+         $booking->is_paid = 0; // Set is_paid to 0 for disapproved booking with evidence (Offline Payment)
+     }
+
+     $booking->save();
+
+     return redirect()->back()->with('success', 'Booking disapproved successfully.');
+ }
 
 
     public function getCities(Request $request)
@@ -214,9 +226,9 @@ class BookingController extends Controller
     } elseif ($paymentMethod == '1') {
         // Online payment, check if a payment option is selected
         $selectedPayment = $request->input('payment_id');
-
+   //     'is_paid' => 1
         // Update total amount and redirect
-        $booking->update(['total_amount' => $validatedData['totalAmount'], 'is_paid' => 1]);
+        $booking->update(['total_amount' => $validatedData['totalAmount'], ]);
         // After successful booking creation
     return redirect()->route('Frontend.profile')->with('success', 'Booking has been successfully created.');
     } else {
@@ -263,6 +275,7 @@ public function bookings()
 
     return view('Frontend.bookings', compact('allBookings', 'confirmedBookings', 'paymentPendingBookings'));
 }
+
 
 
 }

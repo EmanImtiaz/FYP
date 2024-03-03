@@ -26,6 +26,7 @@
                 <th>Account Number</th>
                 <th>IS_PAID</th>
                 <th>Total Amount</th>
+                <th>Action</th> <!-- Added Action column -->
             </tr>
         </thead>
         <tbody>
@@ -47,19 +48,27 @@
                 <td>{{ $booking->account_number }}</td>
                 <td>{{ $booking->is_paid }}</td>
                 <td>{{ $booking->total_amount }}</td>
-                @if($booking->payment_method_options == 0)
-                    <td>
-                        <form method="POST" action="{{ route('approve.booking', ['id' => $booking->id]) }}">
-                            @csrf
-                            <button type="submit" class="btn btn-success">Approve</button>
-                        </form>
-                        <form method="POST" action="{{ route('disapprove.booking', ['id' => $booking->id]) }}">
-                            @csrf
-                            <button type="submit" class="btn btn-danger">Disapprove</button>
-                        </form>
-                    </td>
-                @endif
-            {{--    <td><a class="btn btn-danger" href="{{ route('booking.delete',['id'=>$booking->id]) }}">Delete</a></td>   --}}
+                <td>
+                    @if($booking->payment_method_options == 0)
+                    <form method="POST" action="{{ route('approve.booking', ['id' => $booking->id]) }}">
+                        @csrf
+                        <button type="submit" class="btn btn-success">Approve</button>
+                    </form>
+                    <form method="POST" action="{{ route('disapprove.booking', ['id' => $booking->id]) }}">
+                        @csrf
+                        <button type="submit" class="btn btn-danger">Disapprove</button>
+                    </form>
+                    @elseif($booking->payment_method_options == 1)
+                    <form method="POST" action="{{ route('approve.booking', ['id' => $booking->id]) }}">
+                        @csrf
+                        <button type="submit" class="btn btn-success">Approve</button>
+                    </form>
+                    <form method="POST" action="{{ route('disapprove.booking', ['id' => $booking->id]) }}">
+                        @csrf
+                        <button type="submit" class="btn btn-danger">Disapprove</button>
+                    </form>
+                    @endif
+                </td>
             </tr>
             @endforeach
         </tbody>
