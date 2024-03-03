@@ -6,7 +6,6 @@
     /* Custom styles to change the active tab color to red */
     .nav-pills .nav-item .active {
         background-color:#d32f2f !important;
-
     }
 </style>
 <div class="container mt-5 py-5">
@@ -64,56 +63,51 @@
 @endforeach
 
 <script>
-   document.addEventListener('DOMContentLoaded', function () {
-    const categoryLinks = document.querySelectorAll('.nav-link');
-    const portfolioItems = document.querySelectorAll('.portfolio-item');
+    // Wrap your JavaScript code inside the DOMContentLoaded event listener
+    document.addEventListener('DOMContentLoaded', function () {
+        const categoryLinks = document.querySelectorAll('.nav-link');
+        const portfolioItems = document.querySelectorAll('.portfolio-item');
 
-    categoryLinks.forEach(function (link) {
-        link.addEventListener('click', function (event) {
-            event.preventDefault(); // Prevent default link behavior
+        categoryLinks.forEach(function (link) {
+            link.addEventListener('click', function (event) {
+                event.preventDefault(); // Prevent default link behavior
 
-            const selectedCategory = link.getAttribute('href').substring(1); // Extract category from href
+                const selectedCategory = link.getAttribute('href').substring(1); // Extract category from href
 
-            // Toggle active class for category links
-            categoryLinks.forEach(function (categoryLink) {
-                categoryLink.classList.remove('active');
+                // Toggle active class for category links
+                categoryLinks.forEach(function (categoryLink) {
+                    categoryLink.classList.remove('active');
+                });
+                link.classList.add('active');
+
+                // Filter and display portfolio items based on the selected category
+                portfolioItems.forEach(function (item) {
+                    const categories = item.dataset.categories.split(',');
+
+                    if (selectedCategory === 'all' || categories.includes(selectedCategory)) {
+                        item.style.display = 'block'; // Show items for the selected category or "All"
+                    } else {
+                        item.style.display = 'none'; // Hide items for other categories
+                    }
+                });
+
+                // Log the selected category to the console
+                console.log('Selected Category:', selectedCategory);
             });
-            link.classList.add('active');
+        });
 
-            // Filter and display portfolio items based on the selected category
-            portfolioItems.forEach(function (item) {
-                const categories = item.dataset.categories.split(',');
+        portfolioItems.forEach(function (item) {
+            const image = item.querySelector('.card-img-top');
+            const imageId = image.dataset.bsTarget.split('imageModal')[1];
+            const modalImage = document.getElementById('modalImage' + imageId);
 
-                if (selectedCategory === 'all' || categories.includes(selectedCategory)) {
-                    item.style.display = 'block'; // Show items for the selected category or "All"
-                } else {
-                    item.style.display = 'none'; // Hide items for other categories
-                }
+            image.addEventListener('click', function () {
+                const imagePath = image.getAttribute('src');
+                modalImage.setAttribute('src', imagePath);
             });
-
-            // Log the selected category to the console
-            console.log('Selected Category:', selectedCategory);
         });
     });
-
-    portfolioItems.forEach(function (item) {
-        const image = item.querySelector('.card-img-top');
-        const imageId = image.dataset.bsTarget.split('imageModal')[1];
-        const modalImage = document.getElementById('modalImage' + imageId);
-
-        image.addEventListener('click', function () {
-            const imagePath = image.getAttribute('src');
-            modalImage.setAttribute('src', imagePath);
-        });
-    });
-});
-
-
 </script>
 
+
 @endsection
-
-
-
-
-
