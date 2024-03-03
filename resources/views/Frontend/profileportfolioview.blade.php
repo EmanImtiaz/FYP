@@ -8,21 +8,22 @@
         background-color:#d32f2f !important;
     }
 </style>
+
 <div class="container mt-5 py-5">
     <div class="row">
-        <h1 class="text-center"> Portfolio</h1>
+        <h1 class="text-center">Portfolio</h1>
 
         <!-- Navbar to display categories -->
         <ul class="nav nav-pills nav-fill">
             <li class="nav-item">
-                <a class="nav-link active " href="#all" data-toggle="pill">
+                <a class="nav-link active" href="#" data-category-id="all">
                     All
                 </a>
             </li>
-            @foreach($profilecategories as  $profilecategory)
+            @foreach($profilecategories as $profilecategory)
                 <li class="nav-item">
-                    <a class="nav-link" href="#{{ $profilecategory->cat_name  }}" data-toggle="pill">
-                        {{ $profilecategory->cat_name  }}
+                    <a class="nav-link" href="#" data-category-id="{{ $profilecategory->id }}">
+                        {{ $profilecategory->cat_name }}
                     </a>
                 </li>
             @endforeach
@@ -32,10 +33,9 @@
         <div class="row">
             @foreach($profileportfolios as $index => $portfolio)
                 @if($index < 6) {{-- Display only the first 6 images initially --}}
-                    <div class="col-lg-3 col-md-4 col-sm-6 mt-2 portfolio-item" data-categories="{{ $portfolio->category ? $portfolio->category->cat_name : 'all' }}">
+                    <div class="col-lg-3 col-md-4 col-sm-6 mt-2 portfolio-item" data-category-id="{{ $portfolio->profile_category_id }}">
                         <div class="card">
-                            <img src="{{ asset($portfolio->img) }}" class="card-img-top" alt=""
-                                 data-bs-toggle="modal" data-bs-target="#imageModal{{ $portfolio->id }}">
+                            <img src="{{ asset($portfolio->img) }}" class="card-img-top" alt="" data-bs-toggle="modal" data-bs-target="#imageModal{{ $portfolio->id }}">
                         </div>
                     </div>
                 @endif
@@ -46,8 +46,7 @@
 
 <!-- Modal for each image -->
 @foreach($profileportfolios as $portfolio)
-    <div class="modal fade" id="imageModal{{ $portfolio->id }}" tabindex="-1"
-         aria-labelledby="imageModalLabel{{ $portfolio->id }}" aria-hidden="true">
+    <div class="modal fade" id="imageModal{{ $portfolio->id }}" tabindex="-1" aria-labelledby="imageModalLabel{{ $portfolio->id }}" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
                 <div class="modal-header">
@@ -63,16 +62,15 @@
 @endforeach
 
 <script>
-    // Wrap your JavaScript code inside the DOMContentLoaded event listener
     document.addEventListener('DOMContentLoaded', function () {
         const categoryLinks = document.querySelectorAll('.nav-link');
         const portfolioItems = document.querySelectorAll('.portfolio-item');
 
         categoryLinks.forEach(function (link) {
             link.addEventListener('click', function (event) {
-                event.preventDefault(); // Prevent default link behavior
+                event.preventDefault();
 
-                const selectedCategory = link.getAttribute('href').substring(1); // Extract category from href
+                const selectedCategoryId = link.getAttribute('data-category-id');
 
                 // Toggle active class for category links
                 categoryLinks.forEach(function (categoryLink) {
@@ -80,19 +78,16 @@
                 });
                 link.classList.add('active');
 
-                // Filter and display portfolio items based on the selected category
+                // Filter and display portfolio items based on the selected category ID
                 portfolioItems.forEach(function (item) {
-                    const categories = item.dataset.categories.split(',');
+                    const categoryId = item.getAttribute('data-category-id');
 
-                    if (selectedCategory === 'all' || categories.includes(selectedCategory)) {
-                        item.style.display = 'block'; // Show items for the selected category or "All"
+                    if (selectedCategoryId === 'all' || categoryId === selectedCategoryId) {
+                        item.style.display = 'block';
                     } else {
-                        item.style.display = 'none'; // Hide items for other categories
+                        item.style.display = 'none';
                     }
                 });
-
-                // Log the selected category to the console
-                console.log('Selected Category:', selectedCategory);
             });
         });
 
@@ -108,6 +103,5 @@
         });
     });
 </script>
-
 
 @endsection
