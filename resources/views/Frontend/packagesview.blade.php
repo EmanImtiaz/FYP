@@ -26,11 +26,10 @@
                         <div class="row mt-3">
                             <div class="col-3  ">
                                 <div class="col-3  ">
-                                    @auth
-                                    @if(Auth::user()->id !== $user->id) <!-- Check if the authenticated user ID does not match the profile ID -->
-                                        <a href="{{ route('bookingform', ['packageId' => $packageService->package->id]) }}" class="btn btn-success btn-block">Book Package</a>
-                                    @endif
-                                @endauth
+                                    @if($user->role === 'photographer' && $user->id !== Auth::id())
+            <!-- Check if the profile belongs to a photographer and if it's not the authenticated user's own profile -->
+            <a href="{{ route('bookingform', ['packageId' => $packageService->package->id]) }}" class="btn btn-success btn-block">Book Package</a>
+        @endif
                                 </div>
                             </div>
 
