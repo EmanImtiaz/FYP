@@ -192,46 +192,55 @@ document.addEventListener('DOMContentLoaded', function () {
          flatpickr('#dates', {
              mode: 'multiple',
              dateFormat: 'Y-m-d',
+             minDate: 'today',
              onClose: function (selectedDates, dateStr, instance) {
                  console.log(selectedDates);
              }
          });
      });
 
-    // Function to calculate total price
-    function calculateServicesTotalPrice(packageId, selectedServices) {
-            $.ajax({
-                url: "{{ route('calculate.services.price', '') }}/" + packageId,
-                type: 'GET',
-                data: { services: selectedServices },
-                success: function(response) {
-                    $('#totalAmount').val(response.total_price);
-                },
-                error: function(error) {
-                    console.error('Error fetching total price');
-                }
-            });
+// Function to calculate total price
+function calculateServicesTotalPrice(packageId, selectedServices) {
+    // Check if there are no selected services
+    if (selectedServices.length === 0) {
+        $('#totalAmount').val(0); // Set total amount to 0
+        return; // Exit the function
+    }
+
+    $.ajax({
+        url: "{{ route('calculate.services.price', '') }}/" + packageId,
+        type: 'GET',
+        data: { services: selectedServices },
+        success: function(response) {
+            $('#totalAmount').val(response.total_price);
+        },
+        error: function(error) {
+            console.error('Error fetching total price');
         }
+    });
+}
 
- // When a service checkbox is changed
- $('input[type=checkbox]').change(function() {
-            const packageId = "{{ $package->id }}";
-            const selectedServices = $('input[type=checkbox]:checked').map(function() {
-                return $(this).val();
-            }).get();
+// When a service checkbox is changed
+$('input[type=checkbox]').change(function() {
+    const packageId = "{{ $package->id }}";
+    const selectedServices = $('input[type=checkbox]:checked').map(function() {
+        return $(this).val();
+    }).get();
 
-            calculateServicesTotalPrice(packageId, selectedServices);
-        });
+    calculateServicesTotalPrice(packageId, selectedServices);
+});
 
-    // On document ready, calculate total price for initially checked services
-        $(document).ready(function() {
-            const packageId = "{{ $package->id }}";
-            const selectedServices = $('input[type=checkbox]:checked').map(function() {
-                return $(this).val();
-            }).get();
+// On document ready, calculate total price for initially checked services
+$(document).ready(function() {
+    const packageId = "{{ $package->id }}";
+    const selectedServices = $('input[type=checkbox]:checked').map(function() {
+        return $(this).val();
+    }).get();
 
-            calculateServicesTotalPrice(packageId, selectedServices);
-        });
+    calculateServicesTotalPrice(packageId, selectedServices);
+});
+
+
 
          // address Ajax code//
     document.addEventListener("DOMContentLoaded", function() {
