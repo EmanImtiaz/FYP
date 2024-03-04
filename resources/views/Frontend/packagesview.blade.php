@@ -26,9 +26,15 @@
                         <div class="row mt-3">
                             <div class="col-3  ">
                                 <div class="col-3  ">
-                                    <a href="{{ route('bookingform', ['packageId' => $packageService->package->id]) }}" class="btn btn-success btn-block">Book Package</a>
+                                    @auth
+                                    @if(Auth::user()->id !== $user->id) <!-- Check if the authenticated user ID does not match the profile ID -->
+                                        <a href="{{ route('bookingform', ['packageId' => $packageService->package->id]) }}" class="btn btn-success btn-block">Book Package</a>
+                                    @endif
+                                @endauth
                                 </div>
                             </div>
+
+
                             @auth
                                         @if(Auth::user()->id === $user->id)
                                         <div class="col-3 d-flex">
@@ -40,6 +46,10 @@
                             @endif
                         @endauth
                         </div>
+
+
+
+
                     </div>
                 </div>
             </div>

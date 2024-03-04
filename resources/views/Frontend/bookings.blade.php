@@ -53,38 +53,35 @@
                 <div class="tab-content">
                     <div class="tab-pane fade show active" id="all">
                         @foreach($allBookings as $booking)
-                            <div class="card mb-3">
-                                <div class="card-body">
-                                    <h5 class="card-title">Customer Name: {{ $booking->name }}</h5>
-                                    <p class="card-text">Total Amount: {{ $booking->total_amount }}</p>
-                                    <p class="card-text">Company Name: {{ $booking->photographerProfile->company_name }}</p>
-                                    <p class="card-text">Payment Method:
-                                        @if($booking->payment_method_options == 1)
-                                            Online Payment
-                                        @else
-                                            Offline Payment
-                                        @endif
-                                    </p>
-
-
-
-                                    @if($booking->payment_method_options == 0 && $booking->is_paid == 0 && !Auth::user()->hasAnyRole('photographer'))
-
-
+                            @if($booking->is_paid || !$booking->payment_method_options)
+                                <div class="card mb-3">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Customer Name: {{ $booking->name }}</h5>
+                                        <p class="card-text">Total Amount: {{ $booking->total_amount }}</p>
+                                        <p class="card-text">Company Name: {{ $booking->photographerProfile->company_name }}</p>
+                                        <p class="card-text">Payment Method:
+                                            @if($booking->payment_method_options == 1)
+                                                Online Payment
+                                            @else
+                                                Offline Payment
+                                            @endif
+                                        </p>
 
                                         <!-- Display image upload form only if payment method is offline and booking is not paid -->
-                                        <form method="post" action="{{ route('evidence.store') }}" enctype="multipart/form-data">
-                                            @csrf
-                                            <div class="form-group">
-                                                <label for="evidence">Upload Evidence</label>
-                                                <input type="file" name="evidence" id="evidence" value={{$booking->evidence}}>
-                                                <input type="hidden" name="booking_id" value="{{ $booking->id }}">
-                                                <button type="submit" class="btn btn-primary">Submit</button>
-                                            </div>
-                                        </form>
-                                    @endif
+                                        @if($booking->payment_method_options == 0 && $booking->is_paid == 0 && !Auth::user()->hasAnyRole('photographer'))
+                                            <form method="post" action="{{ route('evidence.store') }}" enctype="multipart/form-data">
+                                                @csrf
+                                                <div class="form-group">
+                                                    <label for="evidence">Upload Evidence</label>
+                                                    <input type="file" name="evidence" id="evidence" value={{$booking->evidence}}>
+                                                    <input type="hidden" name="booking_id" value="{{ $booking->id }}">
+                                                    <button type="submit" class="btn btn-primary">Submit</button>
+                                                </div>
+                                            </form>
+                                        @endif
+                                    </div>
                                 </div>
-                            </div>
+                            @endif
                         @endforeach
                     </div>
 

@@ -95,7 +95,7 @@ class User extends Authenticatable
     }
 
     // profile portfolio //
-    
+
        public function profileportfolio()
        {
            return $this->hasMany(ProfilePortfolio::class);

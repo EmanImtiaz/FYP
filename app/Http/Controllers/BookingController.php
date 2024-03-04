@@ -10,11 +10,10 @@ use App\Models\PaymentAccount;
 use App\Models\BookingService;
 use App\Models\City;
 use App\Models\Town;
-
+use App\Models\User;
 use App\Models\Province;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Redirect;
 
 
 class BookingController extends Controller
@@ -231,7 +230,7 @@ class BookingController extends Controller
         // Update total amount and redirect
         $booking->update(['total_amount' => $validatedData['totalAmount'], ]);
         // After successful booking creation
-    return redirect()->route('Frontend.profile')->with('success', 'Booking has been successfully created.');
+    return redirect()->route('Frontend.profile')->with('error', 'Booking has been successfully created..........Please wait for payment confirmation.');
     } else {
         // Invalid payment method selected
         return redirect()->back()->with('error', 'Invalid payment method');

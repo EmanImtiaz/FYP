@@ -9,7 +9,7 @@
     }
 </style>
 
-<div class="container mt-5 py-5">
+<div class="container mt-5 ">
     <div class="row">
         <h1 class="text-center">Portfolio</h1>
 

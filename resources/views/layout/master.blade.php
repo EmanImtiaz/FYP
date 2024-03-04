@@ -114,7 +114,7 @@
 
     </nav>
 
-<
+
       @yield('kuchb')
 
 <!-- footer-->
